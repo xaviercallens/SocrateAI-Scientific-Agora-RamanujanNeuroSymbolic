@@ -30,7 +30,7 @@ Every task card has: **Goal / Inputs / Steps / Definition of Done / Escalation t
 | M2.1 — Deligne bound values | ✅ DONE | T0 | From LMFDB, pinned |
 | M2.2 — Triad graph eigenvalues | ✅ DONE (placeholder) | T0→T1 | Graph construction needs T1 |
 | M2.3 — Alon–Boppana certificates | ✅ DONE | T0 | 3x PASS in ledger |
-| M3.1 — CFM constants | OPEN | T0 | |
+| M3.1 — CFM constants | ⚠️ ESCALATION | T0→T2 | CKN dim≤1 extracted; CF/CFM criteria are geometric conditions, not point values — T2 must read papers |
 | M3.2 — CFM Lean scaffold | ✅ DONE | T0 | |
 | M4.1 — S12 moduli-map rerun | OPEN | T0→T1 | Needs check_C3b script |
 | M4.2 — Paper classification update | BLOCKED on M4.1 | T0 | |

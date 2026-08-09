@@ -76,6 +76,39 @@
       "retrieved_by": "T0_agent",
       "retrieved_date": "2026-08-09",
       "description": "2 * 5^(11/2). Float approximation only."
+    },
+    {
+      "key": "ckn_singular_set_dim_bound",
+      "value": 1,
+      "source_bibkey": "CKN1982",
+      "source_url": "https://doi.org/10.1002/cpa.3160350604",
+      "page": "Theorem C, p. 824",
+      "exact": true,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "CKN bound: singular set of suitable weak solutions has vanishing 1-dim parabolic Hausdorff measure, hence dim ≤ 1."
+    },
+    {
+      "key": "cf1993_lipschitz_criterion",
+      "value": "ESCALATION_REQUIRED",
+      "source_bibkey": "CF1993",
+      "source_url": "https://doi.org/10.1512/iumj.1993.42.42034",
+      "page": "775-789",
+      "exact": false,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "ESCALATION: CF criterion is a geometric condition (Lipschitz control of xi=omega/|omega| in high-vorticity regions), not a single constant. Spans Theorem 1 + surrounding lemmas. T2 must extract the exact formulation."
+    },
+    {
+      "key": "cfm1996_geometric_constraint",
+      "value": "ESCALATION_REQUIRED",
+      "source_bibkey": "CFM1996",
+      "source_url": "https://doi.org/10.1080/03605309608821197",
+      "page": "559-571",
+      "exact": false,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "ESCALATION: CFM geometric constraints for 3D Euler. Multiple lemma derivation, not a point value. T2 must read and extract."
     }
   ]
 }

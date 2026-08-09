@@ -192,7 +192,8 @@ if __name__ == "__main__":
     
     target_dirs = [
         "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/input/NoteBook1/**/*.jpg",
-        "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/input/NoteBook2/**/*.jpg"
+        "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/input/NoteBook2/**/*.jpg",
+        "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/input/NoteBook3/**/*.jpg"
     ]
     
     target_images = []

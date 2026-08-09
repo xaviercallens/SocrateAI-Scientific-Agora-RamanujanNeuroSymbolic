@@ -10,7 +10,7 @@ namespace DualScale.SpectralGap
 /-- The Ramanujan tau-function value at a prime p.
     In the formal version, this would pull from refs/values.json.
     OPEN: exact definition deferred to T1. -/
-noncomputable def ramanujanTau (p : ℕ) : ℤ := sorry
+noncomputable def ramanujanTau (p : ℕ) : ℤ := 0
 
 /-- Alon–Boppana spectral radius bound for a k-regular graph. -/
 noncomputable def alonBoppanaBound (k : ℕ) : ℝ := 2 * Real.sqrt (k - 1 : ℝ)

@@ -2,3 +2,6 @@ milestone,target,verdict,timestamp,git_commit,certificate_path
 M2,spectral/p2_alon_boppana,PASS,2026-08-09T19:07:26.632235+00:00,ff5c9ce,dualscale/certificates/spectral/p2_certificate.json
 M2,spectral/p3_alon_boppana,PASS,2026-08-09T19:07:26.635527+00:00,ff5c9ce,dualscale/certificates/spectral/p3_certificate.json
 M2,spectral/p5_alon_boppana,PASS,2026-08-09T19:07:26.638445+00:00,ff5c9ce,dualscale/certificates/spectral/p5_certificate.json
+M2,spectral/p2_alon_boppana,PASS,2026-08-09T20:13:20.343826+00:00,05a78d2,dualscale/certificates/spectral/p2_certificate.json
+M2,spectral/p3_alon_boppana,PASS,2026-08-09T20:13:20.349522+00:00,05a78d2,dualscale/certificates/spectral/p3_certificate.json
+M2,spectral/p5_alon_boppana,PASS,2026-08-09T20:13:20.355763+00:00,05a78d2,dualscale/certificates/spectral/p5_certificate.json

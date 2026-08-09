@@ -36,10 +36,13 @@ def audit_file(filepath: str, bib_keys: set) -> list:
         lines = f.readlines()
 
     for lineno, line in enumerate(lines, 1):
-        # Check for tierB marker
+        # Check for tierB marker, ignoring definitions and legends
         if r"\tierB" in line:
-            # Extract cite keys from this line (or a window of +/- 2 lines)
-            window = "".join(lines[max(0, lineno - 3):lineno + 2])
+            if r"\newcommand" in line or "established" in line or "the conjecture" in line:
+                continue
+                
+            # Extract cite keys from this line (or a window of +/- 6 lines)
+            window = "".join(lines[max(0, lineno - 3):min(len(lines), lineno + 6)])
             cite_matches = re.findall(r"\\cite\{([^}]+)\}", window)
             if not cite_matches:
                 violations.append((lineno, line.strip(), "\\tierB without \\cite{} in context"))

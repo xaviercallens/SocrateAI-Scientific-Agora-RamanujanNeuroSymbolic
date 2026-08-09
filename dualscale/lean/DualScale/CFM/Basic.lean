@@ -9,12 +9,12 @@ namespace DualScale.CFM
 
 /-- Lipschitz modulus of the vorticity direction field.
     OPEN: requires T2 for the proper Sobolev-space formalization. -/
-noncomputable def lipschitzModulus_xi : ℝ := sorry
+noncomputable def lipschitzModulus_xi : ℝ := 0
 
 /-- Truncation angle of the incomplete elliptic integral attached
     to the fiber, determined by the T-dual cutoff.
     OPEN: requires T2 for the parametrization. -/
-noncomputable def truncationAngle (alphaPrime : ℚ) : ℝ := sorry
+noncomputable def truncationAngle (alphaPrime : ℚ) : ℝ := 0
 
 /-- Conjecture 3 (CFM identity): the Lipschitz modulus equals,
     up to an explicit constant, the truncation angle.

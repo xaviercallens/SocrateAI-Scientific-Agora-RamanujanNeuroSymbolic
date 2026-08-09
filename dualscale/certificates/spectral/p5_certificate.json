@@ -2,8 +2,8 @@
   "milestone": "M2",
   "target": "spectral/p5_alon_boppana",
   "verdict": "PASS",
-  "timestamp": "2026-08-09T19:07:26.638445+00:00",
-  "git_commit": "ff5c9ce",
+  "timestamp": "2026-08-09T20:13:20.355763+00:00",
+  "git_commit": "05a78d2",
   "details": {
     "prime": 5,
     "regularity_k": 4,

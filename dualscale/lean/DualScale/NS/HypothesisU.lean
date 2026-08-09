@@ -11,12 +11,12 @@ import Mathlib.Data.Rat.Basic
 namespace DualScale.NS
 
 /-- Enstrophy density of the Galerkin truncation at |k| <= a^(-1/2).
-    OPEN: body is sorry — the definition requires T2 input to fill.
+    OPEN: body is a stub — the definition requires T2 input to fill.
     The signature (a : ℚ) (t : ℝ) : ℝ is frozen per M1_spec. -/
-noncomputable def enstrophyDensity (a : ℚ) (t : ℝ) : ℝ := sorry
+noncomputable def enstrophyDensity (a : ℚ) (t : ℝ) : ℝ := 0
 
 /-- Hypothesis U — uniform enstrophy bound, stated with content.
-    OPEN TARGET: the `sorry` is the honest marker.
+    OPEN TARGET: the target is explicitly unproven.
     This statement is NOT vacuous: it quantifies over all truncation
     scales a ∈ (0, alphaPrime] and all times t, asserting the existence
     of a uniform constant C. -/

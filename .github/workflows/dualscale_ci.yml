@@ -38,6 +38,7 @@ jobs:
       - name: Compile Lean Project
         run: |
           cd dualscale/lean
+          lake exe cache get
           lake build
       - name: Audit Lean files (formalization)
         run: python dualscale/ci/audit_lean.py --root dualscale/lean

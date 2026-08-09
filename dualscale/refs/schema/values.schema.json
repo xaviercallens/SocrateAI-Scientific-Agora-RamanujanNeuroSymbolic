@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LiteratureValues",
+  "description": "Schema for pinned literature values under Rule R5.",
+  "type": "object",
+  "required": ["values"],
+  "properties": {
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "value", "source_bibkey", "source_url", "exact"],
+        "properties": {
+          "key": { "type": "string" },
+          "value": { "type": ["string", "number", "integer"] },
+          "source_bibkey": { "type": "string" },
+          "source_url": { "type": "string", "format": "uri" },
+          "page": { "type": ["string", "null"] },
+          "exact": { "type": "boolean", "description": "false if the source only gives an inequality or approximation" },
+          "retrieved_by": { "type": "string" },
+          "retrieved_date": { "type": "string", "format": "date" }
+        }
+      }
+    }
+  }
+}

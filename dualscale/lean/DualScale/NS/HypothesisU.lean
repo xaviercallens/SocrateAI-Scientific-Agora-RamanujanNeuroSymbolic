@@ -1,0 +1,29 @@
+-- DualScale/NS/HypothesisU.lean — Tasks M1.2 + M1.3
+-- ====================================================
+-- Contains the enstrophy density signature (M1.2) and the
+-- Hypothesis U uniform bound statement (M1.3).
+-- Both are OPEN targets: `sorry` marks them as unproven,
+-- per Rule R2. Their types are NOT `True` — they encode
+-- the actual mathematical content of Conjecture 3.1.
+
+import Mathlib.Data.Rat.Basic
+
+namespace DualScale.NS
+
+/-- Enstrophy density of the Galerkin truncation at |k| <= a^(-1/2).
+    OPEN: body is sorry — the definition requires T2 input to fill.
+    The signature (a : ℚ) (t : ℝ) : ℝ is frozen per M1_spec. -/
+noncomputable def enstrophyDensity (a : ℚ) (t : ℝ) : ℝ := sorry
+
+/-- Hypothesis U — uniform enstrophy bound, stated with content.
+    OPEN TARGET: the `sorry` is the honest marker.
+    This statement is NOT vacuous: it quantifies over all truncation
+    scales a ∈ (0, alphaPrime] and all times t, asserting the existence
+    of a uniform constant C. -/
+theorem hypothesisU_uniform_bound :
+    ∃ C : ℝ, 0 < C ∧
+      ∀ a : ℚ, 0 < a → a ≤ (1 : ℚ) / 100 →
+        ∀ t : ℝ, (a : ℝ) * enstrophyDensity a t ≤ C := by
+  sorry
+
+end DualScale.NS

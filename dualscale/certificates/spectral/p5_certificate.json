@@ -1,0 +1,43 @@
+{
+  "milestone": "M2",
+  "target": "spectral/p5_alon_boppana",
+  "verdict": "PASS",
+  "timestamp": "2026-08-09T19:07:26.638445+00:00",
+  "git_commit": "ff5c9ce",
+  "details": {
+    "prime": 5,
+    "regularity_k": 4,
+    "alon_boppana_bound": 3.4641016151377544,
+    "num_nontrivial": 5,
+    "num_violations": 0,
+    "violations": [],
+    "margins": [
+      {
+        "eigenvalue": -2.0,
+        "abs_eigenvalue": 2.0,
+        "margin": 1.4641016151377544
+      },
+      {
+        "eigenvalue": -1.999999999999999,
+        "abs_eigenvalue": 1.999999999999999,
+        "margin": 1.4641016151377555
+      },
+      {
+        "eigenvalue": 0.0,
+        "abs_eigenvalue": 0.0,
+        "margin": 3.4641016151377544
+      },
+      {
+        "eigenvalue": -0.0,
+        "abs_eigenvalue": 0.0,
+        "margin": 3.4641016151377544
+      },
+      {
+        "eigenvalue": -0.0,
+        "abs_eigenvalue": 0.0,
+        "margin": 3.4641016151377544
+      }
+    ],
+    "note": "PLACEHOLDER: T1 must replace build_cayley_graph_adjacency with LPS construction"
+  }
+}

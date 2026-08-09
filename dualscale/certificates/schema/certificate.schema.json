@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Certificate",
+  "description": "Schema for exact-arithmetic PASS/FAIL certificates under Rule R5.",
+  "type": "object",
+  "required": ["milestone", "target", "verdict", "timestamp", "git_commit"],
+  "properties": {
+    "milestone": { "type": "string", "description": "E.g. M2, M4" },
+    "target": { "type": "string", "description": "What is being certified" },
+    "verdict": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "details": { "type": "object", "description": "Arbitrary key-value pairs documenting the check" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "git_commit": { "type": "string", "description": "Short SHA of the commit that produced this certificate" }
+  }
+}

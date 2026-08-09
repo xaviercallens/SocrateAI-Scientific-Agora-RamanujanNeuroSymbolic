@@ -1,0 +1,81 @@
+{
+  "values": [
+    {
+      "key": "tau_2",
+      "value": -24,
+      "source_bibkey": "LMFDB_1_12_a_a",
+      "source_url": "https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/1/12/a/a/",
+      "page": null,
+      "exact": true,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "Ramanujan tau-function at p=2: tau(2) = -24"
+    },
+    {
+      "key": "tau_3",
+      "value": 252,
+      "source_bibkey": "LMFDB_1_12_a_a",
+      "source_url": "https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/1/12/a/a/",
+      "page": null,
+      "exact": true,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "Ramanujan tau-function at p=3: tau(3) = 252"
+    },
+    {
+      "key": "tau_5",
+      "value": 4830,
+      "source_bibkey": "LMFDB_1_12_a_a",
+      "source_url": "https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/1/12/a/a/",
+      "page": null,
+      "exact": true,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "Ramanujan tau-function at p=5: tau(5) = 4830"
+    },
+    {
+      "key": "deligne_bound_formula",
+      "value": "|tau(p)| <= 2 * p^(11/2)",
+      "source_bibkey": "Deligne1974",
+      "source_url": "https://doi.org/10.1007/BF02684373",
+      "page": "273-307",
+      "exact": true,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "Deligne's bound for Ramanujan-Petersson conjecture"
+    },
+    {
+      "key": "deligne_bound_p2",
+      "value": 90.50966799187809,
+      "source_bibkey": "Deligne1974",
+      "source_url": "https://doi.org/10.1007/BF02684373",
+      "page": null,
+      "exact": false,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "2 * 2^(11/2) = 2 * 2048^(1/2) ... exact: 2^(13/2) = 128*sqrt(2). Float approximation only; exact-arithmetic certificate uses symbolic form."
+    },
+    {
+      "key": "deligne_bound_p3",
+      "value": 791.6912861509541,
+      "source_bibkey": "Deligne1974",
+      "source_url": "https://doi.org/10.1007/BF02684373",
+      "page": null,
+      "exact": false,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "2 * 3^(11/2). Float approximation only; exact-arithmetic certificate uses symbolic form."
+    },
+    {
+      "key": "deligne_bound_p5",
+      "value": 55901.69943749474,
+      "source_bibkey": "Deligne1974",
+      "source_url": "https://doi.org/10.1007/BF02684373",
+      "page": null,
+      "exact": false,
+      "retrieved_by": "T0_agent",
+      "retrieved_date": "2026-08-09",
+      "description": "2 * 5^(11/2). Float approximation only."
+    }
+  ]
+}

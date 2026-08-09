@@ -1,0 +1,16 @@
+{
+  "prime": 2,
+  "tau_p": -24,
+  "graph_nodes": 3,
+  "regularity_k": 2,
+  "all_eigenvalues": [
+    2.0,
+    -1.0,
+    -1.0
+  ],
+  "nontrivial_eigenvalues": [
+    -1.0,
+    -1.0
+  ],
+  "note": "PLACEHOLDER: T1 must replace build_cayley_graph_adjacency with LPS construction"
+}

@@ -6,3 +6,6 @@ __pycache__/
 .venv/
 env/
 .DS_Store
+input/
+*.pdf
+!docs/v2.1_paper/*.pdf

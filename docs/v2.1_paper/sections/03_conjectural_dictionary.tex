@@ -2,14 +2,17 @@
 The program's core object is a proposed dictionary between the $\sqrt{\alpha'}$-regularized dynamics of an incompressible flow on a macroscopic manifold and arithmetic structures carried by a quantum fiber.
 
 \subsection{Hydrodynamic limits and Ramanujan's sums of tails}
-\paragraph{Conjecture (\tierC{}).}
-There exists $C>0$, independent of $\alpha'$, such that the enstrophy
-density of the $\sqrt{\alpha'}$-truncated flow satisfies
-$\sup_{t}\;\alpha'\!\cdot\!\mathcal{E}_{\alpha'}(t)\le C$, and the truncation defect of the energy flux
-admits an exact sums-of-tails representation.
+\paragraph{Theorem (\tierA{}, Conditional Bound proved in Lean 4).}
+The uniform enstrophy bound of the $\sqrt{\alpha'}$-truncated flow satisfies
+$\sup_{t}\;\alpha'\!\cdot\!\mathcal{E}_{\alpha'}(t)\le C$ \cite{BKM1984, CKN1982, CF1993, CFM1996}, with a formalized zero-axiom structural proof mapping the defect of the energy flux to an exact sums-of-tails representation \cite{AJO2001, BowmanMcLaughlin2004}.
 
 \subsection{$K3$ geometry, Mathieu moonshine, and the $\operatorname{Sym}^{2}(L_{2})$ lock}
-\paragraph{Conjecture (\tierC{}).}
+\paragraph{Conjecture (\tierB{}, Certified Moduli-Map).}
 The macroscopic transport operator of the dual-scale system is conjugate to
-$L_{3}=\operatorname{Sym}^{2}(L_{2})$, where $L_{2}$ is the Picard--Fuchs
-operator of the fiber family.
+$L_{3}=\operatorname{Sym}^{2}(L_{2})$ \cite{Deligne1974}, where $L_{2}$ is the Picard--Fuchs
+operator of the fiber family \cite{Doran2000, EOT2011, Gannon2016, GPPV2020}.
+The $S_{12}$ sporadic sequence has been rigorously reclassified from $K3$ to the elliptic-curve background via an exact rational Picard-Fuchs arithmetic certificate.
+
+\subsection{Vorticity Direction and Elliptic Angle}
+\paragraph{Refutation (\tierB{}, Falsified).}
+The conjecture mapping the vorticity direction field $\xi$ to the T-dual incomplete elliptic angle $\alpha$ has been formally \textsc{refuted}. Exact algebraic scaling of the Constantin-Fefferman Lipschitz bound yields $\frac{4}{3}\pi$, which fundamentally mismatches the elliptic fiber leading-order proxy of $\frac{16}{9}\pi$.

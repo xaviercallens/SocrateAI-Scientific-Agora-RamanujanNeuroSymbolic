@@ -48,12 +48,14 @@ def main():
         sys.exit(0)
 
     missing_citations = []
+    used_keys = set()
     
     for tex_file in tex_files:
         print(f"Scanning {tex_file}...")
         tex_keys = extract_tex_citations(tex_file)
         
         for key in tex_keys:
+            used_keys.add(key)
             if key not in bib_keys:
                 missing_citations.append((tex_file, key))
                 
@@ -62,6 +64,12 @@ def main():
         for tex_file, key in missing_citations:
             print(f"File {tex_file} cites '{key}', which is missing from {args.bib}")
         sys.exit(1)
+        
+    unused_keys = bib_keys - used_keys
+    if unused_keys:
+        print(f"\nWARNING: Found {len(unused_keys)} unused bibliography entries in {args.bib}:")
+        for key in sorted(unused_keys):
+            print(f"  - {key}")
         
     print("\nRule R4 Verification Complete: All Tier-B claims have valid citations.")
     sys.exit(0)

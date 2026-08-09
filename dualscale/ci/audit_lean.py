@@ -29,7 +29,8 @@ def audit_file(filepath):
             errors.append(f"{filepath}:{line_num} [R1 VIOLATION] 'axiom' keyword is strictly prohibited.")
 
         # Rule R2: Report sorry
-        if "sorry" in stripped:
+        code_only = stripped.split("--")[0]
+        if "sorry" in code_only:
             warnings.append(f"{filepath}:{line_num} [R2 NOTE] Found 'sorry'. Target remains OPEN.")
 
         # Rule R3: Vacuous theorems

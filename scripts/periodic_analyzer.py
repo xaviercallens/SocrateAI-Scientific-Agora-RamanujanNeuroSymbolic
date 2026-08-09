@@ -4,7 +4,7 @@ import os
 import datetime
 
 DB_PATH = "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/namagiri.db"
-ARTIFACT_PATH = "/home/xavkal/.gemini/antigravity/brain/ba4f9c91-8bf9-4e93-95d5-3dbe934ce577/analysis_results.md"
+ARTIFACT_PATH = "/home/xavkal/.gemini/antigravity/brain/fb77f7e6-e844-486c-8662-a7e985c3b75c/analysis_results.md"
 
 def generate_report():
     try:
@@ -73,7 +73,7 @@ def generate_report():
         print(f"Error generating report: {e}")
 
 if __name__ == "__main__":
-    print("Starting periodic analyzer (every 5 mins)...")
+    print("Starting periodic analyzer (every 1 hour)...")
     while True:
         generate_report()
-        time.sleep(300)
+        time.sleep(3600)

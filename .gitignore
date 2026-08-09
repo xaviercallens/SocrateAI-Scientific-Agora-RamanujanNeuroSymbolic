@@ -1,0 +1,8 @@
+tectonic
+*.log
+*.db
+__pycache__/
+.env
+.venv/
+env/
+.DS_Store

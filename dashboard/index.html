@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NAMAGIRI: Autonomous Mathematical Discovery Engine Dashboard">
+    <title>NAMAGIRI Observatory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="ambient-background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="dashboard-container">
+        <header class="glass-panel main-header">
+            <div class="logo-area">
+                <h1>NAMAGIRI</h1>
+                <span class="subtitle">Neuro-Symbolic Observatory</span>
+            </div>
+            <div class="stats-area" id="global-stats">
+                <div class="stat-box">
+                    <span class="stat-label">Total Processed</span>
+                    <span class="stat-value" id="stat-total">--</span>
+                </div>
+                <div class="stat-box success">
+                    <span class="stat-label">Lean Verified</span>
+                    <span class="stat-value" id="stat-verified">--</span>
+                </div>
+                <div class="stat-box warning">
+                    <span class="stat-label">Unresolved</span>
+                    <span class="stat-value" id="stat-unresolved">--</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-grid">
+            <section class="glass-panel discovery-feed">
+                <div class="panel-header">
+                    <h2>Live Discovery Stream</h2>
+                    <div class="controls">
+                        <select id="domain-filter">
+                            <option value="">All Domains</option>
+                            <option value="String Theory (K3)">String Theory (K3)</option>
+                            <option value="Astrophysics">Astrophysics</option>
+                            <option value="Topology">Topology</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="feed-container" id="discovery-list">
+                    <!-- Discovery items will be injected here -->
+                    <div class="loading-pulse">Awaiting data...</div>
+                </div>
+            </section>
+
+            <section class="glass-panel detail-view">
+                <div class="panel-header">
+                    <h2>Theorem Formalization</h2>
+                </div>
+                <div id="detail-content" class="detail-content empty-state">
+                    <p>Select a discovery from the stream to view its Lean 4 formalization and physics mapping.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

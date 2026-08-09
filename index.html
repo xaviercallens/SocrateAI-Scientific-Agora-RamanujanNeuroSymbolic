@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project NAMAGIRI - Autonomous Discovery Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --panel-bg: rgba(22, 27, 34, 0.7);
+            --accent: #58a6ff;
+            --success: #238636;
+            --error: #f85149;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top right, #1f2a3f, var(--bg-color));
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(13, 17, 23, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            font-size: 2.5rem;
+            background: -webkit-linear-gradient(45deg, #58a6ff, #bc8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--panel-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verified-value { color: var(--success); }
+        .failed-value { color: var(--error); }
+        .progress-value { color: #d2a8ff; }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--panel-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .conjecture-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: #d2a8ff;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .metadata {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+        }
+
+        .error-card {
+            border-left: 4px solid var(--error);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NAMAGIRI Dashboard</h1>
+        <div class="subtitle">Live K3 x T² Cosmological Discovery Matrix <span id="status-indicator" class="pulse" style="color:var(--success);">● LIVE</span></div>
+    </header>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-total">-</div>
+                <div class="stat-label">Total Processed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value verified-value" id="stat-verified">-</div>
+                <div class="stat-label">Zero-Axiom Verified</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value progress-value" id="stat-progress">-</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value failed-value" id="stat-failed">-</div>
+                <div class="stat-label">Unresolved / Errors</div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div>
+                <h2 class="section-title">Verified Theorems (Lean 4)</h2>
+                <div id="verified-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title" style="color: var(--error);">Unresolved states</h2>
+                <div id="failed-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('dashboard_data.json?' + new Date().getTime());
+                const data = await response.json();
+                
+                // Update stats
+                document.getElementById('stat-total').innerText = data.stats.total;
+                document.getElementById('stat-verified').innerText = data.stats.verified;
+                document.getElementById('stat-progress').innerText = data.stats.in_progress;
+                document.getElementById('stat-failed').innerText = data.stats.failed;
+                
+                // Update verified list
+                const verifiedContainer = document.getElementById('verified-list');
+                verifiedContainer.innerHTML = '';
+                data.verified_theorems.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <strong>${item.image}</strong>
+                            <span class="tag">Verified</span>
+                        </div>
+                        <div class="conjecture-box">${item.conjecture || 'N/A'}</div>
+                        <div><strong>Shadow:</strong> ${item.shadow || 'N/A'}</div>
+                        <div class="metadata">
+                            <span><strong>Energy:</strong> ${item.energy}</span>
+                            <span>${item.scores || ''}</span>
+                        </div>
+                    `;
+                    verifiedContainer.appendChild(card);
+                });
+
+                // Update failed list
+                const failedContainer = document.getElementById('failed-list');
+                failedContainer.innerHTML = '';
+                if(data.failed_images.length === 0) {
+                    failedContainer.innerHTML = '<div class="card" style="text-align:center; color: var(--text-muted);">No unresolved states.</div>';
+                }
+                data.failed_images.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card error-card';
+                    card.innerHTML = `
+                        <strong>${item.image}</strong>
+                        <div style="margin-top: 0.5rem; color: var(--error); font-size: 0.9rem;">
+                            ${item.error_msg || 'Unknown parsing error'}
+                        </div>
+                    `;
+                    failedContainer.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                document.getElementById('status-indicator').style.color = "var(--error)";
+                document.getElementById('status-indicator').innerText = "● DISCONNECTED";
+            }
+        }
+
+        // Fetch immediately, then every 3 seconds
+        fetchData();
+        setInterval(fetchData, 3000);
+    </script>
+</body>
+</html>

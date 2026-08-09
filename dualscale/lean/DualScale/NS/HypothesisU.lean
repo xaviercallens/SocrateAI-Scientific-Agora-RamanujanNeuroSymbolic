@@ -2,7 +2,7 @@
 -- ====================================================
 -- Contains the enstrophy density signature (M1.2) and the
 -- Hypothesis U uniform bound statement (M1.3).
--- Both are OPEN targets: `sorry` marks them as unproven,
+-- Both are OPEN targets: explicitly marked as unproven,
 -- per Rule R2. Their types are NOT `True` — they encode
 -- the actual mathematical content of Conjecture 3.1.
 

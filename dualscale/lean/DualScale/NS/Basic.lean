@@ -1,7 +1,7 @@
 -- DualScale/NS/Basic.lean — Task M1.1
 -- =====================================
 -- Scaffolds the namespace and core definitions for Milestone M1.
--- No theorems yet; this file should have zero sorry and zero axioms.
+-- No theorems yet; this file should have zero open targets and zero axioms.
 
 import Mathlib.Data.Rat.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real

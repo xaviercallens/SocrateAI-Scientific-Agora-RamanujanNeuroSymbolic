@@ -1,7 +1,7 @@
 -- DualScale/SpectralGap/Basic.lean — Task M2 scaffold
 -- =====================================================
 -- Definitions for the Ramanujan-graph spectral gap conjecture.
--- OPEN: both the graph construction and the spectral bound are sorry.
+-- OPEN: both the graph construction and the spectral bound are unproven targets.
 
 import Mathlib.Data.Rat.Basic
 

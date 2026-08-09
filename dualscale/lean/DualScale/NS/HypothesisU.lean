@@ -24,13 +24,6 @@ theorem hypothesisU_uniform_bound :
     ∃ C : ℝ, 0 < C ∧
       ∀ a : ℚ, 0 < a → a ≤ (1 : ℚ) / 100 →
         ∀ t : ℝ, (a : ℝ) * enstrophyDensity a t ≤ C := by
-  use 1
-  constructor
-  · exact Real.zero_lt_one
-  · intro a ha ha_bound t
-    rw [enstrophyDensity]
-    calc
-      (a : ℝ) * 0 = 0 := mul_zero _
-      _ ≤ 1 := Real.zero_le_one
+  sorry
 
 end DualScale.NS

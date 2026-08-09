@@ -28,8 +28,17 @@ jobs:
         run: pip install numpy
 
       # ──────────────────────────────────────────────────────────────────
-      # Step 1: Lean audit — reject axioms, vacuous goals; report sorry
+      # Step 1: Lean Compilation and Audit
       # ──────────────────────────────────────────────────────────────────
+      - name: Setup Elan (Lean version manager)
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Compile Lean Project
+        run: |
+          cd dualscale/lean
+          lake build
       - name: Audit Lean files (formalization)
         run: python dualscale/ci/audit_lean.py --root dualscale/lean
 

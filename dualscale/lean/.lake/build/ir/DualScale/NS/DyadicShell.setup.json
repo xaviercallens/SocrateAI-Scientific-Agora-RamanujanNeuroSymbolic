@@ -6892,6 +6892,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Ring/Basic.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Ring/Basic.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Ring/Basic.ir"]],
+  "Mathlib.Analysis.Normed.Operator.NNNorm":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/NNNorm.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/NNNorm.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/NNNorm.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/NNNorm.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/NNNorm.ir"]],
   "Mathlib.Analysis.Normed.Operator.LinearIsometry":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/LinearIsometry.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/LinearIsometry.olean.server",
@@ -6904,6 +6910,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/ContinuousLinearMap.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/ContinuousLinearMap.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/ContinuousLinearMap.ir"]],
+  "Mathlib.Analysis.Normed.Operator.Bilinear":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Bilinear.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Bilinear.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Bilinear.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Bilinear.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Bilinear.ir"]],
   "Mathlib.Analysis.Normed.Operator.Basic":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Basic.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Basic.olean.server",
@@ -7132,6 +7144,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Basic.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Basic.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Basic.ir"]],
+  "Mathlib.Analysis.Calculus.TangentCone.Real":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/TangentCone/Real.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/TangentCone/Real.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/TangentCone/Real.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/TangentCone/Real.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/TangentCone/Real.ir"]],
   "Mathlib.Analysis.Calculus.TangentCone.DimOne":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/TangentCone/DimOne.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/TangentCone/DimOne.olean.server",
@@ -7156,12 +7174,30 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Defs.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Defs.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Defs.ir"]],
+  "Mathlib.Analysis.Calculus.FDeriv.Const":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Const.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Const.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Const.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Const.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Const.ir"]],
+  "Mathlib.Analysis.Calculus.FDeriv.Congr":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Congr.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Congr.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Congr.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Congr.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Congr.ir"]],
   "Mathlib.Analysis.Calculus.FDeriv.Basic":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Basic.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Basic.olean.server",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Basic.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Basic.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Basic.ir"]],
+  "Mathlib.Analysis.Calculus.Deriv.Basic":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/Deriv/Basic.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/Deriv/Basic.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/Deriv/Basic.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/Deriv/Basic.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/Deriv/Basic.ir"]],
   "Mathlib.Analysis.Asymptotics.Theta":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Asymptotics/Theta.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Asymptotics/Theta.olean.server",

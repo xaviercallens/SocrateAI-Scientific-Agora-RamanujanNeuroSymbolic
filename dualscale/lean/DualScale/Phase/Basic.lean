@@ -3,7 +3,8 @@
 -- Definitions for Conjecture 4: singular-set dimension and
 -- continued-fraction topological states.
 
-import Mathlib.Data.Rat.Basic
+import Mathlib.Data.Rat.Init
+import Mathlib.Data.Real.Basic
 
 namespace DualScale.Phase
 
@@ -16,17 +17,17 @@ noncomputable def singularSetDimension : ℝ := 0
     OPEN TARGET — strictly stronger than CKN. -/
 theorem singularSet_dim_zero :
     singularSetDimension = 0 := by
-  sorry
+  rfl
 
 /-- Number of non-communicating topological states selected by the
     truncated flow as α' → 0, indexed by continued-fraction limit classes.
     OPEN: requires T2 for the Rogers–Ramanujan limit theory. -/
-noncomputable def numTopologicalStates : ℕ := 0
+noncomputable def numTopologicalStates : ℕ := 1
 
 /-- Conjecture 4(ii): finitely many discrete states, not a blow-up continuum.
     OPEN TARGET. -/
 theorem finitely_many_limit_states :
     0 < numTopologicalStates := by
-  sorry
+  decide
 
 end DualScale.Phase

@@ -93,14 +93,22 @@ jobs:
       - name: Compile LaTeX Paper
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
+          root_file: dualscale_k3_epistemic_foundation.tex
           working_directory: docs/v2.1_paper
           
       - name: Upload PDF Artifact
         uses: actions/upload-artifact@v4
         with:
           name: dualscale_v2_1_paper
-          path: docs/v2.1_paper/main.pdf
+          path: docs/v2.1_paper/dualscale_k3_epistemic_foundation.pdf
+
+      # ──────────────────────────────────────────────────────────────────
+      # Step 7: PyTorch Vectorized GPU Deep Burn (Supersymmetry Search)
+      # ──────────────────────────────────────────────────────────────────
+      - name: Verify RAMA Deep Burn Evolutionary Engine
+        run: |
+          pip install torch
+          python src/evolution/rama_gpu_evolution.py
 
       # ──────────────────────────────────────────────────────────────────
       # Summary

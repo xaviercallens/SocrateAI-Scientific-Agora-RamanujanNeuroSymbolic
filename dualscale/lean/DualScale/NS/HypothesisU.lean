@@ -56,7 +56,7 @@ noncomputable def bps_scaling (c : CentralCharge) : ℝ :=
 -/
 noncomputable def enstrophyDensity (a : ℚ) (c : CentralCharge) (u : TruncatedFlow a) (t : ℝ) : ℝ :=
   -- The enstrophy density is now explicitly weighted by the K3 geometry
-  bps_scaling c * 0
+  bps_scaling c * sorry
 
 /-- 
   CORRECTED Hypothesis U: uniform enstrophy bound.
@@ -70,8 +70,11 @@ def HypothesisU : Prop :=
         ∀ u : TruncatedFlow a, ∀ t : ℝ, enstrophyDensity a c u t ≤ C
 
 /-- 
-  Conditional Tier A Target (Milestone M5):
-  Assuming Hypothesis U holds, the truncated family exhibits uniform-in-a' smoothness.
+  STRUCTURAL LEMMA (Tier A, by construction):
+  Truncated Galerkin flows are infinitely smooth by their type definition.
+  NOTE: This does NOT use Hypothesis U — the hypothesis is an unused parameter
+  retained for interface compatibility. The actual role of Hypothesis U is to
+  provide the uniform enstrophy bound needed for the Compactness Step (open).
 -/
 theorem hypothesisU_implies_uniform_smoothness (_hU : HypothesisU) :
     ∀ a : ℚ, 0 < a → a ≤ alphaPrime →
@@ -80,7 +83,7 @@ theorem hypothesisU_implies_uniform_smoothness (_hU : HypothesisU) :
   exact u.property
 
 /-- Strongly convergent subsequence indicator for a family of flows as a -> 0. -/
-def admits_strong_subsequence_limit : Prop := True
+def admits_strong_subsequence_limit : Prop := sorry
 
 /-- 
   OPEN LEMMA (Compactness Step):
@@ -90,7 +93,6 @@ def admits_strong_subsequence_limit : Prop := True
 -/
 lemma compactness_step_is_open :
     HypothesisU → admits_strong_subsequence_limit := by
-  intro hU
-  trivial
+  sorry
 
 end DualScale.NS

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/LUVslObnR07CSe0hupAIxil/260</id>
+  <title>arXiv Query: search_query=all:bps OR all:extremal OR all:black OR all:hole OR all:kerr OR all:astrophysical&amp;id_list=&amp;start=0&amp;max_results=1</title>
+  <updated>2026-08-10T14:35:47Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:bps+OR+(all:extremal+OR+(all:black+OR+(all:hole+OR+(all:kerr+OR+all:astrophysical))))&amp;start=0&amp;max_results=1&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
+  <opensearch:totalResults>288164</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/0706.1109v2</id>
+    <title>Discovering the Kerr and Kerr-Schild metrics</title>
+    <updated>2008-01-14T22:52:40Z</updated>
+    <link href="https://arxiv.org/abs/0706.1109v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/0706.1109v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>  An historical account of the reasoning that led to the discovery of the Kerr and Kerr-Schild metrics in 1963-1964, and their physical interpretation as rotating black holes, is presented.</summary>
+    <category term="gr-qc" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2007-06-08T04:21:18Z</published>
+    <arxiv:comment>34 pages, 2 figures, cupbook.cls. To appear in "The Kerr Spacetime", Eds D.L. Wiltshire, M. Visser and S.M. Scott, Cambridge Univ. Press</arxiv:comment>
+    <arxiv:primary_category term="gr-qc"/>
+    <author>
+      <name>Roy P. Kerr</name>
+    </author>
+  </entry>
+</feed>

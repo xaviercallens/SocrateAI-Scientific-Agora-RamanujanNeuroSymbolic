@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/vQuyEU5Ru+oXKhC8gy1sCw4gBOU</id>
+  <title>arXiv Query: search_query=all:hagedorn OR all:phase OR all:transition OR all:string OR all:cft&amp;id_list=&amp;start=0&amp;max_results=1</title>
+  <updated>2026-08-10T14:35:47Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:hagedorn+OR+(all:phase+OR+(all:transition+OR+(all:string+OR+all:cft)))&amp;start=0&amp;max_results=1&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
+  <opensearch:totalResults>453964</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/1706.01619v6</id>
+    <title>Driven spin wave modes in XY ferromagnet: Nonequilibrium phase transition</title>
+    <updated>2018-07-23T08:27:46Z</updated>
+    <link href="https://arxiv.org/abs/1706.01619v6" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1706.01619v6" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The dynamical responses of XY ferromagnet driven by linearly polarised propagating and standing magnetic field wave have been studied by Monte Carlo simulation in three dimensions. In the case of propagating magnetic field wave (with specified amplitude, frequency and the wavelength), the low temperature dynamical mode is a propagating spin wave and the system becomes structureless (or random) in the high temperature. A dynamical symmetry breaking phase transition is observed at a finite (nonzero) temperature. This symmetry breaking is confirmed by studying the statistical distribution of the angle of the spin vector. The dynamic nonequilibrium transition temperature was found to decrease as the amplitude of the propagating magnetic field wave increased. A comprehensive phase boundary is drawn in the plane formed by temperature and amplitude of propagating field wave. The phase boundary was observed to shrink (in the low temperature side) for longer wavelength of the propagating magnetic wave. In the case of standing magnetic field wave, the low temperature excitation is a standing spin wave which becomes structureless (or random) in the high temperature. Here also, like the case of propagating magnetic wave, a dynamical symmetry breaking nonequilibrium phase transition was observed. A comprehensive phase boundary is drawn. Unlike the case of propagating magnetic wave, the phase boundary does not show any systematic variation with the wavelength of the standing magnetic field wave. In the limit of vanishingly small amplitude of the field, the phase boundaries approach the recent Monte Carlo estimate of equilibrium transition temperature.</summary>
+    <category term="cond-mat.stat-mech" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2017-06-06T06:31:34Z</published>
+    <arxiv:comment>Provisionally accepted for publication in Phase Transition</arxiv:comment>
+    <arxiv:primary_category term="cond-mat.stat-mech"/>
+    <arxiv:journal_ref>Phase Transitions (Taylor &amp; Francis) 91 (2018) 793</arxiv:journal_ref>
+    <author>
+      <name>Muktish Acharyya</name>
+    </author>
+    <arxiv:doi>10.1080/01411594.2018.1506878</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1080/01411594.2018.1506878" title="doi"/>
+  </entry>
+</feed>

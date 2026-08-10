@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/49o5csVNGcR+IUhtnpZIXy8a88A</id>
+  <title>arXiv Query: search_query=all:fluid OR all:gravity OR all:correspondence&amp;id_list=&amp;start=0&amp;max_results=1</title>
+  <updated>2026-08-10T14:35:46Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:fluid+OR+(all:gravity+OR+all:correspondence)&amp;start=0&amp;max_results=1&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
+  <opensearch:totalResults>366365</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2503.13774v1</id>
+    <title>Jamming of Elastoviscoplastic fluids in Elastic Turbulence</title>
+    <updated>2025-03-17T23:38:45Z</updated>
+    <link href="https://arxiv.org/abs/2503.13774v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2503.13774v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Elastoviscoplastic (EVP) fluid flows are driven by a non-trivial interplay between the elastic, viscous, and plastic properties, which under certain conditions can transition the otherwise laminar flow into complex flow instabilities with rich space-time-dependent dynamics. We discover that under elastic turbulence regimes, EVP fluids undergo dynamic jamming triggered by localised polymer stress deformations that facilitate the formation of solid regions trapped in local low-stress energy wells. Below the jamming transition $φ&lt;φ_J$, the solid volume fraction $φ$ scales with $\sqrt{Bi}$, where $Bi$ is the Bingham number characterizing the ratio of yield to viscous stresses, in direct agreement with theoretical approximations based on the laminar solution. The onset of this new dynamic jamming transition $φ\geqφ_J$ is marked by a clear deviation from the scaling $φ\sim \sqrt{Bi}$, scaling as $φ\sim \exp{Bi}$. We show that this instability-induced jamming transition -- analogous to that in dense suspensions -- leads to slow, minimally diffusive, and rigid-like flows with finite deformability, highlighting a novel phase-change in elastic turbulence regimes of complex fluids.</summary>
+    <category term="cond-mat.soft" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-03-17T23:38:45Z</published>
+    <arxiv:comment>Submitted to Journal of Fluid Mechanics</arxiv:comment>
+    <arxiv:primary_category term="cond-mat.soft"/>
+    <arxiv:journal_ref>Journal of Fluid Mechanics 1017, R1 (2025)</arxiv:journal_ref>
+    <author>
+      <name>Christopher S. From</name>
+    </author>
+    <author>
+      <name>Vedad Dzanic</name>
+    </author>
+    <author>
+      <name>Vahid Niasar</name>
+    </author>
+    <author>
+      <name>Emilie Sauret</name>
+    </author>
+    <arxiv:doi>10.1017/jfm.2025.10458</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1017/jfm.2025.10458" title="doi"/>
+  </entry>
+</feed>

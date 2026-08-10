@@ -478,6 +478,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/CompleteSeparated.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/CompleteSeparated.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/CompleteSeparated.ir"]],
+  "Mathlib.Topology.UniformSpace.CompactConvergence":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/CompactConvergence.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/CompactConvergence.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/CompactConvergence.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/CompactConvergence.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/CompactConvergence.ir"]],
   "Mathlib.Topology.UniformSpace.Compact":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/Compact.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/UniformSpace/Compact.olean.server",
@@ -1252,6 +1258,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/ContinuousMap/Basic.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/ContinuousMap/Basic.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/ContinuousMap/Basic.ir"]],
+  "Mathlib.Topology.ContinuousMap.Algebra":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/ContinuousMap/Algebra.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/ContinuousMap/Algebra.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/ContinuousMap/Algebra.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/ContinuousMap/Algebra.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/ContinuousMap/Algebra.ir"]],
   "Mathlib.Topology.Continuous":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Continuous.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Continuous.olean.server",
@@ -1336,6 +1348,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/Lindelof.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/Lindelof.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/Lindelof.ir"]],
+  "Mathlib.Topology.Compactness.CompactlyCoherentSpace":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/CompactlyCoherentSpace.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/CompactlyCoherentSpace.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/CompactlyCoherentSpace.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/CompactlyCoherentSpace.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/CompactlyCoherentSpace.ir"]],
   "Mathlib.Topology.Compactness.Compact":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/Compact.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Compactness/Compact.olean.server",
@@ -3982,6 +4000,18 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/RingTheory/Adjoin/Basic.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/RingTheory/Adjoin/Basic.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/RingTheory/Adjoin/Basic.ir"]],
+  "Mathlib.Probability.UniformOn":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/UniformOn.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/UniformOn.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/UniformOn.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/UniformOn.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/UniformOn.ir"]],
+  "Mathlib.Probability.ConditionalProbability":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/ConditionalProbability.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/ConditionalProbability.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/ConditionalProbability.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/ConditionalProbability.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Probability/ConditionalProbability.ir"]],
   "Mathlib.Order.ZornAtoms":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/ZornAtoms.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/ZornAtoms.olean.server",
@@ -4258,6 +4288,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Nat.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Nat.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Nat.ir"]],
+  "Mathlib.Order.Monotone.Monovary":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Monotone/Monovary.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Monotone/Monovary.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Monotone/Monovary.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Monotone/Monovary.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Monotone/Monovary.ir"]],
   "Mathlib.Order.Monotone.Defs":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Monotone/Defs.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Monotone/Defs.olean.server",
@@ -4678,6 +4714,18 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Interval.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Interval.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Interval.ir"]],
+  "Mathlib.Order.Filter.IndicatorFunction":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/IndicatorFunction.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/IndicatorFunction.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/IndicatorFunction.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/IndicatorFunction.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/IndicatorFunction.ir"]],
+  "Mathlib.Order.Filter.Germ.Basic":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Germ/Basic.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Germ/Basic.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Germ/Basic.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Germ/Basic.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Germ/Basic.ir"]],
   "Mathlib.Order.Filter.Finite":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Finite.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Finite.olean.server",
@@ -4696,6 +4744,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/EventuallyConst.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/EventuallyConst.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/EventuallyConst.ir"]],
+  "Mathlib.Order.Filter.ENNReal":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/ENNReal.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/ENNReal.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/ENNReal.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/ENNReal.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/ENNReal.ir"]],
   "Mathlib.Order.Filter.Defs":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Defs.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Order/Filter/Defs.olean.server",
@@ -5206,6 +5260,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Order/Lattice.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Order/Lattice.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Order/Lattice.ir"]],
+  "Mathlib.MeasureTheory.Measure.WithDensity":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/WithDensity.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/WithDensity.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/WithDensity.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/WithDensity.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/WithDensity.ir"]],
   "Mathlib.MeasureTheory.Measure.Typeclasses.SFinite":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Typeclasses/SFinite.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Typeclasses/SFinite.olean.server",
@@ -5254,6 +5314,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Regular.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Regular.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Regular.ir"]],
+  "Mathlib.MeasureTheory.Measure.Real":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Real.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Real.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Real.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Real.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Real.ir"]],
   "Mathlib.MeasureTheory.Measure.QuasiMeasurePreserving":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/QuasiMeasurePreserving.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/QuasiMeasurePreserving.olean.server",
@@ -5338,6 +5404,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Dirac.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Dirac.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Dirac.ir"]],
+  "Mathlib.MeasureTheory.Measure.Decomposition.Exhaustion":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Decomposition/Exhaustion.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Decomposition/Exhaustion.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Decomposition/Exhaustion.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Decomposition/Exhaustion.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Decomposition/Exhaustion.ir"]],
   "Mathlib.MeasureTheory.Measure.Count":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Count.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Count.olean.server",
@@ -5434,12 +5506,36 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/MeasurableSpace/Basic.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/MeasurableSpace/Basic.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/MeasurableSpace/Basic.ir"]],
+  "Mathlib.MeasureTheory.Integral.SetToL1":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/SetToL1.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/SetToL1.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/SetToL1.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/SetToL1.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/SetToL1.ir"]],
+  "Mathlib.MeasureTheory.Integral.MeanInequalities":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/MeanInequalities.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/MeanInequalities.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/MeanInequalities.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/MeanInequalities.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/MeanInequalities.ir"]],
   "Mathlib.MeasureTheory.Integral.Marginal":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Marginal.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Marginal.olean.server",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Marginal.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Marginal.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Marginal.ir"]],
+  "Mathlib.MeasureTheory.Integral.Lebesgue.Sub":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Sub.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Sub.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Sub.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Sub.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Sub.ir"]],
+  "Mathlib.MeasureTheory.Integral.Lebesgue.Norm":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Norm.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Norm.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Norm.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Norm.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Norm.ir"]],
   "Mathlib.MeasureTheory.Integral.Lebesgue.Markov":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Markov.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Markov.olean.server",
@@ -5452,6 +5548,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Map.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Map.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Map.ir"]],
+  "Mathlib.MeasureTheory.Integral.Lebesgue.DominatedConvergence":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/DominatedConvergence.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/DominatedConvergence.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/DominatedConvergence.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/DominatedConvergence.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/DominatedConvergence.ir"]],
   "Mathlib.MeasureTheory.Integral.Lebesgue.Countable":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Countable.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Countable.olean.server",
@@ -5470,6 +5572,24 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Add.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Add.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Add.ir"]],
+  "Mathlib.MeasureTheory.Integral.FinMeasAdditive":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/FinMeasAdditive.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/FinMeasAdditive.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/FinMeasAdditive.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/FinMeasAdditive.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/FinMeasAdditive.ir"]],
+  "Mathlib.MeasureTheory.Integral.Bochner.L1":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/L1.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/L1.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/L1.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/L1.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/L1.ir"]],
+  "Mathlib.MeasureTheory.Integral.Bochner.Basic":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/Basic.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/Basic.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/Basic.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/Basic.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/Basic.ir"]],
   "Mathlib.MeasureTheory.Group.Prod":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Prod.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Prod.olean.server",
@@ -5506,6 +5626,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Defs.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Defs.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Defs.ir"]],
+  "Mathlib.MeasureTheory.Group.Convolution":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Convolution.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Convolution.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Convolution.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Convolution.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Convolution.ir"]],
   "Mathlib.MeasureTheory.Group.Arithmetic":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Arithmetic.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Arithmetic.olean.server",
@@ -5518,18 +5644,174 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Action.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Action.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Group/Action.ir"]],
+  "Mathlib.MeasureTheory.Function.StronglyMeasurable.Lemmas":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Lemmas.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Lemmas.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Lemmas.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Lemmas.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Lemmas.ir"]],
+  "Mathlib.MeasureTheory.Function.StronglyMeasurable.Basic":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Basic.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Basic.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Basic.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Basic.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/Basic.ir"]],
+  "Mathlib.MeasureTheory.Function.StronglyMeasurable.AEStronglyMeasurable":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/AEStronglyMeasurable.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/AEStronglyMeasurable.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/AEStronglyMeasurable.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/AEStronglyMeasurable.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/StronglyMeasurable/AEStronglyMeasurable.ir"]],
+  "Mathlib.MeasureTheory.Function.SpecialFunctions.Basic":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SpecialFunctions/Basic.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SpecialFunctions/Basic.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SpecialFunctions/Basic.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SpecialFunctions/Basic.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SpecialFunctions/Basic.ir"]],
+  "Mathlib.MeasureTheory.Function.SimpleFuncDenseLp":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDenseLp.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDenseLp.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDenseLp.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDenseLp.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDenseLp.ir"]],
+  "Mathlib.MeasureTheory.Function.SimpleFuncDense":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDense.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDense.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDense.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDense.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFuncDense.ir"]],
   "Mathlib.MeasureTheory.Function.SimpleFunc":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFunc.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFunc.olean.server",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFunc.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFunc.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/SimpleFunc.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSpace.Indicator":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Indicator.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Indicator.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Indicator.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Indicator.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Indicator.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSpace.Complete":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Complete.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Complete.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Complete.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Complete.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Complete.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSpace.Basic":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Basic.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Basic.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Basic.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Basic.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSpace/Basic.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSeminorm.TriangleInequality":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/TriangleInequality.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/TriangleInequality.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/TriangleInequality.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/TriangleInequality.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/TriangleInequality.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSeminorm.SMul":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/SMul.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/SMul.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/SMul.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/SMul.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/SMul.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSeminorm.Monotonicity":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Monotonicity.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Monotonicity.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Monotonicity.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Monotonicity.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Monotonicity.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSeminorm.Indicator":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Indicator.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Indicator.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Indicator.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Indicator.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Indicator.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSeminorm.Defs":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Defs.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Defs.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Defs.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Defs.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Defs.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSeminorm.CompareExp":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSeminorm.ChebyshevMarkov":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/ChebyshevMarkov.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/ChebyshevMarkov.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/ChebyshevMarkov.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/ChebyshevMarkov.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/ChebyshevMarkov.ir"]],
+  "Mathlib.MeasureTheory.Function.LpSeminorm.Basic":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Basic.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Basic.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Basic.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Basic.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpSeminorm/Basic.ir"]],
+  "Mathlib.MeasureTheory.Function.LpOrder":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpOrder.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpOrder.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpOrder.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpOrder.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/LpOrder.ir"]],
+  "Mathlib.MeasureTheory.Function.L1Space.Integrable":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/Integrable.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/Integrable.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/Integrable.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/Integrable.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/Integrable.ir"]],
+  "Mathlib.MeasureTheory.Function.L1Space.HasFiniteIntegral":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/HasFiniteIntegral.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/HasFiniteIntegral.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/HasFiniteIntegral.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/HasFiniteIntegral.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/HasFiniteIntegral.ir"]],
+  "Mathlib.MeasureTheory.Function.L1Space.AEEqFun":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/AEEqFun.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/AEEqFun.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/AEEqFun.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/AEEqFun.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L1Space/AEEqFun.ir"]],
+  "Mathlib.MeasureTheory.Function.EssSup":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/EssSup.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/EssSup.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/EssSup.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/EssSup.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/EssSup.ir"]],
+  "Mathlib.MeasureTheory.Function.Egorov":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/Egorov.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/Egorov.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/Egorov.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/Egorov.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/Egorov.ir"]],
+  "Mathlib.MeasureTheory.Function.ConvergenceInMeasure":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/ConvergenceInMeasure.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/ConvergenceInMeasure.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/ConvergenceInMeasure.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/ConvergenceInMeasure.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/ConvergenceInMeasure.ir"]],
   "Mathlib.MeasureTheory.Function.AEMeasurableSequence":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEMeasurableSequence.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEMeasurableSequence.olean.server",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEMeasurableSequence.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEMeasurableSequence.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEMeasurableSequence.ir"]],
+  "Mathlib.MeasureTheory.Function.AEEqFun":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEEqFun.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEEqFun.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEEqFun.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEEqFun.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/AEEqFun.ir"]],
+  "Mathlib.MeasureTheory.Constructions.Polish.StronglyMeasurable":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Polish/StronglyMeasurable.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Polish/StronglyMeasurable.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Polish/StronglyMeasurable.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Polish/StronglyMeasurable.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Polish/StronglyMeasurable.ir"]],
   "Mathlib.MeasureTheory.Constructions.Polish.Basic":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Polish/Basic.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Polish/Basic.olean.server",
@@ -5566,6 +5848,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Metric.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Metric.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Metric.ir"]],
+  "Mathlib.MeasureTheory.Constructions.BorelSpace.Complex":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Complex.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Complex.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Complex.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Complex.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Complex.ir"]],
   "Mathlib.MeasureTheory.Constructions.BorelSpace.Basic":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.olean.server",
@@ -9502,12 +9790,24 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/NNReal.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/NNReal.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/NNReal.ir"]],
+  "Mathlib.Analysis.SpecialFunctions.Pow.Continuity":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Continuity.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Continuity.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Continuity.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Continuity.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Continuity.ir"]],
   "Mathlib.Analysis.SpecialFunctions.Pow.Complex":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Complex.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Complex.olean.server",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Complex.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Complex.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Complex.ir"]],
+  "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Asymptotics.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Asymptotics.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Asymptotics.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Asymptotics.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Pow/Asymptotics.ir"]],
   "Mathlib.Analysis.SpecialFunctions.Log.Basic":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Log/Basic.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Log/Basic.olean.server",
@@ -9616,6 +9916,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/LinearIsometry.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/LinearIsometry.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/LinearIsometry.ir"]],
+  "Mathlib.Analysis.Normed.Operator.Extend":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Extend.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Extend.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Extend.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Extend.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Extend.ir"]],
   "Mathlib.Analysis.Normed.Operator.ContinuousLinearMap":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/ContinuousLinearMap.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/ContinuousLinearMap.olean.server",
@@ -9820,6 +10126,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/InfiniteSum.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/InfiniteSum.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/InfiniteSum.ir"]],
+  "Mathlib.Analysis.Normed.Group.Indicator":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/Indicator.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/Indicator.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/Indicator.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/Indicator.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/Indicator.ir"]],
   "Mathlib.Analysis.Normed.Group.Hom":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/Hom.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Group/Hom.olean.server",
@@ -9898,6 +10210,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Affine/Isometry.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Affine/Isometry.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Affine/Isometry.ir"]],
+  "Mathlib.Analysis.MeanInequalitiesPow":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/MeanInequalitiesPow.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/MeanInequalitiesPow.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/MeanInequalitiesPow.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/MeanInequalitiesPow.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/MeanInequalitiesPow.ir"]],
   "Mathlib.Analysis.MeanInequalities":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/MeanInequalities.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/MeanInequalities.olean.server",
@@ -9928,6 +10246,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/LocallyConvex/BalancedCoreHull.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/LocallyConvex/BalancedCoreHull.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/LocallyConvex/BalancedCoreHull.ir"]],
+  "Mathlib.Analysis.LConvolution":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/LConvolution.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/LConvolution.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/LConvolution.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/LConvolution.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/LConvolution.ir"]],
   "Mathlib.Analysis.InnerProductSpace.Symmetric":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/InnerProductSpace/Symmetric.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/InnerProductSpace/Symmetric.olean.server",
@@ -10060,6 +10384,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/PathConnected.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/PathConnected.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/PathConnected.ir"]],
+  "Mathlib.Analysis.Convex.Mul":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Mul.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Mul.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Mul.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Mul.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Mul.ir"]],
   "Mathlib.Analysis.Convex.Jensen":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Jensen.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Convex/Jensen.olean.server",
@@ -11218,6 +11548,12 @@
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Nonneg/Basic.olean.private"],
    ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Nonneg/Basic.ir.sig",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Nonneg/Basic.ir"]],
+  "Mathlib.Algebra.Order.Monovary":
+  [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Monovary.olean",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Monovary.olean.server",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Monovary.olean.private"],
+   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Monovary.ir.sig",
+    "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Monovary.ir"]],
   "Mathlib.Algebra.Order.Monoid.WithTop":
   [["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Monoid/WithTop.olean",
     "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/Order/Monoid/WithTop.olean.server",

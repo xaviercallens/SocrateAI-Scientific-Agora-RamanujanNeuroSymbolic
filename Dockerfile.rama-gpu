@@ -1,0 +1,36 @@
+# Dockerfile.rama-gpu
+# RAMA Deep Burn GPU Engine — GCP T4 deployment image
+# Base: CUDA 12.1 + Python 3.11 + PyTorch 2.x
+
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
+
+LABEL maintainer="Xavier Callens <SocrateAI Lab>"
+LABEL description="RAMA Deep Burn Evolutionary Engine for K3×T² SUSY-breaking discovery"
+LABEL version="3.1"
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy only the evolution source
+COPY src/evolution/rama_gpu_evolution.py ./src/evolution/
+COPY src/evolution/fitness.py ./src/evolution/
+COPY src/__init__.py ./src/
+
+# Install Python deps
+RUN pip install --no-cache-dir \
+    numpy \
+    scipy \
+    torch \
+    google-cloud-storage
+
+# GCS bucket for results persistence
+ENV GCS_BUCKET_NAME="rama-gpu-results"
+ENV EPOCHS=500
+ENV POP_SIZE=5000000
+
+# Entrypoint: run Deep Burn and upload results
+CMD ["python3", "src/evolution/rama_gpu_evolution.py"]

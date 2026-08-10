@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: DualScale.NS.HypothesisU
-// Imports: public import Init public meta import Init public import Mathlib.Data.Rat.Init public import Mathlib.Analysis.Calculus.FDeriv.Basic public import Mathlib.Analysis.Calculus.ContDiff.Basic public import Mathlib.MeasureTheory.Measure.Lebesgue.Basic public import Mathlib.Analysis.InnerProductSpace.PiL2 public import Mathlib.Data.Real.Basic public import Mathlib.Analysis.Real.Sqrt
+// Imports: public import Init public meta import Init public import Mathlib.Data.Rat.Init public import Mathlib.Analysis.Calculus.FDeriv.Basic public import Mathlib.Analysis.Calculus.ContDiff.Basic public import Mathlib.MeasureTheory.Measure.Lebesgue.Basic public import Mathlib.MeasureTheory.Integral.Bochner.Basic public import Mathlib.Analysis.InnerProductSpace.PiL2 public import Mathlib.Analysis.InnerProductSpace.Basic public import Mathlib.Data.Real.Basic public import Mathlib.Analysis.Real.Sqrt
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -64,7 +64,9 @@ lean_object* initialize_mathlib_Mathlib_Data_Rat_Init(uint8_t builtin);
 lean_object* initialize_mathlib_Mathlib_Analysis_Calculus_FDeriv_Basic(uint8_t builtin);
 lean_object* initialize_mathlib_Mathlib_Analysis_Calculus_ContDiff_Basic(uint8_t builtin);
 lean_object* initialize_mathlib_Mathlib_MeasureTheory_Measure_Lebesgue_Basic(uint8_t builtin);
+lean_object* initialize_mathlib_Mathlib_MeasureTheory_Integral_Bochner_Basic(uint8_t builtin);
 lean_object* initialize_mathlib_Mathlib_Analysis_InnerProductSpace_PiL2(uint8_t builtin);
+lean_object* initialize_mathlib_Mathlib_Analysis_InnerProductSpace_Basic(uint8_t builtin);
 lean_object* initialize_mathlib_Mathlib_Data_Real_Basic(uint8_t builtin);
 lean_object* initialize_mathlib_Mathlib_Analysis_Real_Sqrt(uint8_t builtin);
 static bool _G_initialized = false;
@@ -90,7 +92,13 @@ lean_dec_ref(res);
 res = initialize_mathlib_Mathlib_MeasureTheory_Measure_Lebesgue_Basic(builtin);
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
+res = initialize_mathlib_Mathlib_MeasureTheory_Integral_Bochner_Basic(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
 res = initialize_mathlib_Mathlib_Analysis_InnerProductSpace_PiL2(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_mathlib_Mathlib_Analysis_InnerProductSpace_Basic(builtin);
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_mathlib_Mathlib_Data_Real_Basic(builtin);

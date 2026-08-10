@@ -1,0 +1,110 @@
+{
+  "test": "F3 OEIS/LMFDB Cross-Check",
+  "exponent_vector": [
+    24,
+    23,
+    -14,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24
+  ],
+  "modular_weight_k": -91.5,
+  "c_eff": 0.3563,
+  "q_expansion_order": 40,
+  "coefficient_sequence_first_20": [
+    1,
+    -24,
+    229,
+    -906,
+    -1048,
+    24942,
+    -78970,
+    -114240,
+    1361233,
+    -2208268,
+    -8524384,
+    37346678,
+    -2671554,
+    -263571056,
+    436714016,
+    917075568,
+    -3604419682,
+    38104660,
+    16228779032,
+    -17974353124
+  ],
+  "coefficient_sequence_full_40": [
+    1,
+    -24,
+    229,
+    -906,
+    -1048,
+    24942,
+    -78970,
+    -114240,
+    1361233,
+    -2208268,
+    -8524384,
+    37346678,
+    -2671554,
+    -263571056,
+    436714016,
+    917075568,
+    -3604419682,
+    38104660,
+    16228779032,
+    -17974353124,
+    -43147871616,
+    103674758760,
+    44801139574,
+    -337606797484,
+    141726119444,
+    699874434060,
+    -754885757230,
+    -848424874706,
+    1620164711780,
+    339734356058,
+    -1412338152378,
+    -11224374784,
+    -1798245050750,
+    3520115713296,
+    7127646466209,
+    -14856696686102,
+    -7235101979096,
+    28232950231094,
+    -6486947930430,
+    -16944930927392,
+    22636044361200
+  ],
+  "oeis": {
+    "attempt_raw": {
+      "status": "no_match",
+      "count": 0
+    },
+    "attempt_absolute": {
+      "status": "no_match",
+      "count": 0
+    },
+    "attempt_positive": {
+      "status": "no_match",
+      "count": 0
+    },
+    "attempt_negated": {
+      "status": "no_match",
+      "count": 0
+    },
+    "any_match": false
+  },
+  "lmfdb": {
+    "status": "error",
+    "detail": "HTTP Error 404: Not Found"
+  },
+  "verdict": "NEW_OBJECT",
+  "interpretation": "The Deep Burn candidate is not catalogued in OEIS or LMFDB. This supports classifying it as a novel \u03b7-quotient awaiting formal verification of modularity and physical interpretation."
+}

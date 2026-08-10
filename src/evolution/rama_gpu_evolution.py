@@ -103,13 +103,50 @@ def deep_burn_evolution(pop_size=100_000, epochs=50, d_max=12, top_k=100):
     total_time = time.time() - start_time
     print(f"\nEvolution Complete. {epochs} epochs evaluated in {total_time:.2f} seconds.")
     print("\n--- BEST DISCOVERY (Supersymmetry Breaking) ---")
-    print(f"Exponents: {best_candidate_ever.cpu().numpy()}")
+    exponents_list = best_candidate_ever.cpu().numpy().tolist()
+    print(f"Exponents: {exponents_list}")
     print(f"Effective Central Charge (c_eff): {best_c_eff:.4f}")
     print(f"Modular Weight (k): {best_weight:.4f} (Susy Broken, != 0.5)")
     print(f"Ground State Energy Shift: {best_shift:.4f}")
     print(f"Fitness Score: {best_fitness_ever:.4f}")
+    return {
+        "fitness": best_fitness_ever,
+        "c_eff": best_c_eff,
+        "k": best_weight,
+        "shift": best_shift,
+        "exponents": exponents_list,
+    }
 
 if __name__ == "__main__":
-    # If on CPU locally, use a moderate population size. T4 can easily handle 1M+
-    pop_size = 5_000_000 if torch.cuda.is_available() else 100_000
-    deep_burn_evolution(pop_size=pop_size, epochs=100)
+    # If on GPU (GCP T4), use large population. Local CPU: moderate size.
+    pop_size = int(os.environ.get("POP_SIZE", 5_000_000 if torch.cuda.is_available() else 100_000))
+    epochs   = int(os.environ.get("EPOCHS", 100))
+    
+    results = deep_burn_evolution(pop_size=pop_size, epochs=epochs)
+    
+    # GCS persistence for GCP runs
+    bucket_name = os.environ.get("GCS_BUCKET_NAME", "")
+    if bucket_name:
+        try:
+            from google.cloud import storage
+            import json, datetime
+            client = storage.Client()
+            bucket = client.bucket(bucket_name)
+            payload = {
+                "timestamp": datetime.datetime.utcnow().isoformat(),
+                "device": str(device),
+                "pop_size": pop_size,
+                "epochs": epochs,
+                "best_fitness": results.get("fitness"),
+                "best_c_eff": results.get("c_eff"),
+                "best_k": results.get("k"),
+                "best_shift": results.get("shift"),
+                "exponents": results.get("exponents"),
+            }
+            blob = bucket.blob(f"runs/{datetime.datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.json")
+            blob.upload_from_string(json.dumps(payload, indent=2))
+            print(f"\nResults persisted to gs://{bucket_name}/{blob.name}")
+        except ImportError:
+            print("google-cloud-storage not installed; skipping GCS upload.")
+        except Exception as e:
+            print(f"GCS upload failed: {e}")

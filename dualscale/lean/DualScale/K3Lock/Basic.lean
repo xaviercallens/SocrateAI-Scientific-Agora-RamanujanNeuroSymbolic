@@ -14,11 +14,20 @@ noncomputable def picardFuchsL2 : ℕ := 0
 /-- The symmetric square of L2. -/
 noncomputable def symSquareL2 : ℕ := 0
 
-/-- Conjecture 5 (Sym^2 Lock): the macroscopic transport operator is
-    conjugate to Sym^2(L2).
-    OPEN TARGET. -/
-theorem sym2_lock_conjecture :
-    symSquareL2 = picardFuchsL2 * picardFuchsL2 := by
+/-- 
+  The generalized Sym^2 Recurrence Lock (Tier A Foundation).
+  If a sequence u_n satisfies a second-order linear recurrence L2 with variable 
+  coefficients a(n) and b(n):
+    u_{n+2} + a_n u_{n+1} + b_n u_n = 0
+  then v_n = (u_n)^2 satisfies a third-order recurrence L3 = Sym^2(L2):
+    v_{n+3} + A_n v_{n+2} + B_n v_{n+1} + C_n v_n = 0
+  This formalizes the structural rigidity of the macroscopic transport operator.
+  OPEN TARGET: awaiting explicit combinatorial proof from the Agentic-Core.
+-/
+theorem sym2_recurrence (a b : ℕ → ℝ) (u : ℕ → ℝ)
+    (hL2 : ∀ n, u (n + 2) + a n * u (n + 1) + b n * u n = 0) :
+    ∃ (A B C : ℕ → ℝ), ∀ n, 
+      (u (n + 3))^2 + A n * (u (n + 2))^2 + B n * (u (n + 1))^2 + C n * (u n)^2 = 0 := by
   sorry
 
 /-- S12 reclassification: the S12 sequence is an elliptic curve, NOT a K3 surface.

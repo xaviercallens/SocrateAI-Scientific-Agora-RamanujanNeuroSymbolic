@@ -57,7 +57,7 @@ noncomputable def bps_scaling (c : CentralCharge) : ℝ :=
     ω = (∂u₃/∂x₂ - ∂u₂/∂x₃, ∂u₁/∂x₃ - ∂u₃/∂x₁, ∂u₂/∂x₁ - ∂u₁/∂x₂)
   OPEN: Full curl formalization requires T2 (Mathlib VectorCalculus extension).
 -/
-noncomputable def vorticityField (_a : ℚ) (u : TruncatedFlow _a) (x : ℝ × ℝ × ℝ) : ℝ × ℝ × ℝ :=
+noncomputable def vorticityField (_a : ℚ) (_u : TruncatedFlow _a) (_x : ℝ × ℝ × ℝ) : ℝ × ℝ × ℝ :=
   -- Placeholder: zero vorticity until T2 provides the curl operator.
   -- The type is correct; the content is the open target.
   (0, 0, 0)
@@ -74,7 +74,7 @@ noncomputable def vorticityNormSq (_a : ℚ) (u : TruncatedFlow _a) (x : ℝ × 
   OPEN (T2 target): The MeasureTheory.integral over ℝ³ requires the Lebesgue
   integral of vorticityNormSq, which needs the full curl operator definition.
 -/
-noncomputable def enstrophyDensity (a : ℚ) (c : CentralCharge) (u : TruncatedFlow a) (t : ℝ) : ℝ :=
+noncomputable def enstrophyDensity (a : ℚ) (c : CentralCharge) (u : TruncatedFlow a) (_t : ℝ) : ℝ :=
   -- The definition is structurally correct. The integral ∫ |ω|² dx
   -- is expressed here as a parameter; the real content depends on
   -- vorticityField being filled in by T2.

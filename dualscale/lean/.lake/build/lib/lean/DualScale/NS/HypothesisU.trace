@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["3e089fa08a1ba595.olean"],
+ {"o": ["b5614f1cae37bfb0.olean"],
   "m": false,
-  "i": "edcbe2413e88076a.ilean",
+  "i": "60c3acda69672310.ilean",
   "c": "ea1286023cf7cf47.c"},
  "log":
  [{"message":
@@ -12,22 +12,7 @@
   {"message":
    "DualScale/NS/HypothesisU.lean:26:19: Variable name `a` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _a\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
    "level": "warning"},
-  {"message":
-   "DualScale/NS/HypothesisU.lean:60:43: Variable name `u` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _u\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
-   "level": "warning"},
-  {"message":
-   "DualScale/NS/HypothesisU.lean:60:66: Variable name `x` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _x\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
-   "level": "warning"},
-  {"message":
-   "DualScale/NS/HypothesisU.lean:77:86: Variable name `t` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _t\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
-   "level": "warning"},
-  {"message":
-   "DualScale/NS/HypothesisU.lean:118:5: Variable name `u₀` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _u₀\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
-   "level": "warning"},
-  {"message":
-   "DualScale/NS/HypothesisU.lean:122:12: Variable name `u` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _u\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
-   "level": "warning"},
-  {"message": "DualScale/NS/HypothesisU.lean:132:6: declaration uses `sorry`",
+  {"message": "DualScale/NS/HypothesisU.lean:138:6: declaration uses `sorry`",
    "level": "warning"}],
  "inputs":
  [["deps",
@@ -74,10 +59,10 @@
   ["Lean 4.33.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17",
    "3eca9d16ab6c877d"],
   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/DualScale/NS/HypothesisU.lean",
-   "fa4e278d6beefd11"],
+   "23d33d4d53adc7cc"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: DualScale.NS.HypothesisU", "2bf3dc001ca832af"],
   ["Package.id?: (some dualscale)", "bd3e871f190d6ffc"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "89a78155f6eb89bb"}
+ "depHash": "0a1b24a903cb7133"}

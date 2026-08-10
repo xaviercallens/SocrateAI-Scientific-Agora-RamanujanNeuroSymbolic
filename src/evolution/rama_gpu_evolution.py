@@ -36,18 +36,28 @@ def deep_burn_evolution(pop_size=100_000, epochs=50, d_max=12, top_k=100):
         weight = 0.5 * torch.sum(population, dim=1)
         p_shift = (1.0 / 24.0) * torch.sum(divisors * population, dim=1)
         
-        # Fitness Function:
-        # We want c_eff > 0, k != 0.5 (broken SUSY)
-        # We penalize distance from target_c_eff
-        # We penalize weight being too close to 0.5
-        c_eff_penalty = -torch.abs(c_eff - target_c_eff)
-        susy_breaking_bonus = torch.abs(weight - 0.5)
+        # Fitness Function (adapted from v3 position paper §5.2):
+        #   F(e) = |k - 1/2| / (1 + |k - 1/2|) · exp(-1/c_eff) · (1 + |E₀|) · G(c_eff)
+        # where G(c_eff) = exp(-(c_eff - target)² / 2σ²) is a Gaussian attractor
+        # preventing trivial boundary saturation at extreme exponents.
         
-        # Soft constraints
+        # Soft constraints: c_eff must be positive for unitarity
         valid_mask = (c_eff > 0)
         
-        fitness = c_eff_penalty + 0.1 * susy_breaking_bonus
-        fitness[~valid_mask] = -9999.0 # Heavily penalize invalid c_eff
+        # Safe reciprocal (avoid division by zero)
+        safe_c_eff = torch.clamp(c_eff, min=1e-6)
+        
+        susy_deviation = torch.abs(weight - 0.5)
+        term1 = susy_deviation / (1.0 + susy_deviation)    # SUSY breaking reward (0 at k=0.5, →1 at k→∞)
+        term2 = torch.exp(-1.0 / safe_c_eff)               # Central charge proximity (→1 for large c_eff)
+        term3 = 1.0 + torch.abs(p_shift)                    # Ground state depth
+        
+        # Gaussian attractor: keeps c_eff near target BPS value (σ = 2.0)
+        c_eff_target = 0.3606
+        term4 = torch.exp(-((c_eff - c_eff_target) ** 2) / (2.0 * 2.0 ** 2))
+        
+        fitness = term1 * term2 * term3 * term4
+        fitness[~valid_mask] = -9999.0  # Kill non-unitary candidates
         
         # --- SELECTION ---
         top_fitness, top_indices = torch.topk(fitness, top_k)

@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["391dc841d1a4eb5e.olean"],
+ {"o": ["723fb3184d7e49b2.olean"],
   "m": false,
-  "i": "4ee7ee1b7769beb5.ilean",
+  "i": "8b6a56387dd4814a.ilean",
   "c": "4559cf08564cc305.c"},
  "log":
  [{"message":
@@ -27,10 +27,10 @@
   ["Lean 4.33.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17",
    "3eca9d16ab6c877d"],
   ["/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/DualScale/Phase/Basic.lean",
-   "9c3272a71c1f01f8"],
+   "370340f6e18797fb"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: DualScale.Phase.Basic", "543e21bd49997611"],
   ["Package.id?: (some dualscale)", "bd3e871f190d6ffc"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "493e38991ae8221a"}
+ "depHash": "406e53e896ee31bf"}

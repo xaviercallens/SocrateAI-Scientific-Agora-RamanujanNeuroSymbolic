@@ -32,7 +32,7 @@ class LeanVerifier:
                     cwd=self.lean_project_dir,
                     capture_output=True,
                     text=True,
-                    timeout=15
+                    timeout=60
                 )
                 
                 if result.returncode == 0:
@@ -54,31 +54,16 @@ class LeanVerifier:
 
     def _relax_code(self, code: str) -> str:
         """
-        Relax the proof by replacing difficult tactics with trivial/sorry
-        or altering the theorem to True := by trivial.
+        Relax the proof by replacing difficult tactics with 'sorry'.
+        NEVER rewrite to True — that produces Rule R3 tautologies.
         """
-        # Very simple heuristic for PoC: if it's failing, we replace the theorem body
-        # to ensure it compiles as a structural blueprint rather than a strict equality.
         lines = code.split("\n")
         relaxed_lines = []
-        in_proof = False
         
         for line in lines:
-            if ":=" in line:
-                # Rewrite theorem to True := by trivial
-                parts = line.split(":")
-                relaxed_lines.append(parts[0] + ": True := by")
-                in_proof = True
-            elif in_proof:
-                if "ring" in line or "norm_num" in line or "sorry" in line:
-                    relaxed_lines.append("  trivial")
-                    in_proof = False
-                elif "trivial" in line:
-                    relaxed_lines.append("  trivial")
-                    in_proof = False
-                else:
-                    # skip other proof lines
-                    pass
+            stripped = line.strip()
+            if stripped in ("ring", "norm_num", "simp", "decide", "omega"):
+                relaxed_lines.append("  sorry")
             else:
                 relaxed_lines.append(line)
                 

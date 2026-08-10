@@ -78,7 +78,7 @@ class PopulationManager:
         
         if random.random() < mutation_rate:
             # Exponent edit (Standard)
-            d = random.randint(1, self.self_d_max if hasattr(self, 'self_d_max') else self.d_max)
+            d = random.randint(1, self.d_max)
             delta = random.choice([-4, -2, -1, 1, 2, 4])
             mutated.exponents[d] = mutated.exponents.get(d, 0) + delta
             if mutated.exponents[d] == 0:

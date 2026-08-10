@@ -1,0 +1,85 @@
+{
+  "description": "Entropy comparison: RAMA Deep Burn vs Sen Kerr corrections",
+  "parameters": {
+    "c_eff_BPS": 6.0,
+    "c_eff_DeepBurn": 0.3563,
+    "c_eff_Kerr_Sen2012": 3.0,
+    "log_correction_coefficient": -1.5,
+    "reference": "A. Sen, Gen. Rel. Grav. 44 (2012) 1207-1266"
+  },
+  "asymptotic_ratio_DB_over_Kerr": 0.3446254,
+  "table": [
+    {
+      "n": 10,
+      "S_BPS": 19.869177,
+      "S_DeepBurn": 4.841859,
+      "S_Kerr_leading": 14.049629,
+      "S_Kerr_log_corrected": 10.595752,
+      "fractional_deviation_DB_vs_Kerr": 0.543038
+    },
+    {
+      "n": 50,
+      "S_BPS": 44.428829,
+      "S_DeepBurn": 10.826726,
+      "S_Kerr_leading": 31.415927,
+      "S_Kerr_log_corrected": 25.547892,
+      "fractional_deviation_DB_vs_Kerr": 0.576218
+    },
+    {
+      "n": 100,
+      "S_BPS": 62.831853,
+      "S_DeepBurn": 15.311303,
+      "S_Kerr_leading": 44.428829,
+      "S_Kerr_log_corrected": 37.521074,
+      "fractional_deviation_DB_vs_Kerr": 0.591928
+    },
+    {
+      "n": 500,
+      "S_BPS": 140.496295,
+      "S_DeepBurn": 34.237115,
+      "S_Kerr_leading": 99.345883,
+      "S_Kerr_log_corrected": 90.023971,
+      "fractional_deviation_DB_vs_Kerr": 0.619689
+    },
+    {
+      "n": 1000,
+      "S_BPS": 198.691765,
+      "S_DeepBurn": 48.418592,
+      "S_Kerr_leading": 140.496295,
+      "S_Kerr_log_corrected": 130.134662,
+      "fractional_deviation_DB_vs_Kerr": 0.627935
+    },
+    {
+      "n": 5000,
+      "S_BPS": 444.288294,
+      "S_DeepBurn": 108.267263,
+      "S_Kerr_leading": 314.159265,
+      "S_Kerr_log_corrected": 301.383476,
+      "fractional_deviation_DB_vs_Kerr": 0.640766
+    },
+    {
+      "n": 10000,
+      "S_BPS": 628.318531,
+      "S_DeepBurn": 153.113031,
+      "S_Kerr_leading": 444.288294,
+      "S_Kerr_log_corrected": 430.472783,
+      "fractional_deviation_DB_vs_Kerr": 0.644314
+    },
+    {
+      "n": 50000,
+      "S_BPS": 1404.962946,
+      "S_DeepBurn": 342.371146,
+      "S_Kerr_leading": 993.458827,
+      "S_Kerr_log_corrected": 977.229159,
+      "fractional_deviation_DB_vs_Kerr": 0.649651
+    },
+    {
+      "n": 100000,
+      "S_BPS": 1986.917653,
+      "S_DeepBurn": 484.185918,
+      "S_Kerr_leading": 1404.962946,
+      "S_Kerr_log_corrected": 1387.693558,
+      "fractional_deviation_DB_vs_Kerr": 0.651086
+    }
+  ]
+}

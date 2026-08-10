@@ -16,7 +16,7 @@
     ["imports",
      [["DualScale.NS.HypothesisU transitive imports (legacy)",
        "8e8bd7a90ccaeafa"],
-      ["DualScale.NS.HypothesisU:importAllArts", "04bf4e3f61812078"],
+      ["DualScale.NS.HypothesisU:importAllArts", "6b4c4bf391e4710c"],
       ["DualScale.NS.DyadicShell transitive imports (legacy)",
        "8c21cfbe230de824"],
       ["DualScale.NS.DyadicShell:importAllArts", "4836b5e9bda0338b"]]]]],
@@ -34,4 +34,4 @@
   ["Module.name: DualScale.NS.Basic", "e954626cea2f7f8b"],
   ["Package.id?: (some dualscale)", "bd3e871f190d6ffc"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "99ce44805505e57d"}
+ "depHash": "1f1ba5f6457bb58f"}

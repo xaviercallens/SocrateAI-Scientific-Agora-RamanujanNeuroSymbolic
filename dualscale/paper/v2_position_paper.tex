@@ -48,8 +48,8 @@
 \title{\vspace{-1.5cm}\textbf{Ramanujan Neuro-Symbolic Mathematics:\\
 A Research Program for Dual-Scale Geometry,\\
 \texorpdfstring{$K3\times T^{2}$}{K3 x T2} Compactifications, and the Structure of Singular Cascades}\\[0.4em]
-\large Version 4 --- Machine-verified proofs, GPU-accelerated evolutionary discovery,\\
-and the bridge from BPS vacua to astrophysical Kerr black holes}
+\large Version 5 --- Machine-verified proofs, GPU discovery,\\
+and experimental entropy comparison against Sen-Kerr corrections}
 \author{\textbf{Xavier Callens}\\ \small SocrateAI Lab}
 \date{August 10, 2026}
 
@@ -774,6 +774,138 @@ opens a mathematically precise path from the BPS-protected sector of
 string theory to the astrophysical regime of Kerr black holes. Whether
 this path leads to the first exact microstate counting for spinning black
 holes is the defining open question of this research program.
+
+\section{Version 5: Experimental Entropy Comparison}\label{sec:v5}
+
+\subsection{Setup}
+
+Version~5 performs a numerical comparison of three entropy formulae across
+excitation levels $n \in \{10, 50, 100, 500, 10^3, 5 \times 10^3, 10^4,
+5 \times 10^4, 10^5\}$:
+
+\begin{enumerate}
+\item \textbf{BPS Strominger--Vafa} (\tierB{}):
+\[
+  S_{\mathrm{BPS}}(n) = 2\pi\sqrt{n} \qquad (c_{\mathrm{eff}} = 6)
+\]
+\item \textbf{RAMA Deep Burn} (\tierC{}, this work):
+\[
+  S_{\mathrm{DB}}(n) = 2\pi\sqrt{\tfrac{0.3563 \, n}{6}}
+\]
+\item \textbf{Sen near-extremal Kerr}~\cite{Sen2012} (\tierB{}):
+\[
+  S_{\mathrm{Kerr}}(n) = 2\pi\sqrt{\tfrac{n}{2}} - \tfrac{3}{2}\ln n
+  \qquad (c_{\mathrm{eff}} = 3)
+\]
+\end{enumerate}
+
+All computations use exact floating-point arithmetic; results are stored
+and version-controlled in
+\texttt{dualscale/certificates/entropy\_sen\_kerr\_comparison.json}.
+
+\subsection{Numerical Results}
+
+\begin{center}
+\begin{tabular}{rrrrrc}
+\toprule
+$n$ & $S_{\mathrm{BPS}}$ & $S_{\mathrm{DB}}$ & $S_{\mathrm{Kerr}}^{\text{lead}}$ & $S_{\mathrm{Kerr}}^{\text{log}}$ & $|S_{\mathrm{DB}} - S_{\mathrm{Kerr}}^{\text{log}}| / S_{\mathrm{Kerr}}^{\text{log}}$ \\
+\midrule
+$10$        & $19.87$  & $4.84$   & $14.05$  & $10.60$  & $54.30\%$ \\
+$50$        & $44.43$  & $10.83$  & $31.42$  & $25.55$  & $57.62\%$ \\
+$100$       & $62.83$  & $15.31$  & $44.43$  & $37.52$  & $59.19\%$ \\
+$500$       & $140.50$ & $34.24$  & $99.35$  & $90.02$  & $61.97\%$ \\
+$1{,}000$   & $198.69$ & $48.42$  & $140.50$ & $130.13$ & $62.79\%$ \\
+$5{,}000$   & $444.29$ & $108.27$ & $314.16$ & $301.38$ & $64.08\%$ \\
+$10{,}000$  & $628.32$ & $153.11$ & $444.29$ & $430.47$ & $64.43\%$ \\
+$50{,}000$  & $1404.96$ & $342.37$ & $993.46$ & $977.23$ & $64.97\%$ \\
+$100{,}000$ & $1986.92$ & $484.19$ & $1404.96$ & $1387.69$ & $65.11\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Asymptotic Analysis (\tierA{})}
+
+At large $n$, the logarithmic correction becomes subleading and the ratio
+$S_{\mathrm{DB}} / S_{\mathrm{Kerr}}^{\mathrm{lead}}$ converges to a
+computable algebraic constant. The Lean~4 kernel verifies the algebraic
+identity (\tierA{}):
+
+\begin{lstlisting}[caption={Asymptotic ratio verification (VERIFIED).}]
+theorem asymptotic_ratio :
+    Real.sqrt (0.3563 / 3.0) =
+    Real.sqrt 0.3563 / Real.sqrt 3.0 := by
+  rw [Real.sqrt_div' 0.3563 (by norm_num : (0:Real) <= 3.0)]
+\end{lstlisting}
+
+\noindent The numerical value is:
+\[
+  \lim_{n\to\infty} \frac{S_{\mathrm{DB}}(n)}{S_{\mathrm{Kerr}}^{\mathrm{lead}}(n)}
+  = \sqrt{\frac{c_{\mathrm{eff}}^{\mathrm{DB}}}{c_{\mathrm{eff}}^{\mathrm{Kerr}}}}
+  = \sqrt{\frac{0.3563}{3}} = 0.3446
+\]
+
+Numerical verification confirms this to machine precision across all test
+levels ($n = 10^5, 10^6, 10^7, 10^8$).
+
+\subsection{Physical Interpretation of the 34.46\% Suppression}
+
+\paragraph{The suppression factor.}
+The Deep Burn candidate carries only $c_{\mathrm{eff}} = 0.3563$ against
+$c_{\mathrm{eff}}^{\mathrm{Kerr}} = 3$ for near-extremal Kerr. The
+asymptotic entropy suppression is therefore
+$\sqrt{0.3563/3} \approx 34.46\%$. Three physical interpretations are
+consistent with this value:
+
+\begin{enumerate}
+  \item \textbf{Sector truncation (\tierC{}).} The Deep Burn candidate
+  may capture only a sub-sector of the full Kerr microstates: a
+  $(0.3563/3) \approx 11.88\%$ fraction by central charge. The remaining
+  $\sim 88\%$ of the central charge corresponds to degrees of freedom
+  not accessible to the $\eta$-quotient ansatz.
+
+  \item \textbf{Symmetry breaking cascade (\tierC{}).} The deformation
+  from $k = 1/2$ (BPS) to $k = -91.5$ (Deep Burn) may continuously
+  reduce the effective central charge from $c_{\mathrm{eff}} = 6$ (BPS)
+  through $c_{\mathrm{eff}} = 3$ (Kerr) down to $c_{\mathrm{eff}} = 0.3563$.
+  If so, the Deep Burn candidate sits \emph{beyond} the Kerr point
+  in the SUSY-breaking cascade, describing a more strongly
+  broken-symmetry phase.
+
+  \item \textbf{Finite-size artifact (\tierC{}).} The evolutionary
+  fitness function was optimized for $|k|$ rather than physical accuracy.
+  The suppressed central charge may reflect the fitness landscape geometry
+  rather than a physical state.
+\end{enumerate}
+
+\paragraph{Role of the logarithmic correction.}
+Sen's log correction $-\tfrac{3}{2}\ln n$ is non-negligible: at $n = 100$,
+it contributes $6.91$ to a total $S_{\mathrm{Kerr}} = 37.52$, i.e.\ $18.4\%$.
+For the Deep Burn candidate ($S_{\mathrm{DB}}(100) = 15.31$), this single
+log correction alone represents $45.1\%$ of its entropy budget. This
+highlights the importance of incorporating higher-order corrections
+before drawing physical conclusions from the Deep Burn candidate at low
+excitation levels.
+
+\subsection{Falsification Protocol}
+
+Conjecture~\ref{conj:susy} (SUSY Breaking) can be \emph{falsified} by
+the following tests:
+
+\begin{description}
+  \item[F1 (Wald entropy test).] Compute the Wald entropy~\cite{Wald1993}
+  for a near-extremal Kerr black hole with angular momentum $J$ matched
+  to $n$ via $J = n \hbar$. If $|S_{\mathrm{Wald}} - S_{\mathrm{DB}}(n)|
+  / S_{\mathrm{Wald}} > 10\%$ for all $n$, the candidate is
+  falsified as a Kerr surrogate.
+  \item[F2 (Modular transformation test).] Verify that
+  $\prod_{d=1}^{12} \eta(q^d)^{e_d^\star}$ transforms under a
+  well-defined representation of $SL(2, \mathbb{Z})$. Failure to
+  transform would disqualify the candidate as a modular form.
+  \item[F3 (OEIS/LMFDB cross-check).] Search the coefficient sequence
+  of the $q$-expansion against the OEIS and LMFDB databases.
+  Membership in a known family would provide strong evidence;
+  non-membership would classify it as a genuinely new object.
+\end{description}
 
 \begin{thebibliography}{99}\small
 

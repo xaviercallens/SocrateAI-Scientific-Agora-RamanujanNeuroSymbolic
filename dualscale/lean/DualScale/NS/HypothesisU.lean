@@ -8,6 +8,8 @@
 import Mathlib.Data.Rat.Basic
 import Mathlib.Analysis.Calculus.FDeriv.Basic
 import Mathlib.Analysis.Calculus.ContDiff.Basic
+import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+import Mathlib.Analysis.InnerProductSpace.PiL2
 
 namespace DualScale.NS
 
@@ -18,9 +20,13 @@ def alphaPrime : ℚ := 1 / 100
 def TruncatedFlow (a : ℚ) : Type :=
   { u : ℝ × ℝ × ℝ → ℝ × ℝ × ℝ // ContDiff ℝ ⊤ u }
 
-/-- Enstrophy density of the Galerkin truncation at |k| <= a^(-1/2).
-    OPEN: body is a stub. -/
-noncomputable def enstrophyDensity (a : ℚ) (u : TruncatedFlow a) (t : ℝ) : ℝ := 0
+/-- 
+  Enstrophy density of the Galerkin truncation at |k| <= a^(-1/2).
+  Defined as the L^2 norm of the vorticity (or gradient of velocity).
+  OPEN: Full Fourier-analytic Galerkin projection is pending formalization.
+-/
+noncomputable def enstrophyDensity (a : ℚ) (u : TruncatedFlow a) (t : ℝ) : ℝ :=
+  sorry
 
 /-- 
   CORRECTED Hypothesis U: uniform enstrophy bound.

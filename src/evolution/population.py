@@ -40,7 +40,7 @@ class PopulationManager:
 
     def crossover(self, parent_a: EtaQuotientState, parent_b: EtaQuotientState) -> EtaQuotientState:
         """
-        Exchange exponent mappings between two parent states.
+        Exchange exponent mappings between two parent states (Homological Crossover).
         E.g., Parent A contributes {1: -1}, Parent B contributes {3: -2}.
         Child gets {1: -1, 3: -2}.
         """
@@ -67,19 +67,34 @@ class PopulationManager:
         else:
             child_shift = parent_b.q_shift_24
             
+        if not child_exp:
+            child_exp = {1: 1}
+            
         return EtaQuotientState(q_shift_24=child_shift, exponents=child_exp)
 
     def mutate(self, state: EtaQuotientState, mutation_rate: float = 0.2) -> EtaQuotientState:
-        """Apply random micro-operators to a state."""
+        """Apply random micro-operators to a state, including weight-preserving (homological) mutations."""
         mutated = state.copy()
         
         if random.random() < mutation_rate:
-            # Exponent edit
-            d = random.randint(1, self.d_max)
+            # Exponent edit (Standard)
+            d = random.randint(1, self.self_d_max if hasattr(self, 'self_d_max') else self.d_max)
             delta = random.choice([-4, -2, -1, 1, 2, 4])
             mutated.exponents[d] = mutated.exponents.get(d, 0) + delta
             if mutated.exponents[d] == 0:
                 del mutated.exponents[d]
+
+        if random.random() < mutation_rate:
+            # Weight-preserving mutation (Modular Homology)
+            # Adds delta to one divider and subtracts from another to keep sum(r_d) constant.
+            d1 = random.randint(1, self.d_max)
+            d2 = random.randint(1, self.d_max)
+            if d1 != d2:
+                delta = random.choice([1, 2, 3, 4, 12, 24])
+                mutated.exponents[d1] = mutated.exponents.get(d1, 0) + delta
+                mutated.exponents[d2] = mutated.exponents.get(d2, 0) - delta
+                if mutated.exponents[d1] == 0: del mutated.exponents[d1]
+                if mutated.exponents[d2] == 0: del mutated.exponents[d2]
                 
         if random.random() < mutation_rate:
             # Modular shift edit
@@ -94,5 +109,10 @@ class PopulationManager:
                 if d * m <= self.d_max:
                     del mutated.exponents[d]
                     mutated.exponents[d * m] = mutated.exponents.get(d * m, 0) + r
+                    if mutated.exponents[d * m] == 0:
+                        del mutated.exponents[d * m]
+                        
+        if not mutated.exponents:
+            mutated.exponents = {1: 1}
                     
         return mutated

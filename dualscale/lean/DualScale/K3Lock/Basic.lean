@@ -7,6 +7,7 @@ import Mathlib.Data.Rat.Init
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
+import Mathlib.Tactic.FieldSimp
 
 namespace DualScale.K3Lock
 
@@ -39,6 +40,34 @@ theorem sym2_recurrence (a b : ℝ) (u : ℕ → ℝ)
     linarith [hL2 (n + 1)]
   rw [h2, h1]
   ring
+
+/-- 
+  Variable-Coefficient Sym^2 Recurrence Lock (Tier A Extension).
+  Extends sym2_recurrence from constant coefficients to variable polynomial
+  coefficients a(n) and b(n), directly modeling the Picard–Fuchs operators
+  of Cooper's sequences (s_7, s_10, S_22).
+-/
+theorem sym2_recurrence_variable (a b : ℕ → ℝ) (u : ℕ → ℝ) (ha : ∀ n, a n ≠ 0)
+    (hL2 : ∀ n, u (n + 2) + a n * u (n + 1) + b n * u n = 0) :
+    ∃ (A B C : ℕ → ℝ), ∀ n,
+      (u (n + 3))^2 + A n * (u (n + 2))^2 + B n * (u (n + 1))^2 + C n * (u n)^2 = 0 := by
+  use (fun n => -a (n + 1) * (a (n + 1) * a n - b (n + 1)) / a n),
+      (fun n => a (n + 1) * a n * b (n + 1) - (b (n + 1))^2),
+      (fun n => -a (n + 1) * b (n + 1) * (b n)^2 / a n)
+  intro n
+  have h1 : u (n + 2) = -a n * u (n + 1) - b n * u n := by linarith [hL2 n]
+  have h2 : u (n + 3) = -a (n + 1) * u (n + 2) - b (n + 1) * u (n + 1) := by linarith [hL2 (n + 1)]
+  have han : a n ≠ 0 := ha n
+  have h_sub : u (n + 3) = -a (n + 1) * (-a n * u (n + 1) - b n * u n) - b (n + 1) * u (n + 1) := by rw [h2, h1]
+  rw [h_sub, h1]
+  dsimp
+  have h_mul : a n * ((-a (n + 1) * (-a n * u (n + 1) - b n * u n) - b (n + 1) * u (n + 1)) ^ 2 +
+      -a (n + 1) * (a (n + 1) * a n - b (n + 1)) / a n * (-a n * u (n + 1) - b n * u n) ^ 2 +
+      (a (n + 1) * a n * b (n + 1) - b (n + 1) ^ 2) * u (n + 1) ^ 2 +
+      -a (n + 1) * b (n + 1) * b n ^ 2 / a n * u n ^ 2) = 0 := by
+    field_simp [han]
+    ring
+  exact (mul_eq_zero.mp h_mul).resolve_left han
 
 /-- S12 reclassification: the S12 sequence is an elliptic curve, NOT a K3 surface.
     Statement: the moduli map of S12 PASSes against the elliptic-curve background

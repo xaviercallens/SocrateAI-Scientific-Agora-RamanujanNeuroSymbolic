@@ -1,0 +1,17 @@
+\section{The Proposal}\label{sec:proposal}
+For most of its history, rigorous mathematics has proceeded bottom-up:
+deriving $C$ from $A$ and $B$. Ramanujan's working style --- documented most
+starkly in the \emph{Lost Notebook} \cite{Narosa1988, AndrewsBerndt} --- was different: identities were recorded as endpoints, with the connective proofs
+supplied by later generations. We take that style as \emph{design
+inspiration}, not as evidence for any particular cognitive model, and propose a three-stage pipeline:
+
+\begin{enumerate}
+\item \textbf{The heuristic engine (\textsc{Rama}).} Mathematical candidate
+generation is treated as local search over a symbolic space of Eulerian
+$q$-series, guided by an energy functional
+$E=\alpha C+\beta I+\gamma D$.
+\item \textbf{The shadow bridge.} Candidate mock-symmetries are completed to
+harmonic Maass forms by computing their non-holomorphic period integrals \cite{Zwegers2002}.
+\item \textbf{The formal lock.} Surviving statements are formalized in
+Lean~4 under the audit rules of Section 2.
+\end{enumerate}

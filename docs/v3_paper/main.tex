@@ -1,0 +1,71 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+
+\definecolor{leanblue}{RGB}{43,101,236}
+\definecolor{leangreen}{RGB}{11,102,35}
+\definecolor{warnred}{RGB}{170,30,30}
+
+\lstdefinelanguage{lean}{
+  morekeywords={def, theorem, lemma, by, trivial, exact, intro, apply,
+    noncomputable, namespace, end, Prop, Real, Complex, open, import, sorry,
+    axiom, structure, where},
+  sensitive=true,
+  morecomment=[l]{--},
+  morecomment=[s]{/-}{-/},
+  morestring=[b]",
+}
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  columns=fullflexible,
+  keepspaces=true,
+  commentstyle=\color{leangreen},
+  keywordstyle=\color{leanblue}\bfseries,
+  language=lean,
+  numbers=left,
+  numberstyle=\tiny\color{gray}
+}
+
+\theoremstyle{plain}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\tierA}{\textbf{Tier A}}
+\newcommand{\tierB}{\textbf{Tier B}}
+\newcommand{\tierC}{\textbf{Tier C}}
+
+\title{\vspace{-1.5cm}\textbf{The Ramanujan Neuro-Symbolic Engine:\\
+Exact Algebraic Surrogates, Mock Modular Forms, and Lean 4 Verification for $K3 \times T^{2}$ Dual-Scale Geometry}\\[0.4em]
+\large Version 3.0 --- Includes computational certificates and live Lean 4 Tier B relaxations}
+\author{\textbf{Xavier Callens}\\ \small SocrateAI Lab}
+\date{August 9, 2026}
+
+\begin{document}
+\maketitle
+
+\input{sections/00_abstract.tex}
+\input{sections/01_introduction.tex}
+\input{sections/02_epistemic_protocol.tex}
+\input{sections/03_conjectural_dictionary.tex}
+\input{sections/04_lost_notebook.tex}
+\input{sections/04b_bps_state_counting.tex}
+\input{sections/05_computational_experiments.tex}
+\input{sections/06_formalization_status.tex}
+\input{sections/07_conclusion.tex}
+
+\bibliographystyle{plain}
+\bibliography{../../dualscale/refs/bib/dualscale}
+
+\end{document}

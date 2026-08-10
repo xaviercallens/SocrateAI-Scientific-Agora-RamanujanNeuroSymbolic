@@ -1,0 +1,83 @@
+\begin{thebibliography}{10}
+
+\bibitem{AndrewsBerndt}
+G.~E. Andrews and B.~C. Berndt.
+\newblock {\em Ramanujan's Lost Notebook, Parts I--V}.
+\newblock Springer, 2005.
+
+\bibitem{AJO2001}
+G.~E. Andrews, J.~Jim\\'{e}nez-Urroz, and K.~Ono.
+\newblock q-series identities and values of certain l-functions.
+\newblock {\em Duke Math. J.}, 108:395--419, 2001.
+
+\bibitem{BKM1984}
+J.~T. Beale, T.~Kato, and A.~Majda.
+\newblock Remarks on the breakdown of smooth solutions for the 3-d euler
+  equations.
+\newblock {\em Comm. Math. Phys.}, 94:61--66, 1984.
+
+\bibitem{BowmanMcLaughlin2004}
+D.~Bowman and J.~McLaughlin.
+\newblock On the divergence of the rogers--ramanujan continued fraction on the
+  unit circle.
+\newblock {\em Trans. Amer. Math. Soc.}, 356, 2004.
+
+\bibitem{CKN1982}
+L.~Caffarelli, R.~Kohn, and L.~Nirenberg.
+\newblock Partial regularity of suitable weak solutions of the navier--stokes
+  equations.
+\newblock {\em Comm. Pure Appl. Math.}, 35:771--831, 1982.
+
+\bibitem{CF1993}
+P.~Constantin and C.~Fefferman.
+\newblock Direction of vorticity and the problem of global regularity for the
+  navier--stokes equations.
+\newblock {\em Indiana Univ. Math. J.}, 42:775--789, 1993.
+
+\bibitem{CFM1996}
+P.~Constantin, C.~Fefferman, and A.~Majda.
+\newblock Geometric constraints on potentially singular solutions for the 3-d
+  euler equations.
+\newblock {\em Comm. Partial Differential Equations}, 21:559--571, 1996.
+
+\bibitem{Deligne1974}
+P.~Deligne.
+\newblock La conjecture de weil. i.
+\newblock {\em Publ. Math. IH\\'{E}S}, 43:273--307, 1974.
+
+\bibitem{Doran2000}
+C.~F. Doran.
+\newblock Picard--fuchs uniformization and modularity of the mirror map.
+\newblock {\em Comm. Math. Phys.}, 212:625--647, 2000.
+
+\bibitem{EOT2011}
+T.~Eguchi, H.~Ooguri, and Y.~Tachikawa.
+\newblock Notes on the k3 surface and the mathieu group m24.
+\newblock {\em Exp. Math.}, 20:91--96, 2011.
+
+\bibitem{Gannon2016}
+T.~Gannon.
+\newblock Much ado about mathieu.
+\newblock {\em Adv. Math.}, 301:322--358, 2016.
+
+\bibitem{GPPV2020}
+S.~Gukov, D.~Pei, P.~Putrov, and C.~Vafa.
+\newblock Bps spectra and 3-manifold invariants.
+\newblock {\em J. Knot Theory Ramifications}, 29, 2020.
+
+\bibitem{LPS1988}
+A.~Lubotzky, R.~Phillips, and P.~Sarnak.
+\newblock Ramanujan graphs.
+\newblock {\em Combinatorica}, 8:261--277, 1988.
+
+\bibitem{Narosa1988}
+S.~Ramanujan.
+\newblock {\em The Lost Notebook and Other Unpublished Papers}.
+\newblock Narosa, 1988.
+
+\bibitem{Zwegers2002}
+S.~Zwegers.
+\newblock {\em Mock Theta Functions}.
+\newblock PhD thesis, Universiteit Utrecht, 2002.
+
+\end{thebibliography}

@@ -1,0 +1,12 @@
+{
+  "milestone": "M4",
+  "target": "S12_vs_elliptic",
+  "verdict": "PASS",
+  "timestamp": "2026-08-09T20:41:34.989910+00:00",
+  "git_commit": "6b9034d",
+  "details": {
+    "match": true,
+    "residual": "0",
+    "details": "S12 perfectly matches the elliptic-curve J-invariant structural proxy."
+  }
+}

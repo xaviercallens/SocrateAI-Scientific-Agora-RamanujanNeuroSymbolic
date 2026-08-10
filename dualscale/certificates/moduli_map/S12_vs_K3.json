@@ -1,0 +1,12 @@
+{
+  "milestone": "M4",
+  "target": "S12_vs_K3",
+  "verdict": "FAIL",
+  "timestamp": "2026-08-09T20:41:34.989530+00:00",
+  "git_commit": "6b9034d",
+  "details": {
+    "match": false,
+    "residual": "765005",
+    "details": "S12 exact recurrence residual refutes K3 moduli map embedding."
+  }
+}

@@ -34,4 +34,4 @@ Every task card has: **Goal / Inputs / Steps / Definition of Done / Escalation t
 | M3.2 — CFM Lean scaffold | ✅ DONE | T0 | |
 | M4.1 — S12 moduli-map rerun | ✅ DONE | T1 | check_C3b script implemented with S12 exact rational recurrence. Certificates produced. |
 | M4.2 — Paper classification update | ✅ DONE | T0 | Upgraded S12 from provisional Tier C to certified Tier B. |
-| M5.1 — Dependency-graph audit | ✅ DONE | T2 | Formal proof provided for hypothesisU_uniform_bound. Zero axioms introduced. |
+| M5.1 — Dependency-graph audit | BLOCKED on T2 proof | T0 | Real proof of Hypothesis U is pending definition of enstrophyDensity. |

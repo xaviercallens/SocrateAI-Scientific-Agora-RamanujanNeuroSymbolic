@@ -17,7 +17,8 @@ from src.lean.verifier import LeanVerifier
 class FitnessEvaluator:
     def __init__(self, target_coeffs, weights: EnergyWeights = None):
         self.track_a = TrackAInverseEngineering(target_coeffs, d_max=12)
-        self.weights = weights or EnergyWeights(alpha=1.0, beta=1.0, gamma=0.2)
+        # Shifted weights: low alpha to tolerate complexity, high beta to punish fit errors
+        self.weights = weights or EnergyWeights(alpha=0.05, beta=10.0, gamma=0.1)
         
         self.lean_gen = LeanCodeGenerator()
         self.lean_ver = LeanVerifier()

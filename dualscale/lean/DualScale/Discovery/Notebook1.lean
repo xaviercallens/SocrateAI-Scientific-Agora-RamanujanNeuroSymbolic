@@ -38,11 +38,14 @@ macro "eta_reduce" : tactic =>
 theorem k3_identify :
     ramanujan_nb1_ch2.c_eff = 25 / 72 ∧
     ramanujan_nb1_ch2.weight = 1 / 2 ∧
+    ramanujan_nb1_ch2.leading_power = 1 / 12 ∧
     ramanujan_nb1_ch2.c_eff > 0 := by
-  refine ⟨?_, ?_, ?_⟩
+  refine ⟨?_, ?_, ?_, ?_⟩
   · unfold EtaQuotient.c_eff ramanujan_nb1_ch2
     norm_num
   · unfold EtaQuotient.weight ramanujan_nb1_ch2
+    norm_num
+  · unfold EtaQuotient.leading_power ramanujan_nb1_ch2
     norm_num
   · unfold EtaQuotient.c_eff ramanujan_nb1_ch2
     norm_num
@@ -55,6 +58,11 @@ theorem c_eff_is_25_72 : ramanujan_nb1_ch2.c_eff = 25 / 72 := by
 /-- TIER A: Modular weight is exactly 1/2 (BPS-protected sector). -/
 theorem weight_is_half : ramanujan_nb1_ch2.weight = 1 / 2 := by
   unfold EtaQuotient.weight ramanujan_nb1_ch2
+  norm_num
+
+/-- TIER A: Natural leading q-power shift is 1/12 (canceling the q^(-1/2) multiplier). -/
+theorem leading_q_power : ramanujan_nb1_ch2.leading_power = 1 / 12 := by
+  unfold EtaQuotient.leading_power ramanujan_nb1_ch2
   norm_num
 
 /-- TIER A: Central charge is strictly positive (unitarity guaranteed). -/

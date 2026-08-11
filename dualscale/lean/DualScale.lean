@@ -4,3 +4,6 @@ import DualScale.SpectralGap.Basic
 import DualScale.CFM.Basic
 import DualScale.Phase.Basic
 import DualScale.K3Lock.Basic
+import DualScale.SusyBreaking.Basic
+import DualScale.Discovery.Notebook3
+import DualScale.Discovery.Notebook1

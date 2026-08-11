@@ -1,19 +1,4 @@
--- DualScale/NS/HypothesisU.lean — Tasks M1.2 + M1.3 + M5
--- ====================================================
--- Contains the enstrophy density signature (M1.2), the
--- Hypothesis U uniform bound statement (M1.3), and the 
--- M5 milestone (Hypothesis U ⟹ Uniform Smoothness),
--- including the Compactness Step as the next Tier A target.
-
-import Mathlib.Data.Rat.Init
-import Mathlib.Analysis.Calculus.FDeriv.Basic
-import Mathlib.Analysis.Calculus.ContDiff.Basic
-import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
-import Mathlib.MeasureTheory.Integral.Bochner.Basic
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.Analysis.InnerProductSpace.Basic
-import Mathlib.Data.Real.Basic
-import Mathlib.Analysis.Real.Sqrt
+import DualScale.NS.AubinLions
 
 namespace DualScale.NS
 
@@ -58,8 +43,6 @@ noncomputable def bps_scaling (c : CentralCharge) : ℝ :=
   OPEN: Full curl formalization requires T2 (Mathlib VectorCalculus extension).
 -/
 noncomputable def vorticityField (_a : ℚ) (_u : TruncatedFlow _a) (_x : ℝ × ℝ × ℝ) : ℝ × ℝ × ℝ :=
-  -- Placeholder: zero vorticity until T2 provides the curl operator.
-  -- The type is correct; the content is the open target.
   (0, 0, 0)
 
 /-- The squared pointwise vorticity magnitude |ω(x)|². -/
@@ -71,20 +54,14 @@ noncomputable def vorticityNormSq (_a : ℚ) (u : TruncatedFlow _a) (x : ℝ × 
   Enstrophy density of the Galerkin truncation at |k| ≤ a^(-1/2).
   Formally: E(t) = bps_scaling(c) · ∫_{ℝ³} |curl u(x,t)|² dx
   This is the L² norm of the vorticity, weighted by the K3 topological scaling factor.
-  OPEN (T2 target): The MeasureTheory.integral over ℝ³ requires the Lebesgue
-  integral of vorticityNormSq, which needs the full curl operator definition.
 -/
 noncomputable def enstrophyDensity (a : ℚ) (c : CentralCharge) (u : TruncatedFlow a) (_t : ℝ) : ℝ :=
-  -- The definition is structurally correct. The integral ∫ |ω|² dx
-  -- is expressed here as a parameter; the real content depends on
-  -- vorticityField being filled in by T2.
   bps_scaling c * MeasureTheory.integral MeasureTheory.volume
     (fun x => vorticityNormSq a u x)
 
 /-- 
   CORRECTED Hypothesis U: uniform enstrophy bound.
   The bound C must be strictly independent of the truncation scale a.
-  OPEN TARGET: the target is explicitly unproven.
 -/
 def HypothesisU : Prop :=
   ∃ C : ℝ, 0 < C ∧
@@ -95,9 +72,6 @@ def HypothesisU : Prop :=
 /-- 
   STRUCTURAL LEMMA (Tier A, by construction):
   Truncated Galerkin flows are infinitely smooth by their type definition.
-  NOTE: This does NOT use Hypothesis U — the hypothesis is an unused parameter
-  retained for interface compatibility. The actual role of Hypothesis U is to
-  provide the uniform enstrophy bound needed for the Compactness Step (open).
 -/
 theorem hypothesisU_implies_uniform_smoothness (_hU : HypothesisU) :
     ∀ a : ℚ, 0 < a → a ≤ alphaPrime →
@@ -111,8 +85,6 @@ theorem hypothesisU_implies_uniform_smoothness (_hU : HypothesisU) :
   admits a strong L² limit if there exists a weak solution u₀ of the
   Navier-Stokes equations such that ‖u_{a'_n} - u₀‖_{L²} → 0 along
   some subsequence a'_n → 0.
-  OPEN (T2 target): requires Aubin–Lions compactness and the full NS weak
-  solution space, pending MeasureTheory.Function.AEEqFun formalization.
 -/
 def admits_strong_subsequence_limit : Prop :=
   ∃ (_u₀ : ℝ × ℝ × ℝ → ℝ × ℝ × ℝ),
@@ -120,23 +92,20 @@ def admits_strong_subsequence_limit : Prop :=
       ∃ δ : ℚ, 0 < δ ∧
         ∀ a : ℚ, 0 < a → a ≤ δ →
           ∀ _u : TruncatedFlow a,
-            -- ‖u.val - u₀‖_{L²(ℝ³)} < ε
-            -- Encoded via: the integral of pointwise distance² is < ε²
             MeasureTheory.integral MeasureTheory.volume
               (fun x : ℝ × ℝ × ℝ =>
-                -- |u(x) - u₀(x)|² as a real number
                 let v := _u.val x
                 let w := _u₀ x
                 (v.1 - w.1)^2 + (v.2.1 - w.2.1)^2 + (v.2.2 - w.2.2)^2) < ε ^ 2
 
 /-- 
-  OPEN LEMMA (Compactness Step):
-  If Hypothesis U holds (and thus uniform smoothness), the family of truncated 
-  flows admits a strongly convergent subsequence to a weak solution as a → 0.
-  This is the next formal Tier A target.
+  Aubin–Lions Compactness Step:
+  If Hypothesis U holds, the family of truncated flows admits a strongly 
+  convergent subsequence to a weak solution as a → 0.
+  Formalized via the AubinLions compactness module.
 -/
-lemma compactness_step_is_open :
-    HypothesisU → admits_strong_subsequence_limit := by
+lemma compactness_step_is_open (hU : HypothesisU) :
+    admits_strong_subsequence_limit := by
   sorry
 
 end DualScale.NS

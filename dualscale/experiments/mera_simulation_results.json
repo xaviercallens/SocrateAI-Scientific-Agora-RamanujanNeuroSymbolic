@@ -1,0 +1,242 @@
+[
+  {
+    "n": 1,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 1.540355
+  },
+  {
+    "n": 2,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 2.178391
+  },
+  {
+    "n": 3,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 2.667973
+  },
+  {
+    "n": 4,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 3.08071
+  },
+  {
+    "n": 5,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 3.444338
+  },
+  {
+    "n": 6,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 3.773083
+  },
+  {
+    "n": 7,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 4.075396
+  },
+  {
+    "n": 8,
+    "a_n": -6,
+    "bond_dimension_chi": 6,
+    "entropy_cardy": 4.356781
+  },
+  {
+    "n": 9,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 4.621064
+  },
+  {
+    "n": 10,
+    "a_n": -3,
+    "bond_dimension_chi": 3,
+    "entropy_cardy": 4.871029
+  },
+  {
+    "n": 11,
+    "a_n": 3,
+    "bond_dimension_chi": 3,
+    "entropy_cardy": 5.108779
+  },
+  {
+    "n": 12,
+    "a_n": 5,
+    "bond_dimension_chi": 5,
+    "entropy_cardy": 5.335945
+  },
+  {
+    "n": 13,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 5.553828
+  },
+  {
+    "n": 14,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 5.76348
+  },
+  {
+    "n": 15,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 5.965768
+  },
+  {
+    "n": 16,
+    "a_n": 9,
+    "bond_dimension_chi": 9,
+    "entropy_cardy": 6.161419
+  },
+  {
+    "n": 17,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 6.351045
+  },
+  {
+    "n": 18,
+    "a_n": 18,
+    "bond_dimension_chi": 18,
+    "entropy_cardy": 6.535172
+  },
+  {
+    "n": 19,
+    "a_n": -18,
+    "bond_dimension_chi": 18,
+    "entropy_cardy": 6.714251
+  },
+  {
+    "n": 20,
+    "a_n": -30,
+    "bond_dimension_chi": 30,
+    "entropy_cardy": 6.888676
+  },
+  {
+    "n": 21,
+    "a_n": -9,
+    "bond_dimension_chi": 9,
+    "entropy_cardy": 7.058792
+  },
+  {
+    "n": 22,
+    "a_n": -6,
+    "bond_dimension_chi": 6,
+    "entropy_cardy": 7.224904
+  },
+  {
+    "n": 23,
+    "a_n": 15,
+    "bond_dimension_chi": 15,
+    "entropy_cardy": 7.387282
+  },
+  {
+    "n": 24,
+    "a_n": 18,
+    "bond_dimension_chi": 18,
+    "entropy_cardy": 7.546166
+  },
+  {
+    "n": 25,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 7.701774
+  },
+  {
+    "n": 26,
+    "a_n": 27,
+    "bond_dimension_chi": 27,
+    "entropy_cardy": 7.854299
+  },
+  {
+    "n": 27,
+    "a_n": -45,
+    "bond_dimension_chi": 45,
+    "entropy_cardy": 8.003918
+  },
+  {
+    "n": 28,
+    "a_n": -30,
+    "bond_dimension_chi": 30,
+    "entropy_cardy": 8.150791
+  },
+  {
+    "n": 29,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 8.295064
+  },
+  {
+    "n": 30,
+    "a_n": 45,
+    "bond_dimension_chi": 45,
+    "entropy_cardy": 8.43687
+  },
+  {
+    "n": 31,
+    "a_n": -27,
+    "bond_dimension_chi": 27,
+    "entropy_cardy": 8.576332
+  },
+  {
+    "n": 32,
+    "a_n": 45,
+    "bond_dimension_chi": 45,
+    "entropy_cardy": 8.713562
+  },
+  {
+    "n": 33,
+    "a_n": 0,
+    "bond_dimension_chi": 1,
+    "entropy_cardy": 8.848664
+  },
+  {
+    "n": 34,
+    "a_n": -90,
+    "bond_dimension_chi": 90,
+    "entropy_cardy": 8.981734
+  },
+  {
+    "n": 35,
+    "a_n": -18,
+    "bond_dimension_chi": 18,
+    "entropy_cardy": 9.112862
+  },
+  {
+    "n": 36,
+    "a_n": -18,
+    "bond_dimension_chi": 18,
+    "entropy_cardy": 9.242129
+  },
+  {
+    "n": 37,
+    "a_n": 63,
+    "bond_dimension_chi": 63,
+    "entropy_cardy": 9.369612
+  },
+  {
+    "n": 38,
+    "a_n": 72,
+    "bond_dimension_chi": 72,
+    "entropy_cardy": 9.495384
+  },
+  {
+    "n": 39,
+    "a_n": -45,
+    "bond_dimension_chi": 45,
+    "entropy_cardy": 9.619512
+  },
+  {
+    "n": 40,
+    "a_n": -90,
+    "bond_dimension_chi": 90,
+    "entropy_cardy": 9.742059
+  }
+]

@@ -42,8 +42,20 @@ noncomputable def bps_scaling (c : CentralCharge) : ℝ :=
     ω = (∂u₃/∂x₂ - ∂u₂/∂x₃, ∂u₁/∂x₃ - ∂u₃/∂x₁, ∂u₂/∂x₁ - ∂u₁/∂x₂)
   OPEN: Full curl formalization requires T2 (Mathlib VectorCalculus extension).
 -/
-noncomputable def vorticityField (_a : ℚ) (_u : TruncatedFlow _a) (_x : ℝ × ℝ × ℝ) : ℝ × ℝ × ℝ :=
-  (0, 0, 0)
+/-- 
+  The vorticity field ω = curl u of the truncated flow.
+  Rigorously defined via the Fréchet derivative `fderiv ℝ u.val x` evaluated on
+  canonical basis vectors e₁, e₂, e₃ of ℝ³:
+    v₁ = ∂u/∂x₁, v₂ = ∂u/∂x₂, v₃ = ∂u/∂x₃
+  The 3D curl operator is then:
+    ω = (∂u₃/∂x₂ - ∂u₂/∂x₃, ∂u₁/∂x₃ - ∂u₃/∂x₁, ∂u₂/∂x₁ - ∂u₁/∂x₂)
+-/
+noncomputable def vorticityField (a : ℚ) (u : TruncatedFlow a) (x : ℝ × ℝ × ℝ) : ℝ × ℝ × ℝ :=
+  let D := fderiv ℝ u.val x
+  let v1 := D (1, 0, 0)
+  let v2 := D (0, 1, 0)
+  let v3 := D (0, 0, 1)
+  (v2.2.2 - v3.2.1, v3.1 - v1.2.2, v1.2.1 - v2.1)
 
 /-- The squared pointwise vorticity magnitude |ω(x)|². -/
 noncomputable def vorticityNormSq (_a : ℚ) (u : TruncatedFlow _a) (x : ℝ × ℝ × ℝ) : ℝ :=

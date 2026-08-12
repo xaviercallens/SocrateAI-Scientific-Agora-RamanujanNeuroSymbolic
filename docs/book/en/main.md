@@ -598,8 +598,6 @@ end DualScale.QSeries.EtaQuotient
 
 # Appendix B: Concordance Table
 
-This table maps Ramanujan's original equations to their physical BPS state equivalents.
-
 | ID | Topological Archetype | RAMA Energy | Andrews-Berndt Ref |
 |---|---|---|---|
 | 793d4a69-db0 | Mock Theta Function | 0.993590 | Andrews-Berndt Part I (2005) |

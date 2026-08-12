@@ -86,11 +86,28 @@ Below is a sample of the potentially novel sequences identified by our anomaly d
             md += f"- **RAMA Energy:** {energy}\n"
             md += f"- **Reference:** {ref}\n\n"
             
+    # Extract Lean Code for Appendix A
+    lean_master_path = "dualscale/lean/DualScale/Physics/MasterDualScale.lean"
+    lean_master_code = ""
+    if os.path.exists(lean_master_path):
+        with open(lean_master_path, "r", encoding="utf-8") as f:
+            lean_master_code = f.read()
+
+    lean_eta_path = "dualscale/lean/DualScale/QSeries/EtaQuotient.lean"
+    lean_eta_code = ""
+    if os.path.exists(lean_eta_path):
+        with open(lean_eta_path, "r", encoding="utf-8") as f:
+            lean_eta_code = f.read()
+
     if lang == "fr":
-        md += "# Annexe A : Code Lean 4\n\n(Code généré automatiquement...)\n\n"
+        md += "# Annexe A : Code Lean 4\n\n"
+        md += "## MasterDualScale.lean\n\n```lean\n" + lean_master_code + "\n```\n\n"
+        md += "## EtaQuotient.lean\n\n```lean\n" + lean_eta_code + "\n```\n\n"
         md += "# Annexe B : Table de Concordance\n\n(Données de correspondance corpus...)\n"
     else:
-        md += "# Appendix A: Lean Code Listings\n\n(Auto-generated Lean 4 verification code...)\n\n"
+        md += "# Appendix A: Lean Code Listings\n\n"
+        md += "## MasterDualScale.lean\n\n```lean\n" + lean_master_code + "\n```\n\n"
+        md += "## EtaQuotient.lean\n\n```lean\n" + lean_eta_code + "\n```\n\n"
         md += "# Appendix B: Concordance Table\n\n(Corpus mapping data...)\n"
 
     # Write output

@@ -46,3 +46,10 @@ Our continuous integration (`dualscale_ci.yml`) enforces the following boundarie
 3.  **M3**: Executed CFM Elliptic-Angle Falsification (successfully falsifying Conjecture 3).
 4.  **M4**: Generated exact moduli-map certificates for the $S_{12}$ Apéry-like sequence, confirming it as an elliptic curve background.
 5.  **M5**: Formalized the Hypothesis U ⟹ Smoothness implication logic in Lean 4.
+6.  **M6 (Phase 4)**: Processed 698-page Ramanujan manuscript via Gemini Vision AI, extracting 1,796+ theorems and identifying 938 mathematically novel sequences.
+7.  **M7 (Phase 5/6)**: Released the machine-verified RAMA Compendium mapping Ramanujan q-series to macroscopic BPS entropy and fluid-mechanic enstrophy bounds.
+
+## Publications & Releases
+*   **The RAMA Compendium**: A fully machine-verified bilingual (FR/EN) publication translating Ramanujan's lost discoveries to holographic spacetime geometry. [Draft PDFs](docs/book/)
+*   **arXiv Pre-print**: Prepared for `hep-th`, `math.NT`, and `gr-qc`. [arXiv Package](docs/arxiv_submission/arxiv_package.zip)
+*   **OEIS Submissions**: Auto-generated payload for 938 novel sequences to the On-Line Encyclopedia of Integer Sequences. [Payload](docs/oeis_submission/oeis_batch.txt)

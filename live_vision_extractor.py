@@ -102,9 +102,14 @@ class LiveVisionExtractor:
                 text = re.sub(r'\s*```$', '', text)
                 text = text.strip()
                 
+                prompt_tokens = getattr(response.usage_metadata, 'prompt_token_count', 0) if hasattr(response, 'usage_metadata') else 0
+                candidate_tokens = getattr(response.usage_metadata, 'candidates_token_count', 0) if hasattr(response, 'usage_metadata') else 0
+                
                 result = json.loads(text)
                 result["source_image"] = str(image_path)
                 result["model"] = self.model
+                result["prompt_tokens"] = prompt_tokens
+                result["candidate_tokens"] = candidate_tokens
                 return result
                 
             except json.JSONDecodeError as e:
@@ -204,12 +209,32 @@ def main():
     with open(out_file, "w") as f:
         json.dump(results, f, indent=2)
     
+    total_prompt_tokens = sum(r.get("prompt_tokens", 0) for r in results)
+    total_candidate_tokens = sum(r.get("candidate_tokens", 0) for r in results)
+    
+    # Gemini 2.5 Flash pricing: $0.075 / 1M prompt tokens, $0.30 / 1M candidate tokens
+    cost_input = (total_prompt_tokens / 1_000_000) * 0.075
+    cost_output = (total_candidate_tokens / 1_000_000) * 0.30
+    total_cost = cost_input + cost_output
+    
     print(f"\n{'='*60}")
-    print(f"RESULTS SUMMARY")
+    print(f"RESULTS SUMMARY & COST AUDIT")
     print(f"{'='*60}")
-    print(f"Pages processed:  {len(images)}")
-    print(f"Series found:     {series_count} ({100*series_count/max(len(images),1):.1f}%)")
-    print(f"Output:           {out_file}")
+    print(f"Pages processed:        {len(images)}")
+    print(f"Series found:           {series_count} ({100*series_count/max(len(images),1):.1f}%)")
+    print(f"Total Input Tokens:     {total_prompt_tokens:,}")
+    print(f"Total Output Tokens:    {total_candidate_tokens:,}")
+    print(f"Dry-run Actual Cost:    ${total_cost:.6f}")
+    if len(images) > 0:
+        avg_input = total_prompt_tokens / len(images)
+        avg_output = total_candidate_tokens / len(images)
+        est_698_input = avg_input * 698
+        est_698_output = avg_output * 698
+        est_698_cost = ((est_698_input / 1_000_000) * 0.075) + ((est_698_output / 1_000_000) * 0.30)
+        print(f"Avg Input per page:     {avg_input:.1f} tokens")
+        print(f"Avg Output per page:    {avg_output:.1f} tokens")
+        print(f"ESTIMATED FULL CORPUS COST (698 pages): ${est_698_cost:.4f} USD (~{est_698_cost*100:.1f} cents)")
+    print(f"Output saved to:        {out_file}")
     
     # Show sample
     for r in results[:3]:

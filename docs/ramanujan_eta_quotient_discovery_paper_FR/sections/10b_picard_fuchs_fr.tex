@@ -1,0 +1,41 @@
+\section{Classification de Picard--Fuchs des découvertes de poids~$3/2$}
+\label{sec:pf_fr}
+
+\subsection{Contexte}
+
+Pour une famille à un paramètre de variétés algébriques, les intégrales de périodes $\omega(z) = \int_\gamma \Omega(z)$ satisfont une équation différentielle linéaire $\mathcal{L}\omega = 0$, l'équation de Picard--Fuchs~\cite{picard_fuchs}. L'ordre de $\mathcal{L}$ détermine le type géométrique~:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Ordre} & \textbf{Type} & \textbf{Exemple} \\
+\midrule
+2 & Courbe elliptique & Fonction $j$ \\
+3 & Surface K3 & Eta-quotient classique \\
+4 & Variété de Calabi--Yau$_3$ & Quintique \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Les 47 candidats de poids $3/2$}
+
+Parmi les 547 découvertes stables vérifiées, \textbf{47 ont le poids $k = 3/2$}.
+Cinq critères ont été appliqués~: (C1)~poids $3/2$, (C2)~$\ceff > 0$, (C3)~niveau compatible avec l'ensemble modulaire miroir, (C4)~liste de Beauville K3, (C5)~récurrence d'ordre~3, (C6)~critère de Kummer.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/pf_classification.pdf}
+\caption{Classification de Picard--Fuchs des 47 candidats de poids~$3/2$. (a)~Distribution des niveaux. (b)~Distribution de $\ceff$. (c)~Carte de chaleur des critères.}
+\end{figure}
+
+\subsection{Résultat clé~: ordre 4 (signature Calabi--Yau$_3$)}
+
+\textbf{Le résultat le plus significatif de l'analyse PF est négatif~:} tous les 47 candidats exhibent une récurrence de coefficients d'ordre~4, et non d'ordre~3.
+
+\begin{proposition}[Ordre de récurrence PF --- Niveau~B]
+Pour les 47 eta-quotients stables de poids~$3/2$, la meilleure récurrence linéaire est d'ordre~4 ($R^2 > 0{,}98$), signature d'une variété de Calabi--Yau à trois dimensions, et non d'une surface K3 (ordre~3).
+\end{proposition}
+
+\textbf{Interprétation~:} Les candidats de poids~$3/2$ découverts par \RAMA{} correspondent probablement à des intégrales de périodes de \emph{variétés CY3} plutôt que de surfaces K3. La section cosmologique (§~\ref{sec:cosmologie}) doit être affaiblie~: ces formes sont \emph{K3-adjacentes} mais pas K3 au sens strict PF.
+
+\textbf{Réfutabilité~:} La signature d'ordre~4 est réfutée si un candidat de poids~$3/2$ satisfait une récurrence de Griffiths--Dwork d'ordre~3 avec les exposants indicaux $\{0, 0, 1\}$. Ceci est vérifiable avec SageMath ou Magma.

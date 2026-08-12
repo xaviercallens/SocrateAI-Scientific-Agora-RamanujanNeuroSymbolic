@@ -1,0 +1,107 @@
+% ============================================================================
+% Récupération neuro-symbolique d'identités d'eta-quotients
+% à partir des cahiers manuscrits de Ramanujan
+% Fichier : ramanujan_eta_quotient_discovery_FR.tex
+% ============================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,amsfonts,mathtools}
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{graphicx,booktabs,enumitem,xcolor,listings,float,subcaption}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{microtype}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollaire}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{example}[theorem]{Exemple}
+
+\definecolor{codebg}{RGB}{248,248,248}
+\definecolor{codegreen}{RGB}{0,128,0}
+\definecolor{codepurple}{RGB}{128,0,128}
+\lstset{backgroundcolor=\color{codebg},basicstyle=\small\ttfamily,breaklines=true,commentstyle=\color{codegreen},keywordstyle=\color{codepurple}\bfseries,numbers=left,numberstyle=\tiny\color{gray},frame=single,captionpos=b}
+\lstdefinelanguage{Lean4}{morekeywords={theorem,lemma,def,structure,import,namespace,end,where,by,rfl,simp,ring_nf,done,trivial,set_option,macro,tactic,constructor},sensitive=true,morecomment=[l]{--},morecomment=[s]{/-}{-/},morestring=[b]"}
+
+\newcommand{\ceff}{c_{\mathrm{eff}}}
+\newcommand{\RAMA}{\textsc{RAMA}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+
+\title{\textbf{Récupération neuro-symbolique d'identités d'eta-quotients\\à partir des cahiers manuscrits de Ramanujan}\\[0.5em]\large Découvertes vérifiées par machine via recherche évolutionnaire\\et certification du noyau Lean~4\\[0.3em]\normalsize\textit{Avec applications à la thermodynamique des trous noirs,\\la dynamique des fluides et la cosmologie holographique}}
+\author{Xavier Callens\\\small SocrateAI Recherche Scientifique\\\small\texttt{callensxavier@gmail.com}}
+\date{11 août 2026 --- Version préliminaire (v4.1)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Nous présentons la première récupération systématique et vérifiée par machine d'identités d'eta-quotients de Dedekind à partir des cahiers manuscrits originaux de Srinivasa Ramanujan, à l'aide d'un pipeline neuro-symbolique. Notre \emph{Architecture Neuro-symbolique Autonome de Ramanujan} (\RAMA{}) combine (i)~l'extraction multimodale par modèle de vision à partir de pages manuscrites numérisées, (ii)~une recherche évolutionnaire génétique dans l'espace combinatoire des vecteurs d'exposants ($\mathrm{pop}=50$, $\mathrm{gen}=15$), et (iii)~la vérification formelle en temps réel via l'assistant de preuves Lean~4 avec Mathlib. En traitant les 698~pages manuscrites des Cahiers~1, 2 et~3, le moteur a identifié \textbf{695 conjectures d'eta-quotients} qui compilent sous le noyau Lean~4 sans lacunes axiomatiques (sans \texttt{sorry}). Parmi celles-ci, \textbf{547} correspondent à des états de vide thermodynamiquement stables. Nous fournissons des preuves mathématiques complètes, du code Python reproductible avec des données réelles de l'OEIS (A000025, 10\,001 termes), l'annexe de certification Lean~4, et des sections dédiées à l'interprétation physique couvrant (i)~la gravité quantique et la thermodynamique des trous noirs, (ii)~les équations de Navier--Stokes, (iii)~la cosmologie holographique. Toutes les affirmations sont énoncées avec des conditions de réfutabilité explicites.
+
+\medskip\noindent\textbf{Dépôt~:} \url{https://github.com/xaviercallens/SocrateAI-Scientific-Agora-RamanujanNeuroSymbolic}
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\input{sections/01_introduction_fr}
+\input{sections/02_preliminaires_fr}
+\input{sections/03_pipeline_fr}
+\input{sections/04_decouverte_alpha_fr}
+\input{sections/05_decouverte_beta_fr}
+\input{sections/06_decouverte_gamma_fr}
+\input{sections/07_statistiques_fr}
+\input{sections/08_gravite_quantique_fr}
+\input{sections/09_navier_stokes_fr}
+\input{sections/10_cosmologie_fr}
+\input{sections/10b_picard_fuchs_fr}
+\input{sections/11_investigations_fr}
+\input{sections/11_limitations_fr}
+\input{sections/12_conclusion_fr}
+
+\appendix
+\input{sections/annexe_A_lean4_fr}
+\input{sections/annexe_B_python_fr}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+\bibitem{ramanujan_lost} S.~Ramanujan, \emph{The Lost Notebook and Other Unpublished Papers}, Narosa, 1988.
+\bibitem{andrews_berndt_I} G.~E. Andrews, B.~C. Berndt, \emph{Ramanujan's Lost Notebook, Part~I}, Springer, 2005.
+\bibitem{andrews_berndt_II} G.~E. Andrews, B.~C. Berndt, \emph{Ramanujan's Lost Notebook, Part~II}, Springer, 2009.
+\bibitem{bringmann_ono_2006} K.~Bringmann, K.~Ono, \emph{The $f(q)$ mock theta function conjecture and partition ranks}, Invent.\ math.\ 165(2):243--266, 2006. DOI: 10.1007/s00222-005-0493-5.
+\bibitem{bringmann_ono_2010} K.~Bringmann, K.~Ono, \emph{Dyson's ranks and Maass forms}, Ann.\ of Math.\ 171(1):419--449, 2010.
+\bibitem{zwegers2002} S.~P. Zwegers, \emph{Mock Theta Functions}, Thèse de doctorat, Universiteit Utrecht, 2002. \texttt{arXiv:0807.4834}.
+\bibitem{strominger_vafa_1996} A.~Strominger, C.~Vafa, \emph{Microscopic origin of the Bekenstein--Hawking entropy}, Phys.\ Lett.\ B 379:99--104, 1996. \texttt{arXiv:hep-th/9601029}.
+\bibitem{dijkgraaf_verlinde_verlinde} R.~Dijkgraaf, E.~Verlinde, H.~Verlinde, \emph{Counting dyons in $N=4$ string theory}, Nucl.\ Phys.\ B 484:543--561, 1997. \texttt{arXiv:hep-th/9607026}.
+\bibitem{ono2004} K.~Ono, \emph{The Web of Modularity: Arithmetic of the Coefficients of Modular Forms and $q$-Series}, CBMS 102, AMS, 2004.
+\bibitem{martin_1996} Y.~Martin, \emph{Multiplicative $\eta$-quotients}, Trans.\ Amer.\ Math.\ Soc.\ 348(12):4825--4856, 1996.
+\bibitem{gordon_hughes_1993} B.~Gordon, K.~Hughes, \emph{Multiplicative properties of $\eta$-products~II}, Contemp.\ Math.\ 143:415--430, 1993.
+\bibitem{cardy_1986} J.~L. Cardy, \emph{Operator content of two-dimensional conformally invariant theories}, Nucl.\ Phys.\ B 270:186--204, 1986.
+\bibitem{hardy_ramanujan_1918} G.~H. Hardy, S.~Ramanujan, \emph{Asymptotic formulae in combinatory analysis}, Proc.\ London Math.\ Soc.\ s2-17(1):75--115, 1918.
+\bibitem{dedekind_1877} R.~Dedekind, \emph{Schreiben an Herrn Borchardt über die Theorie der elliptischen Modulfunktionen}, J.\ reine angew.\ Math.\ 83:265--292, 1877.
+\bibitem{rademacher_1937} H.~Rademacher, \emph{On the partition function $p(n)$}, Proc.\ London Math.\ Soc.\ s2-43(1):241--254, 1937.
+\bibitem{lean4_mathlib} The Mathlib Community, \emph{Mathlib4: The Lean~4 Mathematical Library}, \url{https://github.com/leanprover-community/mathlib4}, 2024.
+\bibitem{moura_lean4} L.~de Moura, S.~Ullrich, \emph{The Lean~4 Theorem Prover and Programming Language}, CADE-28, LNAI 12699:625--635, 2021.
+\bibitem{dabholkar_2005} A.~Dabholkar, \emph{Exact counting of black hole microstates}, Phys.\ Rev.\ Lett.\ 94:241301, 2005. \texttt{arXiv:hep-th/0409148}.
+\bibitem{sen_1995} A.~Sen, \emph{Extremal black holes and elementary string states}, Mod.\ Phys.\ Lett.\ A 10(30):2081--2093, 1995.
+\bibitem{bekenstein_1973} J.~D. Bekenstein, \emph{Black holes and entropy}, Phys.\ Rev.\ D 7(8):2333--2346, 1973.
+\bibitem{hawking_1975} S.~W. Hawking, \emph{Particle creation by black holes}, Commun.\ Math.\ Phys.\ 43(3):199--220, 1975.
+\bibitem{maldacena_1998} J.~M. Maldacena, \emph{The large $N$ limit of superconformal field theories and supergravity}, Adv.\ Theor.\ Math.\ Phys.\ 2:231--252, 1998. \texttt{arXiv:hep-th/9711200}.
+\bibitem{ryu_takayanagi_2006} S.~Ryu, T.~Takayanagi, \emph{Holographic derivation of entanglement entropy from the anti-de Sitter space/conformal field theory correspondence}, Phys.\ Rev.\ Lett.\ 96:181602, 2006.
+\bibitem{clay_navier_stokes} C.~L. Fefferman, \emph{Existence and smoothness of the Navier--Stokes equation}, Clay Mathematics Institute, 2000.
+\bibitem{kolmogorov_1941} A.~N. Kolmogorov, \emph{The local structure of turbulence in incompressible viscous fluid for very large Reynolds numbers}, Dokl.\ Akad.\ Nauk SSSR 30:301--305, 1941.
+\bibitem{picard_fuchs} P.~Candelas et al., \emph{A pair of Calabi--Yau manifolds as an exactly soluble superconformal theory}, Nucl.\ Phys.\ B 359:21--74, 1991.
+\bibitem{oeis_A000025} OEIS Foundation, \emph{A000025: Coefficients of Ramanujan's mock theta function $f(q)$}, \url{https://oeis.org/A000025}.
+\end{thebibliography}
+\end{document}

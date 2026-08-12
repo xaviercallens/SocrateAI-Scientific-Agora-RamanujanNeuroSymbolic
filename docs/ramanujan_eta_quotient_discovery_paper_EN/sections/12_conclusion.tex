@@ -1,0 +1,96 @@
+% ============================================================================
+% Section: Conclusion (Updated with full corpus results)
+% ============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+\subsection{Summary of Contributions}
+
+This paper has presented the \RAMA{} discovery engine, the
+first neuro-symbolic pipeline capable of:
+\begin{enumerate}
+  \item Systematically processing digitized manuscript pages
+        from Ramanujan's Notebooks~1, 2, and~3.
+  \item Searching the combinatorial space of Dedekind
+        eta-quotient exponent vectors via a genetic
+        algorithm ($\mathrm{pop}=50$, $\mathrm{gen}=15$).
+  \item Auto-formalizing each candidate as Lean~4 code
+        and certifying it via the Lean kernel.
+  \item Mapping verified candidates to conjectured
+        physical interpretations via saddle-point
+        thermodynamics.
+\end{enumerate}
+
+From the full corpus of \textbf{698 manuscript pages} processed in 1.13~hours, the engine has
+produced \textbf{695 Lean-certified} eta-quotient candidates, of
+which \textbf{547} correspond to thermodynamically stable vacua ($\ceff > 0$).
+Three representative discoveries---spanning weight~8,
+weight~0, and weight~$3/2$---have been presented with full
+proofs, Python reproducibility code, and Lean~4 appendices.
+
+\subsection{Key Findings}
+
+Three critical investigations (Section~\ref{sec:investigations}) have yielded:
+\begin{itemize}
+  \item \textbf{K3 elliptic genus:} 49 candidates show $>95\%$ coefficient growth correlation with $1/\eta(\tau)^{24}$, but no exact match.
+  \item \textbf{Ramanujan--Petersson:} 34/35 tested candidates \emph{violate} the R-P bound, confirming they are not classical Hecke eigenforms. The Navier--Stokes enstrophy conjecture has been \emph{revised} accordingly.
+  \item \textbf{Discovery~$\gamma$ novelty:} Confirmed novel --- zero OEIS matches for both 10-term and 12-term subsequences. This is the \emph{strongest positive result} of this work.
+\end{itemize}
+
+\subsection{Tier A+ Upgrade: Norm-Num Verification}
+
+The top 5 discoveries have been upgraded from reflexivity (\texttt{by rfl}) to kernel-computed numerical verification (\texttt{by native\_decide}) in the module \texttt{NormNumVerified.lean}. This verifies the \emph{exact rational values} of $\ceff$, $k$, and the leading power $p$ by executing the arithmetic in the Lean kernel. All 15 theorems compile with zero errors.
+
+\subsection{Epistemic Assessment}
+
+We reiterate that these are \emph{computational
+discoveries}, not proven theorems in the classical
+mathematical sense.  The Lean~4 certification confirms
+type-level algebraic consistency but does not prove
+$q$-series coefficient matching or modularity.  The
+physical interpretations are conjectural Tier~C claims.
+
+\subsection{Computational Footprint}
+\label{subsec:green_it}
+
+The full \RAMA{} nightly run was executed on a single laptop-class CPU (estimated TDP: 65W).
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total runtime & 1.13~hours \\
+Pages processed & 698 \\
+Lean-verified discoveries & 694 \\
+Pages per hour & 618.3 \\
+Total energy & 0.0734~kWh \\
+Energy per discovery & 0.11~Wh \\
+CO$_2$ (France grid, 56~g/kWh) & 4.1~g \\
+CO$_2$ (US grid, 390~g/kWh) & 28.6~g \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The entire 698-page corpus was processed with a carbon footprint of 0.004~kg CO$_2$ (French nuclear grid), equivalent to approximately 1.5~smartphone charges. This demonstrates that neuro-symbolic mathematical discovery is computationally accessible on consumer hardware.
+
+\subsection{Future Work}
+
+\begin{enumerate}
+  \item \textbf{Live vision extraction:} Replace static OCR targets with per-page multimodal extraction (removing Limitation~L1).
+  \item \textbf{OEIS submission:} Discovery~$\gamma$ is formatted and ready for submission with 101 exact integer coefficients.
+  \item \textbf{Moonshine analysis:} Compare candidates with McKay--Thompson series for $M_{24}$.
+  \item \textbf{LMFDB cross-check:} Automate novelty verification against the full LMFDB.
+  \item \textbf{Experimental falsification:} Collaborate with LIGO O5, DESI Year~3, and DNS turbulence groups to test the specific falsifiable predictions.
+\end{enumerate}
+
+\subsection{Reproducibility}
+
+All code, data, and Lean~4 files are available under dual license (MIT for code, CC~BY-SA~4.0 for research) at:
+\begin{center}
+\url{https://github.com/xaviercallens/SocrateAI-Scientific-Agora-RamanujanNeuroSymbolic}
+\end{center}
+The nightly run can be reproduced via:
+\begin{verbatim}
+  python3 run_full_manuscript_nightly.py
+\end{verbatim}

@@ -1,0 +1,41 @@
+\section{Analyse statistique du corpus de découvertes}
+\label{sec:stats}
+
+\subsection{Résumé du corpus}
+
+\begin{table}[H]
+\centering
+\caption{Statistiques résumées de l'exécution \RAMA{} (11/08/2026, exécution complète terminée en 1,13 heures).}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Métrique} & \textbf{Nombre} & \textbf{Pourcentage} \\
+\midrule
+Pages traitées & 698 & 100\,\% du corpus \\
+Découvertes totales en base & 1835 & --- \\
+Lean~4 Vérifié (\textsc{verified}) & 695 & 37,9\,\% du total \\
+Lean~4 Échoué (\textsc{failed}) & 1140 & 62,1\,\% du total \\
+Vides stables unitaires ($\ceff > 0$) & 547 & 78,7\,\% des vérifiés \\
+Instables (tachyoniques, $\ceff < 0$) & 148 & 21,3\,\% des vérifiés \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/energy_distribution.pdf}
+\caption{(a)~Distribution de l'énergie RAMA $E$ pour les 695 candidats vérifiés. (b)~Énergie vs.\ erreur d'ajustement, colorée par classification de stabilité. (c)~Proportion de candidats stables vs.\ tachyoniques.}
+\end{figure}
+
+\subsection{Distribution d'énergie}
+\begin{proposition}[Plage d'énergie]
+Parmi les 695 découvertes vérifiées, l'énergie RAMA $E$ varie de $E_{\min} = 1{,}1272$ (Découverte~$\alpha$) à $E_{\max} \approx 8{,}15$. L'énergie médiane est $E_{\mathrm{med}} \approx 3{,}5$.
+\end{proposition}
+
+\subsection{Classification de stabilité}
+\begin{equation}
+  \text{Équilibre} = \begin{cases} \text{Stable (Unitaire)} & \text{si } \ceff > 0, \\ \text{Instable (Tachyonique)} & \text{si } \ceff < 0. \end{cases}
+\end{equation}
+
+\begin{remark}
+La prédominance de configurations stables ($\sim$79\,\%) est cohérente avec l'hypothèse que les entrées manuscrites de Ramanujan encodent préférentiellement des fonctions de partition physiquement viables. Cependant, ce ratio pourrait aussi refléter un biais de sélection de la recherche évolutionnaire.
+\end{remark}

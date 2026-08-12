@@ -1,0 +1,56 @@
+\section{Domaine physique I~: Gravité quantique et thermodynamique des trous noirs}
+\label{sec:qg}
+
+\subsection{Contexte~: le problème de l'information du trou noir}
+La formule d'entropie de Bekenstein--Hawking~\cite{bekenstein_1973,hawking_1975}
+\begin{equation}
+  S_{\mathrm{BH}} = \frac{A}{4G_N}
+\end{equation}
+assigne une entropie thermodynamique proportionnelle à l'aire de l'horizon $A$. Un défi central de la gravité quantique est de fournir un comptage microscopique statistique reproduisant $S_{\mathrm{BH}}$.
+
+En 1996, Strominger et Vafa~\cite{strominger_vafa_1996} y sont parvenus pour une classe de trous noirs extrémaux en théorie de Type~IIB compactifiée sur $K3 \times S^1$, en modélisant le trou noir comme un état lié de D-branes. La dégénérescence est calculée via le \emph{genre elliptique} du K3, dont la fonction génératrice est construite à partir d'eta-quotients de Dedekind.
+
+\subsection{Résultat~: eta-quotients stables unitaires sur K3}
+Le moteur \RAMA{} a identifié \textbf{547 eta-quotients certifiés Lean~4} avec $\ceff > 0$, classifiés comme \emph{Stables (Unitaires)}. La densité asymptotique de leurs coefficients de Fourier croît comme~:
+\begin{equation}
+  d(n) \sim \exp\left(2\pi\sqrt{\frac{\ceff \cdot n}{6}}\right), \qquad n \to \infty.
+\end{equation}
+
+\subsection{Données réelles~: entropie de Cardy}
+À partir des 200 meilleurs candidats stables de \texttt{namagiri.db}~:
+\begin{itemize}
+  \item $\ceff$ varie de $0{,}0006$ à $2{,}9008$. Médiane~: $0{,}6376$. Moyenne~: $0{,}7536$.
+  \item Découverte~$\alpha$ ($\ceff = 2{,}5289$)~: $S_{\mathrm{BPS}}(1) = 4{,}08$.
+  \item Découverte~$\gamma$ ($\ceff = 1{,}2427$)~: $S_{\mathrm{BPS}}(1) = 2{,}86$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/cardy_entropy.pdf}
+\caption{(a)~Entropie BPS $S_{\mathrm{BPS}}(n)$ pour les trois découvertes en vedette. (b)~Distribution de $\ceff$ pour les 200 meilleurs candidats stables. Données réelles de \texttt{namagiri.db}.}
+\end{figure}
+
+\subsection{Comparaison avec l'OEIS A000025}
+Nous avons téléchargé 10\,001 coefficients entiers exacts de la fonction thêta mock $f(q)$ de Ramanujan depuis l'OEIS~\cite{oeis_A000025}~:
+\[
+  a(0..14) = [1, 1, -2, 3, -3, 3, -5, 7, -6, 6, -10, 12, -11, 13, -17].
+\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/oeis_comparison.pdf}
+\caption{Comparaison des 21 premiers coefficients de l'OEIS~A000025 ($f(q)$ de Ramanujan) avec le développement en $q$ de la Découverte~$\alpha$.}
+\end{figure}
+
+\subsection{Implication~: entropie d'intrication holographique}
+Via la correspondance AdS/CFT~\cite{maldacena_1998}, la formule de Ryu--Takayanagi~\cite{ryu_takayanagi_2006} exprime l'entropie d'intrication comme une aire de surface minimale~:
+\begin{equation}
+  S_{\mathrm{EE}} = \frac{\mathrm{Aire}(\gamma_A)}{4G_N}.
+\end{equation}
+Nos eta-quotients vérifiés fournissent des candidats de fonctions de partition \emph{exactes}.
+
+\begin{conjecture}[Comptage de micro-états BPS --- Niveau~C]
+Les 547 eta-quotients stables encodent les fonctions génératrices pour les dégénérescences de micro-états BPS dans des compactifications orbifold de K3.
+\end{conjecture}
+
+\textbf{Réfutabilité~:} Falsifié si les coefficients de Fourier d'un candidat stable, comparés terme à terme contre les dégénérescences BPS connues du genre elliptique K3, divergent aux 20 premiers termes.

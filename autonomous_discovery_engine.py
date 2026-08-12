@@ -29,7 +29,7 @@ class AutonomousDiscoveryEngine:
         # Initialize Phase 2 Components
         self.vision = VisionExtractor(use_mock=True)
         self.lean_gen = LeanCodeGenerator()
-        self.lean_ver = LeanVerifier(lean_project_dir="lean4")
+        self.lean_ver = LeanVerifier(lean_project_dir="dualscale/lean")
         self.saddle = SaddlePointEvaluator()
         self.s12_filter = S12PartitionFilter()
         self.db = NamagiriDB()
@@ -40,15 +40,15 @@ class AutonomousDiscoveryEngine:
         logging.info(f"  -> Archetype: {extraction.archetype_hint} (Confidence: {extraction.confidence:.2f})")
         return extraction.model_dump()
 
-    def step_2_antigravity_intuition(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        logging.info("[Phase 2] Engaging Genetic RAMA Evolutionary Engine...")
+    def step_2_antigravity_intuition(self, data: Dict[str, Any], pop_size: int = 50, max_generations: int = 15) -> Dict[str, Any]:
+        logging.info(f"[Phase 2] Engaging Genetic RAMA Evolutionary Engine (pop_size={pop_size}, generations={max_generations})...")
         target_coeffs = data.get("q_series_coefficients")
         
         if target_coeffs:
             import numpy as np
             target_coeffs = np.array(target_coeffs, dtype=np.float64)
-            # Run population-based evolutionary search instead of simulated annealing
-            engine = GeneticRAMAEngine(target_coeffs, pop_size=25, max_generations=5, lean_gated=False)
+            # Run population-based evolutionary search with high generation count
+            engine = GeneticRAMAEngine(target_coeffs, pop_size=pop_size, max_generations=max_generations, lean_gated=False)
             best_state, history = engine.run()
             energy, c, i, d = engine.fitness.evaluate_energy(best_state)
             
@@ -132,7 +132,7 @@ class AutonomousDiscoveryEngine:
         logging.info(f"  -> {mapping.replace(chr(10), ' | ')}")
         return mapping
 
-    def run_full_pipeline(self, image_path: str):
+    def run_full_pipeline(self, image_path: str, pop_size: int = 50, max_generations: int = 15):
         print("\n" + "="*70)
         print(f" 🚀 PHASE 2 DISCOVERY LOOP: {os.path.basename(image_path)}")
         print("="*70)
@@ -141,7 +141,7 @@ class AutonomousDiscoveryEngine:
         retrieval_data = self.step_1_retrieval(image_path)
         
         # 2. Intuition
-        intuition = self.step_2_antigravity_intuition(retrieval_data)
+        intuition = self.step_2_antigravity_intuition(retrieval_data, pop_size=pop_size, max_generations=max_generations)
         
         # 3. Bridge
         bridge = self.step_3_deep_think_bridge(intuition, retrieval_data)

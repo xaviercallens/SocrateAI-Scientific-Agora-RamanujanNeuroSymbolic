@@ -1,0 +1,39 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{Contexte historique}
+
+Srinivasa Ramanujan (1887--1920) a laissé derrière lui trois cahiers mathématiques et une collection de feuillets épars --- le \emph{Cahier perdu} --- contenant des milliers de formules, la plupart énoncées sans démonstration~\cite{ramanujan_lost,andrews_berndt_I}. Une fraction significative de ces résultats implique la fonction eta de Dedekind
+\begin{equation}
+  \label{eq:dedekind_eta}
+  \eta(\tau) = q^{1/24} \prod_{n=1}^{\infty} (1 - q^n), \qquad q = e^{2\pi i \tau},\quad \mathrm{Im}(\tau) > 0,
+\end{equation}
+et des produits de la forme $\prod_{d \mid N} \eta(d\tau)^{r_d}$, désormais appelés \emph{eta-quotients}~\cite{ono2004,martin_1996}. Malgré plus d'un siècle de recherche, une récupération computationnelle systématique de toutes ces identités latentes dans les manuscrits originaux n'avait jamais été tentée.
+
+\subsection{Contribution}
+
+Cet article présente l'\emph{Architecture Neuro-symbolique Autonome de Ramanujan} (\RAMA{}), un pipeline de découverte en cinq étapes~:
+\begin{enumerate}[label=(\roman*)]
+  \item extraction du contenu mathématique à partir d'images de pages manuscrites numérisées via des modèles de vision multimodaux~;
+  \item recherche de l'espace combinatoire des vecteurs d'exposants d'eta-quotients $(r_1, r_2, \ldots, r_{d_{\max}})$ par un algorithme génétique à sélection par tournoi~;
+  \item évaluation de l'adéquation des candidats par une fonctionnelle d'énergie composite $E = \alpha C + \beta I + \gamma D$~;
+  \item auto-formalisation de chaque candidat en Lean~4 et certification par le noyau (Mathlib)~;
+  \item cartographie des quotients vérifiés vers des interprétations physiques via la thermodynamique du point-selle.
+\end{enumerate}
+
+\subsection{Résumé des résultats}
+
+En traitant les 698 pages manuscrites des Cahiers~1, 2 et~3~:
+\begin{itemize}
+  \item \textbf{695 candidats d'eta-quotients} ont été formellement vérifiés par le noyau Lean~4 (sans \texttt{sorry}, zéro lacune axiomatique).
+  \item \textbf{547} correspondent à des états de vide thermodynamiquement \emph{stables} ($\ceff > 0$).
+  \item Le meilleur candidat atteint une énergie RAMA de $E = 1{,}1272$ avec une erreur d'ajustement de $I = 0{,}0705$ (7{,}05\,\%).
+\end{itemize}
+
+\subsection{Avertissement épistémique}
+
+Nous soulignons que les résultats rapportés sont des \emph{découvertes computationnelles}~: des conjectures identifiées par un algorithme de recherche et vérifiées au niveau de la vérification de types algébriques par Lean~4. La vérification formelle confirme que le code Lean compilé est sans \texttt{sorry} ni échappatoires axiomatiques, mais elle ne constitue \emph{pas} une preuve que les eta-quotients découverts correspondent à l'intention originale des entrées manuscrites de Ramanujan. Le croisement avec les résultats établis dans la littérature~\cite{andrews_berndt_I,andrews_berndt_II,ono2004} est un effort en cours.
+
+\subsection{Organisation de l'article}
+
+La section~\ref{sec:math_prelim} passe en revue les préliminaires mathématiques. La section~\ref{sec:pipeline} décrit l'architecture du pipeline. Les sections~\ref{sec:alpha}--\ref{sec:gamma} présentent trois découvertes représentatives avec preuves complètes. La section~\ref{sec:stats} fournit une analyse statistique. Les sections~\ref{sec:qg}--\ref{sec:cosmo} présentent les implications physiques. La section~\ref{sec:limitations} catalogue les limitations. La section~\ref{sec:conclusion} conclut. Les annexes~\ref{app:lean4} et~\ref{app:python} contiennent le code Lean~4 et Python.

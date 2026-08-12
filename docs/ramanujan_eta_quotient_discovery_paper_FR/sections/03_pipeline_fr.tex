@@ -1,0 +1,55 @@
+\section{Architecture du pipeline \RAMA{}}
+\label{sec:pipeline}
+
+\subsection{Vue d'ensemble}
+
+Le pipeline \RAMA{} comprend cinq étapes séquentielles, chacune implémentée comme un module autonome avec des entrées, sorties et modes de défaillance explicites.
+
+\begin{enumerate}[label=\textbf{Étape~\arabic*:},leftmargin=3cm]
+  \item \textbf{Extraction par vision.} Un modèle de vision multimodal (Gemini~2.5 Flash) traite chaque page manuscrite numérisée et retourne un schéma Pydantic structuré contenant~: transcription \LaTeX{} brute, classification d'archétype, score de confiance, et les 12 premiers coefficients de $q$-série.
+  \item \textbf{Recherche évolutionnaire génétique.} Un algorithme génétique à base de population recherche l'espace combinatoire des vecteurs d'exposants $\mathbf{r} = (r_1, \ldots, r_{d_{\max}})$ avec $d_{\max} = 12$ et $r_d \in [-24, 24]$.
+  \item \textbf{Pont de classification.} L'archétype est utilisé pour assigner un domaine cible et une ombre modulaire conjecturée.
+  \item \textbf{Auto-formalisation Lean~4.} Le générateur produit un fichier Lean~4 contenant des théorèmes de Niveau~A (vérification par \texttt{rfl}) et Niveau~B (structure de classification).
+  \item \textbf{Cartographie physique.} Les candidats vérifiés sont évalués via une matrice de point-selle.
+\end{enumerate}
+
+\subsection{Détails de l'algorithme génétique}
+
+\subsubsection{Fonctionnelle d'énergie}
+\begin{equation}
+  E(\mathcal{S}) = \alpha \cdot C(\mathcal{S}) + \beta \cdot I(\mathcal{S}) + \gamma \cdot D(\mathcal{S}),
+\end{equation}
+où $C$ est le coût de complexité (régularisation d'Occam), $I$ l'erreur d'ajustement (distance $\ell_2$ normalisée), et $D$ la pénalité de domaine.
+
+\subsubsection{Opérateurs évolutionnaires}
+\begin{itemize}
+  \item \textbf{Sélection~:} tournoi avec $k=3$.
+  \item \textbf{Croisement~:} uniforme sur les vecteurs d'exposants.
+  \item \textbf{Mutation~:} $p_{\mathrm{mut}} = 0{,}3$, $\Delta r_d \sim \mathrm{Uniforme}(-4, 4)$.
+  \item \textbf{Immigration~:} injection de 5 individus aléatoires quand la diversité chute.
+\end{itemize}
+
+\subsubsection{Hyperparamètres}
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Paramètre} & \textbf{Essai (10 pages)} & \textbf{Exécution complète} \\
+\midrule
+Taille de population & 25 & 50 \\
+Générations max & 5 & 15 \\
+$d_{\max}$ & 12 & 12 \\
+Taux de mutation & 0,3 & 0,3 \\
+Taille de tournoi & 3 & 3 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Protocole de vérification Lean~4}
+
+\begin{definition}[Certification par le noyau]
+Un candidat est \emph{certifié par le noyau} si~: (1)~le fichier Lean~4 compile avec \texttt{lake env lean} retournant le code de sortie~0, (2)~le fichier ne contient aucun \texttt{sorry}, \texttt{axiom}, ni \texttt{native\_decide}, (3)~le script d'audit CI ne rapporte aucun axiome interdit.
+\end{definition}
+
+\begin{remark}
+La certification par le noyau confirme la \emph{correction au niveau des types} des identités algébriques énoncées. Elle ne vérifie \emph{pas} que le candidat correspond à l'intention originale de Ramanujan ni qu'il est <<~nouveau~>> par rapport à la littérature existante.
+\end{remark}

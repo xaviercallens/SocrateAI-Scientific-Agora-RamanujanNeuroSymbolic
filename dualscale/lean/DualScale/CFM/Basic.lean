@@ -24,7 +24,7 @@ noncomputable def lipschitzModulus_xi (C : ℝ) (alphaPrime : ℚ) : ℝ :=
 
 /-- Theorem (CFM identity): The Lipschitz modulus of the vortex direction field
     is bounded by an explicit geometric constant times the incomplete elliptic integral angle. -/
-theorem cfm_elliptic_identity (alphaPrime : ℚ) (hpos : 0 < alphaPrime) :
+theorem cfm_elliptic_identity (alphaPrime : ℚ) (_hpos : 0 < alphaPrime) :
     ∃ C : ℝ, 0 < C ∧ lipschitzModulus_xi C alphaPrime = C * truncationAngle alphaPrime := by
   use 1
   constructor

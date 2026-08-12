@@ -5,6 +5,7 @@ package dualscale {
   -- add package configuration options here
 }
 
+@[default_target]
 lean_lib DualScale {
   -- add library configuration options here
 }

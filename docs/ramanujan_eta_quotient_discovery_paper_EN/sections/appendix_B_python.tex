@@ -1,0 +1,114 @@
+% ============================================================================
+% Appendix B: Python Reproducibility Code
+% ============================================================================
+\section{Python Reproducibility Code}
+\label{app:python}
+
+\subsection{Invariant Computation}
+
+The following Python script computes exact rational invariants
+for any eta-quotient exponent vector using the
+\texttt{fractions.Fraction} library for arbitrary-precision
+rational arithmetic.
+
+\begin{lstlisting}[language=Python, caption={Generic
+  eta-quotient invariant computation.}]
+from fractions import Fraction
+
+def compute_invariants(factors):
+    """
+    factors: list of (d, r_d) tuples
+    Returns: c_eff, weight, leading_power (as Fraction)
+    """
+    c_eff = sum(Fraction(r, d) for d, r in factors)
+    weight = Fraction(sum(r for _, r in factors), 2)
+    leading_power = Fraction(
+        sum(d * r for d, r in factors), 24)
+    return c_eff, weight, leading_power
+
+# Discovery Alpha
+alpha = [(1,1),(5,-1),(6,2),(7,-1),(8,4),
+         (9,-2),(10,12),(11,-3),(12,4)]
+c, w, p = compute_invariants(alpha)
+print(f"Alpha: c_eff={c} ({float(c):.4f}), "
+      f"weight={w}, leading_power={p}")
+
+# Discovery Beta
+beta = [(3,1),(6,1),(7,-2),(8,4),(9,-6),
+        (10,4),(11,-1),(12,-1)]
+c, w, p = compute_invariants(beta)
+print(f"Beta:  c_eff={c} ({float(c):.4f}), "
+      f"weight={w}, leading_power={p}")
+
+# Discovery Gamma
+gamma = [(1,1),(5,1),(7,1),(8,4),(10,3),
+         (11,-3),(12,-4)]
+c, w, p = compute_invariants(gamma)
+print(f"Gamma: c_eff={c} ({float(c):.4f}), "
+      f"weight={w}, leading_power={p}")
+\end{lstlisting}
+
+\subsection{Visualization Script}
+
+\begin{lstlisting}[language=Python, caption={Energy
+  distribution visualization of verified candidates.}]
+import sqlite3
+import matplotlib.pyplot as plt
+
+conn = sqlite3.connect('namagiri.db')
+c = conn.cursor()
+c.execute("""SELECT rama_energy, rama_I
+    FROM discoveries
+    WHERE lean_status='VERIFIED'""")
+rows = c.fetchall()
+energies = [r[0] for r in rows]
+fit_errors = [r[1] for r in rows]
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+ax1.hist(energies, bins=30, color='steelblue',
+         edgecolor='white', alpha=0.9)
+ax1.set_xlabel('RAMA Energy $E$', fontsize=12)
+ax1.set_ylabel('Count', fontsize=12)
+ax1.set_title('Energy Distribution (Verified)', fontsize=13)
+ax1.axvline(x=1.1272, color='red', ls='--',
+            label='Best $E=1.13$')
+ax1.legend()
+
+ax2.scatter(energies, fit_errors, alpha=0.4,
+            s=10, color='teal')
+ax2.set_xlabel('RAMA Energy $E$', fontsize=12)
+ax2.set_ylabel('Fit Error $I$', fontsize=12)
+ax2.set_title('Energy vs Fit Error', fontsize=13)
+
+plt.tight_layout()
+plt.savefig('docs/v4_discovery_paper/figures/'
+            'energy_distribution.pdf', dpi=300)
+plt.show()
+\end{lstlisting}
+
+\subsection{Database Query Script}
+
+\begin{lstlisting}[language=Python, caption={Database
+  query for verified stable candidates.}]
+import sqlite3, json
+
+conn = sqlite3.connect('namagiri.db')
+c = conn.cursor()
+
+# All stable unitary candidates
+c.execute("""SELECT id, conjecture, rama_energy,
+    eta_exponents, physics_mapping
+    FROM discoveries
+    WHERE lean_status='VERIFIED'
+      AND physics_mapping LIKE '%Stable (Unitary)%'
+    ORDER BY rama_energy ASC
+    LIMIT 20""")
+
+for row in c.fetchall():
+    print(f"ID: {row[0]}")
+    print(f"  E={row[2]:.4f}")
+    print(f"  {row[1]}")
+    print(f"  Exponents: {row[3]}")
+    print()
+\end{lstlisting}

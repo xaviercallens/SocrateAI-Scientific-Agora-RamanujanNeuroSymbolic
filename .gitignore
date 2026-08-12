@@ -9,3 +9,15 @@ env/
 input/
 *.pdf
 !docs/v2.1_paper/*.pdf
+# Lean build artifacts
+dualscale/lean/.lake/build/
+# LaTeX aux files
+*.aux
+*.toc
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+# Temporary Python files
+*.pyc
+*.pyo

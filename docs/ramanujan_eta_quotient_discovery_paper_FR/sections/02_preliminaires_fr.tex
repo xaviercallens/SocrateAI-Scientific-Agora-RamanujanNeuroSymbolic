@@ -1,0 +1,72 @@
+\section{Préliminaires mathématiques}
+\label{sec:math_prelim}
+
+\subsection{La fonction eta de Dedekind}
+
+\begin{definition}[Fonction eta de Dedekind~\cite{dedekind_1877}]
+\label{def:dedekind_eta}
+Pour $\tau \in \mathfrak{H} = \{\tau \in \CC : \mathrm{Im}(\tau) > 0\}$ et $q = e^{2\pi i \tau}$, la \emph{fonction eta de Dedekind} est
+\begin{equation}
+  \eta(\tau) = q^{1/24} \prod_{n=1}^{\infty} (1 - q^n).
+\end{equation}
+C'est une forme modulaire de poids $1/2$ pour le groupe modulaire complet $\mathrm{SL}_2(\ZZ)$ avec un système de multiplicateurs~\cite{ono2004}.
+\end{definition}
+
+\begin{definition}[Eta-quotient~\cite{martin_1996,gordon_hughes_1993}]
+\label{def:eta_quotient}
+Pour un entier positif $N$ (le \emph{niveau}) et des entiers $r_d \in \ZZ$ indexés par les diviseurs $d \mid N$, un \emph{eta-quotient} de niveau $N$ est la fonction
+\begin{equation}
+  f(\tau) = \prod_{d \mid N} \eta(d\tau)^{r_d}.
+\end{equation}
+Le vecteur $(r_d)_{d \mid N}$ est appelé le \emph{vecteur d'exposants}.
+\end{definition}
+
+\subsection{Conditions de modularité}
+
+Un eta-quotient $f(\tau) = \prod_{d \mid N} \eta(d\tau)^{r_d}$ est une forme modulaire de poids $k = \frac{1}{2}\sum_{d \mid N} r_d$ pour $\Gamma_0(N)$ si et seulement si les conditions suivantes sont satisfaites~\cite{ono2004,martin_1996}~:
+\begin{enumerate}[label=(M\arabic*)]
+  \item $k = \frac{1}{2}\sum_{d \mid N} r_d \in \ZZ$ \hfill (poids entier),
+  \item $\sum_{d \mid N} d \cdot r_d \equiv 0 \pmod{24}$ \hfill (pointe à $\infty$),
+  \item $\sum_{d \mid N} \frac{N}{d} \cdot r_d \equiv 0 \pmod{24}$ \hfill (pointe à $0$),
+  \item Pour chaque pointe $s$ de $\Gamma_0(N)$~: $\sum_{d \mid N} \frac{\gcd(d,s)^2}{d} \cdot r_d \geq 0$ \hfill (holomorphie).
+\end{enumerate}
+
+\subsection{Invariants physiques d'un eta-quotient}
+
+\begin{definition}[Charge centrale effective]
+$\ceff = \sum_{d \mid N} r_d / d$.
+Dans le contexte de la théorie conforme des champs (CFT) bidimensionnelle, $\ceff$ gouverne la densité asymptotique d'états via la formule de Cardy~\cite{cardy_1986}.
+\end{definition}
+
+\begin{definition}[Poids modulaire]
+$k = \frac{1}{2} \sum_{d \mid N} r_d$.
+\end{definition}
+
+\begin{definition}[Puissance dominante]
+$p = \frac{1}{24} \sum_{d \mid N} d \cdot r_d$.
+\end{definition}
+
+\subsection{La formule de Cardy et l'entropie d'états BPS}
+
+Dans une CFT 2D unitaire avec charge centrale $c$ et charge centrale effective $\ceff$, le nombre asymptotique d'états au niveau d'excitation $n$ est donné par la formule de Cardy~\cite{cardy_1986}~:
+\begin{equation}
+  \rho(n) \sim \exp\left(2\pi \sqrt{\frac{\ceff \cdot n}{6}}\right), \qquad n \to \infty.
+\end{equation}
+L'entropie d'états BPS dans le cadre de Strominger--Vafa~\cite{strominger_vafa_1996} est
+\begin{equation}
+  S_{\mathrm{BPS}} = 2\pi \sqrt{\frac{\ceff \cdot n}{6}}.
+\end{equation}
+
+\subsection{Fonctions thêta mock}
+
+\begin{definition}[Fonction thêta mock~\cite{zwegers2002,bringmann_ono_2006}]
+Dans sa dernière lettre à Hardy (1920), Ramanujan a introduit des fonctions qui <<~imitent~>> le comportement des formes modulaires près du bord du disque unité. Zwegers~\cite{zwegers2002} et Bringmann--Ono~\cite{bringmann_ono_2006} ont établi que les fonctions thêta mock sont les parties holomorphes de \emph{formes de Maass harmoniques} de poids~$1/2$. L'\emph{ombre} d'une fonction thêta mock est une série thêta unaire ou un eta-quotient qui encode la complétion non-holomorphe.
+\end{definition}
+
+\subsection{L'expansion de Hardy--Ramanujan--Rademacher}
+
+La fonction de partition $p(n)$ satisfait la formule asymptotique de Hardy--Ramanujan~\cite{hardy_ramanujan_1918}~:
+\begin{equation}
+  p(n) \sim \frac{1}{4n\sqrt{3}} \exp\left(\pi\sqrt{\frac{2n}{3}}\right), \qquad n \to \infty.
+\end{equation}
+Rademacher~\cite{rademacher_1937} a raffiné ceci en une série convergente exacte.

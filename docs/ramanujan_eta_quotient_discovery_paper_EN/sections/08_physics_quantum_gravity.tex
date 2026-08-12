@@ -1,0 +1,75 @@
+% ============================================================================
+% Section 8: Quantum Gravity & Black Hole Thermodynamics
+% ============================================================================
+\section{Physical Domain I: Quantum Gravity and Black Hole Thermodynamics}
+\label{sec:quantum_gravity}
+
+\subsection{Background: The Black Hole Information Problem}
+
+The Bekenstein--Hawking entropy formula~\cite{bekenstein_1973,hawking_1975}
+\begin{equation}
+  S_{\mathrm{BH}} = \frac{A}{4G_N}
+\end{equation}
+assigns a thermodynamic entropy proportional to the horizon area $A$ of a black hole. A central challenge of quantum gravity is to provide a \emph{microscopic} statistical accounting of this entropy: identifying the quantum microstates whose logarithmic count reproduces $S_{\mathrm{BH}}$.
+
+In 1996, Strominger and Vafa~\cite{strominger_vafa_1996} achieved this for a class of five-dimensional extremal black holes in Type~IIB string theory compactified on $K3 \times S^1$, by modeling the black hole as a bound state of D1 and D5 branes. The microstate degeneracy is computed via the \emph{elliptic genus} of the K3 target space, whose generating function is a modular form built from Dedekind eta-quotients.
+
+\subsection{Finding: Stable Unitary Eta-Quotients on K3}
+
+The \RAMA{} engine has identified \textbf{547 Lean-certified eta-quotients} with positive effective central charge ($\ceff > 0$), classified as thermodynamically \emph{Stable (Unitary)}. These eta-quotients satisfy the necessary condition for a physically consistent BPS state-counting function: the asymptotic density of their Fourier coefficients grows as
+\begin{equation}
+  \label{eq:cardy_growth}
+  d(n) \sim \exp\left(2\pi\sqrt{\frac{\ceff \cdot n}{6}}\right), \qquad n \to \infty,
+\end{equation}
+per the Cardy formula~\cite{cardy_1986}. The BPS state entropy at unit excitation is
+\begin{equation}
+  S_{\mathrm{BPS}}(n=1) = 2\pi\sqrt{\frac{\ceff}{6}}.
+\end{equation}
+
+\subsection{Real Data: Cardy Entropy from Verified Discoveries}
+
+Using the 200 lowest-energy stable candidates from namagiri.db, we compute the exact $\ceff$ from each exponent vector and evaluate the Cardy entropy scaling. Results (Figure~\ref{fig:cardy}):
+
+\begin{itemize}
+  \item $\ceff$ ranges from $0.0006$ to $2.9008$ across all stable candidates.
+  \item Median $\ceff = 0.6376$; mean $\ceff = 0.7536$.
+  \item Discovery~$\alpha$ ($\ceff = 2.5289$): $S_{\mathrm{BPS}}(1) = 4.08$.
+  \item Discovery~$\beta$ ($\ceff = 0.1085$): $S_{\mathrm{BPS}}(1) = 0.84$.
+  \item Discovery~$\gamma$ ($\ceff = 1.2427$): $S_{\mathrm{BPS}}(1) = 2.86$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/cardy_entropy.pdf}
+\caption{(a)~BPS state entropy $S_{\mathrm{BPS}}(n)$ for the three featured discoveries as a function of excitation level $n$. (b)~Distribution of $\ceff$ across the 200 best stable verified candidates. Real data from \texttt{namagiri.db}.}
+\label{fig:cardy}
+\end{figure}
+
+\subsection{Comparison with OEIS A000025 (Real Mock Theta Data)}
+
+We downloaded 10,001 exact integer coefficients of Ramanujan's third-order mock theta function $f(q)$ from OEIS~A000025~\cite{oeis_A000025}:
+\[
+  f(q) = \sum_{n=0}^{\infty} a(n) q^n, \qquad a(0..14) = [1, 1, -2, 3, -3, 3, -5, 7, -6, 6, -10, 12, -11, 13, -17].
+\]
+Figure~\ref{fig:oeis} compares these exact coefficients with the $q$-expansion of Discovery~$\alpha$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/oeis_comparison.pdf}
+\caption{Bar chart comparing the first 21 coefficients of OEIS~A000025 (Ramanujan's $f(q)$) with the $q$-expansion of Discovery~$\alpha$. While the overall magnitudes are comparable, the exact coefficient-by-coefficient match is imperfect, reflecting the generalized (non-classical) nature of the discovered eta-quotient.}
+\label{fig:oeis}
+\end{figure}
+
+\subsection{Implication: Holographic Entanglement Entropy}
+
+Via the AdS/CFT correspondence~\cite{maldacena_1998}, the 2D CFT partition function on the boundary encodes the gravitational degrees of freedom of the bulk. The Ryu--Takayanagi formula~\cite{ryu_takayanagi_2006} expresses the entanglement entropy of a boundary subregion as a minimal surface area in the bulk:
+\begin{equation}
+  S_{\mathrm{EE}} = \frac{\mathrm{Area}(\gamma_A)}{4G_N}.
+\end{equation}
+Our verified eta-quotients provide candidate \emph{exact} partition functions whose modular properties could yield analytic expressions for $S_{\mathrm{EE}}$ in specific K3 compactifications, bypassing perturbative approximations.
+
+\begin{conjecture}[BPS Microstate Mapping --- Tier~C]
+The 547 stable eta-quotients discovered by \RAMA{} encode the generating functions for BPS microstate degeneracies in orbifold compactifications of $K3$, generalizing the Strominger--Vafa counting function $1/\eta(\tau)^{24}$.
+\end{conjecture}
+
+\textbf{Falsifiability:} This conjecture is falsified if the Fourier coefficients of any stable candidate, when compared term-by-term against the known BPS degeneracies from the K3 elliptic genus (computable via the Igusa cusp form $\Phi_{10}$~\cite{dijkgraaf_verlinde_verlinde}), disagree at the first 20~terms.

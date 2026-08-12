@@ -1,0 +1,49 @@
+\section{Investigations critiques}
+\label{sec:investigations}
+
+Nous rapportons trois investigations conçues pour évaluer la portée physique et mathématique des découvertes \RAMA{}.
+
+\subsection{Investigation~1~: Comparaison avec le genre elliptique K3}
+
+La fonction génératrice des états $1/2$-BPS en théorie de Type~IIB sur $K3 \times S^1$ est $1/\eta(\tau)^{24}$, dont les coefficients $d(n)$ sont donnés par l'OEIS~A006922~\cite{strominger_vafa_1996}~:
+\[
+  d(-1, 0, 1, 2, \ldots) = (1, 24, 324, 3200, 25650, 176256, 1073720, \ldots).
+\]
+
+Nous avons calculé le développement en $q$-série de chacun des 547 eta-quotients stables à 50 termes et comparé avec $d(n)$.
+
+\textbf{Résultat~:}
+\begin{itemize}
+  \item \textbf{Aucune correspondance exacte.} Aucun candidat ne reproduit $1/\eta(\tau)^{24}$ coefficient par coefficient. Le vecteur d'exposants $\{1{:}{-24}\}$ n'apparaît pas dans la base.
+  \item \textbf{49 candidats à forte corrélation de croissance.} La corrélation de Pearson entre $\log|a_{\mathrm{cand}}(n)|$ et $\log|d(n)|$ dépasse 0,95 pour 49 candidats. La meilleure corrélation est $r = 0{,}977$ (ID~: \texttt{b5e089fd}, $\ceff = 0{,}61$).
+  \item \textbf{Interprétation.} Ces candidats partagent la même \emph{classe d'universalité} que la fonction BPS K3 mais diffèrent en préfacteurs numériques.
+\end{itemize}
+
+\subsection{Investigation~2~: Borne de Ramanujan--Petersson}
+
+La conjecture de Ramanujan--Petersson (démontrée par Deligne pour les formes propres holomorphes de Hecke) affirme $|a(n)| \leq C \cdot n^{k/2 - 1/4 + \varepsilon}$.
+
+\textbf{Résultat~:} Sur 35 candidats avec $k > 0$, \textbf{34 violent} la borne. Seul un candidat (\texttt{bdd0512d}, $k = 9{,}5$) la satisfait.
+
+\textbf{Interprétation~:} C'est un \emph{résultat négatif important}. Les eta-quotients découverts violent la condition de modularité~(M2) et ne sont donc \emph{pas} des formes propres de Hecke classiques. La conjecture du pont vers l'enstrophie (Section~\ref{sec:ns}) doit être révisée~: les bornes polynomiales ne s'appliquent pas. Cependant, la croissance de type Cardy $\sim \exp(2\pi\sqrt{\ceff n/6})$ est \emph{sous-exponentielle}, ce qui pourrait encore impliquer une enstrophie sommable sous des conditions taubériennes appropriées.
+
+\subsection{Investigation~3~: Nouveauté de la Découverte~$\gamma$ (OEIS)}
+
+Nous avons interrogé la base OEIS pour la suite de coefficients de la Découverte~$\gamma$~:
+\[
+  a(0..19) = [1, -1, -1, 0, 0, 0, 1, 1, -3, 5, -1, 7, 3, -8, -11, -5, -4, -4, 21, -23].
+\]
+
+\textbf{Résultat~:} Les recherches à 10 et 12 termes retournent \textbf{<<~Pas de résultats~>>} de l'OEIS (requête du 11/08/2026). De plus, $\gamma$ est distincte des 8 familles d'eta-quotients de référence testées et est unique dans le corpus de 695 découvertes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/nobel_investigation.pdf}
+\caption{Résultats des trois investigations. (a)~$\gamma$ vs A000025~: entièrement distinct. (b)~Distribution des corrélations de croissance K3. (c)~Test de la borne de Ramanujan--Petersson.}
+\end{figure}
+
+\begin{proposition}[Nouveauté de $\gamma$ --- Niveau~B]
+L'eta-quotient $f_\gamma$ de niveau~9240, poids~$3/2$, n'apparaît pas dans l'OEIS en date d'août~2026.
+\end{proposition}
+
+\textbf{Réfutabilité~:} Falsifié si la suite $[1, -1, -1, 0, 0, 0, 1, 1, -3, 5]$ est trouvée dans l'OEIS, le LMFDB, ou les tables publiées sous une paramétrisation quelconque.

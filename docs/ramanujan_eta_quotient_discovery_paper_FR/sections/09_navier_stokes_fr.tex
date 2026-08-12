@@ -1,0 +1,53 @@
+\section{Domaine physique II~: Équations de Navier--Stokes (révisé)}
+\label{sec:ns}
+
+\subsection{Contexte~: Le problème du prix du millénaire}
+
+L'Institut Clay~\cite{clay_navier_stokes} offre 1\,M\$ pour une preuve (ou réfutation) de la régularité globale des équations de Navier--Stokes 3D incompressibles~:
+\begin{equation}
+  \frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\nabla p + \nu \Delta \mathbf{u} + \mathbf{f}, \qquad \nabla \cdot \mathbf{u} = 0.
+\end{equation}
+
+\subsection{Résultat négatif~: Violation de Ramanujan--Petersson}
+
+\textbf{L'investigation~2 (Section~\ref{sec:investigations}) montre que le pont R-P échoue.} Sur 35 candidats stables avec $k > 0$~:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Test} & \textbf{Nombre} & \textbf{\%} \\
+\midrule
+Satisfait R-P & 1 & 2,9\,\% \\
+Viole R-P & 34 & 97,1\,\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Raison~:} La borne R-P s'applique aux \emph{formes propres de Hecke}, pas aux eta-quotients généralisés. Nos découvertes violent la condition de modularité~(M2).
+
+\subsection{Conjecture révisée~: Mécanisme de Cardy--Taubérien}
+
+La formule de Cardy~\cite{cardy_1986} donne la croissance~:
+\[
+  |a(n)| \sim \exp\!\left(2\pi \sqrt{\frac{\ceff \cdot n}{6}}\right).
+\]
+Cette croissance est \emph{sous-exponentielle} mais \emph{super-polynomiale}.
+
+\begin{conjecture}[Borne d'enstrophie de Cardy--Taubérien --- Niveau~C]
+Si le spectre de vorticité admet une asymptotique de type Cardy avec $\ceff > 0$, alors~:
+\[
+  \Omega(t) \leq C_0 \cdot \exp\!\left(\alpha \sqrt{\log t}\right), \qquad \alpha = 2\pi\sqrt{\ceff/6}.
+\]
+Cette croissance sous-exponentielle est suffisante pour exclure l'explosion en temps fini.
+\end{conjecture}
+
+\subsection{Trou spectral certifié Lean~4 (préservé)}
+
+Le module \texttt{SpectralGap/Basic.lean} formalise la borne d'Alon--Boppana $\lambda_2 \leq 2\sqrt{q-1}$. Ce résultat est \emph{indépendant} de la violation R-P et reste valide (Niveau~A). Compilation~: code de sortie~0 (11/08/2026).
+
+\subsection{Réfutabilité}
+\begin{enumerate}
+  \item DNS ($N \geq 4096^3$) montrant une croissance d'enstrophie plus rapide que $\exp(\alpha\sqrt{\log t})$.
+  \item Preuve que le spectre de vorticité n'admet pas d'asymptotique de Cardy.
+  \item \textbf{Déjà partiellement réfuté~:} le pont polynomial R-P est \emph{exclu} pour les eta-quotients généralisés (34/35 violent la borne).
+\end{enumerate}

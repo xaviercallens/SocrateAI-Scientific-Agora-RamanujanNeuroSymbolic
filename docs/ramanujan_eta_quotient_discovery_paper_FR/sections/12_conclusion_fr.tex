@@ -1,0 +1,41 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+\subsection{Résumé des contributions}
+Le moteur \RAMA{} a traité les \textbf{698~pages manuscrites} des trois cahiers de Ramanujan en 1,13~heures, produisant~:
+\begin{itemize}
+  \item \textbf{695 candidats d'eta-quotients certifiés} par le noyau Lean~4 (zéro \texttt{sorry}).
+  \item \textbf{547 configurations stables unitaires} ($\ceff > 0$), soit 78,7\,\% des candidats vérifiés.
+  \item \textbf{1 axiome explicite} (Aubin--Lions, documenté avec références Lions 1969, Simon 1987).
+\end{itemize}
+
+\subsection{Résultats clés}
+Les trois investigations critiques (Section~\ref{sec:investigations}) ont donné~:
+\begin{itemize}
+  \item \textbf{Genre elliptique K3~:} 49 candidats montrent $>95\,\%$ de corrélation de croissance avec $1/\eta(\tau)^{24}$, sans correspondance exacte.
+  \item \textbf{Ramanujan--Petersson~:} 34/35 candidats testés \emph{violent} la borne R-P $\Rightarrow$ pas des formes propres de Hecke. Conjecture NS révisée.
+  \item \textbf{Nouveauté de~$\gamma$~:} \textbf{Confirmée} --- zéro correspondances OEIS. Résultat positif le plus fort.
+\end{itemize}
+
+\subsection{Vérification Tier A+ (norm\_num)}
+Les 5 meilleures découvertes ont été mises à niveau avec \texttt{native\_decide}, vérifiant les valeurs rationnelles exactes de $\ceff$, $k$ et $p$ par calcul dans le noyau Lean. Les 15 théorèmes compilent sans erreur.
+
+\subsection{Empreinte computationnelle}
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+\textbf{Métrique} & \textbf{Valeur} \\
+\midrule
+Durée totale & 1,13~heures \\
+Pages traitées & 698 \\
+Énergie totale & 0,0734~kWh \\
+CO$_2$ (réseau français) & 4,1~g \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Reproductibilité}
+Tout le code source est disponible sous double licence (MIT + CC~BY-SA~4.0)~:
+\begin{center}
+\url{https://github.com/xaviercallens/SocrateAI-Scientific-Agora-RamanujanNeuroSymbolic}
+\end{center}

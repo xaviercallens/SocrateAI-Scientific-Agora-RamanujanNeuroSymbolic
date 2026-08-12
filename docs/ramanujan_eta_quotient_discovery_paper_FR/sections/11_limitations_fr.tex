@@ -1,0 +1,41 @@
+\section{Limitations et conditions de réfutabilité}
+\label{sec:limitations}
+
+\subsection{Avertissement de rigueur épistémique}
+Les résultats de cet article sont classifiés selon trois niveaux de rigueur~:
+\begin{description}
+  \item[Niveau~A (Certifié par machine)] Identité algébrique dont le code Lean~4 compile sans \texttt{sorry} sous le noyau Lean~4. Exemples~: tous les théorèmes d'invariants (\cref{sec:alpha,sec:beta,sec:gamma}).
+  \item[Niveau~B (Support computationnel)] Résultat numérique reproductible par du code Python open-source, validé indépendamment. Exemples~: bornes spectrales, distributions d'énergie.
+  \item[Niveau~C (Cartographie conjecturale)] Affirmation heuristique ou spéculative basée sur des analogies structurelles. Exemples~: toutes les interprétations physiques, les conjectures de nouveauté.
+\end{description}
+
+\subsection{Limitations explicites}
+
+\begin{enumerate}[label=\textbf{L\arabic*}]
+  \item \textbf{OCR simulé.} Le module d'extraction par vision retourne les mêmes 12~coefficients cibles pour toutes les pages classifiées comme <<~fonction thêta mock~>>. Par conséquent, la diversité des découvertes ne reflète pas le contenu page-spécifique des manuscrits.
+  
+  \item \textbf{Preuves par réflexivité.} Les théorèmes Lean~4 utilisent la tactique \texttt{by rfl}, qui vérifie la cohérence de typage algébrique par évaluation de noyau. Ceci ne constitue \emph{pas} une preuve que les coefficients de Fourier du candidat correspondent terme à terme aux coefficients OEIS.
+  
+  \item \textbf{Cartographie physique heuristique.} L'assignation d'un domaine physique (théorie des cordes, dynamique des fluides) est basée sur des règles heuristiques. Elle n'a \emph{pas} de fondement déductif formel.
+  
+  \item \textbf{Couverture des bases de données.} Les affirmations de nouveauté sont bornées par notre couverture de l'OEIS et du LMFDB. Un eta-quotient peut exister dans la littérature sous une paramétrisation différente.
+  
+  \item \textbf{Optima locaux.} L'algorithme génétique est stochastique et peut converger vers des optima locaux. La reproductibilité inter-exécutions n'est pas garantie.
+\end{enumerate}
+
+\subsection{Conditions de falsification résumées}
+
+\begin{table}[H]
+\centering
+\caption{Résumé des conditions de falsification pour chaque conjecture.}
+\begin{tabular}{p{3cm}p{9cm}}
+\toprule
+\textbf{Conjecture} & \textbf{Condition de falsification} \\
+\midrule
+Nouveauté $\gamma$ & Trouvée dans OEIS, LMFDB, ou tables de Martin/Gordon--Hughes \\
+BPS sur K3 & Divergence terme-à-terme avec le genre elliptique K3 \\
+Enstrophie modulaire & DNS montrant croissance super-polynomiale de $\Omega(t)$ \\
+Picard--Fuchs & DESI/Euclid donnant $w \notin [-1{,}5, -0{,}5]$ à $>5\sigma$ \\
+\bottomrule
+\end{tabular}
+\end{table}

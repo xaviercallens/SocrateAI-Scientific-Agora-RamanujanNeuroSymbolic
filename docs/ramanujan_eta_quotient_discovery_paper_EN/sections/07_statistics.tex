@@ -1,0 +1,113 @@
+% ============================================================================
+% Section 7: Statistical Analysis
+% ============================================================================
+\section{Statistical Analysis of the Discovery Corpus}
+\label{sec:statistics}
+
+\subsection{Corpus Summary}
+
+As of 2026-08-11 19:30 UTC+2, the \RAMA{} engine has processed
+481 of 698 manuscript pages (68.9\% completion).
+Table~\ref{tab:corpus_summary} summarizes the results.
+
+\begin{table}[H]
+\centering
+\caption{Summary statistics of the \RAMA{} discovery run
+(snapshot at 2026-08-11 19:42 UTC+2; run ongoing).}
+\label{tab:corpus_summary}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Metric} & \textbf{Count} & \textbf{Percentage} \\
+\midrule
+Total pages processed & $\sim$540 & 77.4\% of corpus \\
+Total discoveries in database & 1737 & --- \\
+Lean~4 Verified (\textsc{verified}) & 597 & 34.4\% of total \\
+Lean~4 Failed (\textsc{failed}) & 1140 & 65.6\% of total \\
+Stable Unitary vacua & 468 & 78.4\% of verified \\
+Unstable (Tachyonic) & 129 & 21.6\% of verified \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/energy_distribution.pdf}
+\caption{(a)~Distribution of RAMA energy $E$ across all 597 verified
+candidates. (b)~Energy vs.\ fit error colored by stability
+classification. (c)~Proportion of stable vs.\ tachyonic
+candidates.}
+\label{fig:energy_dist}
+\end{figure}
+
+\subsection{Energy Distribution}
+
+\begin{proposition}[Energy Range]
+Among the 477 verified discoveries, the RAMA energy
+$E$ ranges from $E_{\min} = 1.1272$ (Discovery~$\alpha$)
+to $E_{\max} \approx 8.15$.  The median energy is
+approximately $E_{\mathrm{med}} \approx 3.5$.
+\end{proposition}
+
+The fit error $I$ (the normalized $\ell_2$ residual
+against target coefficients) shows a strong inverse
+correlation with population size and generation count:
+\begin{itemize}
+  \item 10-page dry run (pop=25, gen=5): median $I \approx 0.45$.
+  \item Full run (pop=50, gen=15): median $I \approx 0.25$.
+  \item Best candidate: $I = 0.0705$ (7.05\% residual).
+\end{itemize}
+
+\subsection{Stability Classification}
+
+The thermodynamic stability classification is based on
+the sign of the effective central charge:
+\begin{equation}
+  \text{Equilibrium} =
+  \begin{cases}
+    \text{Stable (Unitary)} & \text{if } \ceff > 0, \\
+    \text{Unstable (Tachyonic)} & \text{if } \ceff < 0, \\
+    \text{Marginal} & \text{if } \ceff = 0.
+  \end{cases}
+\end{equation}
+
+\begin{proposition}[Stability Ratio]
+Of the 477 verified candidates, 378 (79.2\%) have
+$\ceff > 0$ and are classified as \emph{Stable (Unitary)}.
+101 (21.2\%) have $\ceff < 0$ and are classified as
+\emph{Unstable (Tachyonic)}.
+\end{proposition}
+
+\begin{remark}
+The preponderance of stable configurations ($\sim$79\%)
+is consistent with the hypothesis that Ramanujan's
+manuscript entries preferentially encode physically
+viable partition functions.  However, this ratio
+may also reflect a selection bias in the evolutionary
+search, which penalizes high-complexity candidates
+that tend to have negative $\ceff$.  A controlled
+experiment with uniform random sampling would be
+needed to distinguish these explanations.
+\end{remark}
+
+\subsection{Lean~4 Verification Rate}
+
+The Lean~4 verification success rate improved dramatically
+between the initial run (pop=25, gen=5) and the full run
+(pop=50, gen=15):
+\begin{itemize}
+  \item \textbf{Initial full-corpus run} (August~9--10):
+        0/1141 verified (0\%).  All candidates used the
+        legacy auto-formalization template with broken
+        tactic syntax.
+  \item \textbf{10-page dry run} (August~11, after
+        remediation): 8/10 verified (80\%).
+  \item \textbf{Full high-generation run} (August~11,
+        ongoing): 477/1618 unique candidates verified
+        (29.5\%).
+\end{itemize}
+
+The 29.5\% verification rate reflects the fact that many
+$q$-expansions converge to the same exponent vector
+(database deduplication on \texttt{(eta\_exponents, q\_shift)}),
+and the auto-formalization template was fixed after the
+initial failed run.

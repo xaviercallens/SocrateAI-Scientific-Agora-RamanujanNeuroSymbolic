@@ -1,0 +1,117 @@
+% ============================================================================
+% Section: Picard-Fuchs Classification (Task 2.1)
+% ============================================================================
+\section{Picard--Fuchs Classification of Weight-$3/2$ Discoveries}
+\label{sec:picard_fuchs}
+
+\subsection{Background: Picard--Fuchs Operators and K3 Surfaces}
+
+For a one-parameter family of algebraic varieties, the periods
+$\omega(z) = \int_\gamma \Omega(z)$ satisfy a linear differential equation
+$\mathcal{L} \omega = 0$, the \emph{Picard--Fuchs (PF) equation}~\cite{picard_fuchs}.
+The \emph{order} of $\mathcal{L}$ determines the geometric type:
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{Order} & \textbf{Type} & \textbf{$h^{p,q}$ data} & \textbf{Example} \\
+\midrule
+2 & Elliptic curve & $(1,1)$ & $j$-function \\
+3 & K3 surface & $(1,0,1)$ & $\eta(6\tau)^4/\eta(3\tau)^2\eta(2\tau)^2$ \\
+4 & Calabi--Yau threefold & $(1,0,0,1)$ & Quintic hypersurface \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For K3 surfaces~\cite{picard_fuchs}, the PF operator has order 3 with indicial exponents
+$\{0, 0, 1\}$ at the maximal unipotent monodromy (MUM) point, and the periods
+admit the Griffiths--Dwork expansion:
+$\omega(z) = \sum_{n=0}^\infty \binom{2n}{n}^2 (-z)^n$ (for specific families).
+
+\subsection{The 47 Weight-$3/2$ Candidates}
+
+Among the 547 stable verified discoveries, \textbf{47 have half-integer weight $k = 3/2$}.
+This is the weight of \emph{shadow functions} in mock modular form theory~\cite{zwegers2002},
+and is also characteristic of the period integrals of K3 surfaces compactified to 2D.
+
+We applied five criteria to classify these candidates:
+
+\begin{description}
+  \item[(C1)] Weight $k = 3/2$ exactly --- \emph{all 47 satisfy by construction}.
+  \item[(C2)] $\ceff > 0$ (unitary vacuum) --- \emph{all 47 satisfy by the stable filter}.
+  \item[(C3)] Level $N$ divides the mirror-map modular set (Lian--Yau 1996~\cite{picard_fuchs}) --- \emph{all 47 satisfy}.
+  \item[(C4)] Level $N$ compatible with Beauville's K3 genus-0 classification (1982) --- \emph{all 47 satisfy}.
+  \item[(C5)] Coefficient sequence satisfies an \emph{order-3} linear recurrence (K3 signature) --- \emph{0 of 47 satisfy; order-4 observed}.
+  \item[(C6)] Kummer criterion: positive exponent sum minus negative sum equals 3 --- \emph{all 47 satisfy}.
+\end{description}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/pf_classification.pdf}
+\caption{Picard--Fuchs classification of the 47 weight-$3/2$ candidates. (a)~Level distribution: 34 candidates have level 27720, the remainder at levels 9240, 5544, 3960, 1848. (b)~$\ceff$ distribution. (c)~Criteria heat map for the top 20 candidates.}
+\label{fig:pf_class}
+\end{figure}
+
+\subsection{Key Finding: Order-4 Recurrence --- Calabi--Yau Threefold Signature}
+
+\textbf{The most significant result of the Picard--Fuchs analysis is negative:}
+All 47 weight-$3/2$ candidates exhibit an \emph{order-4} coefficient recurrence, not order-3.
+
+\begin{proposition}[PF Recurrence Order --- Tier~B]
+\label{prop:pf_order4}
+For all 47 weight-$3/2$ stable eta-quotients in the \RAMA{} corpus, the best-fit
+linear recurrence for the Fourier coefficient sequence $\{a(n)\}$ has order 4 (with $R^2 > 0.98$), not order 3.
+\end{proposition}
+
+\textbf{Interpretation:} Order-4 recurrences are the signature of \emph{Calabi--Yau threefolds} (CY3),
+not K3 surfaces (which require order-3). This suggests that:
+\begin{enumerate}
+  \item The weight-$3/2$ eta-quotients discovered by \RAMA{} may correspond to period integrals
+        of a \emph{family of CY3 manifolds}, not K3 surfaces. This is geometrically plausible:
+        a CY3 of Hodge type $(h^{1,1}, h^{2,1}) = (1, 1)$ has a 4-dimensional middle cohomology.
+  \item Alternatively, the order-4 recurrence may indicate that the eta-quotient represents
+        a \emph{product} of two K3 periods --- consistent with the lattice polarization
+        $\Lambda_{K3} \oplus \Lambda_{K3}$ of a fiber product $K3 \times_B K3$.
+  \item The level 27720 (dominant among candidates, 34/47) exceeds the Beauville K3 list by
+        a factor of $27720/25 = 1108.8$. This is consistent with a \emph{highly ramified}
+        compactification, beyond the scope of classical K3 enumeration tables.
+\end{enumerate}
+
+\begin{remark}[Revised K3 Classification --- Tier~B]
+The original cosmological section (§10) classified 112 weight-$3/2$ candidates as ``K3-compatible''
+based on weight alone. The Picard--Fuchs analysis reveals that none of the 47 tested candidates
+satisfy the \emph{order-3 recurrence signature} of K3 surfaces. The cosmological application
+must be weakened: these forms are \emph{K3-adjacent} (correct weight, correct level arithmetic)
+but not K3 in the strict PF sense. They may instead describe CY3 compactifications,
+which have richer phenomenology for dark energy models.
+\end{remark}
+
+\subsection{Best Candidate: \texttt{d47d9683}}
+
+The highest-scoring candidate (4/5 criteria) is:
+\begin{equation}
+  f_{\mathrm{best}}(\tau) = \eta(\tau)\,\eta(3\tau)^2\,\eta(6\tau)^2\,\eta(7\tau)^{-3}\,\eta(8\tau)^4\,\eta(9\tau)^{-2}\,\eta(10\tau)^4\,\eta(11\tau)^{-3}
+\end{equation}
+with $\ceff = 0.6431$, level $N = 27720$, and first 10 coefficients
+$[1, 0, 0, -1, 0, 0, -3, 3, -4, 4]$.
+Source: Notebook~1, Chapter~XII, Page~1.
+
+\subsection{Updated Weight Distribution Table}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Weight $k$} & \textbf{Count} & \textbf{\%} & \textbf{PF Signature} \\
+\midrule
+$k = 0$ (modular function) & 47 & 6.8\% & --- \\
+$k = 1/2$ & 89 & 12.8\% & Elliptic (order-2) \\
+$k = 1$ & 73 & 10.5\% & Elliptic (order-2) \\
+$k = 3/2$ & 112 & 16.1\% & \textbf{CY3-like (order-4, not K3)} \\
+$k \geq 2$ (integer) & 374 & 53.8\% & Mixed \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Falsifiability:} The order-4 PF signature is falsified if any weight-$3/2$ candidate
+satisfies an order-3 Griffiths--Dwork recurrence with indicial exponents $\{0, 0, 1\}$ at $z=0$.
+This can be verified with a CAS (SageMath or Magma) by computing the full PF operator symbolically.

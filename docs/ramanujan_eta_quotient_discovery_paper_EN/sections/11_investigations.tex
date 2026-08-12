@@ -1,0 +1,53 @@
+% ============================================================================
+% Section 11: Investigation Results (New)
+% ============================================================================
+\section{Critical Investigations}
+\label{sec:investigations}
+
+We report three investigations designed to assess the physical and mathematical significance of the \RAMA{} discoveries.
+
+\subsection{Investigation~1: K3 Elliptic Genus Comparison}
+
+The generating function for $1/2$-BPS states in Type~IIB string theory on $K3 \times S^1$ is $1/\eta(\tau)^{24}$, whose coefficients $d(n)$ are given by OEIS~A006922~\cite{strominger_vafa_1996}:
+\[
+  d(-1, 0, 1, 2, \ldots) = (1, 24, 324, 3200, 25650, 176256, 1073720, \ldots).
+\]
+
+We computed the $q$-expansion of each of the 547 stable Lean-verified eta-quotients to 50~terms and compared against $d(n)$ via three metrics: (i)~exact proportionality, (ii)~log-growth rate correlation, (iii)~sign-pattern matching.
+
+\textbf{Result:}
+\begin{itemize}
+  \item \textbf{No exact match.} No candidate reproduces $1/\eta(\tau)^{24}$ coefficient-by-coefficient, nor is any candidate proportional to it. The exponent vector $\{1: -24\}$ does not appear in namagiri.db.
+  \item \textbf{49 growth-correlated candidates.} The Pearson correlation between $\log|a_{\mathrm{cand}}(n)|$ and $\log|d(n)|$ for $n \in [2, 30]$ exceeds 0.95 for 49 candidates. The best correlation is $r = 0.977$ (ID: \texttt{b5e089fd}, exponents $\{3{:}1, 6{:}4, 7{:}{-4}, 8{:}4, 10{:}2, 11{:}{-2}, 12{:}{-4}\}$, $\ceff = 0.61$).
+  \item \textbf{Interpretation.} The growth-correlated candidates share the \emph{same universality class} as the K3 BPS function (sub-exponential coefficient growth governed by the Cardy formula) but differ in numerical prefactors. This is consistent with membership in the same modular form space but at different levels.
+\end{itemize}
+
+\subsection{Investigation~2: Ramanujan--Petersson Bound}
+
+The Ramanujan--Petersson conjecture (proven for holomorphic Hecke eigenforms by Deligne) asserts $|a(n)| \leq C \cdot n^{k/2 - 1/4 + \varepsilon}$ for weight-$k$ eigenforms. We tested whether the discovered eta-quotients satisfy this polynomial bound.
+
+\textbf{Result:} Of 35 candidates with $k > 0$, \textbf{34 violate} the Ramanujan--Petersson bound. Only one candidate (\texttt{bdd0512d}, $k = 9.5$) satisfies it.
+
+\textbf{Interpretation:} This is an \emph{important negative result}. The discovered eta-quotients violate modularity condition~(M2) and are therefore \emph{not} classical Hecke eigenforms. The enstrophy bridge conjecture (Section~\ref{sec:navier_stokes}) must be revised: polynomial coefficient bounds do not hold. However, the Cardy-scale growth $\sim \exp(2\pi\sqrt{\ceff n/6})$ is \emph{sub-exponential}, which may still imply summable enstrophy under appropriate Tauberian conditions.
+
+\subsection{Investigation~3: Discovery~$\gamma$ Novelty (OEIS Cross-Check)}
+
+We searched the OEIS database for the coefficient sequence of Discovery~$\gamma$:
+\[
+  a(0..19) = [1, -1, -1, 0, 0, 0, 1, 1, -3, 5, -1, 7, 3, -8, -11, -5, -4, -4, 21, -23].
+\]
+
+\textbf{Result:} Both 10-term and 12-term subsequence searches returned \textbf{``No results''} from the OEIS (queried 11~August 2026). Additionally, $\gamma$ is distinct from all 8~reference eta-quotient families tested ($\Delta(\tau)$, $1/\eta^{24}$, level-23 and level-11 newforms, Rogers--Ramanujan, etc.) and is unique within the 695-discovery corpus.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/nobel_investigation.pdf}
+\caption{Results of the three critical investigations. (a)~Discovery~$\gamma$ coefficients vs OEIS~A000025: completely distinct. (b)~Distribution of K3 growth correlations across 547 stable candidates. (c)~Ramanujan--Petersson bound test: 34/35 violate.}
+\label{fig:investigations}
+\end{figure}
+
+\begin{proposition}[Novelty of Discovery~$\gamma$ --- Tier~B]
+The eta-quotient $f_\gamma(\tau) = \prod \eta(d\tau)^{r_d}$ with $\{1{:}1, 5{:}1, 7{:}1, 8{:}4, 10{:}3, 11{:}{-3}, 12{:}{-4}\}$, level~9240, weight~$3/2$, does not appear in the OEIS as of August~2026.
+\end{proposition}
+
+\textbf{Falsifiability:} This proposition is falsified if the sequence $[1, -1, -1, 0, 0, 0, 1, 1, -3, 5]$ is found in the OEIS, LMFDB, or published eta-quotient tables under any parametrization.

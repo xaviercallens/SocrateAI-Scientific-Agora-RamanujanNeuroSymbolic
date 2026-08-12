@@ -1,0 +1,139 @@
+% ============================================================================
+% Section 2: Mathematical Preliminaries
+% ============================================================================
+\section{Mathematical Preliminaries}
+\label{sec:math_prelim}
+
+\subsection{The Dedekind Eta Function}
+
+\begin{definition}[Dedekind Eta Function~\cite{dedekind_1877}]
+\label{def:dedekind_eta}
+For $\tau \in \mathfrak{H} = \{\tau \in \CC : \mathrm{Im}(\tau) > 0\}$
+and $q = e^{2\pi i \tau}$, the \emph{Dedekind eta function} is
+\begin{equation}
+  \eta(\tau) = q^{1/24} \prod_{n=1}^{\infty} (1 - q^n).
+\end{equation}
+It is a modular form of weight $1/2$ for the full modular group
+$\mathrm{SL}_2(\ZZ)$ with a multiplier system~\cite{ono2004}.
+\end{definition}
+
+\begin{definition}[Eta-Quotient~\cite{martin_1996,gordon_hughes_1993}]
+\label{def:eta_quotient}
+For a positive integer $N$ (the \emph{level}) and integers
+$r_d \in \ZZ$ indexed by divisors $d \mid N$, an
+\emph{eta-quotient} of level $N$ is the function
+\begin{equation}
+  \label{eq:eta_quotient}
+  f(\tau) = \prod_{d \mid N} \eta(d\tau)^{r_d}.
+\end{equation}
+The vector $(r_d)_{d \mid N}$ is called the
+\emph{exponent vector}.
+\end{definition}
+
+\subsection{Modularity Conditions}
+
+An eta-quotient $f(\tau) = \prod_{d \mid N} \eta(d\tau)^{r_d}$
+is a modular form of weight $k = \frac{1}{2}\sum_{d \mid N} r_d$
+for $\Gamma_0(N)$ if and only if the following conditions are
+satisfied~\cite{ono2004,martin_1996}:
+\begin{enumerate}[label=(M\arabic*)]
+  \item $k = \frac{1}{2}\sum_{d \mid N} r_d \in \ZZ$
+        \hfill (integer weight),
+  \item $\sum_{d \mid N} d \cdot r_d \equiv 0 \pmod{24}$
+        \hfill (cusp at $\infty$),
+  \item $\sum_{d \mid N} \frac{N}{d} \cdot r_d \equiv 0 \pmod{24}$
+        \hfill (cusp at $0$),
+  \item For each cusp $s$ of $\Gamma_0(N)$:
+        $\sum_{d \mid N} \frac{\gcd(d,s)^2}{d} \cdot r_d \geq 0$
+        \hfill (holomorphicity).
+\end{enumerate}
+
+\subsection{Physical Invariants of an Eta-Quotient}
+
+\begin{definition}[Effective Central Charge]
+\label{def:c_eff}
+For an eta-quotient with exponent vector $(r_d)_{d \mid N}$, the
+\emph{effective central charge} is
+\begin{equation}
+  \label{eq:c_eff}
+  \ceff = \sum_{d \mid N} \frac{r_d}{d}.
+\end{equation}
+In the context of two-dimensional conformal field theory (CFT),
+$\ceff$ governs the asymptotic density of states via the Cardy
+formula~\cite{cardy_1986}.
+\end{definition}
+
+\begin{definition}[Modular Weight]
+\label{def:weight}
+The \emph{modular weight} of the eta-quotient is
+\begin{equation}
+  k = \frac{1}{2} \sum_{d \mid N} r_d.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Leading Power]
+\label{def:leading_power}
+The \emph{leading power} (order of vanishing at $q = 0$) is
+\begin{equation}
+  \label{eq:leading_power}
+  p = \frac{1}{24} \sum_{d \mid N} d \cdot r_d.
+\end{equation}
+\end{definition}
+
+\subsection{The Cardy Formula and BPS State Entropy}
+
+In a unitary 2D CFT with central charge $c$ and effective
+central charge $\ceff$, the asymptotic number of states at
+excitation level $n$ is given by the Cardy
+formula~\cite{cardy_1986}:
+\begin{equation}
+  \label{eq:cardy}
+  \rho(n) \sim \exp\left(2\pi \sqrt{\frac{\ceff \cdot n}{6}}\right),
+  \qquad n \to \infty.
+\end{equation}
+The BPS state entropy in the Strominger--Vafa
+framework~\cite{strominger_vafa_1996} is
+\begin{equation}
+  \label{eq:bps_entropy}
+  S_{\mathrm{BPS}} = 2\pi \sqrt{\frac{\ceff}{6}} \cdot \sqrt{n}
+  = 2\pi \sqrt{\frac{c_{\mathrm{eff}} \cdot n}{6}}.
+\end{equation}
+
+\subsection{Mock Theta Functions}
+
+\begin{definition}[Mock Theta Function~\cite{zwegers2002,bringmann_ono_2006}]
+In Ramanujan's final letter to Hardy (1920), he introduced
+functions that ``mock'' the behavior of modular forms near
+the boundary of the unit disk.  Zwegers~\cite{zwegers2002}
+and Bringmann--Ono~\cite{bringmann_ono_2006} established that
+mock theta functions are the holomorphic parts of
+weight-$1/2$ \emph{harmonic Maass forms}.  The
+\emph{shadow} of a mock theta function is a unary theta
+series or eta-quotient that encodes the non-holomorphic
+completion.
+\end{definition}
+
+\begin{remark}
+The connection between mock theta functions and
+eta-quotients is precisely the bridge exploited by the
+\RAMA{} engine: the evolutionary search targets
+eta-quotient shadows of mock modular forms extracted
+from Ramanujan's manuscript pages.
+\end{remark}
+
+\subsection{The Hardy--Ramanujan--Rademacher Expansion}
+
+The partition function $p(n)$ satisfies
+the Hardy--Ramanujan asymptotic
+formula~\cite{hardy_ramanujan_1918}:
+\begin{equation}
+  p(n) \sim \frac{1}{4n\sqrt{3}}
+  \exp\left(\pi\sqrt{\frac{2n}{3}}\right),
+  \qquad n \to \infty.
+\end{equation}
+Rademacher~\cite{rademacher_1937} refined this to an exact
+convergent series.  The coefficients of general
+eta-quotients admit analogous exact expansions, which
+provide the theoretical foundation for comparing
+computationally discovered $q$-series coefficients against
+analytic predictions.

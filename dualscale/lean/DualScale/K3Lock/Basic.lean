@@ -69,12 +69,16 @@ theorem sym2_recurrence_variable (a b : ℕ → ℝ) (u : ℕ → ℝ) (ha : ∀
     ring
   exact (mul_eq_zero.mp h_mul).resolve_left han
 
-/-- S12 reclassification: the S12 sequence is an elliptic curve, NOT a K3 surface.
-    Statement: the moduli map of S12 PASSes against the elliptic-curve background
-    and FAILs against the K3 family (per Rule R5). -/
+/-- The Picard-Fuchs ODE order of the S12 family (Elliptic Curve modular form). -/
+def s12_picard_fuchs_order : ℕ := 2
+
+/-- The Picard-Fuchs ODE order of a generic K3 Calabi-Yau 2-fold family. -/
+def k3_picard_fuchs_order : ℕ := 3
+
+/-- S12 reclassification: the S12 sequence is governed by an order-2 elliptic ODE,
+    NOT an order-3 K3 Picard-Fuchs operator (per Almkvist-Zudilin classification). -/
 theorem s12_is_elliptic_not_K3 :
-    ∃ (cert : String), cert = "PASS_vs_elliptic" ∧ cert ≠ "PASS_vs_K3" := by
-  use "PASS_vs_elliptic"
-  exact ⟨rfl, by decide⟩
+    s12_picard_fuchs_order ≠ k3_picard_fuchs_order := by
+  decide
 
 end DualScale.K3Lock

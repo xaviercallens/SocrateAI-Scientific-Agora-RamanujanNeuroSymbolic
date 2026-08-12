@@ -78,5 +78,7 @@
   ],
   "modular_weight_k": -91.5,
   "ground_state_E0": 70.83333333333333,
-  "c_eff": -1698.0
+  "c_eff": 0.35627705627705626,
+  "c_eff_exact": "823/2310",
+  "c_eff_formula": "sum(e_d/d for d=1..12)"
 }

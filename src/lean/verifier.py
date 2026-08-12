@@ -1,7 +1,7 @@
 """
 Project NAMAGIRI — Lean 4 Verifier (WS-3)
-Wraps the Lean compiler with retry logic. If verification fails,
-it relaxes the statement to keep the pipeline moving without hard crashing.
+Wraps the Lean compiler. If verification fails, it reports failure honestly
+without masking errors via sorry relaxation.
 """
 import subprocess
 import os
@@ -12,59 +12,45 @@ class LeanVerifier:
     def __init__(self, lean_project_dir: str = "lean4"):
         self.lean_project_dir = os.path.abspath(lean_project_dir)
         
-    def verify(self, lean_code: str, filename: str = "temp_verification.lean", retries: int = 3) -> Tuple[bool, str, str]:
+    def verify(self, lean_code: str, filename: str = "temp_verification.lean", retries: int = 1) -> Tuple[bool, str, str]:
         """
         Write code to a file and run 'lean' on it.
-        If it fails, relax the code and retry.
-        Returns: (success_bool, final_lean_code, error_message)
+        Returns: (success_bool, lean_code, error_message)
+        No sorry relaxation — failures are reported honestly.
         """
-        target_path = os.path.join(self.lean_project_dir, filename)
-        current_code = lean_code
+        # Place temporary verification files in DualScale/Discovery/ for fast Lake olean lookup
+        discovery_dir = os.path.join(self.lean_project_dir, "DualScale", "Discovery")
+        os.makedirs(discovery_dir, exist_ok=True)
+        target_path = os.path.join(discovery_dir, filename)
+        rel_path = os.path.relpath(target_path, self.lean_project_dir)
         
         for attempt in range(retries):
             with open(target_path, "w") as f:
-                f.write(current_code)
+                f.write(lean_code)
                 
             try:
-                # Assuming 'lake env lean' to pick up mathlib
+                # Run 'lake env lean' on relative path inside DualScale/Discovery
                 result = subprocess.run(
-                    ["lake", "env", "lean", filename],
+                    ["lake", "env", "lean", rel_path],
                     cwd=self.lean_project_dir,
                     capture_output=True,
                     text=True,
-                    timeout=60
+                    timeout=120
                 )
                 
                 if result.returncode == 0:
                     logging.info(f"  -> [SUCCESS] Lean 4 verification passed on attempt {attempt + 1}.")
-                    return True, current_code, ""
+                    return True, lean_code, ""
                 else:
-                    logging.warning(f"  -> [RETRY] Lean 4 verification failed on attempt {attempt + 1}:\n{result.stderr}")
-                    # Relaxation strategy: Convert 'ring' or 'norm_num' to 'sorry' or 'trivial' on a True proposition
-                    current_code = self._relax_code(current_code)
+                    error_msg = result.stderr.strip()
+                    logging.warning(f"  -> [FAILED] Lean 4 verification failed on attempt {attempt + 1}:\n{error_msg}")
+                    return False, lean_code, error_msg
                     
             except subprocess.TimeoutExpired:
                 logging.error(f"  -> [ERROR] Lean verification timed out on attempt {attempt + 1}.")
-                current_code = self._relax_code(current_code)
+                return False, lean_code, "Verification timed out"
             except FileNotFoundError:
                 logging.error("  -> [ERROR] 'lake' compiler not found in PATH.")
-                return False, current_code, "Compiler not found"
+                return False, lean_code, "Compiler not found"
                 
-        return False, current_code, "Failed after max retries."
-
-    def _relax_code(self, code: str) -> str:
-        """
-        Relax the proof by replacing difficult tactics with 'sorry'.
-        NEVER rewrite to True — that produces Rule R3 tautologies.
-        """
-        lines = code.split("\n")
-        relaxed_lines = []
-        
-        for line in lines:
-            stripped = line.strip()
-            if stripped in ("ring", "norm_num", "simp", "decide", "omega"):
-                relaxed_lines.append("  sorry")
-            else:
-                relaxed_lines.append(line)
-                
-        return "\n".join(relaxed_lines)
+        return False, lean_code, "Failed after max retries."

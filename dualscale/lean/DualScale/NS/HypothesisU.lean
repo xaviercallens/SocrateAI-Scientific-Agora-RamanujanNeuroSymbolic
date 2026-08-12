@@ -37,13 +37,6 @@ noncomputable def bps_scaling (c : CentralCharge) : ℝ :=
 
 /-- 
   The vorticity field ω = curl u of the truncated flow.
-  Formally computed as the antisymmetric part of the Jacobian of u.
-  For u = (u₁, u₂, u₃) : ℝ³ → ℝ³, the vorticity is the ℝ³-valued field:
-    ω = (∂u₃/∂x₂ - ∂u₂/∂x₃, ∂u₁/∂x₃ - ∂u₃/∂x₁, ∂u₂/∂x₁ - ∂u₁/∂x₂)
-  OPEN: Full curl formalization requires T2 (Mathlib VectorCalculus extension).
--/
-/-- 
-  The vorticity field ω = curl u of the truncated flow.
   Rigorously defined via the Fréchet derivative `fderiv ℝ u.val x` evaluated on
   canonical basis vectors e₁, e₂, e₃ of ℝ³:
     v₁ = ∂u/∂x₁, v₂ = ∂u/∂x₂, v₃ = ∂u/∂x₃
@@ -114,10 +107,16 @@ def admits_strong_subsequence_limit : Prop :=
   Aubin–Lions Compactness Step:
   If Hypothesis U holds, the family of truncated flows admits a strongly 
   convergent subsequence to a weak solution as a → 0.
-  Formalized via the AubinLions compactness module.
+  
+  PROOF: Direct application of the Aubin–Lions axiom (declared in AubinLions.lean).
+  The axiom dependency is explicitly documented: this lemma inherits Tier C status
+  from the unproven Aubin–Lions compactness axiom.
 -/
 lemma compactness_step_is_open (hU : HypothesisU) :
     admits_strong_subsequence_limit := by
-  sorry
+  -- Convert HypothesisU to AubinLions.HypothesisU by structural identity
+  -- Both types are definitionally equal (same structure, same namespace)
+  exact AubinLions.aubin_lions_compactness ⟨hU.choose, hU.choose_spec.1, 
+    fun a ha1 ha2 c hc u t => hU.choose_spec.2 a ha1 ha2 c hc u t⟩
 
 end DualScale.NS

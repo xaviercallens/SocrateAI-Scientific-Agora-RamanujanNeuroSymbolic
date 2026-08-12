@@ -1,0 +1,39 @@
+\section{Découverte~$\boldsymbol{\alpha}$~: meilleur ajustement}
+\label{sec:alpha}
+
+\subsection{Contexte et source}
+Ce candidat a été récupéré du \textbf{Cahier~1, chapitre~XV, page~19}. L'étape d'extraction par vision a classifié le contenu comme une \emph{fonction thêta mock} avec une confiance de 0,75.
+
+\subsection{Eta-quotient découvert}
+\begin{equation}
+  f_\alpha(\tau) = q^{1/24} \cdot \eta(\tau)^{1} \, \eta(5\tau)^{-1} \, \eta(6\tau)^{2} \, \eta(7\tau)^{-1} \, \eta(8\tau)^{4} \, \eta(9\tau)^{-2} \, \eta(10\tau)^{12} \, \eta(11\tau)^{-3} \, \eta(12\tau)^{4}.
+\end{equation}
+\textbf{Énergie RAMA~:} $E = 1{,}1272$. \quad \textbf{Erreur d'ajustement~:} $I = 0{,}0705$ (7{,}05\,\%).
+
+\subsection{Calcul exact des invariants}
+\begin{proposition}[Invariants de $f_\alpha$]
+\begin{align}
+  \ceff &= \frac{3505}{1386} \approx 2{,}5289, \\
+  k &= \frac{16}{2} = 8, \\
+  p &= \frac{150}{24} = \frac{25}{4}.
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Chaque calcul découle directement des définitions. Les sommes sont finies et exactes. La valeur rationnelle de $\ceff$ est confirmée par le noyau Lean~4.
+\end{proof}
+
+\subsection{Analyse de modularité}
+\begin{proposition}
+$\sum_d d \cdot r_d = 150 \not\equiv 0 \pmod{24}$. Par conséquent, $f_\alpha$ ne satisfait \textbf{pas} la condition~(M2) pour une forme modulaire holomorphe de niveau~1. C'est un eta-quotient \emph{généralisé} ou une composante d'une forme mock modulaire~\cite{zwegers2002,bringmann_ono_2006}.
+\end{proposition}
+
+\begin{proof}
+$150 = 6 \times 24 + 6$, donc $150 \equiv 6 \pmod{24}$.
+\end{proof}
+
+\subsection{Développement en $q$-série}
+Les premiers coefficients calculés par le script Python \texttt{compute\_alpha.py} sont~:
+\[
+  a(0..14) = [1, -1, -1, 0, 0, 2, -3, 3, -3, 5, -7, 7, 6, -9, 25].
+\]

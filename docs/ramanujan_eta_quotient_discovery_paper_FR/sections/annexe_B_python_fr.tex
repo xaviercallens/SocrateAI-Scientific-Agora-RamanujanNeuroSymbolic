@@ -1,0 +1,46 @@
+\section{Code Python reproductible}
+\label{app:python}
+
+\subsection{Calcul des invariants}
+
+\begin{lstlisting}[language=Python, caption={Calcul exact des invariants d'un eta-quotient.}]
+from fractions import Fraction
+
+def compute_invariants(factors):
+    """factors: list of (d, r_d) tuples"""
+    c_eff = sum(Fraction(r, d) for d, r in factors)
+    weight = Fraction(sum(r for _, r in factors), 2)
+    leading = Fraction(sum(d*r for d, r in factors), 24)
+    return c_eff, weight, leading
+
+# Decouverte Alpha
+alpha = [(1,1),(5,-1),(6,2),(7,-1),(8,4),
+         (9,-2),(10,12),(11,-3),(12,4)]
+c, w, p = compute_invariants(alpha)
+print(f"c_eff={c} ({float(c):.4f}), k={w}, p={p}")
+\end{lstlisting}
+
+\subsection{Visualisation des données réelles}
+
+\begin{lstlisting}[language=Python, caption={Entropie de Cardy à partir des données réelles.}]
+import sqlite3, json, numpy as np
+import matplotlib.pyplot as plt
+
+conn = sqlite3.connect('namagiri.db')
+c = conn.cursor()
+c.execute("""SELECT eta_exponents FROM discoveries
+    WHERE lean_status='VERIFIED'
+      AND physics_mapping LIKE '%Stable%'
+    ORDER BY rama_energy ASC LIMIT 200""")
+
+c_effs = []
+for row in c.fetchall():
+    exp = json.loads(row[0])
+    ce = sum(int(v)/int(k) for k,v in exp.items()
+             if int(k) != 0)
+    c_effs.append(ce)
+
+c_effs = np.array([x for x in c_effs if x > 0])
+print(f"Median c_eff: {np.median(c_effs):.4f}")
+print(f"Range: [{c_effs.min():.4f}, {c_effs.max():.4f}]")
+\end{lstlisting}

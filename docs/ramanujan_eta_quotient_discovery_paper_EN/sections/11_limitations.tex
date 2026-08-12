@@ -1,0 +1,100 @@
+% ============================================================================
+% Section 9: Limitations and Falsifiability
+% ============================================================================
+\section{Limitations and Falsifiability Conditions}
+\label{sec:limitations}
+
+We enumerate the known limitations of this work explicitly,
+in the spirit of rigorous falsifiable science.
+
+\subsection{Vision Extraction Limitations}
+
+\textbf{L1 (Mock OCR).}  The current pipeline uses a
+\emph{simulated} vision extraction module that returns
+a fixed set of 12 target $q$-series coefficients
+$[1, 1, -1, 1, -2, 2, -3, 3, -4, 5, -6, 7]$ for all
+pages classified as ``Mock Theta Function.''
+Consequently, all 477~verified candidates are fitted
+against the \emph{same target}, and the diversity of
+discoveries reflects the combinatorial richness of the
+eta-quotient search space rather than distinct manuscript
+content.
+
+\textbf{Falsifiability:}  This limitation is eliminated
+when a live Gemini~2.5 multimodal vision API is
+integrated to extract page-specific $q$-series
+coefficients.  At that point, each page will yield a
+\emph{distinct} target, and the diversity of discoveries
+will directly reflect the mathematical content of the
+manuscripts.
+
+\subsection{Lean~4 Verification Scope}
+
+\textbf{L2 (Reflexivity Proofs).}  The Tier~A theorems
+use \texttt{by rfl} to verify that
+$\texttt{candidate.c\_eff} = \texttt{candidate.c\_eff}$,
+which is a \emph{reflexivity} check confirming that the
+Lean~4 expression is well-typed and evaluates
+consistently.  It does \emph{not} prove that the
+$q$-expansion of the candidate matches a specific
+target series to $n$ terms.
+
+\textbf{Falsifiability:}  To upgrade from Tier~A to
+Tier~A+ verification, the Lean code must evaluate the
+first $n$ Fourier coefficients of the candidate
+$q$-expansion and compare them term-by-term against
+the target, using \texttt{norm\_num} or
+\texttt{native\_decide}.
+
+\subsection{Physical Interpretation Caveats}
+
+\textbf{L3 (Conjectural Mapping).}  The assignment of
+``String Theory (K3)'' as the physical domain for all
+mock theta function candidates is a heuristic, not a
+proven isomorphism.  The saddle-point evaluation uses
+simplified thermodynamic matrices, not a full
+worldsheet CFT calculation.
+
+\textbf{Falsifiability:}  The physical mapping is
+falsified if the Fourier coefficients of a candidate
+do not match the known BPS degeneracies for any K3
+compactification at the first 20~terms.
+
+\subsection{Novelty Claims}
+
+\textbf{L4 (Database Coverage).}  Our novelty claims
+are bounded by our search coverage of the OEIS, LMFDB,
+and the tables of Martin~\cite{martin_1996}.  An
+eta-quotient may be ``known'' in a publication or
+database that we have not checked.
+
+\textbf{Falsifiability:}  Each novelty conjecture
+(e.g., \cref{conj:gamma_novel}) is immediately falsified
+by exhibiting a matching entry in any published
+database.
+
+\subsection{Evolutionary Search Bias}
+
+\textbf{L5 (Local Optima).}  The genetic algorithm is a
+stochastic search and may converge to local optima.
+The reported ``best'' candidate may not be globally
+optimal.  Different random seeds yield different
+candidates with comparable fitness.
+
+\subsection{Summary of Tier Classification}
+
+We adopt a three-tier classification for all claims:
+\begin{center}
+\begin{tabular}{cp{10cm}}
+\toprule
+\textbf{Tier} & \textbf{Description} \\
+\midrule
+A & Machine-verified algebraic identity (Lean~4 kernel
+    certified, \texttt{sorry}-free). \\
+B & Computationally supported conjecture (Python
+    numerics match to stated precision, no formal proof). \\
+C & Heuristic or conjectural claim (physical mapping,
+    novelty, or moonshine connection). \\
+\bottomrule
+\end{tabular}
+\end{center}

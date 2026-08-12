@@ -1,0 +1,88 @@
+% ============================================================================
+% Section 9: Navier-Stokes and Fluid Dynamics (REVISED after Investigation 2)
+% ============================================================================
+\section{Physical Domain II: Navier--Stokes Equations and Fluid Dynamics}
+\label{sec:navier_stokes}
+
+\subsection{Background: The Millennium Prize Problem}
+
+The Clay Mathematics Institute~\cite{clay_navier_stokes} offers \$1M for a proof (or disproof) of global regularity of the 3D incompressible Navier--Stokes equations:
+\begin{equation}
+  \label{eq:navier_stokes}
+  \frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\nabla p + \nu \Delta \mathbf{u} + \mathbf{f}, \qquad \nabla \cdot \mathbf{u} = 0,
+\end{equation}
+where $\mathbf{u}$ is the velocity field, $p$ the pressure, $\nu > 0$ the viscosity, and $\mathbf{f}$ an external force. The key open question is whether solutions starting from smooth initial data remain smooth for all time, or whether finite-time singularities (blow-up) can occur.
+
+\subsection{The Enstrophy Bound Problem}
+
+The \emph{enstrophy} $\Omega(t) = \int |\nabla \times \mathbf{u}|^2 \, d^3x$ controls the regularity of solutions. If $\Omega(t) < \infty$ for all $t > 0$, the solution remains smooth~\cite{clay_navier_stokes}. The central difficulty is that the nonlinear term $(\mathbf{u}\cdot\nabla)\mathbf{u}$ drives a \emph{turbulent energy cascade} from large to small scales, and it is unknown whether this cascade terminates or leads to blow-up.
+
+\subsection{Original Hypothesis: Ramanujan--Petersson Bridge}
+
+In the original formulation of this section (v4.0), we conjectured that the polynomial coefficient growth guaranteed by the Ramanujan--Petersson (R-P) bound for Hecke eigenforms could be transferred to enstrophy control. Specifically:
+
+\begin{proposition}[Spectral Bound via Modular Weight --- Tier~B, \textbf{Partially Falsified}]
+\label{prop:spectral_bound}
+For a \emph{classical Hecke eigenform} of weight $k$, the Fourier coefficients satisfy:
+\begin{equation}
+  |a(n)| \leq C \cdot n^{k/2 - 1/4 + \varepsilon}, \qquad \forall \varepsilon > 0,
+\end{equation}
+for a constant $C$ depending only on the level (Deligne's theorem, 1974). This would imply polynomial bounds on the vorticity spectrum.
+\end{proposition}
+
+\subsection{Negative Result: Ramanujan--Petersson Violation}
+
+\textbf{Investigation~2 (Section~\ref{sec:investigations}) reveals that this bridge mechanism fails.} We tested 35 stable candidates with weight $k > 0$ against the R-P bound:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Test} & \textbf{Count} & \textbf{\%} \\
+\midrule
+Satisfy R-P bound & 1 & 2.9\% \\
+Violate R-P bound & 34 & 97.1\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Reason:} The R-P bound applies to \emph{Hecke eigenforms} --- holomorphic modular forms that are simultaneous eigenfunctions of all Hecke operators. Our discovered eta-quotients are \emph{generalized} quotients that violate the modularity condition~(M2): they are neither holomorphic modular forms nor eigenforms. The R-P bound therefore does not apply.
+
+This is an \textbf{important negative result}: the simplest bridge from modular arithmetic to fluid dynamics --- via polynomial coefficient bounds --- is closed for the class of functions discovered by \RAMA{}.
+
+\subsection{Revised Conjecture: Cardy--Tauberian Mechanism}
+
+Although the R-P bridge fails, a weaker mechanism remains viable. The Cardy formula~\cite{cardy_1986} gives the asymptotic growth:
+\begin{equation}
+  |a(n)| \sim \exp\!\Bigl(2\pi \sqrt{\frac{\ceff \cdot n}{6}}\Bigr) \quad \text{as } n \to \infty.
+\end{equation}
+This growth is \emph{sub-exponential} (slower than $e^{cn}$ for any $c > 0$) but \emph{super-polynomial} (faster than $n^k$ for any $k$). We therefore propose:
+
+\begin{conjecture}[Cardy--Tauberian Enstrophy Bound --- Tier~C]
+\label{conj:cardy_enstrophy}
+If the high-frequency vorticity spectrum of a Navier--Stokes solution admits a Cardy-type asymptotic with $\ceff > 0$, then the enstrophy satisfies
+\begin{equation}
+  \Omega(t) \leq C_0 \cdot \exp\!\Bigl(\alpha \sqrt{\log t}\Bigr) \quad \text{for all } t > 0,
+\end{equation}
+where $\alpha = 2\pi\sqrt{\ceff/6}$. This sub-exponential growth is sufficient to preclude finite-time blow-up (since blow-up requires at least polynomial growth $\Omega(t) \sim (T - t)^{-\beta}$ as $t \to T$).
+\end{conjecture}
+
+\textbf{Epistemic status:} This revised conjecture is \emph{weaker} than the original but \emph{honest}: it correctly reflects the actual coefficient growth of our discoveries. The key mathematical step would be a Tauberian theorem converting sub-exponential spectral asymptotics to physical-space enstrophy bounds.
+
+\subsection{Lean-Verified Spectral Gap (Preserved)}
+
+Our Lean~4 module \texttt{DualScale/SpectralGap/Basic.lean} formalizes the \emph{Alon--Boppana} spectral gap bound for Ramanujan graphs:
+\begin{equation}
+  \lambda_2 \leq 2\sqrt{q-1},
+\end{equation}
+where $q$ is the degree. This spectral gap ensures exponential mixing, which in the fluid dynamics analogy corresponds to uniform energy dissipation across scales.
+
+\textbf{Lean~4 certification:} This module compiles with \texttt{lake env lean} exit code~0 (certified 2026-08-11). This result is \emph{independent} of the R-P violation and remains valid (Tier~A).
+
+\subsection{Falsifiability}
+
+The revised conjecture is falsified by:
+\begin{enumerate}
+  \item A DNS simulation ($N \geq 4096^3$) showing enstrophy growth faster than $\exp(\alpha\sqrt{\log t})$ for any $\alpha > 0$.
+  \item A rigorous proof that the vorticity spectrum of a generic smooth NS solution cannot admit Cardy-type asymptotics.
+  \item \textbf{Already partially falsified:} The R-P polynomial bridge is \emph{ruled out} for generalized eta-quotients (34/35 violate). Any claim relying on polynomial bounds must be withdrawn.
+\end{enumerate}

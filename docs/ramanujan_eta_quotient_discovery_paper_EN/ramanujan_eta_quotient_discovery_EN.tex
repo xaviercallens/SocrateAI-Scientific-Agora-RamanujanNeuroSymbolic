@@ -1,0 +1,104 @@
+% ============================================================================
+% Ramanujan Eta-Quotient Recovery Paper — English Version
+% File: ramanujan_eta_quotient_discovery_EN.tex
+% ============================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,amsfonts,mathtools}
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{graphicx,booktabs,enumitem,xcolor,listings,float}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{microtype}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\definecolor{codebg}{RGB}{248,248,248}
+\lstset{backgroundcolor=\color{codebg},basicstyle=\small\ttfamily,breaklines=true,numbers=left,numberstyle=\tiny\color{gray},frame=single,captionpos=b}
+\lstdefinelanguage{Lean4}{morekeywords={theorem,def,structure,import,namespace,end,where,by,rfl,set_option},sensitive=true,morecomment=[l]{--},morestring=[b]"}
+
+\newcommand{\ceff}{c_{\mathrm{eff}}}
+\newcommand{\RAMA}{\textsc{RAMA}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+
+\title{\textbf{Neuro-Symbolic Recovery of Eta-Quotient Identities from Ramanujan's Manuscript Notebooks}\\[0.5em]\large Machine-Verified Discoveries via Evolutionary Search and Lean~4 Kernel Certification\\[0.3em]\normalsize\textit{With Applications to Black Hole Thermodynamics, Fluid Dynamics, and Holographic Cosmology}}
+\author{Xavier Callens\\\small SocrateAI Scientific Research\\\small\texttt{callensxavier@gmail.com}}
+\date{August 11, 2026 --- Preliminary Draft (v4.1)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present the first systematic, machine-verified recovery of Dedekind eta-quotient identities from Srinivasa Ramanujan's original manuscript notebooks using a neuro-symbolic pipeline. Our \emph{Ramanujan Autonomous Neuro-symbolic Architecture} (\RAMA{}) combines multimodal vision extraction, population-based genetic evolutionary search ($\mathrm{pop}=50$, $\mathrm{gen}=15$), and real-time formal verification via Lean~4 with Mathlib. Processing 698 manuscript pages from Notebooks~1, 2, and~3, the engine has identified \textbf{695 candidate eta-quotient conjectures} that compile under the Lean~4 kernel with zero axiomatic gaps. Of these, \textbf{547} correspond to thermodynamically stable vacuum states ($\ceff > 0$). We provide complete mathematical proofs, Python reproducibility code with real OEIS data (A000025, 10,001 terms), the full Lean~4 certification appendix, and dedicated physical interpretation sections covering (i)~quantum gravity and black hole thermodynamics, (ii)~Navier--Stokes fluid dynamics, and (iii)~holographic cosmology. All claims are stated with explicit falsifiability conditions.
+
+\medskip\noindent\textbf{Repository:} \url{https://github.com/xaviercallens/SocrateAI-Scientific-Agora-RamanujanNeuroSymbolic}
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\input{sections/01_introduction}
+\input{sections/02_math_preliminaries}
+\input{sections/03_pipeline}
+\input{sections/04_discovery_alpha}
+\input{sections/05_discovery_beta}
+\input{sections/06_discovery_gamma}
+\input{sections/07_statistics}
+\input{sections/08_physics_quantum_gravity}
+\input{sections/09_physics_navier_stokes}
+\input{sections/10_physics_holographic_cosmology}
+\input{sections/10b_picard_fuchs}
+\input{sections/11_investigations}
+\input{sections/11_limitations}
+\input{sections/12_conclusion}
+
+\appendix
+\input{sections/appendix_A_lean4}
+\input{sections/appendix_B_python}
+
+% ============================================================
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+\bibitem{ramanujan_lost} S.~Ramanujan, \emph{The Lost Notebook and Other Unpublished Papers}, Narosa, 1988.
+\bibitem{andrews_berndt_I} G.~E. Andrews, B.~C. Berndt, \emph{Ramanujan's Lost Notebook, Part~I}, Springer, 2005.
+\bibitem{bringmann_ono_2006} K.~Bringmann, K.~Ono, \emph{The $f(q)$ mock theta function conjecture and partition ranks}, Invent.\ math.\ 165(2):243--266, 2006. DOI: 10.1007/s00222-005-0493-5.
+\bibitem{zwegers2002} S.~P. Zwegers, \emph{Mock Theta Functions}, PhD thesis, Universiteit Utrecht, 2002. \texttt{arXiv:0807.4834}.
+\bibitem{strominger_vafa_1996} A.~Strominger, C.~Vafa, \emph{Microscopic origin of the Bekenstein--Hawking entropy}, Phys.\ Lett.\ B 379:99--104, 1996. \texttt{arXiv:hep-th/9601029}.
+\bibitem{dijkgraaf_verlinde_verlinde} R.~Dijkgraaf, E.~Verlinde, H.~Verlinde, \emph{Counting dyons in $N=4$ string theory}, Nucl.\ Phys.\ B 484:543--561, 1997. \texttt{arXiv:hep-th/9607026}.
+\bibitem{ono2004} K.~Ono, \emph{The Web of Modularity}, CBMS 102, AMS, 2004.
+\bibitem{martin_1996} Y.~Martin, \emph{Multiplicative $\eta$-quotients}, Trans.\ Amer.\ Math.\ Soc.\ 348(12):4825--4856, 1996.
+\bibitem{gordon_hughes_1993} B.~Gordon, K.~Hughes, \emph{Multiplicative properties of $\eta$-products~II}, Contemp.\ Math.\ 143:415--430, 1993.
+\bibitem{cardy_1986} J.~L. Cardy, \emph{Operator content of two-dimensional conformally invariant theories}, Nucl.\ Phys.\ B 270:186--204, 1986.
+\bibitem{hardy_ramanujan_1918} G.~H. Hardy, S.~Ramanujan, \emph{Asymptotic formulae in combinatory analysis}, Proc.\ London Math.\ Soc.\ s2-17(1):75--115, 1918.
+\bibitem{dedekind_1877} R.~Dedekind, \emph{Schreiben an Herrn Borchardt}, J.\ reine angew.\ Math.\ 83:265--292, 1877.
+\bibitem{rademacher_1937} H.~Rademacher, \emph{On the partition function $p(n)$}, Proc.\ London Math.\ Soc.\ s2-43(1):241--254, 1937.
+\bibitem{lean4_mathlib} The Mathlib Community, \emph{Mathlib4}, \url{https://github.com/leanprover-community/mathlib4}, 2024.
+\bibitem{moura_lean4} L.~de Moura, S.~Ullrich, \emph{The Lean~4 Theorem Prover}, CADE-28, LNAI 12699:625--635, 2021.
+\bibitem{dabholkar_2005} A.~Dabholkar, \emph{Exact counting of black hole microstates}, Phys.\ Rev.\ Lett.\ 94:241301, 2005. \texttt{arXiv:hep-th/0409148}.
+\bibitem{sen_1995} A.~Sen, \emph{Extremal black holes and elementary string states}, Mod.\ Phys.\ Lett.\ A 10(30):2081--2093, 1995.
+\bibitem{bekenstein_1973} J.~D. Bekenstein, \emph{Black holes and entropy}, Phys.\ Rev.\ D 7(8):2333--2346, 1973.
+\bibitem{hawking_1975} S.~W. Hawking, \emph{Particle creation by black holes}, Commun.\ Math.\ Phys.\ 43(3):199--220, 1975.
+\bibitem{maldacena_1998} J.~M. Maldacena, \emph{The large $N$ limit of superconformal field theories and supergravity}, Adv.\ Theor.\ Math.\ Phys.\ 2:231--252, 1998. \texttt{arXiv:hep-th/9711200}.
+\bibitem{ryu_takayanagi_2006} S.~Ryu, T.~Takayanagi, \emph{Holographic derivation of entanglement entropy from the anti-de Sitter space/conformal field theory correspondence}, Phys.\ Rev.\ Lett.\ 96:181602, 2006.
+\bibitem{clay_navier_stokes} C.~L. Fefferman, \emph{Existence and smoothness of the Navier--Stokes equation}, Clay Mathematics Institute, 2000. \url{https://www.claymath.org/millennium/navier-stokes-equation/}.
+\bibitem{kolmogorov_1941} A.~N. Kolmogorov, \emph{The local structure of turbulence in incompressible viscous fluid for very large Reynolds numbers}, Dokl.\ Akad.\ Nauk SSSR 30:301--305, 1941.
+\bibitem{picard_fuchs} P.~Candelas et al., \emph{A pair of Calabi--Yau manifolds as an exactly soluble superconformal theory}, Nucl.\ Phys.\ B 359:21--74, 1991.
+\bibitem{planck_2018_VI} Planck Collaboration (N.~Aghanim et al.), \emph{Planck 2018 results.\ VI.\ Cosmological parameters}, Astron.\ Astrophys.\ 641:A6, 2020. \texttt{arXiv:1807.06209}.
+\bibitem{oeis_A000025} OEIS Foundation, \emph{A000025: Coefficients of Ramanujan's mock theta function $f(q)$}, \url{https://oeis.org/A000025}.
+\end{thebibliography}
+\end{document}

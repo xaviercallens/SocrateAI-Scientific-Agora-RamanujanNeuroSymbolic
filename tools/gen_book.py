@@ -6,8 +6,27 @@ def generate_book(lang="en"):
     c = conn.cursor()
     
     # Query novel discoveries for Chapter 4
-    c.execute("SELECT id, archetype, conjecture, rama_energy, andrews_berndt_ref FROM discoveries WHERE is_novel = 1 LIMIT 50")
+    c.execute("SELECT id, archetype, conjecture, rama_energy, andrews_berndt_ref FROM discoveries WHERE is_novel = 1 LIMIT 100")
     novel_discoveries = c.fetchall()
+    
+    import re
+    def compute_weight(conj):
+        powers = re.findall(r'\\eta\(\d+\\tau\)\^\{([-\d]+)\}', conj)
+        if not powers: return 0.0
+        return 0.5 * sum(int(p) for p in powers)
+        
+    class_I_bps = []
+    class_II_modular = []
+    class_III_exotic = []
+    
+    for disc in novel_discoveries:
+        w = compute_weight(disc[2])
+        if w == 0.5:
+            class_I_bps.append(disc)
+        elif w == 0.0:
+            class_II_modular.append(disc)
+        else:
+            class_III_exotic.append((w, disc))
     
     # Query all verified theorems
     c.execute("SELECT COUNT(*) FROM discoveries WHERE lean_status = 'VERIFIED'")
@@ -186,12 +205,35 @@ The \textbf{RAMA (Ramanujan Autonomous Mathematical Agent)} framework carries th
 
 
         tex += r"\chapter{Catalogue des États de Ramanujan Découverts}" + "\n\n"
-        tex += f"Voici un échantillon de 50 vecteurs d'état novateurs $| \Omega_{{\mathbf{{r}}}} \rangle$ identifiés par l'agent formel, représentés selon l'asymptotique modulaire standard." + "\n\n"
+        tex += f"Voici un échantillon classifié de vecteurs d'état novateurs $| \Omega_{{\mathbf{{r}}}} \rangle$ identifiés par l'agent formel, regroupés selon la valeur propre de l'opérateur de Supersymétrie $\hat{{\mathcal{{W}}}}$.\n\n"
         tex += r"\begin{center}\includegraphics[width=0.75\textwidth]{../../figures/energy_landscape.png}\end{center}" + "\n\n"
 
-        for disc in novel_discoveries:
+        tex += r"\section{Classe I : États BPS Protégés ($\hat{\mathcal{W}} = 1/2$)}" + "\n\n"
+        for disc in class_I_bps[:15]:
             id_, arch, conj, energy, ref = disc
             tex += f"\\subsection*{{État Quantique ID: {id_}}}\n"
+            tex += "\\begin{itemize}\n"
+            tex += f"  \\item \\textbf{{Catégorie Topologique:}} {arch}\n"
+            tex += f"  \\item \\textbf{{Opérateur de Projection $\\mathcal{{Z}}(\\tau)$:}} ${conj}$\n"
+            tex += f"  \\item \\textbf{{Valeur Propre Énergétique RAMA:}} {energy:.6f}\n"
+            tex += f"  \\item \\textbf{{Référence Andrews-Berndt:}} {ref}\n"
+            tex += "\\end{itemize}\n\n"
+
+        tex += r"\section{Classe II : Fonctions Modulaires ($\hat{\mathcal{W}} = 0$)}" + "\n\n"
+        for disc in class_II_modular[:15]:
+            id_, arch, conj, energy, ref = disc
+            tex += f"\\subsection*{{État Quantique ID: {id_}}}\n"
+            tex += "\\begin{itemize}\n"
+            tex += f"  \\item \\textbf{{Catégorie Topologique:}} {arch}\n"
+            tex += f"  \\item \\textbf{{Opérateur de Projection $\\mathcal{{Z}}(\\tau)$:}} ${conj}$\n"
+            tex += f"  \\item \\textbf{{Valeur Propre Énergétique RAMA:}} {energy:.6f}\n"
+            tex += f"  \\item \\textbf{{Référence Andrews-Berndt:}} {ref}\n"
+            tex += "\\end{itemize}\n\n"
+            
+        tex += r"\section{Classe III : Vides Exotiques Briseurs de SUSY ($\hat{\mathcal{W}} \neq 1/2, 0$)}" + "\n\n"
+        for w, disc in class_III_exotic[:15]:
+            id_, arch, conj, energy, ref = disc
+            tex += f"\\subsection*{{État Quantique ID: {id_} (Poids: ${w}$)}}\n"
             tex += "\\begin{itemize}\n"
             tex += f"  \\item \\textbf{{Catégorie Topologique:}} {arch}\n"
             tex += f"  \\item \\textbf{{Opérateur de Projection $\\mathcal{{Z}}(\\tau)$:}} ${conj}$\n"
@@ -276,12 +318,35 @@ The \textbf{RAMA (Ramanujan Autonomous Mathematical Agent)} framework carries th
 
 
         tex += r"\chapter{Catalogue of Discovered Ramanujan States}" + "\n\n"
-        tex += f"Below is a curated sample of 50 novel quantum states $| \Omega_{{\mathbf{{r}}}} \rangle$ identified by the formal engine, rendered in their topological projection operator form $\mathcal{{Z}}(\\tau)$." + "\n\n"
+        tex += f"Below is a curated sample of novel quantum states $| \Omega_{{\mathbf{{r}}}} \rangle$ identified by the formal engine, strictly classified by their Supersymmetry eigenvalue $\hat{{\mathcal{{W}}}}$.\n\n"
         tex += r"\begin{center}\includegraphics[width=0.75\textwidth]{../../figures/energy_landscape.png}\end{center}" + "\n\n"
 
-        for disc in novel_discoveries:
+        tex += r"\section{Class I: BPS Protected States ($\hat{\mathcal{W}} = 1/2$)}" + "\n\n"
+        for disc in class_I_bps[:15]:
             id_, arch, conj, energy, ref = disc
             tex += f"\\subsection*{{Quantum State ID: {id_}}}\n"
+            tex += "\\begin{itemize}\n"
+            tex += f"  \\item \\textbf{{Topological Category:}} {arch}\n"
+            tex += f"  \\item \\textbf{{Projection Operator $\mathcal{{Z}}(\\tau)$:}} ${conj}$\n"
+            tex += f"  \\item \\textbf{{RAMA Energy Eigenvalue:}} {energy:.6f}\n"
+            tex += f"  \\item \\textbf{{Historical Reference:}} {ref}\n"
+            tex += "\\end{itemize}\n\n"
+
+        tex += r"\section{Class II: Modular Functions ($\hat{\mathcal{W}} = 0$)}" + "\n\n"
+        for disc in class_II_modular[:15]:
+            id_, arch, conj, energy, ref = disc
+            tex += f"\\subsection*{{Quantum State ID: {id_}}}\n"
+            tex += "\\begin{itemize}\n"
+            tex += f"  \\item \\textbf{{Topological Category:}} {arch}\n"
+            tex += f"  \\item \\textbf{{Projection Operator $\mathcal{{Z}}(\\tau)$:}} ${conj}$\n"
+            tex += f"  \\item \\textbf{{RAMA Energy Eigenvalue:}} {energy:.6f}\n"
+            tex += f"  \\item \\textbf{{Historical Reference:}} {ref}\n"
+            tex += "\\end{itemize}\n\n"
+            
+        tex += r"\section{Class III: Exotic SUSY-Breaking Vacua ($\hat{\mathcal{W}} \neq 1/2, 0$)}" + "\n\n"
+        for w, disc in class_III_exotic[:15]:
+            id_, arch, conj, energy, ref = disc
+            tex += f"\\subsection*{{Quantum State ID: {id_} (Weight: ${w}$)}}\n"
             tex += "\\begin{itemize}\n"
             tex += f"  \\item \\textbf{{Topological Category:}} {arch}\n"
             tex += f"  \\item \\textbf{{Projection Operator $\mathcal{{Z}}(\\tau)$:}} ${conj}$\n"

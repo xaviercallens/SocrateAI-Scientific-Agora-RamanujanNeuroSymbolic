@@ -17,3 +17,10 @@ import DualScale.Asymptotics.BPSEntropy
 import DualScale.Asymptotics.Batch547
 import DualScale.Geometry.PicardFuchs
 import DualScale.Geometry.TDuality
+import DualScale.Physics.Enstrophy
+import DualScale.Physics.AubinLions
+import DualScale.Physics.SpectralGap
+import DualScale.Physics.CFMVortex
+import DualScale.Physics.PhaseTransition
+import DualScale.Physics.DyadicShell
+import DualScale.Physics.MasterDualScale

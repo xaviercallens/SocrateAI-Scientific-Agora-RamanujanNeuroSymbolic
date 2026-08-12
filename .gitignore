@@ -21,3 +21,7 @@ dualscale/lean/.lake/build/
 # Temporary Python files
 *.pyc
 *.pyo
+
+# Large manuscript PDFs (>100MB — use LFS or external storage)
+inputs/*.pdf
+inputs/Srinivasa*

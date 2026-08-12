@@ -1,0 +1,976 @@
+{
+  "notebooks": {
+    "NoteBook1": {
+      "chapters": {
+        "chapterI": {
+          "page_count": 3,
+          "pages": [
+            "page1.jpg",
+            "page2.jpg",
+            "page3.jpg"
+          ]
+        },
+        "chapterII": {
+          "page_count": 7,
+          "pages": [
+            "page1.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg"
+          ]
+        },
+        "chapterIV": {
+          "page_count": 4,
+          "pages": [
+            "page1.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg"
+          ]
+        },
+        "chapterIX": {
+          "page_count": 18,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterV": {
+          "page_count": 9,
+          "pages": [
+            "page1.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterVI": {
+          "page_count": 13,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterVII": {
+          "page_count": 11,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterVIII": {
+          "page_count": 22,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page19.jpg",
+            "page2.jpg",
+            "page20.jpg",
+            "page21.jpg",
+            "page22.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterX": {
+          "page_count": 24,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page19.jpg",
+            "page2.jpg",
+            "page20.jpg",
+            "page21.jpg",
+            "page22.jpg",
+            "page23.jpg",
+            "page24.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXI": {
+          "page_count": 28,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17-1.jpg",
+            "page18.jpg",
+            "page19.jpg",
+            "page2.jpg",
+            "page20.jpg",
+            "page21.jpg",
+            "page22.jpg",
+            "page23.jpg",
+            "page24.jpg",
+            "page25.jpg",
+            "page26.jpg",
+            "page27.jpg",
+            "page28.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXII": {
+          "page_count": 18,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXIII": {
+          "page_count": 20,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page19.jpg",
+            "page2.jpg",
+            "page20.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXIV": {
+          "page_count": 18,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXV": {
+          "page_count": 24,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page19.jpg",
+            "page2.jpg",
+            "page20.jpg",
+            "page21.jpg",
+            "page22.jpg",
+            "page23.jpg",
+            "page24.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXVI": {
+          "page_count": 101,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page100.jpg",
+            "page101.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page19.jpg",
+            "page2.jpg",
+            "page20.jpg",
+            "page21.jpg",
+            "page22.jpg",
+            "page23.jpg",
+            "page24.jpg",
+            "page25.jpg",
+            "page26.jpg",
+            "page27.jpg",
+            "page28.jpg",
+            "page29.jpg",
+            "page3.jpg",
+            "page30.jpg",
+            "page31.jpg",
+            "page32.jpg",
+            "page33.jpg",
+            "page34.jpg",
+            "page35.jpg",
+            "page36.jpg",
+            "page37.jpg",
+            "page38.jpg",
+            "page39.jpg",
+            "page4.jpg",
+            "page40.jpg",
+            "page41.jpg",
+            "page42.jpg",
+            "page43.jpg",
+            "page44.jpg",
+            "page45.jpg",
+            "page46.jpg",
+            "page47.jpg",
+            "page48.jpg",
+            "page49.jpg",
+            "page5.jpg",
+            "page50.jpg",
+            "page51.jpg",
+            "page52.jpg",
+            "page53.jpg",
+            "page54.jpg",
+            "page55.jpg",
+            "page56.jpg",
+            "page57.jpg",
+            "page58.jpg",
+            "page59.jpg",
+            "page6.jpg",
+            "page60.jpg",
+            "page61.jpg",
+            "page62.jpg",
+            "page63.jpg",
+            "page64.jpg",
+            "page65.jpg",
+            "page66.jpg",
+            "page67.jpg",
+            "page68.jpg",
+            "page69.jpg",
+            "page7.jpg",
+            "page70.jpg",
+            "page71.jpg",
+            "page72.jpg",
+            "page73.jpg",
+            "page74.jpg",
+            "page75.jpg",
+            "page76.jpg",
+            "page77.jpg",
+            "page78.jpg",
+            "page79.jpg",
+            "page8.jpg",
+            "page80.jpg",
+            "page81.jpg",
+            "page82.jpg",
+            "page83.jpg",
+            "page84.jpg",
+            "page85.jpg",
+            "page86.jpg",
+            "page87.jpg",
+            "page88.jpg",
+            "page89.jpg",
+            "page9.jpg",
+            "page90.jpg",
+            "page91.jpg",
+            "page92.jpg",
+            "page93.jpg",
+            "page94.jpg",
+            "page95.jpg",
+            "page96.jpg",
+            "page97.jpg",
+            "page98.jpg",
+            "page99.jpg"
+          ]
+        }
+      },
+      "total_pages": 320
+    },
+    "NoteBook2": {
+      "chapters": {
+        "chapterI": {
+          "page_count": 8,
+          "pages": [
+            "page1.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg"
+          ]
+        },
+        "chapterII": {
+          "page_count": 10,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterIII": {
+          "page_count": 14,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterIV": {
+          "page_count": 10,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterIX": {
+          "page_count": 14,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterV": {
+          "page_count": 16,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterVI": {
+          "page_count": 14,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterVII": {
+          "page_count": 14,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterVIII": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterX": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXI": {
+          "page_count": 14,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXII": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXIII": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXIV": {
+          "page_count": 14,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXIX": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXV": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXVI": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXVII": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXVIII": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXX": {
+          "page_count": 12,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page2.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        },
+        "chapterXXI": {
+          "page_count": 101,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page100.jpg",
+            "page101.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page19.jpg",
+            "page2.jpg",
+            "page20.jpg",
+            "page21.jpg",
+            "page22.jpg",
+            "page23.jpg",
+            "page24.jpg",
+            "page25.jpg",
+            "page26.jpg",
+            "page27.jpg",
+            "page28.jpg",
+            "page29.jpg",
+            "page3.jpg",
+            "page30.jpg",
+            "page31.jpg",
+            "page32.jpg",
+            "page33.jpg",
+            "page34.jpg",
+            "page35.jpg",
+            "page36.jpg",
+            "page37.jpg",
+            "page38.jpg",
+            "page39.jpg",
+            "page4.jpg",
+            "page40.jpg",
+            "page41.jpg",
+            "page42.jpg",
+            "page43.jpg",
+            "page44.jpg",
+            "page45.jpg",
+            "page46.jpg",
+            "page47.jpg",
+            "page48.jpg",
+            "page49.jpg",
+            "page5.jpg",
+            "page50.jpg",
+            "page51.jpg",
+            "page52.jpg",
+            "page53.jpg",
+            "page54.jpg",
+            "page55.jpg",
+            "page56.jpg",
+            "page57.jpg",
+            "page58.jpg",
+            "page59.jpg",
+            "page6.jpg",
+            "page60.jpg",
+            "page61.jpg",
+            "page62.jpg",
+            "page63.jpg",
+            "page64.jpg",
+            "page65.jpg",
+            "page66.jpg",
+            "page67.jpg",
+            "page68.jpg",
+            "page69.jpg",
+            "page7.jpg",
+            "page70.jpg",
+            "page71.jpg",
+            "page72.jpg",
+            "page73.jpg",
+            "page74.jpg",
+            "page75.jpg",
+            "page76.jpg",
+            "page77.jpg",
+            "page78.jpg",
+            "page79.jpg",
+            "page8.jpg",
+            "page80.jpg",
+            "page81.jpg",
+            "page82.jpg",
+            "page83.jpg",
+            "page84.jpg",
+            "page85.jpg",
+            "page86.jpg",
+            "page87.jpg",
+            "page88.jpg",
+            "page89.jpg",
+            "page9.jpg",
+            "page90.jpg",
+            "page91.jpg",
+            "page92.jpg",
+            "page93.jpg",
+            "page94.jpg",
+            "page95.jpg",
+            "page96.jpg",
+            "page97.jpg",
+            "page98.jpg",
+            "page99.jpg"
+          ]
+        }
+      },
+      "total_pages": 349
+    },
+    "NoteBook3": {
+      "chapters": {
+        "direct": {
+          "page_count": 29,
+          "pages": [
+            "page1.jpg",
+            "page10.jpg",
+            "page11.jpg",
+            "page12.jpg",
+            "page13.jpg",
+            "page14.jpg",
+            "page15.jpg",
+            "page16.jpg",
+            "page17.jpg",
+            "page18.jpg",
+            "page19.jpg",
+            "page2.jpg",
+            "page20.jpg",
+            "page21.jpg",
+            "page22.jpg",
+            "page23.jpg",
+            "page24.jpg",
+            "page25.jpg",
+            "page26.jpg",
+            "page27.jpg",
+            "page28.jpg",
+            "page29.jpg",
+            "page3.jpg",
+            "page4.jpg",
+            "page5.jpg",
+            "page6.jpg",
+            "page7.jpg",
+            "page8.jpg",
+            "page9.jpg"
+          ]
+        }
+      },
+      "total_pages": 29
+    }
+  },
+  "total_pages": 698,
+  "reference_pdfs": [
+    {
+      "filename": "Ramanujan_39_s_Lost_Notebook_Part_III_2012.pdf",
+      "size_bytes": 4182169,
+      "path": "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/inputs/Ramanujan_39_s_Lost_Notebook_Part_III_2012.pdf"
+    },
+    {
+      "filename": "Ramanujan_39_s_Lost_Notebook_Part_II_2008.pdf",
+      "size_bytes": 2829675,
+      "path": "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/inputs/Ramanujan_39_s_Lost_Notebook_Part_II_2008.pdf"
+    },
+    {
+      "filename": "Ramanujan_39_s_Lost_Notebook_Part_IV_2013.pdf",
+      "size_bytes": 3681093,
+      "path": "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/inputs/Ramanujan_39_s_Lost_Notebook_Part_IV_2013.pdf"
+    },
+    {
+      "filename": "Ramanujan_39_s_Lost_Notebook_Part_I_2005.pdf",
+      "size_bytes": 2439598,
+      "path": "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/inputs/Ramanujan_39_s_Lost_Notebook_Part_I_2005.pdf"
+    },
+    {
+      "filename": "Srinivasa Ramanujan The Lost Note Book And Other Unpublished Papers 1988 New Delhi - Narosa Publishing House  (1).pdf",
+      "size_bytes": 308310970,
+      "path": "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/inputs/Srinivasa Ramanujan The Lost Note Book And Other Unpublished Papers 1988 New Delhi - Narosa Publishing House  (1).pdf"
+    },
+    {
+      "filename": "Srinivasa Ramanujan The Lost Note Book And Other Unpublished Papers 1988 New Delhi - Narosa Publishing House .pdf",
+      "size_bytes": 308310970,
+      "path": "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/inputs/Srinivasa Ramanujan The Lost Note Book And Other Unpublished Papers 1988 New Delhi - Narosa Publishing House .pdf"
+    }
+  ],
+  "andrews_berndt_mapping": {
+    "Part_I_2005": {
+      "pdf": "Ramanujan_39_s_Lost_Notebook_Part_I_2005.pdf",
+      "topics": [
+        "Mock theta functions",
+        "Partial fractions",
+        "Hadamard products",
+        "Integrals",
+        "Incomplete elliptic integrals",
+        "Infinite series"
+      ]
+    },
+    "Part_II_2008": {
+      "pdf": "Ramanujan_39_s_Lost_Notebook_Part_II_2008.pdf",
+      "topics": [
+        "q-series",
+        "Eisenstein series",
+        "Modular equations",
+        "Lambert series",
+        "Theta functions"
+      ]
+    },
+    "Part_III_2012": {
+      "pdf": "Ramanujan_39_s_Lost_Notebook_Part_III_2012.pdf",
+      "topics": [
+        "q-continued fractions",
+        "Rogers-Ramanujan identities",
+        "Diophantine approximation",
+        "Partitions"
+      ]
+    },
+    "Part_IV_2013": {
+      "pdf": "Ramanujan_39_s_Lost_Notebook_Part_IV_2013.pdf",
+      "topics": [
+        "Location of zeros",
+        "Class invariants",
+        "Ramanujan-Weber class invariants",
+        "Modular equations of degrees 3,5,7"
+      ]
+    }
+  }
+}

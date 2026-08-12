@@ -7,3 +7,5 @@ import DualScale.K3Lock.Basic
 import DualScale.SusyBreaking.Basic
 import DualScale.Discovery.Notebook3
 import DualScale.Discovery.Notebook1
+import DualScale.QSeries.Basic
+import DualScale.QSeries.EtaQuotient

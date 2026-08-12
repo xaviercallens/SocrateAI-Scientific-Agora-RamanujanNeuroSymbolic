@@ -20,7 +20,7 @@ PAGE_50_IMAGES = [
 ]
 
 def execute_page50_high_gen():
-    engine = AutonomousDiscoveryEngine()
+    engine = AutonomousDiscoveryEngine(use_mock_vision=False)
     print("=" * 80)
     print(" 🚀 RUNNING RANA DISCOVERY ENGINE ON PAGE 50 (HIGH GENERATION SEARCH)")
     print(" Population Size: 50 | Max Generations: 15 | Lean 4 Gating & Auto-Formalization")

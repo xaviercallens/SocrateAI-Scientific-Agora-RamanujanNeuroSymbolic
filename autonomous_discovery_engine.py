@@ -25,9 +25,9 @@ from src.persistence import NamagiriDB
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
 class AutonomousDiscoveryEngine:
-    def __init__(self):
+    def __init__(self, use_mock_vision: bool = False):
         # Initialize Phase 2 Components
-        self.vision = VisionExtractor(use_mock=True)
+        self.vision = VisionExtractor(use_mock=use_mock_vision)
         self.lean_gen = LeanCodeGenerator()
         self.lean_ver = LeanVerifier(lean_project_dir="dualscale/lean")
         self.saddle = SaddlePointEvaluator()
@@ -188,7 +188,7 @@ class AutonomousDiscoveryEngine:
 
 
 if __name__ == "__main__":
-    engine = AutonomousDiscoveryEngine()
+    engine = AutonomousDiscoveryEngine(use_mock_vision=False)
     
     target_dirs = [
         "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/input/NoteBook1/**/*.jpg",

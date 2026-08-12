@@ -7,22 +7,43 @@ import json
 import logging
 from typing import Optional
 from .schemas import ManuscriptExtraction
+import sys
 
-# In a real environment, we would use:
-# from google import genai
-# client = genai.Client()
+# Import the live extractor
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+from live_vision_extractor import LiveVisionExtractor, get_api_key
 
 class VisionExtractor:
     def __init__(self, use_mock: bool = False):
         self.use_mock = use_mock
+        self.live_extractor = None
+        if not self.use_mock:
+            api_key = get_api_key()
+            if api_key:
+                self.live_extractor = LiveVisionExtractor(api_key)
+            else:
+                logging.warning("No Gemini API Key found. Falling back to mock vision extraction.")
+                self.use_mock = True
         
     def extract_math(self, image_path: str) -> ManuscriptExtraction:
         """
         Extracts mathematical expressions from a manuscript image.
-        For PoC scaling, simulates the Gemini 2.5 Flash response if use_mock is True,
-        but returns proper structured Pydantic models.
+        Uses LiveVisionExtractor if use_mock is False and API key is present.
         """
         basename = os.path.basename(image_path)
+        
+        if not self.use_mock and self.live_extractor:
+            logging.info(f"Using live Gemini API for {basename}")
+            result = self.live_extractor.extract_from_image(image_path)
+            
+            # Map LiveVisionExtractor dict to ManuscriptExtraction schema
+            has_series = result.get("has_series", False)
+            return ManuscriptExtraction(
+                raw_latex=result.get("formula_text", "") if has_series else "",
+                q_series_coefficients=result.get("coefficients", []) if has_series else None,
+                archetype_hint=result.get("page_context", "Unknown Topic") if has_series else "No Series Found",
+                confidence=0.85 if has_series else 0.0
+            )
         
         # We simulate the exact multimodal vision parsing for known Ramanujan pages.
         # This replaces the hardcoded mock in autonomous_discovery_engine.py with

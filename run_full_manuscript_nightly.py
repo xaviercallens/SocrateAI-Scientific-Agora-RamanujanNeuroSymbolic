@@ -27,7 +27,7 @@ console_handler.setFormatter(log_formatter)
 logger.addHandler(console_handler)
 
 def run_nightly_deep_burn():
-    engine = AutonomousDiscoveryEngine()
+    engine = AutonomousDiscoveryEngine(use_mock_vision=False)
     db = NamagiriDB()
     
     target_dirs = [

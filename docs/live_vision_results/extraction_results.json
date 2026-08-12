@@ -1,17 +1,51 @@
 [
   {
-    "has_series": false,
-    "coefficients": [],
-    "error": "403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.', 'status': 'PERMISSION_DENIED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_IP_ADDRESS_BLOCKED', 'domain': 'googleapis.com', 'metadata': {'callerIp': '2a01:e0a:8b1:4880:7d00:9704:bbe4:a270', 'service': 'generativelanguage.googleapis.com', 'consumer': 'projects/1003063861791'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.'}]}}"
+    "coefficients": [
+      1,
+      -2,
+      3,
+      -4,
+      5,
+      -6,
+      7,
+      -8,
+      9,
+      -10,
+      11,
+      -12,
+      13,
+      -14,
+      15
+    ],
+    "formula_text": "1 - 2 + 3 - 4 + \\dots",
+    "page_context": "This page discusses theorems for calculating convergent values corresponding to divergent series, providing several examples such as 1-2+3-4+... = 1/4 and 1+2+3+4+... = -1/12. It also mentions assigning meaning to fractional and negative numbers of terms in series and products, and presents a more complex series involving Gamma functions.",
+    "confidence": "high",
+    "has_series": true,
+    "source_image": "inputs/6-ramanujans-letters-from-ono-67.png",
+    "model": "gemini-2.5-flash",
+    "prompt_tokens": 500,
+    "candidate_tokens": 213
   },
   {
-    "has_series": false,
     "coefficients": [],
-    "error": "403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.', 'status': 'PERMISSION_DENIED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_IP_ADDRESS_BLOCKED', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com', 'callerIp': '2a01:e0a:8b1:4880:7d00:9704:bbe4:a270', 'consumer': 'projects/1003063861791'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.'}]}}"
+    "formula_text": "",
+    "page_context": "This page discusses the Prime Number Theorem, specifically the error term P(x) in the approximation for the number of primes less than x, \u03c0(x) \u2248 \u222b(dt/log t) + P(x). It mentions known asymptotic forms for P(x) and observations about its behavior. The author also claims to have found a function that exactly represents the number of primes, but the function itself is not detailed.",
+    "confidence": "high",
+    "has_series": false,
+    "source_image": "inputs/6-ramanujans-letters-from-ono-69.png",
+    "model": "gemini-2.5-flash",
+    "prompt_tokens": 500,
+    "candidate_tokens": 132
   },
   {
-    "has_series": false,
     "coefficients": [],
-    "error": "403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.', 'status': 'PERMISSION_DENIED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_IP_ADDRESS_BLOCKED', 'domain': 'googleapis.com', 'metadata': {'consumer': 'projects/1003063861791', 'service': 'generativelanguage.googleapis.com', 'callerIp': '2a01:e0a:8b1:4880:7d00:9704:bbe4:a270'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.'}]}}"
+    "formula_text": "",
+    "page_context": "The page discusses mathematical expressions for calculating prime numbers (using Bernoulli numbers, and for forms An+B, 4n-1, 4n+1), analyzing irregularly increasing functions, and a formula for counting numbers of the form 2^p * 3^q.",
+    "confidence": "low",
+    "has_series": false,
+    "source_image": "inputs/6-ramanujans-letters-from-ono-70.png",
+    "model": "gemini-2.5-flash",
+    "prompt_tokens": 500,
+    "candidate_tokens": 103
   }
 ]

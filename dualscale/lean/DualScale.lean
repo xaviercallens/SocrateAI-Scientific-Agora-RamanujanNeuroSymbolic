@@ -10,3 +10,10 @@ import DualScale.Discovery.Notebook1
 import DualScale.QSeries.Basic
 import DualScale.QSeries.EtaQuotient
 import DualScale.QSeries.MockTheta
+import DualScale.QSeries.ModularTransform
+import DualScale.Asymptotics.Rademacher
+import DualScale.Asymptotics.SaddlePoint
+import DualScale.Asymptotics.BPSEntropy
+import DualScale.Asymptotics.Batch547
+import DualScale.Geometry.PicardFuchs
+import DualScale.Geometry.TDuality

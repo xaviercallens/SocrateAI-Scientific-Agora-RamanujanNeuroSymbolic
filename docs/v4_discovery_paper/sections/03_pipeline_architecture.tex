@@ -1,0 +1,153 @@
+% ============================================================================
+% Section 3: Pipeline Architecture
+% ============================================================================
+\section{The RAMA Discovery Pipeline}
+\label{sec:pipeline}
+
+\subsection{Overview}
+
+The \RAMA{} (\emph{Ramanujan Autonomous Neuro-symbolic
+Architecture}) pipeline consists of five sequential stages,
+each implemented as a self-contained module with explicit
+inputs, outputs, and failure modes.
+
+\begin{enumerate}[label=\textbf{Stage~\arabic*:},leftmargin=3cm]
+  \item \textbf{Vision Extraction.}
+    A multimodal vision model (Gemini~2.5 Flash) processes
+    each digitized manuscript page and returns a structured
+    Pydantic schema containing: raw \LaTeX{} transcription,
+    archetype classification (mock theta function,
+    continued fraction, hypergeometric series, or
+    $q$-series), confidence score, and---when
+    identifiable---the first 12 $q$-series coefficients.
+
+  \item \textbf{Genetic Evolutionary Search.}
+    A population-based genetic algorithm searches the
+    combinatorial space of eta-quotient exponent vectors
+    $\mathbf{r} = (r_1, r_2, \ldots, r_{d_{\max}})$ with
+    $d_{\max} = 12$ and $r_d \in [-24, 24]$.
+
+  \item \textbf{Deep Think Bridge.}
+    The archetype classification from Stage~1 is used to
+    assign a target domain (String Theory / K3, Topology,
+    or Astrophysics) and a conjectured modular shadow.
+
+  \item \textbf{Lean~4 Auto-Formalization.}
+    The code generator produces a Lean~4 file containing:
+    \begin{itemize}
+      \item \emph{Tier~A}: an \texttt{EtaQuotient} structure
+            with exact rational arithmetic definitions for
+            $\ceff$, weight, and leading power, verified by
+            \texttt{rfl};
+      \item \emph{Tier~B}: a structural blueprint encoding
+            the shadow and domain classification as typed
+            data.
+    \end{itemize}
+    The Lean verifier invokes \texttt{lake env lean} on
+    the generated file.  Compilation with exit code~0
+    constitutes \emph{kernel certification}.
+
+  \item \textbf{Physical Mapping.}
+    Verified candidates are evaluated via a saddle-point
+    matrix computing BPS state entropy, effective central
+    charge, and thermodynamic stability classification.
+\end{enumerate}
+
+\subsection{Genetic Algorithm Details}
+
+\subsubsection{State Representation}
+
+Each individual in the population is an
+\texttt{EtaQuotientState}:
+\begin{equation}
+  \mathcal{S} = \bigl(
+    (r_d)_{d=1}^{d_{\max}},\;
+    q_{\mathrm{shift}} \in [-72, 72]
+  \bigr),
+\end{equation}
+where $r_d \in \{-24, -23, \ldots, 23, 24\}$ and
+$q_{\mathrm{shift}}$ is the fractional power shift
+in units of $1/24$.
+
+\subsubsection{Fitness Function}
+
+The composite energy functional is
+\begin{equation}
+  \label{eq:energy}
+  E(\mathcal{S}) = \alpha \cdot C(\mathcal{S})
+  + \beta \cdot I(\mathcal{S})
+  + \gamma \cdot D(\mathcal{S}),
+\end{equation}
+where:
+\begin{itemize}
+  \item $C(\mathcal{S})$ is the \emph{complexity} cost:
+        a monotonic function of $\sum |r_d|$ penalizing
+        overly complex quotients (Occam regularization);
+  \item $I(\mathcal{S})$ is the \emph{fit error}: the
+        normalized $\ell_2$ distance between the first
+        $n$ coefficients of the candidate $q$-expansion
+        and the target coefficients extracted by Stage~1;
+  \item $D(\mathcal{S})$ is the \emph{domain penalty}:
+        a term encoding prior knowledge about physically
+        viable exponent ranges.
+\end{itemize}
+
+\subsubsection{Evolutionary Operators}
+
+\begin{itemize}
+  \item \textbf{Selection}: Tournament selection with $k=3$.
+  \item \textbf{Crossover}: Uniform crossover of exponent vectors.
+  \item \textbf{Mutation}: Each $r_d$ perturbed with probability
+        $p_{\mathrm{mut}} = 0.3$ by $\Delta r_d \sim \mathrm{Uniform}(-4, 4)$.
+  \item \textbf{Immigration}: When diversity drops below
+        $|\{\text{unique configs}\}| < 5$, five random
+        immigrants are injected.
+\end{itemize}
+
+\subsubsection{Hyperparameters}
+
+For the full manuscript run:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Parameter} & \textbf{10-page dry run} & \textbf{Full run} \\
+\midrule
+Population size & 25 & 50 \\
+Max generations & 5 & 15 \\
+$d_{\max}$ & 12 & 12 \\
+Mutation rate & 0.3 & 0.3 \\
+Tournament size $k$ & 3 & 3 \\
+Lean retries & 2 & 2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Lean~4 Verification Protocol}
+
+The Lean~4 verification constitutes the formal gate of the
+pipeline.  We use \textbf{Lean 4} with \textbf{Mathlib4}
+(\texttt{leanprover/lean4:leanprover/lean4:v4.x})~\cite{moura_lean4,lean4_mathlib}.
+
+\begin{definition}[Kernel Certification]
+\label{def:kernel_cert}
+A candidate eta-quotient is \emph{kernel-certified} if:
+\begin{enumerate}
+  \item The generated Lean~4 file compiles with
+        \texttt{lake env lean} returning exit code~0.
+  \item The file contains no \texttt{sorry}, \texttt{axiom},
+        or \texttt{native\_decide} calls.
+  \item The CI audit script
+        (\texttt{dualscale/ci/audit\_lean.py}) reports
+        no forbidden axioms.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Kernel certification confirms \emph{type-level correctness}
+of the stated algebraic identities.  It does \emph{not}
+verify that the candidate eta-quotient matches Ramanujan's
+original intent or that it is ``new'' relative to the
+existing literature.  Such claims require separate
+verification against databases such as the
+OEIS~\cite{ono2004} and LMFDB.
+\end{remark}

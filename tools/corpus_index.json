@@ -1,0 +1,46 @@
+{
+  "notebooks": {},
+  "total_pages": 0,
+  "reference_pdfs": [],
+  "andrews_berndt_mapping": {
+    "Part_I_2005": {
+      "pdf": "Ramanujan_39_s_Lost_Notebook_Part_I_2005.pdf",
+      "topics": [
+        "Mock theta functions",
+        "Partial fractions",
+        "Hadamard products",
+        "Integrals",
+        "Incomplete elliptic integrals",
+        "Infinite series"
+      ]
+    },
+    "Part_II_2008": {
+      "pdf": "Ramanujan_39_s_Lost_Notebook_Part_II_2008.pdf",
+      "topics": [
+        "q-series",
+        "Eisenstein series",
+        "Modular equations",
+        "Lambert series",
+        "Theta functions"
+      ]
+    },
+    "Part_III_2012": {
+      "pdf": "Ramanujan_39_s_Lost_Notebook_Part_III_2012.pdf",
+      "topics": [
+        "q-continued fractions",
+        "Rogers-Ramanujan identities",
+        "Diophantine approximation",
+        "Partitions"
+      ]
+    },
+    "Part_IV_2013": {
+      "pdf": "Ramanujan_39_s_Lost_Notebook_Part_IV_2013.pdf",
+      "topics": [
+        "Location of zeros",
+        "Class invariants",
+        "Ramanujan-Weber class invariants",
+        "Modular equations of degrees 3,5,7"
+      ]
+    }
+  }
+}

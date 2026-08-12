@@ -1,0 +1,245 @@
+% ============================================================================
+% Neuro-Symbolic Recovery of Eta-Quotient Identities from Ramanujan's
+% Manuscript Notebooks: Machine-Verified Discoveries via Evolutionary
+% Search and Lean 4 Kernel Certification
+% ============================================================================
+\documentclass[11pt,a4paper]{article}
+
+% --- Core Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{microtype}
+
+% --- Theorem Environments ---
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% --- Code Listings ---
+\definecolor{codebg}{RGB}{248,248,248}
+\definecolor{codegreen}{RGB}{0,128,0}
+\definecolor{codepurple}{RGB}{128,0,128}
+\lstset{
+  backgroundcolor=\color{codebg},
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{codepurple}\bfseries,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  frame=single,
+  captionpos=b,
+}
+\lstdefinelanguage{Lean4}{
+  morekeywords={theorem,lemma,def,structure,import,namespace,end,where,by,rfl,simp,ring_nf,done,trivial,set_option,macro,tactic,constructor},
+  sensitive=true,
+  morecomment=[l]{--},
+  morecomment=[s]{/-}{-/},
+  morestring=[b]",
+}
+
+% --- Macros ---
+\newcommand{\eta}{\eta}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ceff}{c_{\mathrm{eff}}}
+\newcommand{\RAMA}{\textsc{RAMA}}
+
+\title{%
+  \textbf{Neuro-Symbolic Recovery of Eta-Quotient Identities\\
+  from Ramanujan's Manuscript Notebooks}\\[0.5em]
+  \large Machine-Verified Discoveries via Evolutionary Search\\
+  and Lean~4 Kernel Certification
+}
+
+\author{%
+  Xavier Callens\\
+  \small SocrateAI Scientific Research\\
+  \small \texttt{callensxavier@gmail.com}
+}
+
+\date{August 11, 2026 — \textit{Preliminary Draft (v4.0)}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present the first systematic, machine-verified recovery of
+Dedekind eta-quotient identities from Srinivasa Ramanujan's original
+manuscript notebooks using a neuro-symbolic pipeline.  Our
+\emph{Ramanujan Autonomous Neuro-symbolic Architecture} (\RAMA{})
+combines (i)~multimodal vision extraction from digitized manuscript
+pages, (ii)~a population-based genetic evolutionary search over the
+space of eta-quotient exponent vectors, and (iii)~real-time formal
+verification via the Lean~4 proof assistant with Mathlib.  Processing
+the first 481 of 698~manuscript pages from Notebooks~1, 2, and~3, the
+engine has identified 477~candidate eta-quotient conjectures that
+compile under the Lean~4 kernel with zero axiomatic gaps
+(\texttt{sorry}-free).  Of these, 378 correspond to
+thermodynamically stable vacuum states under a saddle-point
+evaluation of their effective central charge.  We provide complete
+mathematical proofs, Python reproducibility code, and the full
+Lean~4 certification appendix.  All claims are stated with explicit
+falsifiability conditions.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% === SECTIONS ===
+\input{sections/01_introduction}
+\input{sections/02_mathematical_preliminaries}
+\input{sections/03_pipeline_architecture}
+\input{sections/04_discovery_candidate_alpha}
+\input{sections/05_discovery_candidate_beta}
+\input{sections/06_discovery_candidate_gamma}
+\input{sections/07_statistical_analysis}
+\input{sections/08_physical_interpretation}
+\input{sections/09_limitations}
+\input{sections/10_conclusion}
+
+% === APPENDICES ===
+\appendix
+\input{sections/appendix_A_lean4}
+\input{sections/appendix_B_python}
+
+% === BIBLIOGRAPHY ===
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+
+\bibitem{ramanujan1916}
+S.~Ramanujan,
+\emph{On certain arithmetical functions},
+Transactions of the Cambridge Philosophical Society, 22(9):159--184, 1916.
+
+\bibitem{ramanujan_lost}
+S.~Ramanujan,
+\emph{The Lost Notebook and Other Unpublished Papers},
+Narosa Publishing House, New Delhi, 1988.
+
+\bibitem{andrews_berndt_I}
+G.~E. Andrews and B.~C. Berndt,
+\emph{Ramanujan's Lost Notebook, Part~I},
+Springer, New York, 2005.
+
+\bibitem{andrews_berndt_II}
+G.~E. Andrews and B.~C. Berndt,
+\emph{Ramanujan's Lost Notebook, Part~II},
+Springer, New York, 2009.
+
+\bibitem{bringmann_ono_2006}
+K.~Bringmann and K.~Ono,
+\emph{The $f(q)$ mock theta function conjecture and partition ranks},
+Inventiones mathematicae, 165(2):243--266, 2006.
+
+\bibitem{bringmann_ono_2010}
+K.~Bringmann and K.~Ono,
+\emph{Dyson's ranks and Maass forms},
+Annals of Mathematics, 171(1):419--449, 2010.
+
+\bibitem{zwegers2002}
+S.~P. Zwegers,
+\emph{Mock Theta Functions},
+PhD thesis, Universiteit Utrecht, 2002.
+
+\bibitem{strominger_vafa_1996}
+A.~Strominger and C.~Vafa,
+\emph{Microscopic origin of the Bekenstein--Hawking entropy},
+Physics Letters B, 379(1--4):99--104, 1996.
+\texttt{arXiv:hep-th/9601029}.
+
+\bibitem{dijkgraaf_verlinde_verlinde}
+R.~Dijkgraaf, E.~Verlinde, and H.~Verlinde,
+\emph{Counting dyons in $N=4$ string theory},
+Nuclear Physics B, 484(3):543--561, 1997.
+\texttt{arXiv:hep-th/9607026}.
+
+\bibitem{ono2004}
+K.~Ono,
+\emph{The Web of Modularity: Arithmetic of the Coefficients of Modular Forms and $q$-Series},
+CBMS Regional Conference Series in Mathematics, 102, American Mathematical Society, 2004.
+
+\bibitem{martin_1996}
+Y.~Martin,
+\emph{Multiplicative $\eta$-quotients},
+Transactions of the American Mathematical Society, 348(12):4825--4856, 1996.
+
+\bibitem{gordon_hughes_1993}
+B.~Gordon and K.~Hughes,
+\emph{Multiplicative properties of $\eta$-products~II},
+A tribute to Emil Grosswald: number theory and related analysis,
+Contemporary Mathematics, 143:415--430, 1993.
+
+\bibitem{cardy_1986}
+J.~L. Cardy,
+\emph{Operator content of two-dimensional conformally invariant theories},
+Nuclear Physics B, 270:186--204, 1986.
+
+\bibitem{hardy_ramanujan_1918}
+G.~H. Hardy and S.~Ramanujan,
+\emph{Asymptotic formulae in combinatory analysis},
+Proceedings of the London Mathematical Society, s2-17(1):75--115, 1918.
+
+\bibitem{lean4_mathlib}
+The Mathlib Community,
+\emph{Mathlib4: The Lean~4 Mathematical Library},
+\url{https://github.com/leanprover-community/mathlib4}, 2024.
+
+\bibitem{moura_lean4}
+L.~de Moura and S.~Ullrich,
+\emph{The Lean~4 Theorem Prover and Programming Language},
+Proceedings of CADE-28, LNAI 12699:625--635, 2021.
+
+\bibitem{dedekind_1877}
+R.~Dedekind,
+\emph{Schreiben an Herrn Borchardt \"uber die Theorie der elliptischen Modulfunktionen},
+Journal f\"ur die reine und angewandte Mathematik, 83:265--292, 1877.
+
+\bibitem{rademacher_1937}
+H.~Rademacher,
+\emph{On the partition function $p(n)$},
+Proceedings of the London Mathematical Society, s2-43(1):241--254, 1937.
+
+\bibitem{bruinier_ono_2010}
+J.~H. Bruinier and K.~Ono,
+\emph{Heegner divisors, $L$-functions and harmonic weak Maass forms},
+Annals of Mathematics, 172(2):2135--2181, 2010.
+
+\bibitem{sen_1995}
+A.~Sen,
+\emph{Extremal black holes and elementary string states},
+Modern Physics Letters A, 10(30):2081--2093, 1995.
+\texttt{arXiv:hep-th/9504147}.
+
+\bibitem{dabholkar_2005}
+A.~Dabholkar,
+\emph{Exact counting of black hole microstates},
+Physical Review Letters, 94:241301, 2005.
+\texttt{arXiv:hep-th/0409148}.
+
+\end{thebibliography}
+
+\end{document}

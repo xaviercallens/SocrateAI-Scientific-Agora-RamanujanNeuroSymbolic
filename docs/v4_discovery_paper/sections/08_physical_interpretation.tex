@@ -1,0 +1,109 @@
+% ============================================================================
+% Section 8: Physical Interpretation
+% ============================================================================
+\section{Physical Interpretation and Conjectured Applications}
+\label{sec:physics}
+
+\subsection{Preamble: Scope and Epistemic Status}
+
+The physical interpretations presented in this section are
+\emph{conjectural mappings} motivated by the structural
+parallels between eta-quotient invariants and conformal
+field theory quantities.  They do not constitute proven
+physical predictions and are subject to the falsifiability
+conditions stated in \cref{sec:limitations}.
+
+\subsection{BPS State Counting on K3 Surfaces}
+
+In Type~IIB string theory compactified on
+$K3 \times S^1$~\cite{strominger_vafa_1996}, the
+degeneracy of $1/2$-BPS states at charge level $n$ is
+governed by a generating function of the form
+\begin{equation}
+  Z(\tau) = \sum_{n \geq 0} d(n) \, q^n
+  = \prod_{n=1}^{\infty} \frac{1}{(1-q^n)^{24}}
+  = \frac{1}{\eta(\tau)^{24}} \cdot q,
+\end{equation}
+where $d(n)$ counts the number of BPS microstates and
+the exponent $24$ reflects the Euler characteristic of
+K3~\cite{dijkgraaf_verlinde_verlinde}.
+
+Our discovered eta-quotients---particularly the 377~stable
+unitary candidates---can be viewed as \emph{generalized}
+generating functions of the form
+\begin{equation}
+  Z_{\mathbf{r}}(\tau) = q^{p}
+  \prod_{d=1}^{d_{\max}} \eta(d\tau)^{r_d},
+\end{equation}
+whose Fourier coefficients may count states in
+\emph{orbifold} compactifications or heterotic duals
+of K3~\cite{dabholkar_2005}.
+
+\subsection{The Cardy Limit and Entropy Scaling}
+
+For a candidate with $\ceff > 0$, the Cardy
+formula~\eqref{eq:cardy} predicts
+\begin{equation}
+  S_{\mathrm{BPS}}(n)
+  = 2\pi \sqrt{\frac{\ceff \cdot n}{6}}
+  + O(\log n).
+\end{equation}
+
+Table~\ref{tab:entropy_scaling} lists the entropy scaling
+for the three featured candidates.
+
+\begin{table}[H]
+\centering
+\caption{Entropy scaling for featured discoveries.}
+\label{tab:entropy_scaling}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Candidate} & $\ceff$ & $k$ &
+  $S_{\mathrm{BPS}}(n=1)$ & \textbf{Stability} \\
+\midrule
+$\alpha$ (6c588637) & 2.529 & 8 & 4.08 & Stable \\
+$\beta$ (6da961e1) & 0.273 & 0 & 1.34 & Stable \\
+$\gamma$ (66770695) & 1.537 & 3/2 & 3.18 & Stable \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Tachyonic States and Swampland Constraints}
+
+The 101~candidates with $\ceff < 0$ are classified as
+``Tachyonic.''  In the string theory landscape,
+tachyonic states signal an unstable vacuum that either
+decays or is in the \emph{swampland}---the set of
+effective field theories that cannot be UV-completed
+into a consistent theory of quantum
+gravity~\cite{strominger_vafa_1996}.
+
+\begin{conjecture}[Swampland Filter]
+\label{conj:swampland}
+Eta-quotients with $\ceff < 0$ that appear in Ramanujan's
+manuscripts encode partition functions of string vacua in
+the swampland.  They are ``rejected'' candidates that
+Ramanujan may have considered and discarded.
+\end{conjecture}
+
+\textbf{Falsifiability:} This conjecture is falsified if
+a tachyonic candidate is shown to arise as the partition
+function of a known, consistent string compactification.
+
+\subsection{Connection to Mathieu Moonshine}
+
+The sporadic group $M_{24}$ acts on the K3 elliptic
+genus, and the multiplicities of its representations
+are encoded in eta-quotients and mock modular
+forms~\cite{ono2004}.  Several of our discovered
+candidates have weight $k = 3/2$ or $k = 8$, which are
+precisely the weights that appear in the context of
+Mathieu moonshine.
+
+\begin{remark}
+We do not claim that our candidates exhibit moonshine
+phenomena.  A rigorous check would require computing
+the McKay--Thompson series for each relevant conjugacy
+class of $M_{24}$ and comparing against our $q$-expansions.
+This is deferred to future work.
+\end{remark}

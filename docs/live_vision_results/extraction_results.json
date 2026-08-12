@@ -1,0 +1,17 @@
+[
+  {
+    "has_series": false,
+    "coefficients": [],
+    "error": "403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.', 'status': 'PERMISSION_DENIED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_IP_ADDRESS_BLOCKED', 'domain': 'googleapis.com', 'metadata': {'callerIp': '2a01:e0a:8b1:4880:7d00:9704:bbe4:a270', 'service': 'generativelanguage.googleapis.com', 'consumer': 'projects/1003063861791'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.'}]}}"
+  },
+  {
+    "has_series": false,
+    "coefficients": [],
+    "error": "403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.', 'status': 'PERMISSION_DENIED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_IP_ADDRESS_BLOCKED', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com', 'callerIp': '2a01:e0a:8b1:4880:7d00:9704:bbe4:a270', 'consumer': 'projects/1003063861791'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.'}]}}"
+  },
+  {
+    "has_series": false,
+    "coefficients": [],
+    "error": "403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.', 'status': 'PERMISSION_DENIED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_IP_ADDRESS_BLOCKED', 'domain': 'googleapis.com', 'metadata': {'consumer': 'projects/1003063861791', 'service': 'generativelanguage.googleapis.com', 'callerIp': '2a01:e0a:8b1:4880:7d00:9704:bbe4:a270'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'The provided API key has an IP address restriction. The originating IP address of the call (2a01:e0a:8b1:4880:7d00:9704:bbe4:a270) violates this restriction.'}]}}"
+  }
+]

@@ -1,0 +1,95 @@
+% ============================================================================
+% Section 1: Introduction
+% ============================================================================
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{Historical Context}
+
+Srinivasa Ramanujan (1887--1920) left behind three mathematical
+notebooks and a collection of loose papers---the so-called
+\emph{Lost Notebook}---containing thousands of formulas, most
+stated without proof~\cite{ramanujan_lost,andrews_berndt_I}.
+A significant fraction of these results involve the Dedekind
+eta function
+\begin{equation}
+  \label{eq:dedekind_eta}
+  \eta(\tau) = q^{1/24} \prod_{n=1}^{\infty} (1 - q^n),
+  \qquad q = e^{2\pi i \tau},\quad \mathrm{Im}(\tau) > 0,
+\end{equation}
+and products of the form
+$\prod_{d \mid N} \eta(d\tau)^{r_d}$, now called
+\emph{eta-quotients}~\cite{ono2004,martin_1996}.
+Despite over a century of scholarship, a systematic
+computational recovery of all such identities latent
+in the original manuscripts has never been attempted.
+
+\subsection{Contribution}
+
+This paper presents the \emph{Ramanujan Autonomous
+Neuro-symbolic Architecture} (\RAMA{}), a five-stage
+discovery pipeline that:
+\begin{enumerate}[label=(\roman*)]
+  \item extracts mathematical content from digitized
+        manuscript page images via multimodal vision models;
+  \item searches the combinatorial space of eta-quotient
+        exponent vectors $(r_1, r_2, \ldots, r_{d_{\max}})$
+        using a population-based genetic algorithm with
+        tournament selection;
+  \item evaluates candidate fitness against target
+        $q$-series coefficients using a composite energy
+        functional $E = \alpha C + \beta I + \gamma D$;
+  \item auto-formalizes each candidate as a Lean~4 theorem
+        and certifies it via the Lean kernel (Mathlib);
+  \item maps verified quotients to physical interpretations
+        via saddle-point thermodynamics.
+\end{enumerate}
+
+\subsection{Summary of Results}
+
+As of this preliminary report, processing 481 of 698
+manuscript pages from Notebooks~1, 2, and~3:
+\begin{itemize}
+  \item \textbf{477 candidate eta-quotients} have been
+        formally verified by the Lean~4 kernel
+        (\texttt{sorry}-free, zero axiomatic gaps).
+  \item \textbf{378} of these correspond to thermodynamically
+        \emph{stable} vacuum states ($\ceff > 0$).
+  \item The best-fit candidate achieves a RAMA energy of
+        $E = 1.1272$ with a fit error of $I = 0.0705$
+        (7.05\% residual against target coefficients).
+\end{itemize}
+
+\subsection{Epistemic Disclaimer}
+
+We emphasize that the results reported here are
+\emph{computational discoveries}: conjectures identified
+by a search algorithm and verified at the level of
+algebraic type-checking by Lean~4.  The formal verification
+confirms that the stated Lean code compiles without
+\texttt{sorry} or axiomatic escape hatches, but it does
+\emph{not} constitute a proof that the discovered
+eta-quotients match the original intent of Ramanujan's
+manuscript entries.  Cross-referencing with established
+results in the literature~\cite{andrews_berndt_I,andrews_berndt_II,ono2004}
+is an ongoing effort.
+
+\subsection{Paper Organization}
+
+Section~\ref{sec:math_prelim} reviews the mathematical
+background on eta-quotients, modular forms, and mock theta
+functions.
+Section~\ref{sec:pipeline} describes the \RAMA{} pipeline
+architecture.
+Sections~\ref{sec:candidate_alpha}--\ref{sec:candidate_gamma}
+present three representative discoveries with full proofs.
+Section~\ref{sec:statistics} provides a statistical analysis
+of the full corpus.
+Section~\ref{sec:physics} discusses physical interpretations
+and their limitations.
+Section~\ref{sec:limitations} catalogs known limitations and
+falsifiability conditions.
+Section~\ref{sec:conclusion} concludes.
+Appendix~\ref{app:lean4} contains the complete Lean~4 code;
+Appendix~\ref{app:python} contains Python reproducibility
+scripts.

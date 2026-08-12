@@ -1,0 +1,83 @@
+% ============================================================================
+% Section 10: Conclusion
+% ============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+\subsection{Summary of Contributions}
+
+This paper has presented the \RAMA{} discovery engine, the
+first neuro-symbolic pipeline capable of:
+\begin{enumerate}
+  \item Systematically processing digitized manuscript pages
+        from Ramanujan's Notebooks~1, 2, and~3.
+  \item Searching the combinatorial space of Dedekind
+        eta-quotient exponent vectors via a genetic
+        algorithm.
+  \item Auto-formalizing each candidate as Lean~4 code
+        and certifying it via the Lean kernel.
+  \item Mapping verified candidates to conjectured
+        physical interpretations via saddle-point
+        thermodynamics.
+\end{enumerate}
+
+From the first 481 manuscript pages, the engine has
+produced 477 Lean-certified eta-quotient candidates, of
+which 378 correspond to thermodynamically stable vacua.
+Three representative discoveries---spanning weight~8,
+weight~0, and weight~$3/2$---have been presented with full
+proofs, Python reproducibility code, and Lean~4 appendices.
+
+\subsection{Epistemic Assessment}
+
+We reiterate that these are \emph{computational
+discoveries}, not proven theorems in the classical
+mathematical sense.  The Lean~4 certification confirms
+type-level algebraic consistency but does not prove
+$q$-series coefficient matching or modularity.  The
+physical interpretations are conjectural Tier~C claims.
+
+The path from the current results to established
+mathematical knowledge requires:
+\begin{itemize}
+  \item Integration of a live multimodal vision API to
+        extract page-specific $q$-series targets (removing
+        Limitation~L1).
+  \item Upgrade of Lean~4 theorems from reflexivity
+        (\texttt{rfl}) to coefficient-level verification
+        (\texttt{norm\_num}).
+  \item Systematic cross-referencing of all candidates
+        against the OEIS, LMFDB, and published tables.
+  \item Computation of exact $q$-expansions to 50+ terms
+        for OEIS submission.
+\end{itemize}
+
+\subsection{Future Work}
+
+\begin{enumerate}
+  \item \textbf{Full corpus completion:} The nightly run
+        (currently at 481/698 pages) is expected to
+        complete within 4--6 hours.
+  \item \textbf{Lean~4 Tier~A+ verification:} Automated
+        term-by-term $q$-coefficient matching.
+  \item \textbf{OEIS submission:} Candidate sequences
+        that pass all checks will be submitted to the
+        OEIS with full provenance.
+  \item \textbf{Moonshine analysis:} Comparison of
+        candidates with McKay--Thompson series for $M_{24}$.
+  \item \textbf{Physical predictions:} Computation of
+        subleading Rademacher corrections to test
+        against known BPS degeneracies.
+\end{enumerate}
+
+\subsection{Reproducibility}
+
+All code, data, and Lean~4 files are available in the
+repository:
+\begin{center}
+\url{https://github.com/xaviercallens/SocrateAI-Scientific-Agora-RamanujanNeuroSymbolic}
+\end{center}
+The nightly run can be reproduced via:
+\begin{verbatim}
+  python3 run_full_manuscript_nightly.py
+\end{verbatim}

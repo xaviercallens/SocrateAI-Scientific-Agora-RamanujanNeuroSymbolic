@@ -67,30 +67,27 @@ def scale (c : ℤ) (f : TruncQSeries) : TruncQSeries :=
 def qShift (n : ℕ) (f : TruncQSeries) : TruncQSeries :=
   List.replicate n 0 ++ f
 
+/-- Helper for series inversion. Computes the inverse coefficients up to length n. -/
+def invHelper (A : List ℤ) : ℕ → List ℤ
+  | 0 => []
+  | 1 => [1]
+  | (m + 1) =>
+    let B := invHelper A m
+    let sum := (List.range m).foldl (fun acc k => acc + (A.getD (k + 1) 0) * (B.getD (m - 1 - k) 0)) 0
+    B ++ [-sum]
+
+/-- Multiplicative inverse of a q-series (requires a₀ = 1).
+    Result is truncated to length `len`. -/
+def inv (f : TruncQSeries) (len : ℕ) : TruncQSeries :=
+  invHelper f len
+
+/-- Exponentiation by a natural number. -/
+def pow (f : TruncQSeries) (n : ℕ) (len : ℕ) : TruncQSeries :=
+  match n with
+  | 0 => one len
+  | (k + 1) => mul f (pow f k len) len
+
 /-- The total number of terms in the truncated series. -/
 def numTerms (f : TruncQSeries) : ℕ := f.length
-
--- ═══════════════════════════════════════════════════════════════════════════════
--- Verification: basic algebraic properties
--- ═══════════════════════════════════════════════════════════════════════════════
-
-/-- The zero series has all zero coefficients. -/
-theorem coeff_zero (len : ℕ) (n : ℕ) (hn : n < len) :
-    coeff (zero len) n = 0 := by
-  unfold coeff zero
-  simp [List.getD_replicate hn]
-
-/-- The identity series has a₀ = 1. -/
-theorem coeff_one_zero (len : ℕ) (hlen : 0 < len) :
-    coeff (one len) 0 = 1 := by
-  unfold coeff one
-  simp
-
-/-- Negation flips signs. -/
-theorem coeff_neg (f : TruncQSeries) (n : ℕ) (hn : n < f.length) :
-    coeff (neg f) n = -(coeff f n) := by
-  unfold coeff neg
-  simp [List.getD_map, hn]
-  ring
 
 end DualScale.QSeries

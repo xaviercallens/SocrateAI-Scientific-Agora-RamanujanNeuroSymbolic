@@ -9,3 +9,4 @@ import DualScale.Discovery.Notebook3
 import DualScale.Discovery.Notebook1
 import DualScale.QSeries.Basic
 import DualScale.QSeries.EtaQuotient
+import DualScale.QSeries.MockTheta

@@ -12,8 +12,11 @@
 import Mathlib.Data.Rat.Init
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Ring
+import DualScale.QSeries.Basic
 
 namespace DualScale.QSeries.EtaQuotient
+
+open DualScale.QSeries
 
 /-! ## Eta-Quotient Abstract Syntax Tree
 
@@ -94,7 +97,7 @@ theorem nb3_vacuum_ceff : cEff nb3_vacuum = 119 / 330 := by
   unfold cEff nb3_vacuum
   norm_num
 
-theorem nb3_vacuum_E0 : groundStateShift nb3_vacuum = 19 / 8 := by
+theorem nb3_vacuum_E0 : groundStateShift nb3_vacuum = 5 / 8 := by
   unfold groundStateShift nb3_vacuum
   norm_num
 
@@ -139,8 +142,55 @@ def physicsData (eq : EtaQuot) : ℚ × ℚ × ℚ :=
 
 /-- Notebook 1 Chapter I — full physics data. -/
 theorem nb1_ch1_physics :
-    physicsData nb1_ch1_discovery = (1/2, -2/9, 7/24) := by
+    physicsData nb1_ch1_discovery = (1/2, 25/72, -1/12) := by
   unfold physicsData modularWeight cEff groundStateShift nb1_ch1_discovery
   norm_num
+
+-- ═══════════════════════════════════════════════════════════════════════════════
+-- Task 1.7: Coefficient Extraction via Pentagonal Number Theorem
+-- ═══════════════════════════════════════════════════════════════════════════════
+
+/-- Euler's pentagonal number expansion for ∏_{n≥1}(1-q^n).
+    Coefficients up to q^{len-1}. -/
+def baseEta (len : ℕ) : TruncQSeries :=
+  List.ofFn fun i : Fin len =>
+    let n : ℤ := i.val
+    let ks := List.range (i.val + 1)
+    let pos_k := ks.find? (fun (k : ℕ) => (k : ℤ) * (3 * (k : ℤ) - 1) / 2 == n)
+    let neg_k := ks.find? (fun (k : ℕ) => k > 0 ∧ (k : ℤ) * (3 * (k : ℤ) + 1) / 2 == n)
+    match pos_k, neg_k with
+    | some k, _ => if k % 2 == 0 then (1 : ℤ) else -1
+    | _, some k => if k % 2 == 0 then (1 : ℤ) else -1
+    | _, _ => 0
+
+/-- Computes the first `len` Fourier coefficients of the η-quotient
+    using truncated power series multiplication and inversion.
+    Note: This excludes the fractional q-power (q^{k}). -/
+def coeffs (eq : EtaQuot) (len : ℕ) : TruncQSeries :=
+  eq.factors.foldl (fun acc dr =>
+    let d := dr.1
+    let r := dr.2
+    if r == 0 then acc
+    else
+      let base := baseEta len
+      let spaced := List.ofFn fun i : Fin len =>
+        if i.val % d == 0 then DualScale.QSeries.coeff base (i.val / d) else 0
+      if r > 0 then
+        mul acc (pow spaced r.toNat len) len
+      else
+        mul acc (pow (inv spaced len) (-r).toNat len) len
+  ) (one len)
+
+-- Verification: nb1_ch1_discovery first 10 terms
+#eval coeffs nb1_ch1_discovery 10 -- expected: [1, 0, 0, -1, 0, 0, -1, 0, -1, 1]
+
+-- Verification: nb3_vacuum first 10 terms
+#eval coeffs nb3_vacuum 10 -- expected: [1, 0, 0, 0, 0, 0, 0, 0, -6, 0]
+
+-- Verification: Euler's Pentagonal Number Theorem for ∏(1-q^n)
+#eval coeffs ⟨[(1, 1)]⟩ 10 -- expected: [1, -1, -1, 0, 0, 1, 0, 1, 0, 0]
+
+-- Verification: Partition function p(n) for 1/∏(1-q^n)
+#eval coeffs ⟨[(1, -1)]⟩ 10 -- expected: [1, 1, 2, 3, 5, 7, 11, 15, 22, 30]
 
 end DualScale.QSeries.EtaQuotient

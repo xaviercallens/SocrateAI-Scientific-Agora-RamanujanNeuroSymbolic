@@ -29,6 +29,8 @@ L'infrastructure utilise une correspondance stricte de transformation modulaire.
 
 Nous présentons ici l'isomorphisme entre la méthode du point col de Rademacher et le comptage d'états BPS microscopiques ($S_{{BPS}} = 2\pi$).
 
+![Distribution SUSY](figures/susy_distribution.png)
+
 # Chapitre 3 : Preuves de l'Échelle Duale (DualScale)
 
 Les preuves établissant la limite d'enstrophie (mécanique des fluides) bornée par la compacité d'Aubin-Lions.
@@ -36,6 +38,8 @@ Les preuves établissant la limite d'enstrophie (mécanique des fluides) bornée
 # Chapitre 4 : Catalogue des Nouvelles Découvertes
 
 Voici un échantillon de séquences potentiellement nouvelles identifiées par notre détecteur d'anomalies, qui ne figurent pas dans la classification standard ({len(novel_discoveries)} sur 938).
+
+![Paysage Énergétique RAMA](figures/energy_landscape.png)
 
 """
     else:
@@ -53,6 +57,8 @@ The framework utilizes strict modular transformation mapping.
 
 Here we present the isomorphism between the Rademacher saddle-point method and the microscopic BPS state counting ($S_{{BPS}} = 2\pi$).
 
+![SUSY Distribution](figures/susy_distribution.png)
+
 # Chapter 3: DualScale Proofs
 
 The proofs establishing the fluid mechanics Enstrophy limit bounded through Aubin-Lions compactness.
@@ -60,6 +66,8 @@ The proofs establishing the fluid mechanics Enstrophy limit bounded through Aubi
 # Chapter 4: Discovery Catalogue
 
 Below is a sample of the potentially novel sequences identified by our anomaly detector that do not appear in the standard classification ({len(novel_discoveries)} out of 938).
+
+![RAMA Energy Landscape](figures/energy_landscape.png)
 
 """
         

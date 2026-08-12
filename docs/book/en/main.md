@@ -12,6 +12,8 @@ The framework utilizes strict modular transformation mapping.
 
 Here we present the isomorphism between the Rademacher saddle-point method and the microscopic BPS state counting ($S_{BPS} = 2\pi$).
 
+![SUSY Distribution](figures/susy_distribution.png)
+
 # Chapter 3: DualScale Proofs
 
 The proofs establishing the fluid mechanics Enstrophy limit bounded through Aubin-Lions compactness.
@@ -19,6 +21,8 @@ The proofs establishing the fluid mechanics Enstrophy limit bounded through Aubi
 # Chapter 4: Discovery Catalogue
 
 Below is a sample of the potentially novel sequences identified by our anomaly detector that do not appear in the standard classification (50 out of 938).
+
+![RAMA Energy Landscape](figures/energy_landscape.png)
 
 ## Theorem ID: e46d9956-a9e
 - **Archetype:** Mock Theta Function

@@ -12,6 +12,8 @@ L'infrastructure utilise une correspondance stricte de transformation modulaire.
 
 Nous présentons ici l'isomorphisme entre la méthode du point col de Rademacher et le comptage d'états BPS microscopiques ($S_{BPS} = 2\pi$).
 
+![Distribution SUSY](figures/susy_distribution.png)
+
 # Chapitre 3 : Preuves de l'Échelle Duale (DualScale)
 
 Les preuves établissant la limite d'enstrophie (mécanique des fluides) bornée par la compacité d'Aubin-Lions.
@@ -19,6 +21,8 @@ Les preuves établissant la limite d'enstrophie (mécanique des fluides) bornée
 # Chapitre 4 : Catalogue des Nouvelles Découvertes
 
 Voici un échantillon de séquences potentiellement nouvelles identifiées par notre détecteur d'anomalies, qui ne figurent pas dans la classification standard (50 sur 938).
+
+![Paysage Énergétique RAMA](figures/energy_landscape.png)
 
 ## Theorem ID: e46d9956-a9e
 - **Archétype:** Mock Theta Function

@@ -14,6 +14,10 @@ def generate_markdown(lang="en"):
     c.execute("SELECT COUNT(*) FROM discoveries WHERE lean_status = 'VERIFIED'")
     verified_count = c.fetchone()[0]
 
+    # Query for Concordance Table
+    c.execute("SELECT id, archetype, rama_energy, andrews_berndt_ref FROM discoveries WHERE andrews_berndt_ref IS NOT NULL ORDER BY rama_energy ASC LIMIT 100")
+    concordance = c.fetchall()
+
     if lang == "fr":
         md = rf"""# Introduction
 
@@ -103,12 +107,22 @@ Below is a sample of the potentially novel sequences identified by our anomaly d
         md += "# Annexe A : Code Lean 4\n\n"
         md += "## MasterDualScale.lean\n\n```lean\n" + lean_master_code + "\n```\n\n"
         md += "## EtaQuotient.lean\n\n```lean\n" + lean_eta_code + "\n```\n\n"
-        md += "# Annexe B : Table de Concordance\n\n(Données de correspondance corpus...)\n"
+        md += "# Annexe B : Table de Concordance\n\n"
+        md += "Cette table relie les équations originales de Ramanujan aux états BPS physiques équivalents.\n\n"
+        md += "| ID | Archétype Topologique | Énergie RAMA | Réf. Andrews-Berndt |\n"
+        md += "|---|---|---|---|\n"
+        for row in concordance:
+            md += f"| {row[0]} | {row[1]} | {row[2]:.6f} | {row[3]} |\n"
     else:
         md += "# Appendix A: Lean Code Listings\n\n"
         md += "## MasterDualScale.lean\n\n```lean\n" + lean_master_code + "\n```\n\n"
         md += "## EtaQuotient.lean\n\n```lean\n" + lean_eta_code + "\n```\n\n"
-        md += "# Appendix B: Concordance Table\n\n(Corpus mapping data...)\n"
+        md += "# Appendix B: Concordance Table\n\n"
+        md += "This table maps Ramanujan's original equations to their physical BPS state equivalents.\n\n"
+        md += "| ID | Topological Archetype | RAMA Energy | Andrews-Berndt Ref |\n"
+        md += "|---|---|---|---|\n"
+        for row in concordance:
+            md += f"| {row[0]} | {row[1]} | {row[2]:.6f} | {row[3]} |\n"
 
     # Write output
     out_path = f"docs/book/{lang}/main.md"

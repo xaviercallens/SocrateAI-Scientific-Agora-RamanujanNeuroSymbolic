@@ -32,10 +32,12 @@ axiom enstrophy_pos (v : VelocityField) : Enstrophy (enstrophy_of v)
     bounded in both kinetic energy (L2) and enstrophy (H1) will have a
     strongly convergent subsequence. We abstract this as a property of a
     bounded set of fields. -/
-axiom aubin_lions_compactness {S : Set VelocityField}
+axiom aubin_lions_compactness (S : Set VelocityField) : Prop
+
+axiom aubin_lions_apply {S : Set VelocityField}
   (h_ens_bound : ∃ M, ∀ v ∈ S, enstrophy_of v ≤ M)
   (h_ke_bound : ∃ E, ∀ v ∈ S, kinetic_energy v ≤ E) :
-  True -- In a full topological space, this would state `IsCompact S`
+  aubin_lions_compactness S
 
 /-! ## Holographic Compactness -/
 
@@ -46,11 +48,11 @@ theorem aubin_lions_enstrophy_compactness {S : Set VelocityField}
   (c_eff n : ℝ) (κ : ℝ) (h_kappa : κ > 0)
   (h_holo : ∀ v ∈ S, enstrophy_of v ≤ κ * DualScale.Asymptotics.macroscopicEntropy c_eff n)
   (h_ke_bound : ∃ E, ∀ v ∈ S, kinetic_energy v ≤ E) :
-  True := by
+  aubin_lions_compactness S := by
   -- We extract the bound M = κ * S_BPS from the hypothesis
   have h_ens_bound : ∃ M, ∀ v ∈ S, enstrophy_of v ≤ M :=
     ⟨κ * DualScale.Asymptotics.macroscopicEntropy c_eff n, h_holo⟩
   -- We apply Aubin-Lions
-  exact aubin_lions_compactness h_ens_bound h_ke_bound
+  exact aubin_lions_apply h_ens_bound h_ke_bound
 
 end DualScale.Physics

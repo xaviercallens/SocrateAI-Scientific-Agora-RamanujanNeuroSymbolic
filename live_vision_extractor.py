@@ -29,9 +29,15 @@ import re
 import time
 from pathlib import Path
 
-# Use the modern google-genai SDK
-from google import genai
-from google.genai import types
+# Use the modern google-genai SDK if available
+try:
+    from google import genai
+    from google.genai import types
+    HAS_GENAI = True
+except ImportError:
+    genai = None
+    types = None
+    HAS_GENAI = False
 
 # ============================================================================
 # CONFIG

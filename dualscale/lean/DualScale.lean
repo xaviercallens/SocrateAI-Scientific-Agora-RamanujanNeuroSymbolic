@@ -25,3 +25,4 @@ import DualScale.Physics.CFMVortex
 import DualScale.Physics.PhaseTransition
 import DualScale.Physics.DyadicShell
 import DualScale.Physics.MasterDualScale
+import DualScale.HoloAlg

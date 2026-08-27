@@ -161,6 +161,8 @@ def oeis_search_signed(seq: list) -> dict:
 
 def _parse_oeis(data: dict) -> dict:
     """Extract relevant fields from OEIS JSON response."""
+    if not data or not isinstance(data, dict):
+        return {"status": "error", "detail": "No response or invalid JSON"}
     if "error" in data:
         return {"status": "error", "detail": data["error"]}
     count = data.get("count", 0)

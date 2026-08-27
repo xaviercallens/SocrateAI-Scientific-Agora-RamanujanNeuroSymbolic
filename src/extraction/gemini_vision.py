@@ -20,7 +20,11 @@ class VisionExtractor:
         if not self.use_mock:
             api_key = get_api_key()
             if api_key:
-                self.live_extractor = LiveVisionExtractor(api_key)
+                try:
+                    self.live_extractor = LiveVisionExtractor(api_key)
+                except Exception as e:
+                    logging.warning(f"Could not initialize live Gemini vision extractor ({e}). Falling back to mock vision extraction.")
+                    self.use_mock = True
             else:
                 logging.warning("No Gemini API Key found. Falling back to mock vision extraction.")
                 self.use_mock = True

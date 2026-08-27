@@ -31,14 +31,17 @@ def run_nightly_deep_burn():
     db = NamagiriDB()
     
     target_dirs = [
-        "input/NoteBook1/**/*.jpg",
-        "input/NoteBook2/**/*.jpg",
-        "input/NoteBook3/**/*.jpg"
+        "input/**/*.jpg",
+        "input/**/*.png",
+        "data/ramanujan_notebooks/**/*.jpg",
+        "data/ramanujan_notebooks/**/*.png",
+        "docs/release_consolidated/**/*.png",
     ]
     
     target_images = []
     for d in target_dirs:
         target_images.extend(glob.glob(d, recursive=True))
+    target_images = sorted(list(set(target_images)))
         
     logging.info(f"Discovered {len(target_images)} manuscript images for Phase 2 processing.")
     

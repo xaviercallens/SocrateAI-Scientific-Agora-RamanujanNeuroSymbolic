@@ -9,6 +9,9 @@ env/
 input/
 *.pdf
 !docs/v2.1_paper/*.pdf
+!docs/book/en/*.pdf
+!docs/book/fr/*.pdf
+!docs/arxiv_submission/*.pdf
 # Lean build artifacts
 dualscale/lean/.lake/build/
 # LaTeX aux files

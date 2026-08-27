@@ -77,9 +77,27 @@ class NamagiriDB:
                 lean_status     TEXT DEFAULT 'UNRESOLVED',
                 lean_error      TEXT,
                 physics_mapping TEXT,
+                braket_notation TEXT,
+                w_eigenvalue    REAL,
+                c_eigenvalue    REAL,
+                is_bps_protected INTEGER,
+                demonstration_3act TEXT,
                 created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
+        # Safe column additions for existing tables
+        for col, col_type in [
+            ("braket_notation", "TEXT"),
+            ("w_eigenvalue", "REAL"),
+            ("c_eigenvalue", "REAL"),
+            ("is_bps_protected", "INTEGER"),
+            ("demonstration_3act", "TEXT")
+        ]:
+            try:
+                conn.execute(f"ALTER TABLE discoveries ADD COLUMN {col} {col_type}")
+            except sqlite3.OperationalError:
+                pass  # Column already exists
+
         conn.execute("""
             CREATE INDEX IF NOT EXISTS idx_lean_status ON discoveries(lean_status)
         """)
@@ -116,8 +134,9 @@ class NamagiriDB:
             INSERT INTO discoveries 
             (id, image_path, notebook, chapter, page, archetype, conjecture,
              eta_exponents, q_shift, rama_energy, rama_C, rama_I, rama_D,
-             shadow, domain, lean_code, lean_status, lean_error, physics_mapping)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+             shadow, domain, lean_code, lean_status, lean_error, physics_mapping,
+             braket_notation, w_eigenvalue, c_eigenvalue, is_bps_protected, demonstration_3act)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             disc_id,
             data.get("image_path", ""),
@@ -137,7 +156,12 @@ class NamagiriDB:
             data.get("lean_code", ""),
             data.get("lean_status", "UNRESOLVED"),
             data.get("lean_error"),
-            data.get("physics_mapping", "")
+            data.get("physics_mapping", ""),
+            data.get("braket_notation", ""),
+            data.get("w_eigenvalue", 0.0),
+            data.get("c_eigenvalue", 0.0),
+            1 if data.get("is_bps_protected") else 0,
+            data.get("demonstration_3act", "")
         ))
         conn.commit()
         conn.close()

@@ -30,12 +30,18 @@ class LeanVerifier:
                 
             try:
                 # Run 'lake env lean' on relative path inside DualScale/Discovery
+                env = os.environ.copy()
+                elan_path = os.path.expanduser("~/.elan/bin")
+                if elan_path not in env.get("PATH", ""):
+                    env["PATH"] = f"{elan_path}:{env.get('PATH', '')}"
+                    
                 result = subprocess.run(
                     ["lake", "env", "lean", rel_path],
                     cwd=self.lean_project_dir,
                     capture_output=True,
                     text=True,
-                    timeout=120
+                    timeout=120,
+                    env=env
                 )
                 
                 if result.returncode == 0:

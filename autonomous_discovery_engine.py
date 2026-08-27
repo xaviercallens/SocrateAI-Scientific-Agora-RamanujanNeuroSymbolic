@@ -19,7 +19,7 @@ from typing import Dict, Any
 from src.extraction import VisionExtractor
 from src.evolution import GeneticRAMAEngine
 from src.lean import LeanCodeGenerator, LeanVerifier
-from src.physics import SaddlePointEvaluator, S12PartitionFilter
+from src.physics import SaddlePointEvaluator, S12PartitionFilter, HoloAlgMasterEngine
 from src.persistence import NamagiriDB
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -153,7 +153,7 @@ class AutonomousDiscoveryEngine:
         # 5. Physics
         physics_map = self.step_5_physical_mapping(intuition, bridge)
         
-        # 6. Persistence (WS-5)
+        # 6. Persistence (WS-5) with HoloAlg Integration
         state = intuition.get("state")
         
         try:
@@ -161,6 +161,14 @@ class AutonomousDiscoveryEngine:
         except:
             notebook = "Unknown"
             
+        # HoloAlg Operator Evaluation
+        holo_engine = HoloAlgMasterEngine()
+        holo_analysis = holo_engine.analyze_state(
+            exponents=state.exponents if state else {},
+            q_shift_24=state.q_shift_24 if state else 0,
+            conjecture_id=disc_id
+        ) if state else None
+
         db_id = self.db.insert_discovery({
             "id": disc_id,
             "image_path": image_path,
@@ -180,7 +188,12 @@ class AutonomousDiscoveryEngine:
             "lean_code": lean_res.get("lean_code", ""),
             "lean_status": lean_res.get("status", "UNRESOLVED"),
             "lean_error": lean_res.get("error", ""),
-            "physics_mapping": physics_map
+            "physics_mapping": physics_map,
+            "braket_notation": holo_analysis["braket"] if holo_analysis else "",
+            "w_eigenvalue": holo_analysis["operators"]["W_eigenvalue"] if holo_analysis else 0.0,
+            "c_eigenvalue": holo_analysis["operators"]["C_eigenvalue"] if holo_analysis else 0.0,
+            "is_bps_protected": holo_analysis["operators"]["is_bps_protected"] if holo_analysis else False,
+            "demonstration_3act": holo_analysis["demonstration"] if holo_analysis else ""
         })
         
         logging.info(f"✅ Pipeline complete. Theorem stored with Provenance ID: {db_id}")

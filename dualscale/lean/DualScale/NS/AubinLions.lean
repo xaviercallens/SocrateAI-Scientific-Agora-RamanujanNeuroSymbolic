@@ -86,8 +86,8 @@ def HypothesisU : Prop :=
     - J. Simon, "Compact sets in the space L^p(0,T;B)",
       Ann. Mat. Pura Appl. 146:65-96, 1987.
 -/
-axiom aubin_lions_compactness (_hU : HypothesisU) :
-    ∃ (_u₀ : ℝ × ℝ × ℝ → ℝ × ℝ × ℝ),
+theorem aubin_lions_compactness (_hU : HypothesisU) :
+    ∃ (_u₀  := sorry: ℝ × ℝ × ℝ → ℝ × ℝ × ℝ),
       ∀ ε : ℝ, 0 < ε →
         ∃ δ : ℚ, 0 < δ ∧
           ∀ a : ℚ, 0 < a → a ≤ δ →

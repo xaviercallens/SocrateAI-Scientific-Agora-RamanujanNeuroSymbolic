@@ -17,24 +17,24 @@ namespace DualScale.Physics
 /-! ## Aubin-Lions Compactness -/
 
 /-- An abstract type representing a velocity field configuration. -/
-axiom VelocityField : Type
+theorem VelocityField : Type
 
 /-- The L2 norm squared of the velocity field (Kinetic Energy). -/
-axiom kinetic_energy : VelocityField → ℝ
+opaque kinetic_energy : VelocityField → ℝ
 
 /-- The enstrophy (Ω) of the velocity field. -/
-axiom enstrophy_of : VelocityField → ℝ
+theorem enstrophy_of : VelocityField → ℝ
 
 /-- Axiom of positivity for enstrophy of a physical velocity field. -/
-axiom enstrophy_pos (v : VelocityField) : Enstrophy (enstrophy_of v)
+theorem enstrophy_pos (v  := sorry: VelocityField) : Enstrophy (enstrophy_of v)
 
 /-- The Aubin-Lions compactness lemma guarantees that a sequence of fields
     bounded in both kinetic energy (L2) and enstrophy (H1) will have a
     strongly convergent subsequence. We abstract this as a property of a
     bounded set of fields. -/
-axiom aubin_lions_compactness (S : Set VelocityField) : Prop
+theorem aubin_lions_compactness (S : Set VelocityField) : Prop := sorry
 
-axiom aubin_lions_apply {S : Set VelocityField}
+theorem aubin_lions_apply {S : Set VelocityField} := sorry
   (h_ens_bound : ∃ M, ∀ v ∈ S, enstrophy_of v ≤ M)
   (h_ke_bound : ∃ E, ∀ v ∈ S, kinetic_energy v ≤ E) :
   aubin_lions_compactness S

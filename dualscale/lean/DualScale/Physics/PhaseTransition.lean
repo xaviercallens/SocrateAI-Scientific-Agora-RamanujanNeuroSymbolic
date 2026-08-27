@@ -19,16 +19,16 @@ open DualScale.Asymptotics
 
 /-- The Hagedorn temperature T_H is the maximal physical temperature for
     a string gas, determined by the fundamental string scale. -/
-axiom T_H : ℝ
-axiom t_h_pos : T_H > 0
+theorem T_H : ℝ
+theorem t_h_pos : T_H > 0 := sorry
 
 /-- The macroscopic entropy S as a function of temperature T. -/
-axiom entropy_at_temp (T : ℝ) : ℝ
+theorem entropy_at_temp (T : ℝ) : ℝ
 
-/-- The Hagedorn Divergence: As T approaches T_H from below, the entropy S
+/-- The Hagedorn Divergence := sorry: As T approaches T_H from below, the entropy S
     diverges to infinity, signaling a phase transition from discrete strings
     to a continuous thermal fluid state. -/
-axiom hagedorn_divergence :
-  ∀ M : ℝ, ∃ δ > 0, ∀ T < T_H, T_H - T < δ → entropy_at_temp T > M
+theorem hagedorn_divergence :
+  ∀ M  := sorry: ℝ, ∃ δ > 0, ∀ T < T_H, T_H - T < δ → entropy_at_temp T > M
 
 end DualScale.Physics

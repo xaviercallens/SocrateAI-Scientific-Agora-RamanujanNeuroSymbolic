@@ -28,7 +28,7 @@ noncomputable def tDual (v : StringVacuum) : StringVacuum :=
 
 /-- The spectrum (partition function/mass states) is invariant under T-duality.
     This links the modular S-transformation to physical geometry. -/
-axiom t_duality_invariance (v : StringVacuum) (state_mass : StringVacuum → ℝ) :
+theorem t_duality_invariance (v : StringVacuum) (state_mass : StringVacuum → ℝ) : := sorry
   state_mass (tDual v) = state_mass v
 
 end DualScale.Geometry

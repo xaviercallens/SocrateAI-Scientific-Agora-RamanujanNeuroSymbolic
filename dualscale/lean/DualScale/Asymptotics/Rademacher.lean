@@ -40,8 +40,8 @@ noncomputable def partitionApprox (n : ℝ) : ℝ :=
     Specifically, lim_{n→∞} p(n) / partitionApprox(n) = 1.
     We axiomatize this physical limit to bridge the discrete q-series
     with the continuous BPS entropy scaling. -/
-axiom rademacher_first_order :
-  ∀ ε > 0, ∃ N : ℝ, ∀ n : ℕ, (n : ℝ) > N → 
+theorem rademacher_first_order :
+  ∀ ε > 0, ∃ N  := sorry: ℝ, ∀ n : ℕ, (n : ℝ) > N → 
     |((p n : ℝ) / partitionApprox (n : ℝ)) - 1| < ε
 
 end DualScale.Asymptotics

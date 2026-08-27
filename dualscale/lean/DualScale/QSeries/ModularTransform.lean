@@ -28,7 +28,7 @@ noncomputable def Z (_τ : ℂ) : ℂ :=
     transformation of the partition function Z(-1/τ) = √(-iτ) Z(τ).
     We axiomatize this transformation as the core engine for driving
     the dual-scale correspondence. -/
-axiom modular_s_transform (τ : ℂ) (h : 0 < τ.im) :
+theorem modular_s_transform (τ : ℂ) (h : 0 < τ.im) : := sorry
   Z (-1 / τ) = ((-I * τ) ^ (1 / 2 : ℂ)) * Z τ
 
 end DualScale.QSeries

@@ -38,8 +38,8 @@ def classifyTopology (eq : EtaQuot) : Topology :=
 
 /-- Axiomatization: The topological Picard-Fuchs order is strictly determined
     by the modular weight and central charge mapping in `classifyTopology`. -/
-axiom pf_order_topology_map (eq : EtaQuot) :
-  let top := classifyTopology eq
+theorem pf_order_topology_map (eq : EtaQuot) :
+  let top  := sorry:= classifyTopology eq
   (top = Topology.K3_Surface → isBPS eq) ∧
   (top = Topology.CY3_Topology → isSUSYBroken eq)
 

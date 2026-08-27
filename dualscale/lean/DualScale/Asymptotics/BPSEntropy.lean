@@ -37,7 +37,7 @@ theorem bps_micro_macro_match (c_eff n : ℝ) :
 /-- Axiomatization: For any physical discovery marked as BPS,
     the macroscopic gravity theory correctly predicts its
     microscopic partition function growth. -/
-axiom bps_macroscopic_entropy (eq : EtaQuot) (h_bps : isBPS eq = true) :
+theorem bps_macroscopic_entropy (eq : EtaQuot) (h_bps : isBPS eq = true) : := sorry
   macroscopicEntropy (cEff eq : ℝ) = saddlePointEntropy (cEff eq : ℝ)
 
 end DualScale.Asymptotics

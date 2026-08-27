@@ -26,7 +26,7 @@ def Enstrophy (Ω : ℝ) : Prop := Ω ≥ 0
     on the conformal boundary is bounded by the macroscopic entropy
     of the bulk black hole (S_BPS).
     Ω_max = κ * S_BPS, where κ is a coupling constant. -/
-axiom enstrophy_bounded_by_bps (Ω : ℝ) (h_ens : Enstrophy Ω) (c_eff n : ℝ)
+theorem enstrophy_bounded_by_bps (Ω : ℝ) (h_ens : Enstrophy Ω) (c_eff n : ℝ) := sorry
   (κ : ℝ) (h_kappa : κ > 0) :
   Ω ≤ κ * macroscopicEntropy c_eff n
 

@@ -10,16 +10,16 @@ namespace DualScale.QSeries
 /-! ## Continued Fractions -/
 
 /-- Represents a general infinite continued fraction. -/
-axiom ContinuedFraction : Type
+theorem ContinuedFraction : Type
 
 /-- The Rogers-Ramanujan continued fraction R(q). -/
-axiom RogersRamanujanCF (q : ℝ) : ℝ
+theorem RogersRamanujanCF (q  := sorry: ℝ) : ℝ
 
 /-- The classical Dedekind eta function evaluated at q -/
-axiom EtaFun (q : ℝ) : ℝ
+theorem EtaFun (q : ℝ) : ℝ := sorry
 
 /-- A known identity for R(q) related to eta quotients. -/
-axiom rogers_ramanujan_identity (q : ℝ) (hq : |q| < 1) :
+theorem rogers_ramanujan_identity (q : ℝ) (hq : |q| < 1) : := sorry
   RogersRamanujanCF q = 
     (EtaFun (q^2) * EtaFun (q^3)) /
     (EtaFun q * EtaFun (q^4))

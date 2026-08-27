@@ -35,7 +35,7 @@ noncomputable def partitionEntropy (n : ℝ) : ℝ :=
     We axiomatize that for any valid physical discovery with c_eff > 0,
     the logarithm of its coefficients grows asymptotically as S(n). -/
 
-axiom saddle_point_asymptotic (eq : EtaQuot) (hc : (cEff eq : ℝ) > 0) :
+theorem saddle_point_asymptotic (eq : EtaQuot) (hc : (cEff eq : ℝ) > 0) : := sorry
   ∀ ε > 0, ∃ N : ℝ, ∀ n : ℕ, (n : ℝ) > N →
     let a_n := (DualScale.QSeries.EtaQuotient.coeffs eq (n + 1)).getD n 0
     a_n > 0 ∧ |(log (a_n : ℝ) / saddlePointEntropy (cEff eq : ℝ) (n : ℝ)) - 1| < ε

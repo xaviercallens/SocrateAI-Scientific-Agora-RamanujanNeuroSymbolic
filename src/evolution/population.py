@@ -17,10 +17,28 @@ class PopulationManager:
     def __init__(self, d_max: int = 12):
         self.d_max = d_max
 
-    def generate_initial_population(self, pop_size: int = 50) -> List[EtaQuotientState]:
-        """Generate a diverse initial population of eta-quotient states."""
+    def generate_initial_population(self, pop_size: int = 50, include_newman_seeds: bool = True) -> List[EtaQuotientState]:
+        """Generate a diverse initial population of eta-quotient states, seeded with exact modular forms."""
         pop = []
-        for _ in range(pop_size):
+        
+        # Exact mathematical seeds (Ramanujan Delta, Dedekind eta, mock theta seeds, Weber functions)
+        seeds = [
+            EtaQuotientState(q_shift_24=0, exponents={1: -1}),            # Partition generator p(n)
+            EtaQuotientState(q_shift_24=24, exponents={1: 24}),           # Ramanujan Delta discriminant
+            EtaQuotientState(q_shift_24=0, exponents={1: 2, 2: -1}),      # Weber f0(q)
+            EtaQuotientState(q_shift_24=0, exponents={1: 1, 2: 1}),       # Cusp form on Gamma_0(2)
+            EtaQuotientState(q_shift_24=0, exponents={1: 2, 4: 2}),       # Weight 2 modular form on Gamma_0(4)
+            EtaQuotientState(q_shift_24=0, exponents={1: 4, 2: -2, 4: 4}),# Newman weight 3 form
+            EtaQuotientState(q_shift_24=0, exponents={1: 1}),             # Pure Dedekind eta
+            EtaQuotientState(q_shift_24=0, exponents={1: -2, 2: 1}),      # Mock theta basis
+        ]
+        
+        if include_newman_seeds:
+            for s in seeds:
+                if len(pop) < pop_size:
+                    pop.append(s.copy())
+                    
+        while len(pop) < pop_size:
             # Start with random small exponents on a few dividers
             num_factors = random.randint(1, 4)
             exponents = {}
@@ -116,3 +134,51 @@ class PopulationManager:
             mutated.exponents = {1: 1}
                     
         return mutated
+
+    def memetic_polish(self, state: EtaQuotientState, fitness_evaluator, max_steps: int = 8) -> EtaQuotientState:
+        """
+        Memetic Local Polish: Integer Coordinate Descent.
+        Explores micro-perturbations around an elite candidate to lock into local minimum.
+        """
+        current = state.copy()
+        current_energy, _, _, _ = fitness_evaluator.evaluate_energy(current)
+        
+        for _ in range(max_steps):
+            improved = False
+            active_divs = list(current.exponents.keys())
+            
+            # Check single exponent steps on active dividers
+            for d in active_divs:
+                for delta in [-1, 1]:
+                    cand = current.copy()
+                    cand.exponents[d] = cand.exponents.get(d, 0) + delta
+                    if cand.exponents[d] == 0:
+                        del cand.exponents[d]
+                    if not cand.exponents:
+                        continue
+                    
+                    e, _, _, _ = fitness_evaluator.evaluate_energy(cand)
+                    if e < current_energy - 1e-5:
+                        current = cand
+                        current_energy = e
+                        improved = True
+                        break
+                if improved:
+                    break
+                    
+            # Check coupled shift steps
+            if not improved:
+                for shift_delta in [-1, 1]:
+                    cand = current.copy()
+                    cand.q_shift_24 += shift_delta
+                    e, _, _, _ = fitness_evaluator.evaluate_energy(cand)
+                    if e < current_energy - 1e-5:
+                        current = cand
+                        current_energy = e
+                        improved = True
+                        break
+                        
+            if not improved:
+                break
+                
+        return current

@@ -168,9 +168,9 @@ class EtaQuotientState:
 class TrackAInverseEngineering:
     """RAMA Track A: Inverse Engineering q-Series into Minimal Eta-Quotients."""
 
-    def __init__(self, target_coeffs: np.ndarray, d_max: int = 12):
-        self.target_coeffs = target_coeffs
-        self.N = len(target_coeffs)
+    def __init__(self, target_coeffs: Any, d_max: int = 12):
+        self.target_coeffs = np.asarray(target_coeffs, dtype=np.float64)
+        self.N = len(self.target_coeffs)
         self.d_max = d_max
 
     def compute_metrics(self, state: EtaQuotientState) -> Tuple[float, float, float]:

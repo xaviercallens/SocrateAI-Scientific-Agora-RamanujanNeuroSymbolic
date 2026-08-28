@@ -1,51 +1,41 @@
 [
   {
-    "coefficients": [
-      1,
-      -2,
-      3,
-      -4,
-      5,
-      -6,
-      7,
-      -8,
-      9,
-      -10,
-      11,
-      -12,
-      13,
-      -14,
-      15
-    ],
-    "formula_text": "1 - 2 + 3 - 4 + \\dots",
-    "page_context": "This page discusses theorems for calculating convergent values corresponding to divergent series, providing several examples such as 1-2+3-4+... = 1/4 and 1+2+3+4+... = -1/12. It also mentions assigning meaning to fractional and negative numbers of terms in series and products, and presents a more complex series involving Gamma functions.",
+    "has_series": false,
+    "coefficients": [],
+    "formula_text": "$S = 3x \\quad \\text{where } S \\text{ is the magic sum and } x \\text{ is the middle element.}$ \\\\ $a_{\\text{first}} + a_{\\text{third}} = 2a_{\\text{second}} \\quad \\text{for elements in an Arithmetic Progression (A.P.)}$ \\\\ $\\begin{pmatrix} 6 & 1 & 8 \\\\ 7 & 5 & 3 \\\\ 2 & 9 & 4 \\end{pmatrix} \\quad \\text{for } S=15$ \\\\ $\\begin{pmatrix} 15 & 1 & 11 \\\\ 5 & 9 & 13 \\\\ 7 & 17 & 3 \\end{pmatrix} \\quad \\text{for } S=27 \\text{ with odd numbers}$",
+    "page_context": "This page, titled 'CHAPTER I - MAGIC SQUARES', defines properties and methods for constructing 3x3 magic squares. It introduces terms such as 'average' (a), 'row/column sum' (S), 'middle row/column' (m), 'diagonal' (d), and 'whole sum' (W). Key principles discussed include the relationship between the magic sum and the center element ($S=3x$ or $x=a$), and the observation that numbers within rows, columns, and diagonals form arithmetic progressions (A.P.). Two examples of 3x3 magic squares are provided: one with a magic sum of 15, and another with a magic sum of 27 where all numbers are odd. It also hints at a formula for the middle element when S and d are unequal.",
+    "archetype": "Magic Square",
     "confidence": "high",
-    "has_series": true,
-    "source_image": "inputs/6-ramanujans-letters-from-ono-67.png",
+    "source_image": "data/ramanujan_notebooks/Notebook1/chapterI/page1.jpg",
     "model": "gemini-2.5-flash",
-    "prompt_tokens": 500,
-    "candidate_tokens": 213
+    "prompt_tokens": 1628,
+    "candidate_tokens": 420,
+    "cached": true
   },
   {
-    "coefficients": [],
-    "formula_text": "",
-    "page_context": "This page discusses the Prime Number Theorem, specifically the error term P(x) in the approximation for the number of primes less than x, \u03c0(x) \u2248 \u222b(dt/log t) + P(x). It mentions known asymptotic forms for P(x) and observations about its behavior. The author also claims to have found a function that exactly represents the number of primes, but the function itself is not detailed.",
-    "confidence": "high",
     "has_series": false,
-    "source_image": "inputs/6-ramanujans-letters-from-ono-69.png",
+    "coefficients": [],
+    "formula_text": "\\frac{1}{2}(d_1 + d_2 + m_1 + m_2 - W)",
+    "page_context": "This page focuses on problems involving the construction and properties of numerical 'squares' (matrices) and 'oblongs' (rectangular matrices). It provides examples of 3x3 squares where specific row, column, and diagonal sums are given, along with a formula for a central element. It also introduces a 3x4 oblong with an algebraic relationship between its elements (A+C=2B+3D) and a numerical fill-in example. The problems generalize to 4x4 squares, suggesting an interest in properties of matrices with varying sum conditions, related to magic squares but allowing for non-uniform sums.",
+    "archetype": "Magic Square / Sum-based Matrix Construction",
+    "confidence": "high",
+    "source_image": "data/ramanujan_notebooks/Notebook1/chapterI/page2.jpg",
     "model": "gemini-2.5-flash",
-    "prompt_tokens": 500,
-    "candidate_tokens": 132
+    "prompt_tokens": 1628,
+    "candidate_tokens": 214,
+    "cached": true
   },
   {
-    "coefficients": [],
-    "formula_text": "",
-    "page_context": "The page discusses mathematical expressions for calculating prime numbers (using Bernoulli numbers, and for forms An+B, 4n-1, 4n+1), analyzing irregularly increasing functions, and a formula for counting numbers of the form 2^p * 3^q.",
-    "confidence": "low",
     "has_series": false,
-    "source_image": "inputs/6-ramanujans-letters-from-ono-70.png",
+    "coefficients": [],
+    "formula_text": "\\begin{pmatrix}\nA+P & C+S & D+Q & B+R \\\\\nD+R & B+Q & A+S & C+P \\\\\nB+S & D+P & C+R & A+Q \\\\\nC+Q & A+R & B+P & D+S\n\\end{pmatrix}",
+    "page_context": "This page is dedicated to the construction of magic squares. It presents algebraic templates for 4x4 squares (Fig I and Fig II). For Fig II, specific conditions are given: A+D=B+C and P+S=Q+R. Two numerical examples of 4x4 magic squares are provided, both having a magic constant of 34. Additionally, an algebraic template for a 5x5 square is shown, followed by an 8x8 numerical square. While most rows of the 8x8 square sum to 260, one row sums to 266, suggesting it might be a specific type of magic square, a construction step, or contain a transcription error. The overall theme is the systematic generation and properties of magic squares.",
+    "archetype": "Magic Square",
+    "confidence": "high",
+    "source_image": "data/ramanujan_notebooks/Notebook1/chapterI/page3.jpg",
     "model": "gemini-2.5-flash",
-    "prompt_tokens": 500,
-    "candidate_tokens": 103
+    "prompt_tokens": 1628,
+    "candidate_tokens": 297,
+    "cached": false
   }
 ]

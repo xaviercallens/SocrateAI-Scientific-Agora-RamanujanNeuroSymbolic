@@ -26,6 +26,13 @@ class FitnessEvaluator:
     def evaluate_energy(self, state: EtaQuotientState) -> Tuple[float, float, float, float]:
         """Returns total energy, C, I, D."""
         C, I, D = self.track_a.compute_metrics(state)
+        
+        # Newman congruence bonus: if eta quotient satisfies Gamma_0(N) modularity, reduce D
+        if state.exponents:
+            sum_d_r = sum(d * r for d, r in state.exponents.items())
+            if sum_d_r % 24 == 0:
+                D = max(0.0, D * 0.8) # 20% aesthetic bonus for modular congruence
+                
         energy = self.weights.alpha * C + self.weights.beta * I + self.weights.gamma * D
         return energy, C, I, D
 

@@ -120,16 +120,9 @@ def run_full_experiment(num_discovery_samples: int = 300, run_manuscript_batch: 
         print("\n[STAGE 2] Autonomous Manuscript Pipeline & Lean 4 Formalization...")
         auto_engine = AutonomousDiscoveryEngine()
         
-        batch_pages = [
-            "inputs/6-ramanujans-letters-from-ono-67.png",
-            "inputs/6-ramanujans-letters-from-ono-69.png",
-            "inputs/6-ramanujans-letters-from-ono-70.png",
-            "inputs/6-ramanujans-letters-from-ono-71.png",
-            "inputs/6-ramanujans-letters-from-ono-73.png",
-            "inputs/6-ramanujans-letters-from-ono-74.png",
-            "inputs/6-ramanujans-letters-from-ono-75.png",
-            "inputs/6-ramanujans-letters-from-ono-76.png"
-        ]
+        from live_vision_extractor import discover_notebook_images
+        discovered_imgs = [str(p) for p in discover_notebook_images()]
+        batch_pages = discovered_imgs[:8] if len(discovered_imgs) >= 8 else discovered_imgs
         
         for idx, page in enumerate(batch_pages, 1):
             t_page = time.time()

@@ -9,6 +9,8 @@ import DualScale.Discovery.Notebook3
 import DualScale.Discovery.Notebook1
 import DualScale.QSeries.Basic
 import DualScale.QSeries.EtaQuotient
+import DualScale.Math.EtaQuotient
+import DualScale.Math.MagicSquare
 import DualScale.QSeries.MockTheta
 import DualScale.QSeries.ModularTransform
 import DualScale.QSeries.ContinuedFraction
@@ -18,6 +20,7 @@ import DualScale.Asymptotics.BPSEntropy
 import DualScale.Asymptotics.Batch547
 import DualScale.Geometry.PicardFuchs
 import DualScale.Geometry.TDuality
+import DualScale.Geometry.K3Moduli
 import DualScale.Physics.Enstrophy
 import DualScale.Physics.AubinLions
 import DualScale.Physics.SpectralGap
@@ -25,4 +28,8 @@ import DualScale.Physics.CFMVortex
 import DualScale.Physics.PhaseTransition
 import DualScale.Physics.DyadicShell
 import DualScale.Physics.MasterDualScale
+import DualScale.Physics.BlackHole
+import DualScale.Physics.NavierStokes
 import DualScale.HoloAlg
+import DualScale.Topology.Spectra
+import DualScale.Topology.RamanujanGraph

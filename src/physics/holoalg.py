@@ -134,6 +134,92 @@ class ModularInversionOperator:
         return 2.0 * math.pi * math.sqrt(c_eff * n / 6.0)
 
 
+class NewmanModularFormOperator(HermitianOperator):
+    """
+    Newman Modular Form Operator (N̂_congruence):
+    Validates exact Newman (1956/1959) conditions for Dedekind eta-quotients
+    f(τ) = ∏_{d|N} η(dτ)^{r_d} on congruence subgroup Γ_0(N).
+    
+    Conditions:
+    1. Level N = lcm(d | r_d ≠ 0)
+    2. Weight k = 1/2 ∑ r_d ∈ ℤ/2
+    3. ∑ d * r_d ≡ 0 (mod 24)
+    4. ∑ (N/d) * r_d ≡ 0 (mod 24)
+    5. Cusp holomorphicity: for all c|N, order ord_c(f) ≥ 0
+       where ord_c(f) = (N / (24 * gcd(c, N/c))) * ∑_{d|N} (gcd(c, d)² * r_d / d)
+    """
+    name: str = "Newman Modular Form Operator"
+    symbol: str = "N̂"
+    latex_symbol: str = "\\hat{\\mathcal{N}}"
+
+    def compute_level(self, state: RamanujanState) -> int:
+        divs = [d for d, r in state.exponents.items() if r != 0]
+        if not divs:
+            return 1
+        lcm = divs[0]
+        for d in divs[1:]:
+            lcm = (lcm * d) // math.gcd(lcm, d)
+        return lcm
+
+    def check_newman_congruences(self, state: RamanujanState) -> Dict[str, Any]:
+        N = self.compute_level(state)
+        exps = state.exponents
+        
+        sum_d_r = sum(d * r for d, r in exps.items())
+        sum_n_d_r = sum((N // d) * r for d, r in exps.items())
+        
+        mod24_d = (sum_d_r % 24 == 0)
+        mod24_nd = (sum_n_d_r % 24 == 0)
+        
+        # Weight
+        total_r = sum(exps.values())
+        k = 0.5 * total_r
+        is_integer_weight = (total_r % 2 == 0)
+        
+        # Cusp vanishing orders for each divisor c | N
+        divisors_of_n = [c for c in range(1, N + 1) if N % c == 0]
+        cusp_orders = {}
+        all_cusps_non_negative = True
+        all_cusps_positive = True  # Cusp form condition
+        
+        for c in divisors_of_n:
+            denom = 24.0 * math.gcd(c, N // c)
+            val = sum((math.gcd(c, d) ** 2) * r / float(d) for d, r in exps.items())
+            ord_c = (N / denom) * val
+            cusp_orders[c] = ord_c
+            if ord_c < -1e-6:
+                all_cusps_non_negative = False
+            if ord_c <= 1e-6:
+                all_cusps_positive = False
+                
+        is_holomorphic_modular_form = mod24_d and mod24_nd and all_cusps_non_negative
+        is_cusp_form = is_holomorphic_modular_form and all_cusps_positive
+        
+        return {
+            "level_N": N,
+            "weight_k": k,
+            "is_integer_weight": is_integer_weight,
+            "sum_d_r": sum_d_r,
+            "sum_n_d_r": sum_n_d_r,
+            "mod24_d_congruence": mod24_d,
+            "mod24_nd_congruence": mod24_nd,
+            "cusp_orders": cusp_orders,
+            "is_holomorphic_modular_form": is_holomorphic_modular_form,
+            "is_cusp_form": is_cusp_form
+        }
+
+    def act(self, state: RamanujanState) -> float:
+        """Returns 1.0 for holomorphic modular form, 2.0 for cusp form, 0.5 for weakly modular, 0.0 otherwise."""
+        res = self.check_newman_congruences(state)
+        if res["is_cusp_form"]:
+            return 2.0
+        if res["is_holomorphic_modular_form"]:
+            return 1.0
+        if res["mod24_d_congruence"] or res["mod24_nd_congruence"]:
+            return 0.5
+        return 0.0
+
+
 # =====================================================================
 # Category Theory & Functors
 # =====================================================================
@@ -213,6 +299,7 @@ class HoloAlgMasterEngine:
         self.c_op = CentralChargeOperator()
         self.e0_op = GroundEnergyOperator()
         self.s_op = ModularInversionOperator()
+        self.newman_op = NewmanModularFormOperator()
         self.phi = HoloAlgFunctor(n_level=n_level)
         self.psi = DualScaleFunctor(kappa=kappa)
 
@@ -225,6 +312,7 @@ class HoloAlgMasterEngine:
         e0 = self.e0_op.act(state)
         is_bps = self.w_op.is_bps_protected(state)
         is_unitary = self.c_op.is_unitary(state)
+        newman_analysis = self.newman_op.check_newman_congruences(state)
 
         # Categorical mappings
         obj_N = CategoryN_Object(state=state, weight_k=k, c_eff=c_eff, is_bps=is_bps)
@@ -232,7 +320,7 @@ class HoloAlgMasterEngine:
         obj_F = self.psi.map_object(obj_G)
 
         # Build 3-Act Human Demonstration
-        demo = self.generate_3act_demonstration(state, obj_N, obj_G, obj_F)
+        demo = self.generate_3act_demonstration(state, obj_N, obj_G, obj_F, newman_analysis)
 
         return {
             "state": state,
@@ -244,7 +332,8 @@ class HoloAlgMasterEngine:
                 "C_eigenvalue": c_eff,
                 "E0_eigenvalue": e0,
                 "is_bps_protected": is_bps,
-                "is_unitary": is_unitary
+                "is_unitary": is_unitary,
+                "newman": newman_analysis
             },
             "category_N": obj_N,
             "category_G": obj_G,
@@ -252,9 +341,17 @@ class HoloAlgMasterEngine:
             "demonstration": demo
         }
 
-    def generate_3act_demonstration(self, state: RamanujanState, obj_N: CategoryN_Object, obj_G: CategoryG_Object, obj_F: CategoryF_Object) -> str:
+    def generate_3act_demonstration(self, state: RamanujanState, obj_N: CategoryN_Object, obj_G: CategoryG_Object, obj_F: CategoryF_Object, newman: Optional[Dict[str, Any]] = None) -> str:
         bps_status = "STRICTLY BPS-PROTECTED (k = 1/2)" if obj_N.is_bps else f"NON-BPS (k = {obj_N.weight_k})"
         unitary_status = f"UNITARY (c_eff = {obj_N.c_eff:.4f} > 0)" if obj_N.c_eff > 0 else f"NON-UNITARY (c_eff = {obj_N.c_eff:.4f})"
+        newman_str = ""
+        if newman:
+            if newman["is_cusp_form"]:
+                newman_str = f"  Newman Congruence:       N̂ |Ω_r⟩ = Cusp Form on Γ_0({newman['level_N']}) [k = {newman['weight_k']}]"
+            elif newman["is_holomorphic_modular_form"]:
+                newman_str = f"  Newman Congruence:       N̂ |Ω_r⟩ = Holomorphic Modular Form on Γ_0({newman['level_N']}) [k = {newman['weight_k']}]"
+            else:
+                newman_str = f"  Newman Congruence:       N̂ |Ω_r⟩ = Weak / Mock on Γ_0({newman['level_N']}) (Cusps: {sum(1 for v in newman['cusp_orders'].values() if v >= 0)}/{len(newman['cusp_orders'])} valid)"
 
         text = f"""======================================================================
 HOLOALG 3-ACT THEOREM DEMONSTRATION: {state.conjecture_id}
@@ -267,6 +364,7 @@ HOLOALG 3-ACT THEOREM DEMONSTRATION: {state.conjecture_id}
 [OPERATOR SPECTRUM]
   Supersymmetry Operator:  Ŵ |Ω_r⟩ = {obj_N.weight_k:.4f} |Ω_r⟩  [{bps_status}]
   Central Charge Operator: Ĉ |Ω_r⟩ = {obj_N.c_eff:.4f} |Ω_r⟩  [{unitary_status}]
+{newman_str}
 
 ----------------------------------------------------------------------
 ACT I: THE ALGEBRAIC FOUNDATION (T-DUALITY)

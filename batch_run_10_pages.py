@@ -16,19 +16,11 @@ from autonomous_discovery_engine import AutonomousDiscoveryEngine
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
-# Select 10 prime manuscript pages rich in known mathematics
-BATCH_PAGES = [
-    "inputs/6-ramanujans-letters-from-ono-67.png",
-    "inputs/6-ramanujans-letters-from-ono-69.png",
-    "inputs/6-ramanujans-letters-from-ono-70.png",
-    "inputs/6-ramanujans-letters-from-ono-71.png",
-    "inputs/6-ramanujans-letters-from-ono-73.png",
-    "inputs/6-ramanujans-letters-from-ono-74.png",
-    "inputs/6-ramanujans-letters-from-ono-75.png",
-    "inputs/6-ramanujans-letters-from-ono-76.png",
-    "docs/After 100 Years, Ramanujan Gap Filled—Wolfram Blog_files/RamanujanDefinition-1.png",
-    "docs/After 100 Years, Ramanujan Gap Filled—Wolfram Blog_files/RamanujanDefinition-2.png"
-]
+from live_vision_extractor import discover_notebook_images
+
+# Select prime manuscript pages rich in known mathematics
+_discovered_imgs = [str(p) for p in discover_notebook_images()]
+BATCH_PAGES = _discovered_imgs[:10] if len(_discovered_imgs) >= 10 else _discovered_imgs
 
 def run_10_page_batch():
     engine = AutonomousDiscoveryEngine()

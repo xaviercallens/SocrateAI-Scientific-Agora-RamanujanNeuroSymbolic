@@ -1,0 +1,816 @@
+{
+  "title": "Cached Manuscript Extraction Discovery Batch Report",
+  "timestamp": "2026-08-28 18:12:14",
+  "total_extractions_processed": 80,
+  "verified_count": 0,
+  "verification_rate_percent": 0.0,
+  "total_runtime_sec": 0.06,
+  "database_stats": {
+    "total": 1886,
+    "verified": 730,
+    "failed": 1146,
+    "unresolved": 0
+  },
+  "results": [
+    {
+      "index": 1,
+      "hash": "dba34004801503983b51163dadaa4449",
+      "filename": "hash_dba34004",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_dba34004"
+    },
+    {
+      "index": 2,
+      "hash": "6520da3a2846d28ef3dfa3586405c118",
+      "filename": "hash_6520da3a",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_6520da3a"
+    },
+    {
+      "index": 3,
+      "hash": "a55030a06c0ddd4ae47434bcc484068d",
+      "filename": "hash_a55030a0",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_a55030a0"
+    },
+    {
+      "index": 4,
+      "hash": "c93f458d28244a733447b7764d26c609",
+      "filename": "hash_c93f458d",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_c93f458d"
+    },
+    {
+      "index": 5,
+      "hash": "1ac3c6a8d23ea37cf34fb0ab8124e375",
+      "filename": "hash_1ac3c6a8",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_1ac3c6a8"
+    },
+    {
+      "index": 6,
+      "hash": "a472e97c5802b1f6c973887f619e2d6f",
+      "filename": "hash_a472e97c",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_a472e97c"
+    },
+    {
+      "index": 7,
+      "hash": "fc58d182c4c128208bb0b8bdfe8e27c6",
+      "filename": "hash_fc58d182",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_fc58d182"
+    },
+    {
+      "index": 8,
+      "hash": "2bf160dd41c1345099359a00ac41ecb9",
+      "filename": "hash_2bf160dd",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_2bf160dd"
+    },
+    {
+      "index": 9,
+      "hash": "028734145a7805e18c2411fe85fe81c9",
+      "filename": "hash_02873414",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_02873414"
+    },
+    {
+      "index": 10,
+      "hash": "72d2c0134816ae1620dcc57041dc36ae",
+      "filename": "hash_72d2c013",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_72d2c013"
+    },
+    {
+      "index": 11,
+      "hash": "609f384a93b3fcfb12fc7562a9b77b61",
+      "filename": "hash_609f384a",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_609f384a"
+    },
+    {
+      "index": 12,
+      "hash": "ec3a0230365af307a366c5a7acbe94e3",
+      "filename": "hash_ec3a0230",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_ec3a0230"
+    },
+    {
+      "index": 13,
+      "hash": "bb686c50e7a600738d4e58654da1d881",
+      "filename": "hash_bb686c50",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_bb686c50"
+    },
+    {
+      "index": 14,
+      "hash": "2193668faca9037a496c209ea977889a",
+      "filename": "hash_2193668f",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_2193668f"
+    },
+    {
+      "index": 15,
+      "hash": "66cbc3e8f6dc3b11a87a5bdf74a51dd9",
+      "filename": "hash_66cbc3e8",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_66cbc3e8"
+    },
+    {
+      "index": 16,
+      "hash": "cf9a4a80c37fc3a32b7a8de51d62e4b8",
+      "filename": "hash_cf9a4a80",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_cf9a4a80"
+    },
+    {
+      "index": 17,
+      "hash": "6f29e08a8f2d4354e78557c049558540",
+      "filename": "hash_6f29e08a",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_6f29e08a"
+    },
+    {
+      "index": 18,
+      "hash": "24fc17be5c4d3d1d6e70ffba22ba2abe",
+      "filename": "hash_24fc17be",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_24fc17be"
+    },
+    {
+      "index": 19,
+      "hash": "d27f61c6da2187166ca26d79a9c6623a",
+      "filename": "hash_d27f61c6",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_d27f61c6"
+    },
+    {
+      "index": 20,
+      "hash": "77192432190bd4ea032192a30d990472",
+      "filename": "hash_77192432",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_77192432"
+    },
+    {
+      "index": 21,
+      "hash": "c98d0e47413af700e50d42d7f1eca14e",
+      "filename": "hash_c98d0e47",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_c98d0e47"
+    },
+    {
+      "index": 22,
+      "hash": "abd5ec04dbdc34084e5aceddf0adf30d",
+      "filename": "hash_abd5ec04",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_abd5ec04"
+    },
+    {
+      "index": 23,
+      "hash": "67c4adfb5735231c6840039c1dc07c67",
+      "filename": "hash_67c4adfb",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_67c4adfb"
+    },
+    {
+      "index": 24,
+      "hash": "56ee9a8a0c0ba8dfdef65c416042b949",
+      "filename": "hash_56ee9a8a",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_56ee9a8a"
+    },
+    {
+      "index": 25,
+      "hash": "f7d738971c346e5c0a780f2c1db12fe8",
+      "filename": "hash_f7d73897",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_f7d73897"
+    },
+    {
+      "index": 26,
+      "hash": "b4db2ac91c50b0f81f7b0af6fc6c24f6",
+      "filename": "hash_b4db2ac9",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_b4db2ac9"
+    },
+    {
+      "index": 27,
+      "hash": "7c3ba690add43f38a7aee5ad3fd41f27",
+      "filename": "hash_7c3ba690",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_7c3ba690"
+    },
+    {
+      "index": 28,
+      "hash": "712d6c851abf4b355e7c87d2efb89a1c",
+      "filename": "hash_712d6c85",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_712d6c85"
+    },
+    {
+      "index": 29,
+      "hash": "bbf8fa7820f8df82932fc167ca2d55f1",
+      "filename": "hash_bbf8fa78",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_bbf8fa78"
+    },
+    {
+      "index": 30,
+      "hash": "7adf3ca21018e52d2e3f94c811a47162",
+      "filename": "hash_7adf3ca2",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_7adf3ca2"
+    },
+    {
+      "index": 31,
+      "hash": "98575585b26e33ca587072c0cbd67594",
+      "filename": "hash_98575585",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_98575585"
+    },
+    {
+      "index": 32,
+      "hash": "ecff7fbb8f71580968fea7963933a034",
+      "filename": "hash_ecff7fbb",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_ecff7fbb"
+    },
+    {
+      "index": 33,
+      "hash": "456a2ea1dceddd12b71df1db6d28652a",
+      "filename": "hash_456a2ea1",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_456a2ea1"
+    },
+    {
+      "index": 34,
+      "hash": "8aaa32cc00190a2dda14c6f4e1835e6e",
+      "filename": "hash_8aaa32cc",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_8aaa32cc"
+    },
+    {
+      "index": 35,
+      "hash": "d35373c750d64f3ce9afc189fffdd8dd",
+      "filename": "hash_d35373c7",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_d35373c7"
+    },
+    {
+      "index": 36,
+      "hash": "e43ddebc8ddbe25548555a4b573a45b7",
+      "filename": "hash_e43ddebc",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_e43ddebc"
+    },
+    {
+      "index": 37,
+      "hash": "a07d0f74453c7af6bee81a1f60c6b5a9",
+      "filename": "hash_a07d0f74",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_a07d0f74"
+    },
+    {
+      "index": 38,
+      "hash": "d87bf6bc3b0734e85cfaf75dec39f22a",
+      "filename": "hash_d87bf6bc",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_d87bf6bc"
+    },
+    {
+      "index": 39,
+      "hash": "fa37070bf19a6ba83c56e39f3a5ef452",
+      "filename": "hash_fa37070b",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_fa37070b"
+    },
+    {
+      "index": 40,
+      "hash": "27e910b0f4bae5518be45c3cb02a2630",
+      "filename": "hash_27e910b0",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_27e910b0"
+    },
+    {
+      "index": 41,
+      "hash": "0ddd3e94541dcb4325de6c9b8cf2dc99",
+      "filename": "hash_0ddd3e94",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_0ddd3e94"
+    },
+    {
+      "index": 42,
+      "hash": "15c4bec68c8a5f2b2d90b38d5aee5275",
+      "filename": "hash_15c4bec6",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_15c4bec6"
+    },
+    {
+      "index": 43,
+      "hash": "07a70ff2faba788ce8e0fa3dbfd16bff",
+      "filename": "hash_07a70ff2",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_07a70ff2"
+    },
+    {
+      "index": 44,
+      "hash": "dd9669dd987616cdac3bbed1673d327c",
+      "filename": "hash_dd9669dd",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_dd9669dd"
+    },
+    {
+      "index": 45,
+      "hash": "66aa776cb2628c21da8428aa407650a0",
+      "filename": "hash_66aa776c",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_66aa776c"
+    },
+    {
+      "index": 46,
+      "hash": "73909cf1e91a58ee597fb490c99d9aa9",
+      "filename": "hash_73909cf1",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_73909cf1"
+    },
+    {
+      "index": 47,
+      "hash": "71e0f9c6b52742bec4cc7e67c4050c5f",
+      "filename": "hash_71e0f9c6",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_71e0f9c6"
+    },
+    {
+      "index": 48,
+      "hash": "46539086084057ba2e134f29ec296b6c",
+      "filename": "hash_46539086",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_46539086"
+    },
+    {
+      "index": 49,
+      "hash": "a50e41baa5e0826435ca4cb5f6e76570",
+      "filename": "hash_a50e41ba",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_a50e41ba"
+    },
+    {
+      "index": 50,
+      "hash": "207cd0060c562e12cd9f75b9ca207943",
+      "filename": "hash_207cd006",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_207cd006"
+    },
+    {
+      "index": 51,
+      "hash": "77dd6a858c292401e5ae9f8391e888c4",
+      "filename": "hash_77dd6a85",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_77dd6a85"
+    },
+    {
+      "index": 52,
+      "hash": "9b04c4365484b39f015dc23a7203c633",
+      "filename": "hash_9b04c436",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_9b04c436"
+    },
+    {
+      "index": 53,
+      "hash": "38e2995dcd7e81a3015e6fb834aa7ac6",
+      "filename": "hash_38e2995d",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_38e2995d"
+    },
+    {
+      "index": 54,
+      "hash": "f7852dbe69d418327678cc7071448092",
+      "filename": "hash_f7852dbe",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_f7852dbe"
+    },
+    {
+      "index": 55,
+      "hash": "dd62fa1faa582de3bb0bd54a50abf83a",
+      "filename": "hash_dd62fa1f",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_dd62fa1f"
+    },
+    {
+      "index": 56,
+      "hash": "5f68a42630bef53a56144f1344c99765",
+      "filename": "hash_5f68a426",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_5f68a426"
+    },
+    {
+      "index": 57,
+      "hash": "97f43ad2e5c153d649a7466cdd6c5df1",
+      "filename": "hash_97f43ad2",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_97f43ad2"
+    },
+    {
+      "index": 58,
+      "hash": "6c1eb03c629bba28eec61b8c8981d14c",
+      "filename": "hash_6c1eb03c",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_6c1eb03c"
+    },
+    {
+      "index": 59,
+      "hash": "05bd54b5c9037af9f725793973159362",
+      "filename": "hash_05bd54b5",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_05bd54b5"
+    },
+    {
+      "index": 60,
+      "hash": "882ba32f767e49bdd2a92d477e488eee",
+      "filename": "hash_882ba32f",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_882ba32f"
+    },
+    {
+      "index": 61,
+      "hash": "70e86227866cf9b0981822dbc8f29084",
+      "filename": "hash_70e86227",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_70e86227"
+    },
+    {
+      "index": 62,
+      "hash": "0ed12e80b3bb0e72779ff2567114b231",
+      "filename": "hash_0ed12e80",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_0ed12e80"
+    },
+    {
+      "index": 63,
+      "hash": "f92c88a2d7885348b609570892c49566",
+      "filename": "hash_f92c88a2",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_f92c88a2"
+    },
+    {
+      "index": 64,
+      "hash": "cc4a354dbb9c054483b085fe50921d0b",
+      "filename": "hash_cc4a354d",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_cc4a354d"
+    },
+    {
+      "index": 65,
+      "hash": "59df6dce0c5ef3d1888b9d796daed256",
+      "filename": "hash_59df6dce",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_59df6dce"
+    },
+    {
+      "index": 66,
+      "hash": "e9801e92be52115f92a8bf23a9c794be",
+      "filename": "hash_e9801e92",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_e9801e92"
+    },
+    {
+      "index": 67,
+      "hash": "cdd83abd7969ac73d79518ffbbd342da",
+      "filename": "hash_cdd83abd",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_cdd83abd"
+    },
+    {
+      "index": 68,
+      "hash": "2bcb4725aa3f04c10139e7f1380ab124",
+      "filename": "hash_2bcb4725",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_2bcb4725"
+    },
+    {
+      "index": 69,
+      "hash": "11363ce6ec39b5426d403d0264506224",
+      "filename": "hash_11363ce6",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_11363ce6"
+    },
+    {
+      "index": 70,
+      "hash": "1f0866dff9a5923a9c2883349463ba91",
+      "filename": "hash_1f0866df",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_1f0866df"
+    },
+    {
+      "index": 71,
+      "hash": "09e52f64a6933408f3115eb19aa0965d",
+      "filename": "hash_09e52f64",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_09e52f64"
+    },
+    {
+      "index": 72,
+      "hash": "17daaeb2c3c06a940b3f17c5aa29c3e2",
+      "filename": "hash_17daaeb2",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_17daaeb2"
+    },
+    {
+      "index": 73,
+      "hash": "ceaa22d3b37d463e22a20de02e08e690",
+      "filename": "hash_ceaa22d3",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_ceaa22d3"
+    },
+    {
+      "index": 74,
+      "hash": "17ee27144c4a67dc7f6a3c30b8a739c0",
+      "filename": "hash_17ee2714",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_17ee2714"
+    },
+    {
+      "index": 75,
+      "hash": "84391957d18cab89367ac42059386ea2",
+      "filename": "hash_84391957",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_84391957"
+    },
+    {
+      "index": 76,
+      "hash": "e7afa0d534d71fe9401e28cab95a929e",
+      "filename": "hash_e7afa0d5",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_e7afa0d5"
+    },
+    {
+      "index": 77,
+      "hash": "969a62e4ec50a003faba55ff365a0739",
+      "filename": "hash_969a62e4",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_969a62e4"
+    },
+    {
+      "index": 78,
+      "hash": "669543f18b5992c18442cdd1f754d3c3",
+      "filename": "hash_669543f1",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_669543f1"
+    },
+    {
+      "index": 79,
+      "hash": "667d78d3800923c338ec62cbb3e2ea75",
+      "filename": "hash_667d78d3",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_667d78d3"
+    },
+    {
+      "index": 80,
+      "hash": "a34dac1c50ebaa203a5a7a2c1e394162",
+      "filename": "hash_a34dac1c",
+      "archetype": "N/A",
+      "conjecture": "",
+      "lean_verified": false,
+      "domain_target": "LMFDB & Modular Curves X\u2080(N)",
+      "db_id": "disc_a34dac1c"
+    }
+  ]
+}

@@ -130,6 +130,37 @@ class NamagiriDB:
             return existing["id"]
 
         disc_id = str(uuid.uuid4())[:12]
+        
+        # Calculate operator spectrum and Dirac notation if not explicitly provided
+        w_eig = data.get("w_eigenvalue")
+        c_eig = data.get("c_eigenvalue")
+        is_bps = data.get("is_bps_protected")
+        braket = data.get("braket_notation")
+        
+        try:
+            exps_dict = json.loads(eta_exp) if isinstance(eta_exp, str) else eta_exp
+            d_exps = {int(k): int(v) for k, v in exps_dict.items()} if exps_dict else {}
+            if w_eig is None and d_exps:
+                w_eig = 0.5 * sum(d_exps.values())
+            if c_eig is None and d_exps:
+                c_eig = sum(v / d for d, v in d_exps.items())
+            if is_bps is None and w_eig is not None:
+                is_bps = 1 if abs(w_eig - 0.5) < 1e-5 else 0
+            if not braket and d_exps:
+                sorted_factors = [f"{d}:{r}" for d, r in sorted(d_exps.items())]
+                inner_str = ", ".join(sorted_factors)
+                shift_str = f"q^({q_shift}/24) * " if (q_shift and q_shift != 0) else ""
+                w_val = w_eig if w_eig is not None else 0.0
+                c_val = c_eig if c_eig is not None else 0.0
+                braket = f"{shift_str}|Ω_({inner_str})⟩ [Ŵ = {w_val:g}, Ĉ = {c_val:.4f}]"
+        except Exception:
+            pass
+
+        w_eig = w_eig if w_eig is not None else 0.0
+        c_eig = c_eig if c_eig is not None else 0.0
+        is_bps = 1 if is_bps else 0
+        braket = braket or ""
+
         conn.execute("""
             INSERT INTO discoveries 
             (id, image_path, notebook, chapter, page, archetype, conjecture,
@@ -157,10 +188,10 @@ class NamagiriDB:
             data.get("lean_status", "UNRESOLVED"),
             data.get("lean_error"),
             data.get("physics_mapping", ""),
-            data.get("braket_notation", ""),
-            data.get("w_eigenvalue", 0.0),
-            data.get("c_eigenvalue", 0.0),
-            1 if data.get("is_bps_protected") else 0,
+            braket,
+            w_eig,
+            c_eig,
+            is_bps,
             data.get("demonstration_3act", "")
         ))
         conn.commit()

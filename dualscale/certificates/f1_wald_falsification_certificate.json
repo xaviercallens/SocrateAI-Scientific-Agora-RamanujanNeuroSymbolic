@@ -1,0 +1,95 @@
+{
+  "candidate_id": "DEEP_BURN_K_NEG_91_5",
+  "modular_weight_k": -91.5,
+  "central_charge_c_eff_exact": "823/2310",
+  "central_charge_c_eff_float": 0.3562770562770563,
+  "kerr_central_charge": 3.0,
+  "asymptotic_entropy_ratio": 0.3446143,
+  "asymptotic_entropy_ratio_percent": 34.4614,
+  "frozen_degrees_of_freedom_percent": 88.1241,
+  "arnold_enstrophy_casimir": 0.09327312,
+  "verdict": {
+    "direct_kerr_identity": "FALSIFIED",
+    "holographic_subcft": "CONFIRMED",
+    "arnold_hydrodynamics": "VALIDATED"
+  },
+  "evaluation_table": [
+    {
+      "n": 10,
+      "S_RAMA": 4.841703,
+      "S_Wald_Kerr": 10.595752,
+      "Sen_log_correction": -3.453878,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 50,
+      "S_RAMA": 10.826378,
+      "S_Wald_Kerr": 25.547892,
+      "Sen_log_correction": -5.868035,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 100,
+      "S_RAMA": 15.31081,
+      "S_Wald_Kerr": 37.521074,
+      "Sen_log_correction": -6.907755,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 500,
+      "S_RAMA": 34.236012,
+      "S_Wald_Kerr": 90.023971,
+      "Sen_log_correction": -9.321912,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 1000,
+      "S_RAMA": 48.417033,
+      "S_Wald_Kerr": 130.134662,
+      "Sen_log_correction": -10.361633,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 5000,
+      "S_RAMA": 108.263777,
+      "S_Wald_Kerr": 301.383476,
+      "Sen_log_correction": -12.77579,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 10000,
+      "S_RAMA": 153.108101,
+      "S_Wald_Kerr": 430.472783,
+      "Sen_log_correction": -13.815511,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 50000,
+      "S_RAMA": 342.360122,
+      "S_Wald_Kerr": 977.229159,
+      "Sen_log_correction": -16.229667,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 100000,
+      "S_RAMA": 484.170328,
+      "S_Wald_Kerr": 1387.693558,
+      "Sen_log_correction": -17.269388,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 500000,
+      "S_RAMA": 1082.637767,
+      "S_Wald_Kerr": 3121.909109,
+      "Sen_log_correction": -19.683545,
+      "leading_ratio": 0.344614
+    },
+    {
+      "n": 1000000,
+      "S_RAMA": 1531.081013,
+      "S_Wald_Kerr": 4422.159672,
+      "Sen_log_correction": -20.723266,
+      "leading_ratio": 0.344614
+    }
+  ]
+}

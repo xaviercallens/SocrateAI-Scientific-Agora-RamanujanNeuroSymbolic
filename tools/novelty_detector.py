@@ -1,49 +1,81 @@
-import sqlite3
+"""
+Exact catalog-based novelty & OEIS cross-reference classifier on namagiri.db.
+Replaces the legacy dummy `len(coeffs) % 2 != 0` placeholder with exact
+30-term integer sequence matching against `src.math_engine.exact_qseries.CLASSICAL_CATALOG`.
+
+Epistemic note: `is_novel = 1` means "UNMATCHED_IN_LOCAL_CLASSICAL_CATALOG"
+(a candidate for further OEIS lookup), NOT a proof of absolute absence from OEIS.
+"""
+
 import json
+import sqlite3
+import sys
+from pathlib import Path
 
-def is_novel_sequence(coeffs):
-    # Dummy logic to represent OEIS / Andrews-Berndt exact match checking
-    # In reality, this would query the OEIS API or a local sequence database.
-    # We will just mark sequences with odd lengths or specific patterns as novel
-    # for the purpose of the pipeline structure.
-    return len(coeffs) % 2 != 0
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
-def run():
-    conn = sqlite3.connect('namagiri.db')
-    c = conn.cursor()
-    
-    # Ensure column exists
-    c.execute("PRAGMA table_info(discoveries);")
-    cols = [row[1] for row in c.fetchall()]
-    if 'is_novel' not in cols:
-        print("Adding is_novel column to discoveries table...")
-        c.execute("ALTER TABLE discoveries ADD COLUMN is_novel BOOLEAN;")
+from src.math_engine.exact_qseries import eta_quotient_coeffs, match_classical_catalog
+
+DB_PATH = REPO_ROOT / "namagiri.db"
+
+
+def run(db_path: Path = DB_PATH) -> None:
+    conn = sqlite3.connect(str(db_path))
+    try:
+        c = conn.cursor()
+        cols = [row[1] for row in c.execute("PRAGMA table_info(discoveries)").fetchall()]
+        if "is_novel" not in cols:
+            c.execute("ALTER TABLE discoveries ADD COLUMN is_novel BOOLEAN")
+        if "oeis_match" not in cols:
+            c.execute("ALTER TABLE discoveries ADD COLUMN oeis_match TEXT DEFAULT NULL")
+
+        rows = c.execute(
+            "SELECT id, eta_exponents, coeffs_json FROM discoveries"
+        ).fetchall()
+
+        updates = []
+        matched = 0
+        unmatched_eta = 0
+        for id_, eta_str, coeffs_json in rows:
+            seq = []
+            has_eta = False
+            if eta_str and eta_str != "{}":
+                try:
+                    raw = json.loads(eta_str)
+                    exps = {int(k): int(v) for k, v in raw.items() if int(k) > 0 and int(v) != 0}
+                    if exps:
+                        has_eta = True
+                        seq = eta_quotient_coeffs(exps, 30)
+                except (ValueError, TypeError, json.JSONDecodeError):
+                    seq = []
+            elif coeffs_json:
+                try:
+                    seq = json.loads(coeffs_json)
+                except json.JSONDecodeError:
+                    seq = []
+
+            match = match_classical_catalog(seq, min_match_len=6) if len(seq) >= 6 else None
+            if match:
+                matched += 1
+                updates.append((False, match["oeis"], id_))
+            elif has_eta:
+                unmatched_eta += 1
+                updates.append((True, None, id_))
+            else:
+                updates.append((False, None, id_))
+
+        c.executemany("UPDATE discoveries SET is_novel = ?, oeis_match = ? WHERE id = ?", updates)
         conn.commit()
+    finally:
+        conn.close()
 
-    c.execute("SELECT id, eta_exponents FROM discoveries WHERE eta_exponents IS NOT NULL AND eta_exponents != '{}'")
-    rows = c.fetchall()
-    
-    updates = []
-    for row in rows:
-        id_, coeffs_str = row
-        try:
-            coeffs = list(json.loads(coeffs_str).values())
-            novel = is_novel_sequence(coeffs)
-        except:
-            novel = False
-        updates.append((novel, id_))
-        
-    c.executemany("UPDATE discoveries SET is_novel = ? WHERE id = ?", updates)
-    conn.commit()
-    
-    print(f"Novelty detection complete for {len(updates)} sequences.")
-    
-    # Summary
-    c.execute("SELECT is_novel, COUNT(*) FROM discoveries WHERE is_novel IS NOT NULL GROUP BY is_novel")
-    summary = c.fetchall()
-    for novel, count in summary:
-        label = "Novel" if novel else "Known (OEIS/AB)"
-        print(f"  {label}: {count} discoveries")
+    print(
+        f"Exact catalog cross-check complete ({len(updates)} rows): "
+        f"{matched} exact classical/OEIS matches | {unmatched_eta} unmatched exact eta-quotient candidates."
+    )
+
 
 if __name__ == "__main__":
     run()

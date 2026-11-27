@@ -1,10 +1,9 @@
 {
-    "stats": {
-        "total": 0,
-        "verified": 0,
-        "failed": 0,
-        "in_progress": 0
-    },
-    "verified_theorems": [],
-    "failed_images": []
+  "total": 2458,
+  "verified": 70,
+  "catalog_matched": 10,
+  "transcribed_open": 2378,
+  "failed": 0,
+  "unique_eta_quotients": 54,
+  "lean_zero_axiom_theorems": 275
 }

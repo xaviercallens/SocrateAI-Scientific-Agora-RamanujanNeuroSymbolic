@@ -1,0 +1,899 @@
+{
+  "papers": [
+    {
+      "arxiv_id": "0807.4834",
+      "versioned_id": "0807.4834v1",
+      "pillar": "pillar1_mock_eta",
+      "title": "Mock Theta Functions",
+      "authors": [
+        "Sander Zwegers"
+      ],
+      "published": "2008-07-30T10:49:34Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/0807.4834",
+      "pdf_url": "https://arxiv.org/pdf/0807.4834v1",
+      "summary": "In this Ph.D. thesis, written under the direction of D.B. Zagier and R.W. Bruggeman, we study the mock theta functions, that were introduced by Ramanujan. We show how they can be interpreted in the theory of (real-analytic) modular forms. In Chapter 1 we give results for Lerch sums (also called Appell functions, or generalized Lambert series). In Chapter 2 we consider indefinite theta functions of type (r-1,1). Chapter 3 deals with Fourier coefficients of meromorphic Jacobi forms. In Chapter 4 we use the results from Chapter 2 to give explicit results for 8 of the 10 fifth order mock theta functions and all 3 seventh order functions, that were originally defined by Ramanujan. The result is that we can find a correction term, which is a period integral of a weight 3/2 unary theta functions, such that if we add it to the mock theta function, we get a weight 1/2 real-analytic modular form, which is annihilated by the hyperbolic Laplacian.",
+      "local_pdf": "docs/literature/papers/0807.4834.pdf",
+      "pdf_bytes": 695440
+    },
+    {
+      "arxiv_id": "1810.07478",
+      "versioned_id": "1810.07478v1",
+      "pillar": "pillar1_mock_eta",
+      "title": "Eta quotients and Rademacher sums",
+      "authors": [
+        "Kevin Acres",
+        "David Broadhurst"
+      ],
+      "published": "2018-10-17T11:22:11Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1810.07478",
+      "pdf_url": "https://arxiv.org/pdf/1810.07478v1",
+      "summary": "Eta quotients on $Γ_0(6)$ yield evaluations of sunrise integrals at 2, 3, 4 and 6 loops. At 2 and 3 loops, they provide modular parametrizations of inhomogeneous differential equations whose solutions are readily obtained by expanding in the nome $q$. Atkin-Lehner transformations that permute cusps ensure fast convergence for all external momenta. At 4 and 6 loops, on-shell integrals are periods of modular forms of weights 4 and 6 given by Eichler integrals of eta quotients. Weakly holomorphic eta quotients determine quasi-periods. A Rademacher sum formula is given for Fourier coefficients of an eta quotient that is a Hauptmodul for $Γ_0(6)$ and its generalization is found for all levels with genus 0, namely for $N = 1,2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 16, 18, 25$. There are elliptic obstructions at $N = 11, 14, 15, 17, 19, 20, 21, 24, 27, 32, 36, 49,$ with genus 1. We surmount these, finding explicit formulas for Fourier coefficients of eta quotients in thousands of cases. We show how to handle the levels $N=22, 23, 26, 28, 29, 31, 37, 50$, with genus 2, and the levels $N=30,33,34,35,39,40,41,43,45,48,64$, with genus 3. We also solve examples with genera $4,5,6,7,8,13$.",
+      "local_pdf": "docs/literature/papers/1810.07478.pdf",
+      "pdf_bytes": 254483
+    },
+    {
+      "arxiv_id": "1911.05799",
+      "versioned_id": "1911.05799v3",
+      "pillar": "pillar1_mock_eta",
+      "title": "Congruences satisfied by eta-quotients",
+      "authors": [
+        "Nathan C. Ryan",
+        "Zachary Scherr",
+        "Nicolás Sirolli",
+        "Stephanie Treneer"
+      ],
+      "published": "2019-11-13T20:28:46Z",
+      "primary_category": "math.NT",
+      "doi": "10.1090/proc/15293",
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1911.05799",
+      "pdf_url": "https://arxiv.org/pdf/1911.05799v3",
+      "summary": "The values of the partition function, and more generally the Fourier coefficients of many modular forms, are known to satisfy certain congruences. Results given by Ahlgren and Ono for the partition function and by Treneer for more general Fourier coefficients state the existence of infinitely many families of congruences. In this article we give an algorithm for computing explicit instances of such congruences for eta-quotients. We illustrate our method with a few examples.",
+      "local_pdf": "docs/literature/papers/1911.05799.pdf",
+      "pdf_bytes": 209907
+    },
+    {
+      "arxiv_id": "2610.10576",
+      "versioned_id": "2610.10576v1",
+      "pillar": "pillar1_mock_eta",
+      "title": "The structure of irreducible cuspidal eta quotients",
+      "authors": [
+        "Soumya Bhattacharya"
+      ],
+      "published": "2026-10-05T17:41:00Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2610.10576",
+      "pdf_url": "https://arxiv.org/pdf/2610.10576v1",
+      "summary": "We show that an ir{\\-}reducible cuspidal eta quotient of level~$N$ is uniquely identified by its orders of vanishing at $O((\\log_2 N)^{r-1})$ cusps, where $r$ denotes the number of distinct prime divisors of $N$. In particular, all such eta quotients which are Fricke eigenforms of a prime power level, are uniquely identified only by their orders of vanishing at~$\\infty$. We also prove that for all $k\\in\\N$, there exists a primitive and irreducible cuspidal eta quotient of weight $k/2$. It follows from the exhaustiveness of Zagier's list of the primitive holomorphic eta quotients of weight~$1/2$ that the 1st Mersmann level, $\\cl{M}_1=12$. Here we show that for all $k\\in\\N$, the $k$-th Mersmann level is divisible by $2^{2k}$.",
+      "local_pdf": "docs/literature/papers/2610.10576.pdf",
+      "pdf_bytes": 487289
+    },
+    {
+      "arxiv_id": "2202.03329",
+      "versioned_id": "2202.03329v2",
+      "pillar": "pillar1_mock_eta",
+      "title": "Mock theta functions and related combinatorics",
+      "authors": [
+        "Cristina Ballantine",
+        "Hannah E. Burson",
+        "Amanda Folsom",
+        "Chi-Yun Hsu",
+        "Isabella Negrini",
+        "Boya Wen"
+      ],
+      "published": "2022-02-07T16:20:14Z",
+      "primary_category": "math.CO",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2202.03329",
+      "pdf_url": "https://arxiv.org/pdf/2202.03329v2",
+      "summary": "In this paper we add to the literature on the combinatorial nature of the mock theta functions, a collection of curious $q$-hypergeometric series introduced by Ramanujan in his last letter to Hardy in 1920, which we now know to be important examples of mock modular forms. Our work is inspired by Beck's conjecture, now a theorem of Andrews, related to Euler's identity: the excess of the number of parts in all partitions of $n$ into odd parts over the number of partitions of $n$ into distinct parts is equal to the number of partitions with only one (possibly repeated) even part and all other parts odd. We establish Beck-type identities associated to partition identities due to Andrews, Dixit, and Yee for the third order mock theta functions $ω(q), ν(q)$, and $φ(q)$. Our proofs are both analytic and combinatorial in nature, and involve mock theta generating functions and combinatorial bijections.",
+      "local_pdf": "docs/literature/papers/2202.03329.pdf",
+      "pdf_bytes": 341458
+    },
+    {
+      "arxiv_id": "2604.20034",
+      "versioned_id": "2604.20034v1",
+      "pillar": "pillar1_mock_eta",
+      "title": "On Uniqueness of Mock Theta Functions",
+      "authors": [
+        "Ovidiu Costin",
+        "Gerald V. Dunne",
+        "Ali Saraeb"
+      ],
+      "published": "2026-04-21T22:37:31Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2604.20034",
+      "pdf_url": "https://arxiv.org/pdf/2604.20034v1",
+      "summary": "We develop a resurgent approach to the problem of unique continuation of mock theta functions across their natural boundary. The starting point is the representation of the associated Mordell-Appell integrals as Laplace transforms of resurgent functions, which serve as the primary analytic objects.   By rotating the Laplace contour by $π$, i.e. onto the Stokes line, one obtains, in all known cases, the mock-modular relations between the Mordell-Appell integrals and the corresponding unary series in $\\hat q=e^{-πi τ}$ and $\\hat q_1=e^{-πi (-1/τ)}$.   We then prove that these relations admit a unique solution on the $q$-side, expressed in terms of $q=e^{πi τ}$ and $q_1=e^{πi (-1/τ)}$, with coefficients determined by the corresponding Mordell-Appell integrals. This yields a canonical continuation across the natural boundary, given by a resurgent extension of the classical principle of permanence of relations, and singles out a distinguished family of mock theta functions in each group.   We present a complete analysis for the order 3 and 5 cases (mf3 and mf5). The method extends naturally to higher orders; a general theory will appear in a separate paper.",
+      "local_pdf": "docs/literature/papers/2604.20034.pdf",
+      "pdf_bytes": 501055
+    },
+    {
+      "arxiv_id": "1004.0956",
+      "versioned_id": "1004.0956v2",
+      "pillar": "pillar2_bps_moonshine",
+      "title": "Notes on the K3 Surface and the Mathieu group M_24",
+      "authors": [
+        "Tohru Eguchi",
+        "Hirosi Ooguri",
+        "Yuji Tachikawa"
+      ],
+      "published": "2010-04-06T20:03:09Z",
+      "primary_category": "hep-th",
+      "doi": "10.1080/10586458.2011.544585",
+      "journal_ref": "Exper.Math.20:91-96,2011",
+      "url": "https://arxiv.org/abs/1004.0956",
+      "pdf_url": "https://arxiv.org/pdf/1004.0956v2",
+      "summary": "We point out that the elliptic genus of the K3 surface has a natural decomposition in terms of dimensions of irreducible representations of the largest Mathieu group M_24. The reason is yet a mystery.",
+      "local_pdf": "docs/literature/papers/1004.0956.pdf",
+      "pdf_bytes": 132143
+    },
+    {
+      "arxiv_id": "1211.5531",
+      "versioned_id": "1211.5531v2",
+      "pillar": "pillar2_bps_moonshine",
+      "title": "Much ado about Mathieu",
+      "authors": [
+        "Terry Gannon"
+      ],
+      "published": "2012-11-23T15:52:35Z",
+      "primary_category": "math.RT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1211.5531",
+      "pdf_url": "https://arxiv.org/pdf/1211.5531v2",
+      "summary": "Eguchi, Ooguri and Tachikawa have observed that the elliptic genus of type II string theory on K3 surfaces appears to possess a Moonshine for the largest Mathieu group. Subsequent work by several people established a candidate for the elliptic genus twisted by each element of M24. In this paper we prove that the resulting sequence of class functions are true characters of M24, proving the Eguchi-Ooguri-Tachikawa conjecture. We prove the evenness property of the multiplicities, as conjectured by several authors. We also identify the role group cohomology plays in both K3-Mathieu Moonshine and Monstrous Moonshine; in particular this gives a cohomological interpretation for the non-Fricke elements in Norton's Generalised Monstrous Moonshine conjecture. We investigate the intriguing proposal of Gaberdiel-Hohenegger-Volpato that K3-Mathieu Moonshine lifts to the Conway group Co1.",
+      "local_pdf": "docs/literature/papers/1211.5531.pdf",
+      "pdf_bytes": 454143
+    },
+    {
+      "arxiv_id": "1208.4074",
+      "versioned_id": "1208.4074v2",
+      "pillar": "pillar2_bps_moonshine",
+      "title": "Quantum Black Holes, Wall Crossing, and Mock Modular Forms",
+      "authors": [
+        "Atish Dabholkar",
+        "Sameer Murthy",
+        "Don Zagier"
+      ],
+      "published": "2012-08-20T18:07:19Z",
+      "primary_category": "hep-th",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1208.4074",
+      "pdf_url": "https://arxiv.org/pdf/1208.4074v2",
+      "summary": "We show that the meromorphic Jacobi form that counts the quarter-BPS states in N=4 string theories can be canonically decomposed as a sum of a mock Jacobi form and an Appell-Lerch sum. The quantum degeneracies of single-centered black holes are Fourier coefficients of this mock Jacobi form, while the Appell-Lerch sum captures the degeneracies of multi-centered black holes which decay upon wall-crossing. The completion of the mock Jacobi form restores the modular symmetries expected from $AdS_3/CFT_2$ holography but has a holomorphic anomaly reflecting the non-compactness of the microscopic CFT. For every positive integral value m of the magnetic charge invariant of the black hole, our analysis leads to a special mock Jacobi form of weight two and index m, which we characterize uniquely up to a Jacobi cusp form. This family of special forms and another closely related family of weight-one forms contain almost all the known mock modular forms including the mock theta functions of Ramanujan, the generating function of Hurwitz-Kronecker class numbers, the mock modular forms appearing in the Mathieu and Umbral moonshine, as well as an infinite number of new examples.",
+      "local_pdf": "docs/literature/papers/1208.4074.pdf",
+      "pdf_bytes": 1449398
+    },
+    {
+      "arxiv_id": "1204.2779",
+      "versioned_id": "1204.2779v3",
+      "pillar": "pillar2_bps_moonshine",
+      "title": "Umbral Moonshine",
+      "authors": [
+        "Miranda C. N. Cheng",
+        "John F. R. Duncan",
+        "Jeffrey A. Harvey"
+      ],
+      "published": "2012-04-12T17:33:32Z",
+      "primary_category": "math.RT",
+      "doi": null,
+      "journal_ref": "Commun. Number Theory Phys. 8 (2014) 2 pp.101-242",
+      "url": "https://arxiv.org/abs/1204.2779",
+      "pdf_url": "https://arxiv.org/pdf/1204.2779v3",
+      "summary": "We describe surprising relationships between automorphic forms of various kinds, imaginary quadratic number fields and a certain system of six finite groups that are parameterised naturally by the divisors of twelve. The Mathieu group correspondence recently discovered by Eguchi-Ooguri-Tachikawa is recovered as a special case. We introduce a notion of extremal Jacobi form and prove that it characterises the Jacobi forms arising by establishing a connection to critical values of Dirichlet series attached to modular forms of weight two. These extremal Jacobi forms are closely related to certain vector-valued mock modular forms studied recently by Dabholkar-Murthy-Zagier in connection with the physics of quantum black holes in string theory. In a manner similar to monstrous moonshine the automorphic forms we identify constitute evidence for the existence of infinite-dimensional graded modules for the six groups in our system. We formulate an umbral moonshine conjecture that is in direct analogy with the monstrous moonshine conjecture of Conway-Norton. Curiously, we find a number of Ramanujan's mock theta functions appearing as McKay-Thompson series. A new feature not apparent in the monstrous case is a property which allows us to predict the fields of definition of certain homogeneous submodules for the groups involved. For four of the groups in our system we find analogues of both the classical McKay correspondence and McKay's monstrous Dynkin diagram observation manifesting simultaneously and compatibly.",
+      "local_pdf": "docs/literature/papers/1204.2779.pdf",
+      "pdf_bytes": 1005624
+    },
+    {
+      "arxiv_id": "1701.06567",
+      "versioned_id": "1701.06567v2",
+      "pillar": "pillar2_bps_moonshine",
+      "title": "BPS spectra and 3-manifold invariants",
+      "authors": [
+        "Sergei Gukov",
+        "Du Pei",
+        "Pavel Putrov",
+        "Cumrun Vafa"
+      ],
+      "published": "2017-01-23T19:00:00Z",
+      "primary_category": "hep-th",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1701.06567",
+      "pdf_url": "https://arxiv.org/pdf/1701.06567v2",
+      "summary": "We provide a physical definition of new homological invariants $\\mathcal{H}_a (M_3)$ of 3-manifolds (possibly, with knots) labeled by abelian flat connections. The physical system in question involves a 6d fivebrane theory on $M_3$ times a 2-disk, $D^2$, whose Hilbert space of BPS states plays the role of a basic building block in categorification of various partition functions of 3d $\\mathcal{N}=2$ theory $T[M_3]$: $D^2\\times S^1$ half-index, $S^2\\times S^1$ superconformal index, and $S^2\\times S^1$ topologically twisted index. The first partition function is labeled by a choice of boundary condition and provides a refinement of Chern-Simons (WRT) invariant. A linear combination of them in the unrefined limit gives the analytically continued WRT invariant of $M_3$. The last two can be factorized into the product of half-indices. We show how this works explicitly for many examples, including Lens spaces, circle fibrations over Riemann surfaces, and plumbed 3-manifolds.",
+      "local_pdf": "docs/literature/papers/1701.06567.pdf",
+      "pdf_bytes": 1189704
+    },
+    {
+      "arxiv_id": "math/9812162",
+      "versioned_id": "math/9812162v1",
+      "pillar": "pillar3_picard_fuchs",
+      "title": "Picard-Fuchs Uniformization: Modularity of the Mirror Map and Mirror-Moonshine",
+      "authors": [
+        "Charles F. Doran"
+      ],
+      "published": "1998-12-31T13:45:26Z",
+      "primary_category": "math.AG",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/math/9812162",
+      "pdf_url": "https://arxiv.org/pdf/math/9812162v1",
+      "summary": "Motivated by a conjecture of Lian and Yau concerning the mirror map in string theory, we determine when the mirror map q-series of certain elliptic curve and K3 surface families are Hauptmoduln (genus zero modular functions). Our geometric criterion for modularity characterizes orbifold uniformization properties of their Picard-Fuchs equations, effectively demystifying the mirror-moonshine phenomenon. A longer, more comprehensive treatment of these results will appear shortly.",
+      "local_pdf": "docs/literature/papers/math_9812162.pdf",
+      "pdf_bytes": 292111
+    },
+    {
+      "arxiv_id": "math/0507430",
+      "versioned_id": "math/0507430v2",
+      "pillar": "pillar3_picard_fuchs",
+      "title": "Tables of Calabi--Yau equations",
+      "authors": [
+        "Gert Almkvist",
+        "Christian van Enckevort",
+        "Duco van Straten",
+        "Wadim Zudilin"
+      ],
+      "published": "2005-07-21T08:58:15Z",
+      "primary_category": "math.AG",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/math/0507430",
+      "pdf_url": "https://arxiv.org/pdf/math/0507430v2",
+      "summary": "The main part of this paper is a big table containing what we believe to be a complete list of all fourth order equations of Calabi--Yau type known so far. In the text preceding the tables we explain what a differential equation of Calabi--Yau type is and we briefly discuss how we found these equations. We also describe an electronic version of this list.",
+      "local_pdf": "docs/literature/papers/math_0507430.pdf",
+      "pdf_bytes": 1020507
+    },
+    {
+      "arxiv_id": "1612.09439",
+      "versioned_id": "1612.09439v2",
+      "pillar": "pillar3_picard_fuchs",
+      "title": "Hodge Numbers from Picard-Fuchs Equations",
+      "authors": [
+        "Charles F. Doran",
+        "Andrew Harder",
+        "Alan Thompson"
+      ],
+      "published": "2016-12-30T10:00:24Z",
+      "primary_category": "math.AG",
+      "doi": "10.3842/SIGMA.2017.045",
+      "journal_ref": "SIGMA 13 (2017), 045, 23 pages",
+      "url": "https://arxiv.org/abs/1612.09439",
+      "pdf_url": "https://arxiv.org/pdf/1612.09439v2",
+      "summary": "Given a variation of Hodge structure over $\\mathbb{P}^1$ with Hodge numbers $(1,1,\\dots,1)$, we show how to compute the degrees of the Deligne extension of its Hodge bundles, following Eskin-Kontsevich-Möller-Zorich, by using the local exponents of the corresponding Picard-Fuchs equation. This allows us to compute the Hodge numbers of Zucker's Hodge structure on the corresponding parabolic cohomology groups. We also apply this to families of elliptic curves, K3 surfaces and Calabi-Yau threefolds.",
+      "local_pdf": "docs/literature/papers/1612.09439.pdf",
+      "pdf_bytes": 478383
+    },
+    {
+      "arxiv_id": "0712.2456",
+      "versioned_id": "0712.2456v4",
+      "pillar": "pillar4_fluid_spectral",
+      "title": "Nonlinear Fluid Dynamics from Gravity",
+      "authors": [
+        "Sayantani Bhattacharyya",
+        "Veronika E Hubeny",
+        "Shiraz Minwalla",
+        "Mukund Rangamani"
+      ],
+      "published": "2007-12-14T21:01:02Z",
+      "primary_category": "hep-th",
+      "doi": "10.1088/1126-6708/2008/02/045",
+      "journal_ref": "JHEP 0802:045,2008",
+      "url": "https://arxiv.org/abs/0712.2456",
+      "pdf_url": "https://arxiv.org/pdf/0712.2456v4",
+      "summary": "Black branes in AdS5 appear in a four parameter family labeled by their velocity and temperature. Promoting these parameters to Goldstone modes or collective coordinate fields -- arbitrary functions of the coordinates on the boundary of AdS5 -- we use Einstein's equations together with regularity requirements and boundary conditions to determine their dynamics. The resultant equations turn out to be those of boundary fluid dynamics, with specific values for fluid parameters. Our analysis is perturbative in the boundary derivative expansion but is valid for arbitrary amplitudes. Our work may be regarded as a derivation of the nonlinear equations of boundary fluid dynamics from gravity. As a concrete application we find an explicit expression for the expansion of this fluid stress tensor including terms up to second order in the derivative expansion.",
+      "local_pdf": "docs/literature/papers/0712.2456.pdf",
+      "pdf_bytes": 457755
+    },
+    {
+      "arxiv_id": "0905.4352",
+      "versioned_id": "0905.4352v3",
+      "pillar": "pillar4_fluid_spectral",
+      "title": "Gravity & Hydrodynamics: Lectures on the fluid-gravity correspondence",
+      "authors": [
+        "Mukund Rangamani"
+      ],
+      "published": "2009-05-27T16:39:57Z",
+      "primary_category": "hep-th",
+      "doi": "10.1088/0264-9381/26/22/224003",
+      "journal_ref": "Class.Quant.Grav.26:224003,2009",
+      "url": "https://arxiv.org/abs/0905.4352",
+      "pdf_url": "https://arxiv.org/pdf/0905.4352v3",
+      "summary": "We discuss recent developments in the hydrodynamic description of strongly coupled conformal field theories using the AdS/CFT correspondence. In particular, we review aspects of the fluid-gravity correspondence which provides a map between a class of inhomogeneous, dynamical, black hole solutions in asymptotically AdS spacetimes and arbitrary fluid flows in the strongly interacting boundary field theory. We explain how the geometric duals to the fluid dynamics are constructed in a boundary derivative expansion and use the construction to extract the hydrodynamic transport coefficients. In addition we also describe the recent developments extending the correspondence to incorporate matter fields and to non-relativistic systems. Based on lectures given at the CERN Winter School on Supergravity, Strings and Gauge Theories, Geneva, Switzerland (February 2009).",
+      "local_pdf": "docs/literature/papers/0905.4352.pdf",
+      "pdf_bytes": 1107178
+    },
+    {
+      "arxiv_id": "1402.0290",
+      "versioned_id": "1402.0290v3",
+      "pillar": "pillar4_fluid_spectral",
+      "title": "Finite time blowup for an averaged three-dimensional Navier-Stokes equation",
+      "authors": [
+        "Terence Tao"
+      ],
+      "published": "2014-02-03T06:18:56Z",
+      "primary_category": "math.AP",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1402.0290",
+      "pdf_url": "https://arxiv.org/pdf/1402.0290v3",
+      "summary": "The Navier-Stokes equation on the Euclidean space $\\mathbf{R}^3$ can be expressed in the form $\\partial_t u = Δu + B(u,u)$, where $B$ is a certain bilinear operator on divergence-free vector fields $u$ obeying the cancellation property $\\langle B(u,u), u\\rangle=0$ (which is equivalent to the energy identity for the Navier-Stokes equation). In this paper, we consider a modification $\\partial_t u = Δu + \\tilde B(u,u)$ of this equation, where $\\tilde B$ is an averaged version of the bilinear operator $B$ (where the average involves rotations and Fourier multipliers of order zero), and which also obeys the cancellation condition $\\langle \\tilde B(u,u), u \\rangle = 0$ (so that it obeys the usual energy identity). By analysing a system of ODE related to (but more complicated than) a dyadic Navier-Stokes model of Katz and Pavlovic, we construct an example of a smooth solution to such a averaged Navier-Stokes equation which blows up in finite time. This demonstrates that any attempt to positively resolve the Navier-Stokes global regularity problem in three dimensions has to use finer structure on the nonlinear portion $B(u,u)$ of the equation than is provided by harmonic analysis estimates and the energy identity. We also propose a program for adapting these blowup results to the true Navier-Stokes equations.",
+      "local_pdf": "docs/literature/papers/1402.0290.pdf",
+      "pdf_bytes": 1052688
+    },
+    {
+      "arxiv_id": "1304.4132",
+      "versioned_id": "1304.4132v2",
+      "pillar": "pillar4_fluid_spectral",
+      "title": "Interlacing Families I: Bipartite Ramanujan Graphs of All Degrees",
+      "authors": [
+        "Adam Marcus",
+        "Daniel A. Spielman",
+        "Nikhil Srivastava"
+      ],
+      "published": "2013-04-15T15:29:54Z",
+      "primary_category": "math.CO",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1304.4132",
+      "pdf_url": "https://arxiv.org/pdf/1304.4132v2",
+      "summary": "We prove that there exist infinite families of regular bipartite Ramanujan graphs of every degree bigger than 2. We do this by proving a variant of a conjecture of Bilu and Linial about the existence of good 2-lifts of every graph.   We also establish the existence of infinite families of `irregular Ramanujan' graphs, whose eigenvalues are bounded by the spectral radius of their universal cover. Such families were conjectured to exist by Linial and others. In particular, we prove the existence of infinite families of (c,d)-biregular bipartite graphs with all non-trivial eigenvalues bounded by sqrt{c-1}+sqrt{d-1}, for all c, d \\geq 3.   Our proof exploits a new technique for demonstrating the existence of useful combinatorial objects that we call the \"method of interlacing polynomials'\".",
+      "local_pdf": "docs/literature/papers/1304.4132.pdf",
+      "pdf_bytes": 201114
+    },
+    {
+      "arxiv_id": "2306.15626",
+      "versioned_id": "2306.15626v2",
+      "pillar": "pillar5_lean_neurosymbolic",
+      "title": "LeanDojo: Theorem Proving with Retrieval-Augmented Language Models",
+      "authors": [
+        "Kaiyu Yang",
+        "Aidan M. Swope",
+        "Alex Gu",
+        "Rahul Chalamala",
+        "Peiyang Song",
+        "Shixing Yu",
+        "Saad Godil",
+        "Ryan Prenger",
+        "Anima Anandkumar"
+      ],
+      "published": "2023-06-27T17:05:32Z",
+      "primary_category": "cs.LG",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2306.15626",
+      "pdf_url": "https://arxiv.org/pdf/2306.15626v2",
+      "summary": "Large language models (LLMs) have shown promise in proving formal theorems using proof assistants such as Lean. However, existing methods are difficult to reproduce or build on, due to private code, data, and large compute requirements. This has created substantial barriers to research on machine learning methods for theorem proving. This paper removes these barriers by introducing LeanDojo: an open-source Lean playground consisting of toolkits, data, models, and benchmarks. LeanDojo extracts data from Lean and enables interaction with the proof environment programmatically. It contains fine-grained annotations of premises in proofs, providing valuable data for premise selection: a key bottleneck in theorem proving. Using this data, we develop ReProver (Retrieval-Augmented Prover): an LLM-based prover augmented with retrieval for selecting premises from a vast math library. It is inexpensive and needs only one GPU week of training. Our retriever leverages LeanDojo's program analysis capability to identify accessible premises and hard negative examples, which makes retrieval much more effective. Furthermore, we construct a new benchmark consisting of 98,734 theorems and proofs extracted from Lean's math library. It features challenging data split requiring the prover to generalize to theorems relying on novel premises that are never used in training. We use this benchmark for training and evaluation, and experimental results demonstrate the effectiveness of ReProver over non-retrieval baselines and GPT-4. We thus provide the first set of open-source LLM-based theorem provers without any proprietary datasets and release it under a permissive MIT license to facilitate further research.",
+      "local_pdf": "docs/literature/papers/2306.15626.pdf",
+      "pdf_bytes": 2967642
+    },
+    {
+      "arxiv_id": "2404.12534",
+      "versioned_id": "2404.12534v3",
+      "pillar": "pillar5_lean_neurosymbolic",
+      "title": "Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean",
+      "authors": [
+        "Peiyang Song",
+        "Kaiyu Yang",
+        "Anima Anandkumar"
+      ],
+      "published": "2024-04-18T22:54:08Z",
+      "primary_category": "cs.AI",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2404.12534",
+      "pdf_url": "https://arxiv.org/pdf/2404.12534v3",
+      "summary": "Neural theorem proving combines large language models (LLMs) with proof assistants such as Lean, where the correctness of formal proofs can be rigorously verified, leaving no room for hallucination. With existing neural theorem provers pretrained on a fixed collection of data and offering valuable suggestions at times, it is challenging for them to continually prove novel theorems in a fully autonomous mode, where human insights may be critical. In this paper, we explore LLMs as copilots that assist humans in proving theorems. We introduce Lean Copilot, a general framework for running LLM inference natively in Lean. It enables programmers to build various LLM-based proof automation tools that integrate seamlessly into the workflow of Lean users. Lean users can use our pretrained models or bring their own ones that run either locally (with or without GPUs) or on the cloud. Using Lean Copilot, we build LLM-based tools that suggest proof steps, complete proof goals, and select relevant premises. Experimental results on the Mathematics in Lean textbook demonstrate the effectiveness of our method compared to existing rule-based proof automation in Lean (aesop). When assisting humans, Lean Copilot requires only 2.08 manually-entered proof steps on average (3.86 required by aesop); when automating the theorem proving process, Lean Copilot automates 74.2% proof steps on average, 85% better than aesop (40.1%). We open source all code and artifacts under a permissive MIT license to facilitate further research.",
+      "local_pdf": "docs/literature/papers/2404.12534.pdf",
+      "pdf_bytes": 997718
+    },
+    {
+      "arxiv_id": "2405.14333",
+      "versioned_id": "2405.14333v1",
+      "pillar": "pillar5_lean_neurosymbolic",
+      "title": "DeepSeek-Prover: Advancing Theorem Proving in LLMs through Large-Scale Synthetic Data",
+      "authors": [
+        "Huajian Xin",
+        "Daya Guo",
+        "Zhihong Shao",
+        "Zhizhou Ren",
+        "Qihao Zhu",
+        "Bo Liu",
+        "Chong Ruan",
+        "Wenda Li",
+        "Xiaodan Liang"
+      ],
+      "published": "2024-05-23T09:03:42Z",
+      "primary_category": "cs.AI",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2405.14333",
+      "pdf_url": "https://arxiv.org/pdf/2405.14333v1",
+      "summary": "Proof assistants like Lean have revolutionized mathematical proof verification, ensuring high accuracy and reliability. Although large language models (LLMs) show promise in mathematical reasoning, their advancement in formal theorem proving is hindered by a lack of training data. To address this issue, we introduce an approach to generate extensive Lean 4 proof data derived from high-school and undergraduate-level mathematical competition problems. This approach involves translating natural language problems into formal statements, filtering out low-quality statements, and generating proofs to create synthetic data. After fine-tuning the DeepSeekMath 7B model on this synthetic dataset, which comprises 8 million formal statements with proofs, our model achieved whole-proof generation accuracies of 46.3% with 64 samples and 52% cumulatively on the Lean 4 miniF2F test, surpassing the baseline GPT-4 at 23.0% with 64 samples and a tree search reinforcement learning method at 41.0%. Additionally, our model successfully proved 5 out of 148 problems in the Lean 4 Formalized International Mathematical Olympiad (FIMO) benchmark, while GPT-4 failed to prove any. These results demonstrate the potential of leveraging large-scale synthetic data to enhance theorem-proving capabilities in LLMs. Both the synthetic dataset and the model will be made available to facilitate further research in this promising field.",
+      "local_pdf": "docs/literature/papers/2405.14333.pdf",
+      "pdf_bytes": 601408
+    },
+    {
+      "arxiv_id": "2607.09217",
+      "versioned_id": "2607.09217v1",
+      "pillar": "pillar5_lean_neurosymbolic",
+      "title": "OpenProver: Agentic and Interactive Theorem Proving with Lean 4",
+      "authors": [
+        "Matěj Kripner",
+        "Milan Straka"
+      ],
+      "published": "2026-07-10T09:07:12Z",
+      "primary_category": "cs.AI",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2607.09217",
+      "pdf_url": "https://arxiv.org/pdf/2607.09217v1",
+      "summary": "In this system paper, we present OpenProver, an open-source system for LLM-driven automated theorem proving (ATP) with integrated Lean 4 formal verification. OpenProver integrates a Planner-Worker-Verifier architecture inspired by recent ATP agentic systems such as Aletheia. A Planner agent maintains a compact Whiteboard scratchpad and an unbounded Repository of intermediate findings, and decomposes mathematical work into parallel Workers.   OpenProver is fully open-source, offers reproducible evaluation through automatic formal verification of generated proofs, and provides an interactive terminal interface for human-guided proof search. In interactive mode, OpenProver allows the human operator to monitor and steer the proof search process, motivated by the established human-AI synergy in interactive code generation.   To showcase the potential for quantitative ablation experiments enabled by automatic formal verification, we evaluate OpenProver on ProofNet and compare it with a simple baseline. OpenProver is publicly available at https://github.com/kripner/OpenProver.",
+      "local_pdf": "docs/literature/papers/2607.09217.pdf",
+      "pdf_bytes": 433132
+    },
+    {
+      "arxiv_id": "1311.1460",
+      "versioned_id": "1311.1460v3",
+      "pillar": "pillar1_mock_eta",
+      "title": "On spaces of modular forms spanned by eta-quotients",
+      "authors": [
+        "Jeremy Rouse",
+        "John J. Webb"
+      ],
+      "published": "2013-11-06T17:49:30Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": "Adv. Math. 272 (2015), 200-224",
+      "url": "https://arxiv.org/abs/1311.1460",
+      "pdf_url": "https://arxiv.org/pdf/1311.1460v3",
+      "summary": "An eta-quotient of level $N$ is a modular form of the shape $f(z) = \\prod_{δ| N} η(δz)^{r_δ}$. We study the problem of determining levels $N$ for which the graded ring of holomorphic modular forms for $Γ_{0}(N)$ is generated by (holomorphic, respectively weakly holomorphic) eta-quotients of level $N$. In addition, we prove that if $f(z)$ is a holomorphic modular form that is non-vanishing on the upper half plane and has integer Fourier coefficients at infinity, then $f(z)$ is an integer multiple of an eta-quotient. Finally, we use our results to determine the structure of the cuspidal subgroup of $J_{0}(2^{k})(\\mathbb{Q})$.",
+      "local_pdf": "docs/literature/papers/1311.1460.pdf",
+      "pdf_bytes": 291173
+    },
+    {
+      "arxiv_id": "0808.1442",
+      "versioned_id": "0808.1442v4",
+      "pillar": "pillar1_mock_eta",
+      "title": "SO(3)-Donaldson invariants of CP^2 and Mock Theta Functions",
+      "authors": [
+        "Andreas Malmendier",
+        "Ken Ono"
+      ],
+      "published": "2008-08-11T04:19:49Z",
+      "primary_category": "math.DG",
+      "doi": "10.2140/gt.2012.16.1767",
+      "journal_ref": "Geom. Topol. 16 (2012), no. 3, 1767-1833",
+      "url": "https://arxiv.org/abs/0808.1442",
+      "pdf_url": "https://arxiv.org/pdf/0808.1442v4",
+      "summary": "We compute the Moore-Witten regularized u-plane integral on CP^2, and we confirm their conjecture that it is the generating function for the SO(3)-Donaldson invariants of CP^2. We prove this conjecture using the theory of mock theta functions and harmonic Maass forms. We also derive further such generating functions for the SO(3)-Donaldson invariants with 2N_f massless monopoles using the geometry of certain rational elliptic surfaces (N_f=0,2,3,4). We show that the partition function for N_f=4 is nearly modular. When combined with one of Ramanujan's mock theta functions, we obtain a weight 1/2 modular form. This fact is central to the proof of the conjecture.",
+      "local_pdf": "docs/literature/papers/0808.1442.pdf",
+      "pdf_bytes": 651295
+    },
+    {
+      "arxiv_id": "2006.07645",
+      "versioned_id": "2006.07645v3",
+      "pillar": "pillar6_partitions_congruences",
+      "title": "Scarcity of congruences for the partition function",
+      "authors": [
+        "Scott Ahlgren",
+        "Olivia Beckwith",
+        "Martin Raum"
+      ],
+      "published": "2020-06-13T14:24:12Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2006.07645",
+      "pdf_url": "https://arxiv.org/pdf/2006.07645v3",
+      "summary": "The arithmetic properties of the ordinary partition function $p(n)$ have been the topic of intensive study for the past century. Ramanujan proved that there are linear congruences of the form $p(\\ell n+β)\\equiv 0\\pmod\\ell$ for the primes $\\ell=5, 7, 11$, and it is known that there are no others of this form. On the other hand, for every prime $\\ell\\geq 5$ there are infinitely many examples of congruences of the form $p(\\ell Q^m n+β)\\equiv 0\\pmod\\ell$ where $Q\\geq 5$ is prime and $m\\geq 3$. This leaves open the question of the existence of such congruences when $m=1$ or $m=2$ (no examples in these cases are known). We prove in a precise sense that such congruences, if they exist, are exceedingly scarce. Our methods involve a careful study of modular forms of half integral weight on the full modular group which are related to the partition function. Among many other tools, we use work of Radu which describes expansions of such modular forms along square classes at cusps of the modular curve $X(\\ell Q)$, Galois representations and the arithmetic large sieve.",
+      "local_pdf": "docs/literature/papers/2006.07645.pdf",
+      "pdf_bytes": 441457
+    },
+    {
+      "arxiv_id": "math/0402439",
+      "versioned_id": "math/0402439v1",
+      "pillar": "pillar6_partitions_congruences",
+      "title": "On the Andrews-Stanley Refinement of Ramanujan's Partition Congruence Modulo 5 and Generalizations",
+      "authors": [
+        "Alexander Berkovich",
+        "Frank G. Garvan"
+      ],
+      "published": "2004-02-26T18:18:24Z",
+      "primary_category": "math.CO",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/math/0402439",
+      "pdf_url": "https://arxiv.org/pdf/math/0402439v1",
+      "summary": "In a recent study of sign-balanced, labelled posets Stanley, introduced a new integral partition statistic srank(pi) = O(pi) - O(pi'), where O(pi) denotes the number of odd parts of the partition pi and pi' is the conjugate of pi. Andrews proved the following refinement of Ramanujan's partition congruence mod 5: p[0](5n +4) = p[2](5n + 4) = 0 (mod 5), p(n) = p[0](n) + p[2](n), where p[i](n) (i = 0; 2) denotes the number of partitions of n with srank = i (mod 4) and p(n) is the number of unrestricted partitions of n. Andrews asked for a partition statistic that would divide the partitions enumerated by p[i](5n + 4) (i = 0, 2) into five equinumerous classes. In this paper we discuss three such statistics: the St-crank, the 2-quotient-rank and the 5-core-crank. The first one, while new, is intimately related to the Andrews-Garvan crank. The second one is in terms of the 2-quotient of a partition. The third one was introduced by Garvan, Kim and Stanton. We use it in our combinatorial proof of the Andrews refinement. Remarkably, the Andrews result is a simple consequence of a stronger refinement of Ramanujan's congruence mod 5. This more general refinement uses a new partition statistic which we term the BG-rank. We employ the BG-rank to prove new partition congruences modulo 5. Finally, we discuss some new formulas for partitions that are 5-cores and discuss an intriguing relation between 3-cores and the Andrews-Garvan crank.",
+      "local_pdf": "docs/literature/papers/math_0402439.pdf",
+      "pdf_bytes": 299904
+    },
+    {
+      "arxiv_id": "2012.06676",
+      "versioned_id": "2012.06676v1",
+      "pillar": "pillar6_partitions_congruences",
+      "title": "A new approach to the Dyson rank conjectures",
+      "authors": [
+        "Frank Garvan"
+      ],
+      "published": "2020-12-11T23:23:47Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2012.06676",
+      "pdf_url": "https://arxiv.org/pdf/2012.06676v1",
+      "summary": "In 1944 Dyson defined the rank of a partition as the largest part minus the number of parts, and conjectured that the residue of the rank mod 5 divides the partitions of 5n+4 into five equal classes. This gave a combinatorial explanation of Ramanujan's famous partition congruence mod 5. He made an analogous conjecture for the rank mod 7 and the partitions of 7n+5. In 1954 Atkin and Swinnerton-Dyer proved Dyson's rank conjectures by constructing several Lambert-series identities basically using the theory of elliptic functions. In 2016 the author gave another proof using the theory of weak harmonic Maass forms. In this paper we describe a new and more elementary approach using Hecke-Rogers series.",
+      "local_pdf": "docs/literature/papers/2012.06676.pdf",
+      "pdf_bytes": 407537
+    },
+    {
+      "arxiv_id": "0708.0692",
+      "versioned_id": "0708.0692v1",
+      "pillar": "pillar6_partitions_congruences",
+      "title": "Dyson's Rank, overpartitions, and weak Maass forms",
+      "authors": [
+        "Kathrin Bringmann",
+        "Jeremy Lovejoy"
+      ],
+      "published": "2007-08-05T22:36:49Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/0708.0692",
+      "pdf_url": "https://arxiv.org/pdf/0708.0692v1",
+      "summary": "In a series of papers the first author and Ono connected the rank, a partition statistic introduced by Dyson, to weak Maass forms, a new class of functions which are related to modular forms. Naturally it is of wide interest to find other explicit examples of Maass forms. Here we construct a new infinite family of such forms, arising from overpartitions. As applications we obtain combinatorial decompositions of Ramanujan-type congruences for overpartitions as well as the modularity of rank differences in certain arithmetic progressions.",
+      "local_pdf": "docs/literature/papers/0708.0692.pdf",
+      "pdf_bytes": 315526
+    },
+    {
+      "arxiv_id": "2607.13159",
+      "versioned_id": "2607.13159v2",
+      "pillar": "pillar6_partitions_congruences",
+      "title": "Beyond Mock Modularity: Elliptic Corrections for Higher Dyson Ranks",
+      "authors": [
+        "Claudia Alfes",
+        "Ken Ono",
+        "Ashvin Swaminathan"
+      ],
+      "published": "2026-07-14T18:07:26Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2607.13159",
+      "pdf_url": "https://arxiv.org/pdf/2607.13159v2",
+      "summary": "When $m = 1$, the Dyson rank generating function is a classical bridge between partition theory, Ramanujan's mock theta functions, and the theory of harmonic Maass forms and nonholomorphic Jacobi forms. The rank is a statistic on partitions, and the higher Dyson systems, for $m \\geq 2$, are a natural multivariable refinement of it, combining $m$ graded rank contributions. Unlike the classical case, these higher systems are not expected to fit the mock-modular framework, which raises the question of what analytic structure governs them. We show that their root-of-unity specializations carry a hidden elliptic structure. For $m\\ge2$, the primitive $(2m+1)$st-root specialization of their generating function leads to a product deformation whose associated seed satisfies a finite $q$-difference recurrence with an explicit polynomial defect. Using bilateral periodization we construct a meromorphic lift satisfying a twisted index-$m$ elliptic transformation law, with at most simple poles on a prescribed lattice orbit. The poles can be removed by subtracting an explicit multiple of an Appell--Lerch kernel and a specified translation removes the twist. The resulting holomorphic finite parts admit a finite theta decomposition. These results grew out of a human--AI collaboration, and the key new formulas were formalized and machine-verified in Lean/Mathlib by AxiomProver.",
+      "local_pdf": "docs/literature/papers/2607.13159.pdf",
+      "pdf_bytes": 608410
+    },
+    {
+      "arxiv_id": "1801.06244",
+      "versioned_id": "1801.06244v3",
+      "pillar": "pillar6_partitions_congruences",
+      "title": "Short proof of Rademacher's formula for partitions",
+      "authors": [
+        "Wladimir de Azevedo Pribitkin",
+        "Brandon Williams"
+      ],
+      "published": "2018-01-18T22:00:11Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1801.06244",
+      "pdf_url": "https://arxiv.org/pdf/1801.06244v3",
+      "summary": "This note rederives a formula for $r$-color partitions, $1 \\le r \\le 24$, including Rademacher's celebrated result for ordinary partitions, from the duality between modular forms of weights $-r/2$ and $2+r/2$.",
+      "local_pdf": "docs/literature/papers/1801.06244.pdf",
+      "pdf_bytes": 321311
+    },
+    {
+      "arxiv_id": "1401.7718",
+      "versioned_id": "1401.7718v4",
+      "pillar": "pillar7_rogers_ramanujan_qseries",
+      "title": "A framework of Rogers-Ramanujan identities and their arithmetic properties",
+      "authors": [
+        "Michael J. Griffin",
+        "Ken Ono",
+        "S. Ole Warnaar"
+      ],
+      "published": "2014-01-30T02:25:40Z",
+      "primary_category": "math.NT",
+      "doi": "10.1215/00127094-3449994",
+      "journal_ref": "Duke Math. J. 165, no. 8 (2016), 1475-1527",
+      "url": "https://arxiv.org/abs/1401.7718",
+      "pdf_url": "https://arxiv.org/pdf/1401.7718v4",
+      "summary": "The two Rogers-Ramanujan $q$-series \\[ \\sum_{n=0}^{\\infty}\\frac{q^{n(n+σ)}}{(1-q)\\cdots (1-q^n)}, \\] where $σ=0,1$, play many roles in mathematics and physics. By the Rogers-Ramanujan identities, they are essentially modular functions. Their quotient, the Rogers-Ramanujan continued fraction, has the special property that its singular values are algebraic integral units. We find a framework which extends the Rogers-Ramanujan identities to doubly-infinite families of $q$-series identities. If $a\\in\\{1,2\\}$ and $m,n\\geq 1$, then we have \\[ \\sum_{\\substack{λλ_1\\leq m}} q^{a|λ|} P_{2λ}(1,q,q^2,\\dots;q^n) =\\textrm{\"infinite product modular function\"}, \\] where the $P_λ(x_1,x_2,\\dots;q)$ are Hall-Littlewood polynomials. These $q$-series are specialized characters of affine Kac--Moody algebras. Generalizing the Rogers-Ramanujan continued fraction, we prove in the case of $\\textrm{A}_{2n}^{(2)}$ that the relevant $q$-series quotients are integral units.",
+      "local_pdf": "docs/literature/papers/1401.7718.pdf",
+      "pdf_bytes": 491429
+    },
+    {
+      "arxiv_id": "1411.5346",
+      "versioned_id": "1411.5346v1",
+      "pillar": "pillar7_rogers_ramanujan_qseries",
+      "title": "IdentityFinder and some new identities of Rogers-Ramanujan type",
+      "authors": [
+        "Shashank Kanade",
+        "Matthew C. Russell"
+      ],
+      "published": "2014-11-19T20:17:31Z",
+      "primary_category": "math.CO",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1411.5346",
+      "pdf_url": "https://arxiv.org/pdf/1411.5346v1",
+      "summary": "The Rogers-Ramanujan identities and various analogous identities (Gordon, Andrews-Bressoud, Capparelli, etc.) form a family of very deep identities concerned with integer partitions. These identities (written in generating function form) are typically of the form \"product side\" equals \"sum side,\" with the product side enumerating partitions obeying certain congruence conditions and the sum side obeying certain initial conditions and difference conditions (along with possibly other restrictions). We use symbolic computation to generate various such sum sides and then use Euler's algorithm to see which of them actually do produce elegant conjectured product sides. We not only rediscover many of the known identities but also discover some apparently new ones, as conjectures supported by strong mathematical evidence.",
+      "local_pdf": "docs/literature/papers/1411.5346.pdf",
+      "pdf_bytes": 136471
+    },
+    {
+      "arxiv_id": "1001.1571",
+      "versioned_id": "1001.1571v2",
+      "pillar": "pillar7_rogers_ramanujan_qseries",
+      "title": "Dedekind's eta-function and Rogers-Ramanujan identities",
+      "authors": [
+        "S. Ole Warnaar",
+        "Wadim Zudilin"
+      ],
+      "published": "2010-01-11T01:02:50Z",
+      "primary_category": "math.CO",
+      "doi": "10.1112/blms/bdr019",
+      "journal_ref": "Bulletin of the London Mathematical Society 44 (2012), 1-11",
+      "url": "https://arxiv.org/abs/1001.1571",
+      "pdf_url": "https://arxiv.org/pdf/1001.1571v2",
+      "summary": "We prove a q-series identity that generalises Macdonald's A_{2n}^{(2)} eta-function identity and the Rogers-Ramanujan identities. We conjecture our result to generalise even further to also include the Andrews-Gordon identities.",
+      "local_pdf": "docs/literature/papers/1001.1571.pdf",
+      "pdf_bytes": 211453
+    },
+    {
+      "arxiv_id": "1409.3781",
+      "versioned_id": "1409.3781v4",
+      "pillar": "pillar7_rogers_ramanujan_qseries",
+      "title": "Half-integral weight Eichler integrals and quantum modular forms",
+      "authors": [
+        "Kathrin Bringmann",
+        "Larry Rolen"
+      ],
+      "published": "2014-09-12T15:56:46Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1409.3781",
+      "pdf_url": "https://arxiv.org/pdf/1409.3781v4",
+      "summary": "In analogy with the classical theory of Eichler integrals for integral weight modular forms, Lawrence and Zagier considered examples of Eichler integrals of certain half-integral weight modular forms. These served as early prototypes of a new type of object, which Zagier later called a quantum modular form. Since then, a number of others have studied similar examples. Here we develop the theory in a general context, giving rise to a well-defined class of quantum modular forms. Since elements of this class show up frequently in examples of combinatorial and number theoretical interest, we propose the study of the general properties of this space of quantum modular forms. We conclude by giving a set of fundamental questions concerning this space of objects which merit further study.",
+      "local_pdf": "docs/literature/papers/1409.3781.pdf",
+      "pdf_bytes": 213540
+    },
+    {
+      "arxiv_id": "2505.00799",
+      "versioned_id": "2505.00799v2",
+      "pillar": "pillar7_rogers_ramanujan_qseries",
+      "title": "Quantum Modular Forms and Resurgence",
+      "authors": [
+        "Eleanor McSpirit",
+        "Larry Rolen"
+      ],
+      "published": "2025-05-01T19:01:00Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2505.00799",
+      "pdf_url": "https://arxiv.org/pdf/2505.00799v2",
+      "summary": "In 2010, Zagier described a new phenomenon which he called quantum modularity. This connected various examples coming from disparate fields which exhibit near-modular behavior. In the fifteen years since, Zagier's philosophy has informed new developments in areas such as knot theory, 3-dimensional topology, combinatorics, and physics. More recently, the concept of holomorphic quantum modularity has emerged, pointing to a clearer structure for Zagier's original examples. These new developments suggest connections to perturbative quantum field theory, like the theory of resurgence. In 2024, Fantini and Rella proposed a means of codifying some of these connections under their program of ``modular resurgence.\"   Inspired by their work, we unify all of the examples of quantum modular forms in Zagier's original paper under the umbrella of resurgence. In doing so, we strengthen known quantum modularity results for holomorphic Eichler integrals of half-integer weight modular forms. Our main addition to the literature is a collection of median resummation type results which show that the examples of holomorphic quantum modular forms we consider can be recovered from their asymptotics, or the asymptotics of closely related functions.",
+      "local_pdf": "docs/literature/papers/2505.00799.pdf",
+      "pdf_bytes": 481485
+    },
+    {
+      "arxiv_id": "1201.5233",
+      "versioned_id": "1201.5233v3",
+      "pillar": "pillar8_pi_tau_arithmetic",
+      "title": "Ramanujan-Sato-like series",
+      "authors": [
+        "Gert Almkvist",
+        "Jesús Guillera"
+      ],
+      "published": "2012-01-25T10:51:16Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1201.5233",
+      "pdf_url": "https://arxiv.org/pdf/1201.5233v3",
+      "summary": "Using the theory of Calabi-Yau differential equations we obtain all the parameters of Ramanujan-Sato-like series for $1/π^2$ as $q$-functions valid in the complex plane. Then we use these q-functions together with a conjecture to find new examples of series of non-hypergeometric type. To motivate our theory we begin with the simpler case of Ramanujan-Sato series for $1/π$.",
+      "local_pdf": "docs/literature/papers/1201.5233.pdf",
+      "pdf_bytes": 217259
+    },
+    {
+      "arxiv_id": "1807.07394",
+      "versioned_id": "1807.07394v4",
+      "pillar": "pillar8_pi_tau_arithmetic",
+      "title": "A method for proving Ramanujan series for $1/π$",
+      "authors": [
+        "Jesús Guillera"
+      ],
+      "published": "2018-07-19T13:25:06Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1807.07394",
+      "pdf_url": "https://arxiv.org/pdf/1807.07394v4",
+      "summary": "In a famous paper of $1914$ Ramanujan gave a list of $17$ extraordinary formulas for the number $π$. In this paper we explain a general method to prove them, based on an original idea of James Wan and in some own ideas.",
+      "local_pdf": "docs/literature/papers/1807.07394.pdf",
+      "pdf_bytes": 146983
+    },
+    {
+      "arxiv_id": "1211.6563",
+      "versioned_id": "1211.6563v1",
+      "pillar": "pillar8_pi_tau_arithmetic",
+      "title": "Some conjectured formulas for 1/Pi coming from polytopes, K3-surfaces and Moonshine",
+      "authors": [
+        "Gert Almkvist"
+      ],
+      "published": "2012-11-28T09:58:39Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/1211.6563",
+      "pdf_url": "https://arxiv.org/pdf/1211.6563v1",
+      "summary": "Calabi-Yau differential equations of various origins are used to find generalized J-functions. From their values of them. numerous conjectured formulas for 1/Pi are constructed.",
+      "local_pdf": "docs/literature/papers/1211.6563.pdf",
+      "pdf_bytes": 425523
+    },
+    {
+      "arxiv_id": "2005.10345",
+      "versioned_id": "2005.10345v1",
+      "pillar": "pillar8_pi_tau_arithmetic",
+      "title": "Variations of Lehmer's Conjecture for Ramanujan's tau-function",
+      "authors": [
+        "Jennifer S. Balakrishnan",
+        "William Craig",
+        "Ken Ono"
+      ],
+      "published": "2020-05-20T20:33:39Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2005.10345",
+      "pdf_url": "https://arxiv.org/pdf/2005.10345v1",
+      "summary": "We consider natural variants of Lehmer's unresolved conjecture that Ramanujan's tau-function never vanishes. Namely, for $n>1$ we prove that $$τ(n)\\not \\in \\{\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 691\\}.$$ This result is an example of general theorems for newforms with trivial mod 2 residual Galois representation, which will appear in forthcoming work of the authors with Wei-Lun Tsai. Ramanujan's well-known congruences for $τ(n)$ allow for the simplified proof in these special cases. We make use of the theory of Lucas sequences, the Chabauty-Coleman method for hyperelliptic curves, and facts about certain Thue equations.",
+      "local_pdf": "docs/literature/papers/2005.10345.pdf",
+      "pdf_bytes": 180750
+    },
+    {
+      "arxiv_id": "2603.29970",
+      "versioned_id": "2603.29970v3",
+      "pillar": "pillar8_pi_tau_arithmetic",
+      "title": "ABC implies that Ramanujan's tau function misses almost all primes",
+      "authors": [
+        "David Kurniadi Angdinata",
+        "Evan Chen",
+        "Chris Cummins",
+        "Ben Eltschig",
+        "Dejan Grubisic",
+        "Leopold Haller",
+        "Letong Hong",
+        "Andranik Kurghinyan",
+        "Kenny Lau",
+        "Hugh Leather",
+        "Seewoo Lee",
+        "Simon Mahns",
+        "Aram H. Markosyan",
+        "Rithikesh Muddana",
+        "Ken Ono",
+        "Manooshree Patel",
+        "Gaurang Pendharkar",
+        "Vedant Rathi",
+        "Alex Schneidman",
+        "Volker Seeker",
+        "Shubho Sengupta",
+        "Ishan Sinha",
+        "Jimmy Xin",
+        "Jujian Zhang"
+      ],
+      "published": "2026-03-31T16:33:28Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2603.29970",
+      "pdf_url": "https://arxiv.org/pdf/2603.29970v3",
+      "summary": "Lehmer conjectured that Ramanujan's tau-function never vanishes. In a related direction, a folklore conjecture asserts that infinitely many primes arise as absolute values of Ramanujan's tau-function. Recently, Xiong showed that these prime values form a subset of the primes with density at most $2/11$. Assuming the $abc$ Conjecture, we prove the stronger upper bound \\[ S(X):=\\#\\{\\ell\\le X:\\ \\ell\\ \\text{prime and } |τ(n)|=\\ell \\text{ for some } n\\ge 1\\} = O(X^{13/22}), \\] which implies that Ramanujan's tau-function misses a density 1 subset of the primes. We give a heuristic suggesting that $S(X)$ should nevertheless be infinite, with predicted order of magnitude \\[ S(X)\\asymp \\frac{C X^{\\frac{1}{11}}}{(\\log X)^2}. \\] The main engine in this note was formalized and produced automatically in Lean/Mathlib by AxiomProver from a natural-language statement of the problem.",
+      "local_pdf": "docs/literature/papers/2603.29970.pdf",
+      "pdf_bytes": 428996
+    },
+    {
+      "arxiv_id": "1211.6944",
+      "versioned_id": "1211.6944v4",
+      "pillar": "pillar8_pi_tau_arithmetic",
+      "title": "Ramanujan, Robin, Highly Composite Numbers, and the Riemann Hypothesis",
+      "authors": [
+        "Jean-Louis Nicolas",
+        "Jonathan Sondow"
+      ],
+      "published": "2012-11-29T15:10:41Z",
+      "primary_category": "math.HO",
+      "doi": null,
+      "journal_ref": "Contemp. Math. 627 (2014) 145-156",
+      "url": "https://arxiv.org/abs/1211.6944",
+      "pdf_url": "https://arxiv.org/pdf/1211.6944v4",
+      "summary": "We provide an historical account of equivalent conditions for the Riemann Hypothesis arising from the work of Ramanujan and, later, Guy Robin on generalized highly composite numbers. The first part of the paper is on the mathematical background of our subject. The second part is on its history, which includes several surprises.",
+      "local_pdf": "docs/literature/papers/1211.6944.pdf",
+      "pdf_bytes": 4053539
+    },
+    {
+      "arxiv_id": "1201.1060",
+      "versioned_id": "1201.1060v4",
+      "pillar": "pillar8_pi_tau_arithmetic",
+      "title": "Ramanujan sums as supercharacters",
+      "authors": [
+        "Christopher F. Fowler",
+        "Stephan Ramon Garcia",
+        "Gizem Karaali"
+      ],
+      "published": "2012-01-05T04:53:26Z",
+      "primary_category": "math.NT",
+      "doi": null,
+      "journal_ref": "The Ramanujan Journal, November 2014, Volume 35, Issue 2, pp. 205-241",
+      "url": "https://arxiv.org/abs/1201.1060",
+      "pdf_url": "https://arxiv.org/pdf/1201.1060v4",
+      "summary": "The theory of supercharacters, recently developed by Diaconis-Isaacs and Andre, can be used to derive the fundamental algebraic properties of Ramanujan sums. This machinery frequently yields one-line proofs of difficult identities and provides many novel formulas. In addition to exhibiting a new application of supercharacter theory, this article also serves as a blueprint for future work since some of the abstract results we develop are applicable in much greater generality.",
+      "local_pdf": "docs/literature/papers/1201.1060.pdf",
+      "pdf_bytes": 444569
+    },
+    {
+      "arxiv_id": "2410.01466",
+      "versioned_id": "2410.01466v3",
+      "pillar": "pillar5_lean_neurosymbolic",
+      "title": "A complete formalization of Fermat's Last Theorem for regular primes in Lean",
+      "authors": [
+        "Alex Best",
+        "Christopher Birkbeck",
+        "Riccardo Brasca",
+        "Eric Rodriguez Boidi",
+        "Ruben van De Velde",
+        "Andrew Yang"
+      ],
+      "published": "2024-10-02T12:18:51Z",
+      "primary_category": "cs.FL",
+      "doi": null,
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2410.01466",
+      "pdf_url": "https://arxiv.org/pdf/2410.01466v3",
+      "summary": "We formalize a complete proof of the regular case of Fermat's Last Theorem in the Lean4 theorem prover. Our formalization includes a proof of Kummer's lemma, that is the main obstruction to Fermat's Last Theorem for regular primes. Rather than following the modern proof of Kummer's lemma via class field theory, we prove it by using Hilbert's Theorems 90-94 in a way that is more amenable to formalization.",
+      "local_pdf": "docs/literature/papers/2410.01466.pdf",
+      "pdf_bytes": 329090
+    },
+    {
+      "arxiv_id": "2101.02602",
+      "versioned_id": "2101.02602v2",
+      "pillar": "pillar5_lean_neurosymbolic",
+      "title": "Schemes in Lean",
+      "authors": [
+        "Kevin Buzzard",
+        "Chris Hughes",
+        "Kenny Lau",
+        "Amelia Livingston",
+        "Ramon Fernández Mir",
+        "Scott Morrison"
+      ],
+      "published": "2021-01-07T16:00:29Z",
+      "primary_category": "math.AG",
+      "doi": "10.1080/10586458.2021.1983489",
+      "journal_ref": null,
+      "url": "https://arxiv.org/abs/2101.02602",
+      "pdf_url": "https://arxiv.org/pdf/2101.02602v2",
+      "summary": "We tell the story of how schemes were formalised in three different ways in the Lean theorem prover.",
+      "local_pdf": "docs/literature/papers/2101.02602.pdf",
+      "pdf_bytes": 199069
+    }
+  ]
+}

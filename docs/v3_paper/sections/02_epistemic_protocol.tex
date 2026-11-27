@@ -1,7 +1,41 @@
 \section{Epistemic Protocol}\label{sec:protocol}
-Every assertion in this program carries exactly one grade.
+Every assertion in this programme carries exactly one grade.
 \begin{itemize}
-    \item \textbf{Tier A}: Machine-checked (Lean 4 proof, no sorry).
-    \item \textbf{Tier B}: Established (Peer-reviewed literature, cited).
-    \item \textbf{Tier C}: Conjecture / heuristic.
+    \item \textbf{Tier A}: Machine-checked (Lean~4 proof; \texttt{\#print axioms} returns
+          only the universal kernel axioms within \{\texttt{propext},
+          \texttt{Classical.choice}, \texttt{Quot.sound}\}; no \texttt{sorry},
+          no custom \texttt{axiom}, no vacuity).
+    \item \textbf{Tier B}: Established (peer-reviewed literature, cited to
+          exact page or theorem number in \texttt{dualscale.bib}; or exact
+          30-term $\mathbb{Q}[[q]]$ classical catalog match).
+    \item \textbf{Tier L}: Literature hypothesis parameter (an established
+          analytic theorem---such as Aubin--Lions compactness, Rademacher
+          circle-method asymptotics, Sturm's bound, or the Jacobi Triple
+          Product---passed explicitly as a hypothesis parameter to a Lean~4
+          theorem rather than postulated as a global \texttt{axiom}).
+    \item \textbf{Tier C}: Conjecture / heuristic (automated search candidates,
+          unverified manuscript transcriptions, or open conditional targets
+          not yet elevated by unconditional proof or peer-reviewed citation).
+    \item \textbf{Tier X}: Falsified / quarantined (conjectures explicitly
+          refuted by exact arithmetic or Lean~4 kernel counterexamples, such as
+          the M2 triad circulant spectral gap, M3 CFM elliptic-angle proxy, and
+          14 Campaign~v2 OCR typos, together with quarantined mock-proxy
+          artifacts such as the legacy $S_{12}$ moduli-map reclassification).
 \end{itemize}
+
+\noindent
+\textbf{Verification qualifier.}
+Where a count, file path, or proof-state claim is marked
+\emph{(session-verified)}, it was confirmed by direct inspection in the
+session that produced this draft\,---\,not taken from a subagent report.
+The qualifier is significant because subagent reports have previously
+mis-reported axiom counts by up to a factor of~20 when they failed to
+exclude vendored library sources (see §\ref{sec:lean}).
+
+\noindent
+\textbf{FRONTIER NOTODO \#1 (authority boundary).}
+Stream~0 (this document) does not adjudicate the mathematical correctness
+of claims originating in other streams.
+It records what is checkable from outside: whether a stated verification
+mechanism exists and whether it produces the stated output.
+Finding~1 through Finding~3 in §\ref{sec:lean} are framed accordingly.

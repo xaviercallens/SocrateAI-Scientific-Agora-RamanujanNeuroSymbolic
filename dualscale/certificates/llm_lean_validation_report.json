@@ -1,0 +1,227 @@
+{
+  "workflow": "v3_2_consolidation_workflow",
+  "mode": "execute_and_validate",
+  "models_used": {
+    "track1_lean_kernel": "pro",
+    "track2_code_security_certs": "flash",
+    "track3_ci_packaging": "flash_lite",
+    "track4_paper_readme_packages": "flash",
+    "adversarial_signoff_critic": "pro"
+  },
+  "approved": true,
+  "overall_verdict": "APPROVED",
+  "lean_kernel_summary": {
+    "CampaignV2Verified.lean": {
+      "theorems": 275,
+      "axioms_subset": [
+        "propext"
+      ]
+    },
+    "AllNAndPropositionsVerified.lean": {
+      "theorems": 63,
+      "axioms_subset": [
+        "propext"
+      ]
+    },
+    "total_live_kernel_theorems": 338
+  },
+  "deterministic_checks": {
+    "build_publication_packages": {
+      "ok": true,
+      "rc": 0
+    },
+    "mathesis_gate_discovery_live": {
+      "ok": true,
+      "rc": 0
+    },
+    "lean_namagiri": {
+      "ok": true,
+      "rc": 0
+    },
+    "mathesis_gate_self_test": {
+      "ok": true,
+      "rc": 0
+    },
+    "mathesis_gate_single_file": {
+      "ok": true,
+      "rc": 0
+    },
+    "mathesis_gate_strict": {
+      "ok": true,
+      "rc": 0
+    },
+    "audit_lean": {
+      "ok": true,
+      "rc": 0
+    },
+    "audit_citations_v3": {
+      "ok": true,
+      "rc": 0
+    },
+    "audit_citations_v2_1": {
+      "ok": true,
+      "rc": 0
+    },
+    "validate_refs": {
+      "ok": true,
+      "rc": 0
+    },
+    "run_certificates": {
+      "ok": true,
+      "rc": 0
+    },
+    "verify_qseries": {
+      "ok": true,
+      "rc": 0
+    },
+    "pytest": {
+      "ok": true,
+      "rc": 0
+    },
+    "v3_zero_unused_bib": {
+      "ok": true,
+      "rc": 0
+    }
+  },
+  "validated_propositions": [
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#eq_d6899de389_all_n",
+      "notes": "Universal `∀ n : Nat` proof of `φ(q)+φ(-q)=2φ(q^4)` over exact `phiCoeff`; live `lean` & `mathesis_gate.py` footprint `[propext]`. Truncated η-quotient form to q^15 also in `CampaignV2Verified.lean`.",
+      "proposition_id": "eq_d6899de389_all_n",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#eq_c23aa45585_all_n",
+      "notes": "Universal `∀ n : Nat` proof of `φ(q)-φ(-q)=4qψ(q^8)` over exact `phiCoeff`/`psiCoeff` via mod-4/mod-8 quadratic residues; live footprint `[propext]`.",
+      "proposition_id": "eq_c23aa45585_all_n",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#eq_460927b577_all_len",
+      "notes": "Universal `∀ len : Nat` proof of `f(q)/f(-q)=ψ(q)/ψ(-q)` over unmerged Dedekind factorizations via `FPS` ring algebra and `etaCoeffs_eq_of_etaFPS_eq`; live footprint `[propext]`.",
+      "proposition_id": "eq_460927b577_all_len",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#eq_2847c49f95_all_len",
+      "notes": "Universal `∀ len : Nat` proof of `ψ(q)/ψ(-q)=χ(q)/χ(-q)` over unmerged Dedekind factorizations via `FPS` ring algebra; live footprint `[propext]`.",
+      "proposition_id": "eq_2847c49f95_all_len",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#eq_0722eebfe8_all_n_conditional",
+      "notes": "Tier A conditional all-n proof (`[propext]`) parameterized by `SturmBoundHolomorphicModularEq 12 1`, backed by kernel-proved `dedekindPsi 12 = 24`, `sturmBound 12 1 = 2 < 15`, weight-1 level-12 Ono congruences, all-6-cusp holomorphicity, and q^15 equality. Unconditional all-n equality holds at Tier B via Sturm (1987) / Ono (2004 Thm 1.64-1.65) since all 3 terms share Nebentypus `(-3/·)`.",
+      "proposition_id": "eq_0722eebfe8_all_n_conditional",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE_CONDITIONAL_TIER_B_LITERATURE"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#onoMod24_closed_append",
+      "notes": "8 universal `∀ a b : EtaQuot` algebraic theorems (`weight2_append/invert`, `onoSumDR_append/invert`, `onoSumNOverDR_append/invert`, `onoMod24_closed_append/invert`); live footprint `[propext]`.",
+      "proposition_id": "universal_eta_quotient_algebra",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/CampaignV2Verified.lean",
+      "notes": "275 kernel theorems covering 54 unique Dedekind η-quotients (weight, c_eff(0), E_0, Ono congruences, 12-term q-series) + 5 q^15 equations; live `mathesis_gate.py` 275/275 footprints `⊆ {propext}` and Python `exact_qseries` 54/54 match. Note: `eq_460927b577`/`eq_2847c49f95` there use pre-merged lists, superseded by `AllNAndPropositionsVerified.lean`.",
+      "proposition_id": "campaign_v2_54_eta_quotients_and_5_identities",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#typo01_refuted_q2",
+      "notes": "All 14 Campaign v2 OCR-corrupted equations (`typo01`..`typo14`) explicitly refuted by exact q^k coefficient mismatch in Lean kernel (`[propext]`) and Python exact arithmetic.",
+      "proposition_id": "campaign_v2_14_ocr_typo_refutations",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#sym2_recurrence_int;dualscale/lean/DualScale/K3Lock/Basic.lean",
+      "notes": "`sym2_recurrence_int` proved universally over `Int` with live `[propext]` footprint; `K3Lock/Basic.lean` proves constant (`sym2_recurrence`) and variable-coefficient (`symSquareRecurrence_annihilates_sq`, `sym2_recurrence_variable`) versions over `ℝ` (R1-R3 statically clean, offline Mathlib).",
+      "proposition_id": "sym2_recurrence_lock",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE_AND_STATIC_MATHLIB"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#tDual_involutive_exact;dualscale/lean/DualScale/Geometry/TDuality.lean",
+      "notes": "Exact `QPos` T-duality involution, symmetric-radius invariance, and fixed-point characterization live-verified (`[propext]`); `TDuality.lean` parameterizes `alpha_prime > 0` without pinned constant (`IsTDualInvariant` explicitly Tier C, R1-R3 clean).",
+      "proposition_id": "t_duality_involution_and_self_duality",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE_AND_STATIC_MATHLIB"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#cfm_elliptic_gap_exact;dualscale/lean/DualScale/CFM/Basic.lean",
+      "notes": "Exact algebraic refutation `(16/9)π - (4/3)π = (4/9)π ≠ 0` verified live (empty axiom footprint) and in `CFM/Basic.lean`, matching `cfm_ledger.csv` (`FAIL`). Conjecture 3 itself is FALSIFIED (Tier B literature/proxy refutation).",
+      "proposition_id": "m3_cfm_elliptic_angle_refutation",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE_REFUTATION"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#m2_alon_boppana_fail_p2_k3;dualscale/lean/DualScale/SpectralGap/Basic.lean",
+      "notes": "Exact falsification of M2 triad circulant graphs against Alon-Boppana at nominal `k=3,4,6` and actual regularity `2k=6,8,12` verified live (empty axiom footprint), matching `p{2,3,5}_certificate.json` (`FAIL`, Tier X) and `ledger.csv`; Deligne bounds for `τ(2), τ(3), τ(5)` checked in `SpectralGap/Basic.lean` (general Deligne Tier B).",
+      "proposition_id": "m2_deligne_tau_and_alon_boppana_falsification",
+      "tier": "A",
+      "validation_status": "KERNEL_VERIFIED_LIVE_REFUTATION"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean#s12_coeff_5_exact;dualscale/lean/DualScale/K3Lock/Basic.lean",
+      "notes": "Exact Apéry sequence computation `u_5 = 819005`, residual `765005 ≠ 0`, and `2 ≠ 3` live-verified (empty footprint); however, the S12 elliptic-vs-K3 moduli-map reclassification itself (`S12_vs_K3.json`, `S12_vs_elliptic.json`, `s12_ledger.csv`, `check_C3b_moduli_map.py`) is honestly flagged as Tier X mock-proxy check.",
+      "proposition_id": "s12_apery_arithmetic_vs_moduli_map_proxy",
+      "tier": "X",
+      "validation_status": "ARITHMETIC_TIER_A_PROXY_RECLASSIFICATION_TIER_X"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/NS/AubinLions.lean;dualscale/lean/DualScale/NS/HypothesisU.lean;dualscale/lean/DualScale/NS/DyadicShell.lean;dualscale/lean/DualScale/Physics/MasterDualScale.lean",
+      "notes": "Hypothesis U and `GlobalWellPosednessRegularized` remain OPEN Tier C conjectures (`hypothesis_u_rama_proof_certificate.json`: `CONJECTURAL_OPEN`, `is_rigorous_proof: false`); conditional deduction theorems in `NS/*` and `Physics/*` are R1-R3 clean statically (no `axiom`, `sorry`, or vacuity; offline Mathlib).",
+      "proposition_id": "conjecture_1_hypothesis_u_and_aubin_lions_ns",
+      "tier": "C",
+      "validation_status": "OPEN_CONJECTURE_STATIC_R1_R3_CLEAN"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Phase/Basic.lean;dualscale/lean/DualScale/QSeries/ContinuedFraction.lean",
+      "notes": "`FractureConjecture` (`dim_H = 0`) remains OPEN Tier C; `RogersRamanujanIdentityHypothesis` is Tier B literature hypothesis; discrete `ramanujanMod3Branches.length = 3` and convergent unfoldings are R1-R3 clean statically (offline Mathlib).",
+      "proposition_id": "conjecture_4_3limit_fracture_and_rogers_ramanujan",
+      "tier": "C",
+      "validation_status": "OPEN_CONJECTURE_STATIC_R1_R3_CLEAN"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/Asymptotics/Rademacher.lean;dualscale/lean/DualScale/Asymptotics/SaddlePoint.lean;dualscale/lean/DualScale/Asymptotics/BPSEntropy.lean;dualscale/lean/DualScale/QSeries/ModularTransform.lean",
+      "notes": "Rademacher first-order asymptotic and η S-transform encoded as explicit Tier B literature hypotheses; `SaddlePointLogAsymptotic` and micro-macro area-law bridge properly Tier C conditional; R1-R3 clean statically (offline Mathlib).",
+      "proposition_id": "rademacher_saddle_point_bps_entropy_and_s_transform",
+      "tier": "B",
+      "validation_status": "CONDITIONAL_LITERATURE_HYPOTHESIS_STATIC_R1_R3_CLEAN"
+    },
+    {
+      "lean_artifact": "dualscale/lean/DualScale/SusyBreaking/Basic.lean;dualscale/lean/DualScale/QSeries/EtaQuotient.lean",
+      "notes": "Deep Burn (`k=-183/2`, `c_eff(0)=-823/2310<0`, max cusp `c=3`: `81859/6930`, `E_0=425/6`, Ono mod-24 `false`, 18/41 negative terms) verified to 41 exact terms by `verify_qseries.py` vs `deep_verification_triple_check.json` (Tier B exact numerics; non-BPS Kerr physics remains Tier C; Lean modules static R1-R3 clean).",
+      "proposition_id": "deep_burn_susy_breaking_signed_index",
+      "tier": "B",
+      "validation_status": "EXACT_PYTHON_VERIFIED_STATIC_LEAN_CLEAN"
+    },
+    {
+      "lean_artifact": "dualscale/certificates/campaign_v2_report.json",
+      "notes": "Complete 839-page corpus DB (`namagiri.db`: 2,458 rows, 0 vacuous Lean rows): 70 Tier A verified, 10 Tier B classical mock-theta / Rogers-Ramanujan catalog matches (`CATALOG_MATCHED`), and 2,378 Tier C unverified symbolic transcriptions (`TRANSCRIBED_OPEN`).",
+      "proposition_id": "corpus_catalog_mock_theta_and_open_transcriptions",
+      "tier": "C",
+      "validation_status": "DB_CONSISTENT_ZERO_VACUITY"
+    }
+  ],
+  "remaining_defects": [
+    "Offline Mathlib build boundary (documented & non-blocking): `dualscale/lean/.lake/` is absent in the offline environment, so Mathlib-importing modules under `dualscale/lean/DualScale/` are verified via static R1-R3 gates (`audit_lean.py`, `mathesis_gate.py --skip-footprints`) while all 338 standalone Init-only theorems (`CampaignV2Verified.lean` 275 + `AllNAndPropositionsVerified.lean` 63) and `NAMAGIRI.lean` are live-compiled under Lean 4.33.1 with `#print axioms` footprint enforcement.",
+    "Post-signoff git hygiene (scheduled outside workflow): `preflight_audit.py` reports `hygiene_and_ci_t0: True` solely due to tracked `verify_*.lean` / deleted `.lake/` entries awaiting `git rm --cached` cleanup after workflow sign-off."
+  ],
+  "executive_summary_fr": "Audit adversarial indépendant T2 APPROUVÉ (Round 1 post-réparation) pour SocrateAI-Scientific-RajMathRecovery v3.2. Toutes les corrections demandées au Round 0 ont été vérifiées directement sur disque et par exécution en direct : (1) dans `dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean`, `IsWeight1Level12EtaComb` exige désormais `onoSumDR eq == 0` (en plus de `t.2.1 == 0`, `weight2 eq == 2`, `onoLevelDivisibleBool eq 12`, `onoCong1`, `onoCong2`, `holomorphicAllCusps12` et `etaNebentypusSqfree12 terms (0, 1)` pour le caractère `(-3/d)`), ce qui rejette effectivement le contre-exemple à décalage $q^1$ `[(2,-1),(4,2),(6,-1),(12,2)]` (`probe rc = 0`) tout en maintenant la validité complète de `eq_0722eebfe8_modular_level12_weight1` et `eq_0722eebfe8_all_n_conditional` ; (2) les 338 théorèmes noyau Lean 4.33.1 (`CampaignV2Verified.lean` = 275/275 et `AllNAndPropositionsVerified.lean` = 63/63) passent `mathesis_gate.py` avec des empreintes `#print axioms` strictement incluses dans `{propext}`, 0 axiome (R1), 0 `sorry` (R2), et 0 vacuité ou égalité pré-fusionnée `LHS == RHS` (R3) ; (3) `dualscale/experiments/f3_oeis_lmfdb_crosscheck.py` et `dualscale/experiments/entropy_sen_comparison.py` sont réparés et alignés sur les schémas exacts/quarantaine R5, et `dualscale/ci/run_certificates.py` vérifie désormais aussi la quarantaine Tier X de `entropy_sen_kerr_comparison.json` ; (4) R4 passe à 35/35 entrées sans citation manquante ni inutilisée dans `docs/v3_paper`, les paquets LaTeX/zip et `MANIFEST.md` SHA-256 concordent exactement, `pytest` réussit à 29/29 avec `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1`, et `preflight_audit.py` rapporte `math_t2_and_t1: False` et `code_and_security_t1: False`.",
+  "version": "3.2",
+  "validated_upgrades_v3_2": [
+    "Round 1 mathematical repair verified live: `IsWeight1Level12EtaComb` in `AllNAndPropositionsVerified.lean` now enforces `onoSumDR eq == 0` alongside `t.2.1 == 0`, `weight2 eq == 2`, `onoLevelDivisibleBool eq 12`, `onoCong1`, `onoCong2`, `holomorphicAllCusps12`, and `etaNebentypusSqfree12 terms (0, 1)`; live `lean --stdin` probe confirmed the former `sum_dr = 24` counterexample `[(1, 0, [(2, -1), (4, 2), (6, -1), (12, 2)])]` now evaluates to `false`, while `eq_0722eebfe8_modular_level12_weight1` and `eq_0722eebfe8_all_n_conditional` pass `lean` and `mathesis_gate.py` (`63/63` footprints `⊆ {propext}`).",
+    "All 338 live zero-custom-axiom Lean 4.33.1 kernel theorems verified (`CampaignV2Verified.lean`: 275/275 with `polyPowAux N (e + 1) e a one` and unmerged `eq_460927b577`/`eq_2847c49f95` factor lists; `AllNAndPropositionsVerified.lean`: 63/63 including JTP sum-vs-product lifts, universal `∀ n` & `∀ len` proofs, universal `EtaQuot` algebra, live Deep Burn invariants, `sym2_recurrence_int`, exact `QPos` T-duality, and certified refutations); `NAMAGIRI.lean` compiles cleanly.",
+    "Round 1 Rule R5 generator and gate repairs verified: `dualscale/experiments/f3_oeis_lmfdb_crosscheck.py` fixes the negative-exponent `expand_eta_power` loop, computes exact `-823/2310` / `425/6` / `81859/6930` cross-checked against `exact_qseries` and `verify_qseries`, and preserves offline OEIS lookups; `dualscale/experiments/entropy_sen_comparison.py` enforces Tier X `QUARANTINED_LEGACY_SIGN_INVERTED` metadata; `dualscale/ci/run_certificates.py` validates `entropy_sen_kerr_comparison.json`, `moduli_map/*.json`, `s12_ledger.csv`, `f3_oeis_lmfdb_crosscheck.json`, `campaign_v2_report.json`, and `llm_lean_validation_report.json`.",
+    "Code, security, CI, packaging, and test suites verified: `scripts/init_db.py` delegates to `NamagiriDB`, `dashboard/app.js` uses safe DOM construction without `.innerHTML` (`node --check` passes), `tools/mathesis-gate/mathesis_gate.py` supports single-file and directory scanning (`17` self-test controls pass), `.github/workflows/dualscale_ci.yml` includes `lean-kernel-live` with `v4.33.1`, `pyproject.toml` is bumped to `3.2.0`, and `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q` passes `29/29`.",
+    "Documentation, citations (R4), and release packages verified: `audit_citations.py --paper-dir docs/v3_paper` passes with `35/35` entries cited (`0` missing, `0` unused); `README.md`, `docs/v3_paper/` (14-page `pdflatex` + `bibtex`), `docs/arxiv_submission/arxiv_package.zip`, `docs/release_consolidated/Final_Release_Package.zip`, and `docs/release_consolidated/MANIFEST.md` match live SHA-256 (`626e6c86b3235e4ed73616bc141259d476e97d9bfcefbede474a2a7923a455c4` for `AllNAndPropositionsVerified.lean`)."
+  ]
+}

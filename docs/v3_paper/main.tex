@@ -31,7 +31,8 @@
   keywordstyle=\color{leanblue}\bfseries,
   language=lean,
   numbers=left,
-  numberstyle=\tiny\color{gray}
+  numberstyle=\tiny\color{gray},
+  literate={×}{{$\times$}}1
 }
 
 \theoremstyle{plain}
@@ -44,13 +45,15 @@
 
 \newcommand{\tierA}{\textbf{Tier A}}
 \newcommand{\tierB}{\textbf{Tier B}}
+\newcommand{\tierL}{\textbf{Tier L}}
 \newcommand{\tierC}{\textbf{Tier C}}
+\newcommand{\tierX}{\textbf{Tier X}}
 
 \title{\vspace{-1.5cm}\textbf{The Ramanujan Neuro-Symbolic Engine:\\
 Exact Algebraic Surrogates, Mock Modular Forms, and Lean 4 Verification for $K3 \times T^{2}$ Dual-Scale Geometry}\\[0.4em]
-\large Version 3.0 --- Includes computational certificates and live Lean 4 Tier B relaxations}
+\large Version 3.2 --- All-$n$ Lean 4.33.1 Kernel Upgrades, Literature Synthesis, and Certified Refutations}
 \author{\textbf{Xavier Callens}\\ \small SocrateAI Lab}
-\date{August 9, 2026}
+\date{November 2026}
 
 \begin{document}
 \maketitle
@@ -65,7 +68,11 @@ Exact Algebraic Surrogates, Mock Modular Forms, and Lean 4 Verification for $K3 
 \input{sections/06_formalization_status.tex}
 \input{sections/07_conclusion.tex}
 
+\begingroup
+\catcode`\^=\active
+\def^#1{\textsuperscript{#1}}
 \bibliographystyle{plain}
 \bibliography{../../dualscale/refs/bib/dualscale}
+\endgroup
 
 \end{document}

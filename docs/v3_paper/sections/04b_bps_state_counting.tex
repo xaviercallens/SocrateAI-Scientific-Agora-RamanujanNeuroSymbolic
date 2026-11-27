@@ -1,41 +1,27 @@
 \section{Mixed-Cyclotomic Forms and BPS State Counting on $K3 \times T^2$}
 
-The relaxation of description-length penalties within the Genetic RAMA engine has led to the autonomous discovery of highly structured, mixed-cyclotomic $\eta$-quotients that transcend trivial Eulerian forms. By allowing the engine to explore deep homological permutations via a thermodynamic saddle-point matrix, we have uncovered explicit structural mappings between Ramanujan's 3rd-order Mock Theta expansions and modern string theoretic BPS state counts.
+The relaxation of description-length penalties within the Genetic RAMA engine explored mixed-cyclotomic $\eta$-quotients beyond simple Eulerian forms. Under the strict epistemic protocol of Section~\ref{sec:protocol}, the heuristic attractors identified by the legacy Phase~2 genetic search carry \tierC{} (exploratory heuristic) status unless independently certified in exact $\mathbb{Z}/\mathbb{Q}$ arithmetic.
 
-\subsection{Thermodynamic Saddle Point Matrix}
-We rely on the Rademacher circle method to evaluate the asymptotic growth of these newly discovered integer partition sequences. The resulting matrix identifies the macroscopic thermodynamic properties of the microscopic quantum states. The asymptotic growth scaling is governed by the effective central charge $c_{\text{eff}}$, which dictates the stability of the topological geometry. 
-
-Let the generating function of the Mock Theta expansion be formulated as:
+\subsection{Thermodynamic Saddle Point Matrix and Corrected Sign Convention}
+We rely on the Rademacher circle method to evaluate the asymptotic growth of integer partition generating functions. For a Dedekind $\eta$-quotient
 \begin{equation}
-f(q) = q^{k/24} \prod_{d} \eta(q^d)^{r_d}
+f(\tau) = \prod_{d \mid N} \eta(d\tau)^{r_d}
 \end{equation}
-where $k$ is the integer shift and $r_d$ are the exponents across Dedekind factors $d$. The effective central charge is given by:
+of level $N = \operatorname{lcm}\{d : r_d \neq 0\}$ and modular weight $k = \frac{1}{2}\sum_d r_d$, the cusp-$0$ and general cusp-$c$ ($c \mid N$) effective central charges are given by:
 \begin{equation}
-c_{\text{eff}} = \sum_{d} \frac{r_d}{d}
+c_{\text{eff}}(0) = -\sum_{d} \frac{r_d}{d}, \qquad
+c_{\text{eff}}(c) = -\frac{1}{c^2} \sum_{d} \frac{\gcd(d, c)^2}{d} r_d, \qquad
+E_0 = -\frac{1}{24} \sum_{d} d\, r_d.
 \end{equation}
+With this physically consistent sign convention, the bosonic integer partition generating function $1/\eta(\tau)$ ($r_1 = -1$) carries positive central charge $c_{\text{eff}}(0) = +1$, whereas Euler's pentagonal product $\eta(\tau)$ ($r_1 = +1$) and Ramanujan's cusp form $\Delta(\tau) = \eta(\tau)^{24}$ ($r_1 = 24$) carry negative cusp-$0$ values ($c_{\text{eff}}(0) = -1$ and $-24$, respectively) and alternating-sign Fourier coefficients.
 
-\subsection{Discovered Attractors and K3 Backgrounds}
+\subsection{Legacy Phase 2 Genetic Attractors (\tierC{} Erratum)}
 
-Through the continuous execution of Notebook 2 scans, the RAMA engine stabilized three primary structural attractors, directly translating to the physics of K3 string vacua \cite{EOT2011}:
-
+Earlier Phase~2 drafts of this section reported three heuristic Notebook~2 attractors evaluated under an inverted sign formula ($+\sum r_d/d$) \cite{EOT2011}:
 \begin{enumerate}
-    \item \textbf{The Torsion-Free Vacuum ($c_{\text{eff}} \approx 0.414$):}
-    \begin{equation}
-    f_1(q) = q^{0/24} \cdot \frac{\eta(q^6)^6}{\eta(q^9)^2 \eta(q^{11})^4}
-    \end{equation}
-    With a net modular weight of exactly zero (since $k = \frac{1}{2}\sum r_d = \frac{1}{2}(6 - 2 - 4) = 0$), this state aligns precisely with a Weight 0 topological matrix (a modular function or Hauptmodul). It perfectly maps to a torsion-free $K3 \times T^2$ geometry exhibiting the expected Euler characteristic $\chi(K3) = 24$.
-
-    \item \textbf{The Weight 5/2 Mock Modular Shadow ($c_{\text{eff}} \approx 0.667$):}
-    \begin{equation}
-    f_2(q) = q^{-1} \cdot \eta(q^6)^3 \eta(q^{12})^2
-    \end{equation}
-    This dense, positive-definite sequence carries a net weight of $k = \frac{1}{2}(3+2) = 5/2$, triggering the Weight 5/2 matrix. The observed BPS state entropy scaling factor is exactly $\pi/\sqrt{3}$, reflecting the density of states associated with non-holomorphic mock modular shadows \cite{Zwegers2002} necessary to restore modular covariance.
-
-    \item \textbf{The Deep Resonance Locus ($c_{\text{eff}} \approx 1.700$):}
-    \begin{equation}
-    f_3(q) = q^1 \cdot \eta(q)^1 \eta(q^5)^2 \eta(q^{10})^3
-    \end{equation}
-    This harmonic nested structure exhibits an unusually high central charge, representing a high-temperature, highly excited thermal state within the Conformal Field Theory (CFT) on the K3 manifold. Crucially, this $c_{\text{eff}}$ limits strictly below the Hagedorn temperature bound for this specific vacuum, proving it remains mathematically stable rather than collapsing into a transient phase-transition limit that would otherwise decay back to the Torsion-Free state.
+    \item $f_1(\tau) = \eta(6\tau)^6\,\eta(9\tau)^{-2}\,\eta(11\tau)^{-4}$ ($k = 0$): under the corrected sign convention, $c_{\text{eff}}(0) = -\frac{41}{99} \approx -0.414 < 0$ (rather than $+0.414$).
+    \item $f_2(\tau) = \eta(6\tau)^3\,\eta(12\tau)^2$ ($k = 5/2$): because all exponents are positive, $c_{\text{eff}}(0) = -\frac{2}{3} \approx -0.667 < 0$ and its Fourier series is an alternating-sign index rather than a positive-definite state count \cite{Zwegers2002}.
+    \item $f_3(\tau) = \eta(\tau)^1\,\eta(5\tau)^2\,\eta(10\tau)^3$ ($k = 3$): similarly, $c_{\text{eff}}(0) = -\frac{17}{10} = -1.700 < 0$ (oscillating cusp-like coefficients rather than a positive-definite thermal CFT spectrum).
 \end{enumerate}
 
-These autonomous discoveries formally lock the heuristic $q$-series intuition found in Ramanujan's notebooks to the rigorous framework of counting BPS microstates of macroscopic black holes in string theory \cite{GPPV2020}. By treating $\eta$-quotients as modular proxy measures for topological invariants, the neuro-symbolic pipeline bridges early 20th-century combinatorial number theory with 21st-century holographic geometry.
+\noindent\textbf{Post-Audit Supersession.} All three legacy genetic candidates above remain classified as \tierC{} heuristic artifacts and are superseded by the exact $\mathbb{Z}/\mathbb{Q}$ M\"{o}bius-inverted Campaign~v2 catalog documented in Section~\ref{sec:lean}, which computes exact rational $c_{\text{eff}}(c)$ across all divisors $c \mid N$, separates non-negative partition spectra from alternating-sign indices, and verifies Ono's Theorem~1.64 $\Gamma_0(N)$ modularity conditions inside the Lean~4 kernel \cite{GPPV2020}.

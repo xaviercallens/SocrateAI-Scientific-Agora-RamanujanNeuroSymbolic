@@ -22,8 +22,8 @@ def deep_burn_evolution(pop_size=100_000, epochs=50, d_max=12, top_k=100, kerr_m
     population = torch.randint(min_exp, max_exp, (pop_size, d_max), device=device, dtype=torch.float32)
     divisors = torch.arange(1, d_max + 1, device=device, dtype=torch.float32).unsqueeze(0).expand(pop_size, -1)
     
-    # Target bounds for Kerr black hole supersymmetry breaking
-    target_c_eff = 1.8104  # Effective central charge for non-BPS Kerr candidate
+    # Target bounds for Kerr black hole supersymmetry breaking (Tier-C heuristic objective)
+    target_c_eff = 1.8104  # Tier-C heuristic cusp-0 c_eff(0) target for non-BPS Kerr search
     
     best_candidate_ever = None
     best_fitness_ever = float('-inf')
@@ -34,32 +34,37 @@ def deep_burn_evolution(pop_size=100_000, epochs=50, d_max=12, top_k=100, kerr_m
         epoch_start = time.time()
         
         # --- FITNESS EVALUATION ---
-        c_eff = torch.sum(population / divisors, dim=1)
+        # Cusp-0 effective central charge: c_eff(0) = -sum(e_d / d)
+        c_eff = -torch.sum(population / divisors, dim=1)
         weight = 0.5 * torch.sum(population, dim=1)
-        p_shift = (1.0 / 24.0) * torch.sum(divisors * population, dim=1)
+        leading_q_power = (1.0 / 24.0) * torch.sum(divisors * population, dim=1)
+        ground_state_shift = -leading_q_power  # E0 = -(1/24) sum(d * e_d)
         
         # Parity/Angular Momentum Asymmetry A_J = sum_{odd} e_d - sum_{even} e_d
         odd_mask = (torch.arange(1, d_max + 1, device=device) % 2 == 1).float().unsqueeze(0)
         even_mask = (torch.arange(1, d_max + 1, device=device) % 2 == 0).float().unsqueeze(0)
         a_j = torch.sum(population * odd_mask, dim=1) - torch.sum(population * even_mask, dim=1)
         
-        # Fitness Function (Kerr/CFT Non-Extremal Extension):
+        # Fitness Function (Kerr/CFT Non-Extremal Tier-C Heuristic):
         #   F_Kerr(e) = |k - 1/2| / (1 + |k - 1/2|) · exp(-1/c_eff) · (1 + |A_J|/12) · G(c_eff)
         
+        # Positive cusp-0 c_eff(0) is a Tier-C heuristic search objective (does NOT guarantee CFT unitarity)
         valid_mask = (c_eff > 0)
         safe_c_eff = torch.clamp(c_eff, min=1e-6)
         
         susy_deviation = torch.abs(weight - 0.5)
         term1 = susy_deviation / (1.0 + susy_deviation)    # Non-BPS SUSY breaking reward
-        term2 = torch.exp(-1.0 / safe_c_eff)               # Unitarity / central charge scaling
+        term2 = torch.exp(-1.0 / safe_c_eff)               # Tier-C heuristic cusp-0 c_eff scaling
         term3 = 1.0 + torch.abs(a_j) / 12.0                # Kerr angular momentum asymmetry
         
-        # Gaussian attractor around non-BPS Kerr CFT target (sigma = 1.5)
-        c_eff_target = target_c_eff if kerr_mode else 0.3606
+        # Gaussian attractor around Tier-C heuristic cusp-0 c_eff target (sigma = 1.5);
+        # note: NB3 vacuum has cusp-0 c_eff(0) = -119/330 (cusp-3 c_eff = 109/330 ≈ 0.3303),
+        # so positive cusp-0 c_eff is used only as a heuristic objective rather than guaranteed unitarity.
+        c_eff_target = target_c_eff if kerr_mode else 0.3303
         term4 = torch.exp(-((c_eff - c_eff_target) ** 2) / (2.0 * 1.5 ** 2))
         
         fitness = term1 * term2 * term3 * term4
-        fitness[~valid_mask] = -9999.0  # Kill non-unitary candidates
+        fitness[~valid_mask] = -9999.0  # Penalize candidates outside positive cusp-0 heuristic window
         
         # --- SELECTION ---
         top_fitness, top_indices = torch.topk(fitness, top_k)
@@ -69,7 +74,8 @@ def deep_burn_evolution(pop_size=100_000, epochs=50, d_max=12, top_k=100, kerr_m
             best_candidate_ever = population[top_indices[0]].clone()
             best_c_eff = c_eff[top_indices[0]].item()
             best_weight = weight[top_indices[0]].item()
-            best_shift = p_shift[top_indices[0]].item()
+            best_leading_q_power = leading_q_power[top_indices[0]].item()
+            best_ground_state_shift = ground_state_shift[top_indices[0]].item()
             best_aj = a_j[top_indices[0]].item()
         
         if epoch % 10 == 0 or epoch == 1:
@@ -108,15 +114,18 @@ def deep_burn_evolution(pop_size=100_000, epochs=50, d_max=12, top_k=100, kerr_m
     print("\n--- BEST DISCOVERY (Supersymmetry Breaking) ---")
     exponents_list = best_candidate_ever.cpu().numpy().tolist()
     print(f"Exponents: {exponents_list}")
-    print(f"Effective Central Charge (c_eff): {best_c_eff:.4f}")
+    print(f"Effective Central Charge c_eff(0): {best_c_eff:.4f} (Tier-C heuristic objective)")
     print(f"Modular Weight (k): {best_weight:.4f} (Susy Broken, != 0.5)")
-    print(f"Ground State Energy Shift: {best_shift:.4f}")
+    print(f"Leading q-Power Shift (+1/24 sum(d*r)): {best_leading_q_power:.4f}")
+    print(f"Ground State Energy Shift E0 (-leading_q_power): {best_ground_state_shift:.4f}")
     print(f"Fitness Score: {best_fitness_ever:.4f}")
     return {
         "fitness": best_fitness_ever,
         "c_eff": best_c_eff,
         "k": best_weight,
-        "shift": best_shift,
+        "leading_q_power": best_leading_q_power,
+        "ground_state_shift": best_ground_state_shift,
+        "shift": best_ground_state_shift,
         "exponents": exponents_list,
     }
 
@@ -143,6 +152,8 @@ if __name__ == "__main__":
                 "best_fitness": results.get("fitness"),
                 "best_c_eff": results.get("c_eff"),
                 "best_k": results.get("k"),
+                "best_leading_q_power": results.get("leading_q_power"),
+                "best_ground_state_shift": results.get("ground_state_shift"),
                 "best_shift": results.get("shift"),
                 "exponents": results.get("exponents"),
             }

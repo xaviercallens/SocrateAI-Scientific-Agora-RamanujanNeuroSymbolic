@@ -1,7 +1,7 @@
 -- DualScale/Phase/Basic.lean — Singular set / continued fractions
 -- ================================================================
--- Formalization for Conjecture 4: singular-set dimension and
--- continued-fraction topological states (3-limit points).
+-- Formalization for Conjecture 4: singular-set dimension (Tier C open) and
+-- discrete Ramanujan mod-3 branch count (Tier A).
 
 import Mathlib.Data.Rat.Init
 import Mathlib.Data.Real.Basic
@@ -9,20 +9,44 @@ import Mathlib.Tactic.NormNum
 
 namespace DualScale.Phase
 
-/-- Hausdorff dimension of the singular set under the T-dual metric regularization.
-    Ramanujan 3-limit continued fraction decoupling guarantees zero Hausdorff dimension. -/
-noncomputable def singularSetDimension : ℝ := 0
+/-! ## Open Tier C Singular-Set Conjecture -/
 
-/-- Theorem 4(i): The singular set has Hausdorff dimension zero. -/
-theorem singularSet_dim_zero :
-    singularSetDimension = 0 := by
-  rfl
+/-- Model record for a singular-set candidate parameterized by its Hausdorff
+    dimension and number of continued-fraction limit branches. -/
+structure SingularSetModel where
+  hausdorffDim : ℝ
+  h_dim_nonneg : 0 ≤ hausdorffDim
+  limitBranches : ℕ
 
-/-- Number of non-communicating topological states selected by the
-    truncated flow as α' → 0, determined by the 3 limit points of Ramanujan continued fractions. -/
+/-- Conjecture 4 (OPEN Tier C): under T-dual metric regularization, the
+    singular set has 3 non-communicating limit branches and Hausdorff dimension 0.
+    Zero Hausdorff dimension of Navier-Stokes singular sets remains open. -/
+def FractureConjecture (m : SingularSetModel) : Prop :=
+  m.limitBranches = 3 ∧ m.hausdorffDim = 0
+
+/-- Conditional corollary: any model satisfying `FractureConjecture` has
+    strictly positive branch count and zero Hausdorff dimension. -/
+theorem fracture_implies_finite_positive_branches
+    (m : SingularSetModel) (h : FractureConjecture m) :
+    0 < m.limitBranches ∧ m.hausdorffDim = 0 := by
+  refine ⟨?_, h.2⟩
+  rw [h.1]
+  decide
+
+/-! ## Discrete Tier A Mod-3 Branch Index -/
+
+/-- Explicit list of residue branches mod 3 for 3-limit continued fractions. -/
+def ramanujanMod3Branches : List ℕ := [0, 1, 2]
+
+/-- Tier A: there are exactly 3 discrete residue branches mod 3. -/
+theorem mod3_branch_count :
+    ramanujanMod3Branches.length = 3 := by
+  decide
+
+/-- Number of discrete topological residue states selected mod 3. -/
 def numTopologicalStates : ℕ := 3
 
-/-- Theorem 4(ii): Finitely many discrete states (exactly 3), avoiding blow-up continuum. -/
+/-- Tier A: strictly positive number of discrete residue states. -/
 theorem finitely_many_limit_states :
     0 < numTopologicalStates := by
   decide

@@ -13,6 +13,7 @@ Reference: G.E. Andrews, "The Theory of Partitions", Ch. 1-2.
 
 import math
 from collections import defaultdict
+from fractions import Fraction
 
 EXPONENTS = [24, 23, -14, -24, -24, -24, -24, -24, -24, -24, -24, -24]
 DIVISORS  = [1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12]
@@ -298,12 +299,34 @@ weight_sum = sum(EXPONENTS)
 print(f"  [I2] Exponent sum = {weight_sum} → k = {weight_sum}/2 = {weight_sum/2}")
 print(f"       Expected: -183 → k = -91.5", "✅" if weight_sum == -183 else "❌")
 
-# Check 3: q-offset (E0) from weighted exponent sum
+# Check 3: q-offset (E0) and cusp central charges from exact Fraction arithmetic
 weighted_sum = sum(e * d for e, d in zip(EXPONENTS, DIVISORS))
-E0 = -weighted_sum / 24
+E0 = Fraction(-weighted_sum, 24)
+c_eff_cusp0 = -sum(Fraction(e, d) for e, d in zip(EXPONENTS, DIVISORS))
+
+
+def compute_cusp_ceff(exponents, divisors, cusp_order):
+    total = sum(Fraction(math.gcd(d, cusp_order) ** 2, d) * e for e, d in zip(exponents, divisors))
+    return -total / (cusp_order * cusp_order)
+
+
+active_divs = [d for e, d in zip(EXPONENTS, DIVISORS) if e != 0]
+level_n = math.lcm(*active_divs) if active_divs else 1
+cusp_divisors = sorted({i for i in range(1, math.isqrt(level_n) + 1) if level_n % i == 0} |
+                       {level_n // i for i in range(1, math.isqrt(level_n) + 1) if level_n % i == 0})
+dominant_cusp_order, max_cusp_c_eff = max(
+    ((cusp, compute_cusp_ceff(EXPONENTS, DIVISORS, cusp)) for cusp in cusp_divisors),
+    key=lambda item: item[1],
+)
+ono_thm_1_64_modular_gamma0_N = (weighted_sum % 24 == 0)
+is_unitary_bps_state_count = all(x >= 0 for x in c)
+
 print(f"  [I3] Weighted sum Σ(e_d · d) = {weighted_sum}")
-print(f"       E0 = -{weighted_sum}/24 = {E0:.6f}")
-print(f"       c_eff = 2 - 24·E0 = {2 - 24*E0:.4f}")
+print(f"       E0 = -{weighted_sum}/24 = {E0} ({float(E0):.6f})")
+print(f"       c_eff(0) = -sum(e_d/d) = {c_eff_cusp0} ({float(c_eff_cusp0):.6f})")
+print(f"       max_cusp_c_eff = {max_cusp_c_eff} ({float(max_cusp_c_eff):.6f}) at cusp c={dominant_cusp_order}")
+print(f"       Ono Thm 1.64 modular on Gamma_0(N): {ono_thm_1_64_modular_gamma0_N}")
+print(f"       is_unitary_bps_state_count: {is_unitary_bps_state_count}")
 
 # Check 4: Verify a(1) = -24 (equals -e_1, the Ramanujan tau-like coefficient)
 print(f"  [I4] a(1) = {c[1]}")
@@ -350,7 +373,14 @@ with open("dualscale/certificates/deep_verification_triple_check.json", "w") as 
         "exponent_vector": EXPONENTS,
         "divisor_levels": DIVISORS,
         "modular_weight_k": weight_sum / 2,
-        "ground_state_E0": E0,
-        "c_eff": 2 - 24 * E0
+        "ground_state_E0": float(E0),
+        "c_eff": float(c_eff_cusp0),
+        "c_eff_exact": str(c_eff_cusp0),
+        "c_eff_formula": "-sum(e_d/d for d=1..12)",
+        "max_cusp_c_eff": float(max_cusp_c_eff),
+        "max_cusp_c_eff_exact": str(max_cusp_c_eff),
+        "dominant_cusp_order": dominant_cusp_order,
+        "ono_thm_1_64_modular_gamma0_N": ono_thm_1_64_modular_gamma0_N,
+        "is_unitary_bps_state_count": is_unitary_bps_state_count
     }, f, indent=2)
 print(f"\n  Certificate: dualscale/certificates/deep_verification_triple_check.json")

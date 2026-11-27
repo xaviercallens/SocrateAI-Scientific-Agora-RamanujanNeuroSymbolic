@@ -1,43 +1,32 @@
 {
   "milestone": "M2",
   "target": "spectral/p5_alon_boppana",
-  "verdict": "PASS",
+  "verdict": "FAIL",
+  "epistemic_tier": "X",
   "timestamp": "2026-08-09T20:13:20.355763+00:00",
   "git_commit": "05a78d2",
   "details": {
     "prime": 5,
-    "regularity_k": 4,
-    "alon_boppana_bound": 3.4641016151377544,
-    "num_nontrivial": 5,
-    "num_violations": 0,
-    "violations": [],
-    "margins": [
+    "regularity_k": 6,
+    "actual_graph_regularity": 12,
+    "lambda_2": 11.643689687566926,
+    "alon_boppana_bound": 4.47213595499958,
+    "num_violations": 1,
+    "violations": [
       {
-        "eigenvalue": -2.0,
-        "abs_eigenvalue": 2.0,
-        "margin": 1.4641016151377544
-      },
-      {
-        "eigenvalue": -1.999999999999999,
-        "abs_eigenvalue": 1.999999999999999,
-        "margin": 1.4641016151377555
-      },
-      {
-        "eigenvalue": 0.0,
-        "abs_eigenvalue": 0.0,
-        "margin": 3.4641016151377544
-      },
-      {
-        "eigenvalue": -0.0,
-        "abs_eigenvalue": 0.0,
-        "margin": 3.4641016151377544
-      },
-      {
-        "eigenvalue": -0.0,
-        "abs_eigenvalue": 0.0,
-        "margin": 3.4641016151377544
+        "eigenvalue": 11.643689687566926,
+        "abs_eigenvalue": 11.643689687566926,
+        "margin": -7.171553732567346
       }
     ],
-    "note": "PLACEHOLDER: T1 must replace build_cayley_graph_adjacency with LPS construction"
+    "margins": [
+      {
+        "eigenvalue": 11.643689687566926,
+        "abs_eigenvalue": 11.643689687566926,
+        "margin": -7.171553732567346
+      }
+    ],
+    "epistemic_tier": "X",
+    "note": "Circulant triad mock graph (non-LPS) violates Alon-Boppana bound; reconciled with ledger.csv FAIL."
   }
 }

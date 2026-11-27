@@ -3,60 +3,83 @@ Project NAMAGIRI — Lean 4 Verifier (WS-3)
 Wraps the Lean compiler. If verification fails, it reports failure honestly
 without masking errors via sorry relaxation.
 """
-import subprocess
-import os
 import logging
+import os
+import subprocess
 from typing import Tuple
 
+
 class LeanVerifier:
-    def __init__(self, lean_project_dir: str = "lean4"):
+    """Runs `lake env lean` on generated verification files."""
+
+    def __init__(self, lean_project_dir: str = "dualscale/lean"):
         self.lean_project_dir = os.path.abspath(lean_project_dir)
-        
-    def verify(self, lean_code: str, filename: str = "temp_verification.lean", retries: int = 1) -> Tuple[bool, str, str]:
+
+    def verify(
+        self,
+        lean_code: str,
+        filename: str = "temp_verification.lean",
+        retries: int = 1,
+        cleanup: bool = True,
+    ) -> Tuple[bool, str, str]:
         """
-        Write code to a file and run 'lean' on it.
+        Write code to a file and run `lake env lean` on it.
         Returns: (success_bool, lean_code, error_message)
         No sorry relaxation — failures are reported honestly.
         """
-        # Place temporary verification files in DualScale/Discovery/ for fast Lake olean lookup
         discovery_dir = os.path.join(self.lean_project_dir, "DualScale", "Discovery")
         os.makedirs(discovery_dir, exist_ok=True)
-        target_path = os.path.join(discovery_dir, filename)
+        safe_filename = os.path.basename(filename) or "temp_verification.lean"
+        target_path = os.path.join(discovery_dir, safe_filename)
         rel_path = os.path.relpath(target_path, self.lean_project_dir)
-        
-        for attempt in range(retries):
-            with open(target_path, "w") as f:
-                f.write(lean_code)
-                
-            try:
-                # Run 'lake env lean' on relative path inside DualScale/Discovery
-                env = os.environ.copy()
-                elan_path = os.path.expanduser("~/.elan/bin")
-                if elan_path not in env.get("PATH", ""):
-                    env["PATH"] = f"{elan_path}:{env.get('PATH', '')}"
-                    
-                result = subprocess.run(
-                    ["lake", "env", "lean", rel_path],
-                    cwd=self.lean_project_dir,
-                    capture_output=True,
-                    text=True,
-                    timeout=120,
-                    env=env
-                )
-                
-                if result.returncode == 0:
-                    logging.info(f"  -> [SUCCESS] Lean 4 verification passed on attempt {attempt + 1}.")
-                    return True, lean_code, ""
-                else:
-                    error_msg = result.stderr.strip()
-                    logging.warning(f"  -> [FAILED] Lean 4 verification failed on attempt {attempt + 1}:\n{error_msg}")
-                    return False, lean_code, error_msg
-                    
-            except subprocess.TimeoutExpired:
-                logging.error(f"  -> [ERROR] Lean verification timed out on attempt {attempt + 1}.")
-                return False, lean_code, "Verification timed out"
-            except FileNotFoundError:
-                logging.error("  -> [ERROR] 'lake' compiler not found in PATH.")
-                return False, lean_code, "Compiler not found"
-                
-        return False, lean_code, "Failed after max retries."
+
+        attempts = max(1, int(retries))
+        last_error = ""
+
+        try:
+            for attempt in range(attempts):
+                with open(target_path, "w", encoding="utf-8") as f:
+                    f.write(lean_code)
+
+                try:
+                    result = subprocess.run(
+                        ["lake", "env", "lean", rel_path],
+                        cwd=self.lean_project_dir,
+                        capture_output=True,
+                        text=True,
+                        timeout=120,
+                    )
+
+                    if result.returncode == 0:
+                        logging.info(
+                            "  -> [SUCCESS] Lean 4 verification passed on attempt %d.",
+                            attempt + 1,
+                        )
+                        return True, lean_code, ""
+
+                    combined = "\n".join(
+                        part for part in (result.stdout.strip(), result.stderr.strip()) if part
+                    ).strip()
+                    last_error = combined or f"Lean exited with return code {result.returncode}"
+                    logging.warning(
+                        "  -> [FAILED] Lean 4 verification failed on attempt %d:\n%s",
+                        attempt + 1,
+                        last_error,
+                    )
+                except subprocess.TimeoutExpired:
+                    last_error = "Verification timed out"
+                    logging.error(
+                        "  -> [ERROR] Lean verification timed out on attempt %d.",
+                        attempt + 1,
+                    )
+                except FileNotFoundError:
+                    logging.error("  -> [ERROR] 'lake' compiler not found in PATH.")
+                    return False, lean_code, "Compiler not found"
+        finally:
+            if cleanup and os.path.exists(target_path):
+                try:
+                    os.remove(target_path)
+                except OSError as exc:
+                    logging.debug("Could not remove temp Lean file %s: %s", target_path, exc)
+
+        return False, lean_code, last_error or "Failed after max retries."

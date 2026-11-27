@@ -1,32 +1,23 @@
-import sqlite3
-import os
+"""Initialize the NAMAGIRI SQLite database using the canonical NamagiriDB schema."""
 
-DB_PATH = "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/namagiri.db"
+from pathlib import Path
+import sys
 
-def init_db():
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    
-    # Create the discoveries table
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS discoveries (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            archetype TEXT,
-            lean_status TEXT DEFAULT 'OPEN',
-            rama_energy REAL,
-            conjecture TEXT,
-            notebook TEXT,
-            complexity REAL,
-            inconsistency REAL,
-            distance_to_anchor REAL,
-            q_series_rep TEXT
-        )
-    ''')
-    
-    conn.commit()
-    conn.close()
-    print(f"Database initialized at {DB_PATH}")
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+from src.persistence.database import NamagiriDB
+
+DB_PATH = str(ROOT_DIR / "namagiri.db")
+
+
+def init_db(db_path: str = DB_PATH) -> NamagiriDB:
+    """Initialize the canonical discoveries schema at ``db_path``."""
+    db = NamagiriDB(db_path)
+    print(f"Database initialized at {db.db_path}")
+    return db
+
 
 if __name__ == "__main__":
     init_db()

@@ -1,30 +1,41 @@
+# Binaries, logs, and local databases
 tectonic
 *.log
 *.db
+*.db-wal
+*.db-shm
+tools/namagiri.db
+data/chromadb/
+
+# Python environments and caches
 __pycache__/
+*.pyc
+*.pyo
 .env
 .venv/
 env/
+.pytest_cache/
 .DS_Store
+
+# Input datasets and large manuscript PDFs (>100MB — use LFS or external storage)
 input/
+inputs/*.pdf
+inputs/Srinivasa*
 *.pdf
 !docs/v2.1_paper/*.pdf
-!docs/book/en/*.pdf
-!docs/book/fr/*.pdf
-!docs/arxiv_submission/*.pdf
-# Lean build artifacts
-dualscale/lean/.lake/build/
-# LaTeX aux files
+
+# Lean build artifacts & temporary generated verification files
+dualscale/lean/.lake/
+**/verify_*.lean
+lean4/verify_*.lean
+dualscale/lean/DualScale/Discovery/verify_*.lean
+
+# LaTeX build artifacts
 *.aux
 *.toc
 *.out
+*.bbl
+*.blg
 *.synctex.gz
 *.fls
 *.fdb_latexmk
-# Temporary Python files
-*.pyc
-*.pyo
-
-# Large manuscript PDFs (>100MB — use LFS or external storage)
-inputs/*.pdf
-inputs/Srinivasa*

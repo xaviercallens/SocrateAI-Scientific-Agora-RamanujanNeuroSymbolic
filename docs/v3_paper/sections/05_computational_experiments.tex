@@ -1,7 +1,7 @@
 \section{Computational Experiments \& Rigorous Verification}
 \label{sec:experiments}
 
-The deployment of the Phase 2 orchestrator enabled the continuous processing of the 669 pages of the manuscript corpus. We introduce rigorous computational results tracking the Genetic RAMA engine's convergence over symbolic state spaces.
+The deployment of the Phase 2 orchestrator initially processed 669 pages of Ramanujan's Notebooks~1--3; Campaign~v2 subsequently expanded the multimodal extraction corpus to all 839 manuscript pages in the repository (133 Narosa 1988 Lost Notebook facsimile sheets \cite{Narosa1988}, 8 Ramanujan letters from Ono, and 698 pages of Notebooks~1--3) and replaced floating-point heuristics with exact $\mathbb{Z}/\mathbb{Q}$ M\"{o}bius inversion and standalone Lean~4 kernel proofs (see Section~\ref{sec:lean}). Below we retain the legacy Phase~2 genetic convergence plots for archival comparison alongside the CI spectral-gap falsification certificates.
 
 \subsection{Genetic RAMA Evolutionary Convergence}
 By running a 25-agent population across 5 evolutionary generations, the heuristic engine systematically optimizes the energy functional $E = \alpha C + \beta I + \gamma D$. Figure~\ref{fig:genetic_conv} tracks the mean convergence of the fittest candidates.
@@ -24,4 +24,7 @@ Figure~\ref{fig:rama_landscape} showcases the total energy landscape mapped agai
 \end{figure}
 
 \subsection{Spectral Gap Certificates}
-The CI pipeline automatically enforces the Alon-Boppana spectral bound on candidate triad-interaction graphs, testing their viability as Ramanujan graphs \cite{LPS1988}. Falsified candidates are systematically stripped of Tier A classification, ensuring topological invariants mathematically correspond to physically constrained limits.
+The CI pipeline automatically enforces the Alon-Boppana spectral bound on candidate triad-interaction graphs, testing their viability as Ramanujan graphs \cite{LPS1988, MSS2015}. Falsified candidates are systematically stripped of Tier A classification and quarantined as \tierX{}, ensuring topological invariants mathematically correspond to physically constrained limits.
+
+\subsection{Literature-Grounded Neuro-Symbolic Proving Architecture (v3.2)}
+To prevent unsupported conjectures or truncated numerical coincidences from entering the verified corpus, the Wave~4 validation workflow (\texttt{lean\_proposition\_validator\_workflow.py}) integrates retrieval-augmented grounding over a 24-paper arXiv ChromaDB index (1,163 extracted PDF pages, 2,829 text chunks; see \texttt{docs/literature/REVUE\_LITTERATURE\_DETAILLEE.md}) with a tiered Planner--Worker--Verifier Lean~4 loop inspired by LeanDojo \cite{Yang2023LeanDojo}, Lean Copilot \cite{Song2024LeanCopilot}, DeepSeek-Prover \cite{Xin2024DeepSeekProver}, and OpenProver \cite{Kripner2026OpenProver}. Across the $q$-series and BPS pillars, this synthesis anchors our exact $\eta$-quotient catalog in Ono's modularity criteria \cite{Ono2004}, Rouse--Webb's $\eta$-quotient generation theorems \cite{RouseWebb2015}, Acres--Broadhurst's Rademacher cusp expansions \cite{AcresBroadhurst2018}, Ryan--Scherr--Sirolli's Sturm-bound congruence algorithms \cite{RyanScherrSirolli2019}, Bhattacharya's cuspidal vanishing theorems \cite{Bhattacharya2026}, mock-theta combinatorics and resurgent uniqueness \cite{MalmendierOno2012, BallantineBursonFolsom2022, CostinDunneSaraeb2026}, and $K3\times T^2$ wall-crossing and umbral moonshine \cite{DMZ2012, CDH2014}.

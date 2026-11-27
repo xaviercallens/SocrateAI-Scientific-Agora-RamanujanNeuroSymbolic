@@ -1,8 +1,10 @@
 import sqlite3
 import os
+from pathlib import Path
 
-DB_PATH = "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/namagiri.db"
-LEAN_OUT_DIR = "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/dualscale/lean/targets"
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = str(ROOT_DIR / "namagiri.db")
+LEAN_OUT_DIR = str(ROOT_DIR / "dualscale" / "lean" / "targets")
 
 def scaffold_lean_target(cand_id, expr):
     """

@@ -1,8 +1,7 @@
 -- DualScale/Physics/DyadicShell.lean — Task 3.7: Dyadic Shell Decomposition
 -- ============================================================================
--- The Kolmogorov energy cascade in fluid turbulence is modeled by splitting
--- momentum space into discrete dyadic shells. In the dual-scale framework,
--- these shells correspond directly to the quantized harmonics of the string.
+-- Parameterized dyadic shell cascade model with inertial-range flux constancy
+-- restricted explicitly to `[N_min, N_max]` rather than a false global axiom.
 --
 -- References:
 --   Kolmogorov (1941), "The local structure of turbulence in incompressible viscous fluid"
@@ -16,22 +15,32 @@ open DualScale.QSeries.EtaQuotient
 
 /-! ## Dyadic Shells in Momentum Space -/
 
-/-- A dyadic shell 'n' representing the momentum scale k_n ∼ 2^n. -/
+/-- A dyadic shell `n` representing the momentum scale `k_n ~ 2^n`. -/
 structure DyadicShell where
   n : ℕ
 
-/-- The kinetic energy contained within a given dyadic shell. -/
-theorem shell_energy : DyadicShell → ℝ
+/-- Parameterized shell cascade data with non-negative shell energies. -/
+structure ShellCascade where
+  shell_energy : DyadicShell → ℝ
+  energy_flux : DyadicShell → ℝ
+  energy_nonneg : ∀ s, 0 ≤ shell_energy s
 
-/-- The energy transfer rate (flux) from shell n to shell n+1. -/
-opaque energy_flux : DyadicShell → ℝ
+/-- Inertial-range cascade hypothesis (Tier C): energy flux is constant
+    across shells in `[N_min, N_max]`. -/
+def IsInertialCascade (c : ShellCascade) (N_min N_max : ℕ) : Prop :=
+  ∀ s1 s2 : DyadicShell,
+    N_min ≤ s1.n → s1.n ≤ N_max →
+    N_min ≤ s2.n → s2.n ≤ N_max →
+    c.energy_flux s1 = c.energy_flux s2
 
-/-! ## Cascade Conservation & String Harmonics -/
-
-/-- The cascade conservation principle states that in the inertial range
-    of fully developed turbulence, the energy flux is constant across shells.
-    This corresponds to the uniform tension and spacing of string harmonics. -/
-theorem dyadic_cascade_conservation (s1 s2 : DyadicShell) :
-  energy_flux s1  := sorry= energy_flux s2
+/-- Conditional Tier A deduction: any shell in a non-empty inertial range
+    `[N_min, N_max]` carries the same flux as shell `N_min`. -/
+theorem inertial_flux_constant_from_min
+    (c : ShellCascade) (N_min N_max : ℕ)
+    (h_inert : IsInertialCascade c N_min N_max)
+    (s : DyadicShell) (h1 : N_min ≤ s.n) (h2 : s.n ≤ N_max)
+    (h_range : N_min ≤ N_max) :
+    c.energy_flux s = c.energy_flux ⟨N_min⟩ :=
+  h_inert s ⟨N_min⟩ h1 h2 (le_refl N_min) h_range
 
 end DualScale.Physics

@@ -1,101 +1,167 @@
 """
 Project NAMAGIRI — Substantive Lean 4 Code Generator (WS-3)
-Upgraded with HoloAlg Operator Formalism & Category Theory Functors:
-- Tier A: Ramanujan State |Ω_r⟩, Hermitian Operators (Ŵ, Ĉ, Ê_0) evaluated via exact arithmetic.
-- Tier B: Category Theory Functors (Φ : N → G, Ψ : G → F) and 3-Act Theorem Series formalizations.
+Generates non-trivial math statements for η-quotient verification:
+- Tier A: Exact rational arithmetic verification of physical invariants
+  (c_eff, weight, leading_power, ground_state_shift) via `norm_num`.
+- Tier C: Heuristic metadata blueprint (no proof of modularity).
 """
+from fractions import Fraction
 import json
-from typing import Dict, Any
+import re
+from typing import Any, Dict
+
+
+def _fmt_rat(f: Fraction) -> str:
+    """Format an exact Fraction as a Lean 4 rational (ℚ) literal."""
+    if f.denominator == 1:
+        return f"({f.numerator} : ℚ)"
+    return f"(({f.numerator} : ℚ) / {f.denominator})"
+
+
+def _sanitize_ident(raw_id: str) -> str:
+    """Normalize an identifier fragment for Lean namespaces and struct names."""
+    cleaned = re.sub(r"[^A-Za-z0-9_]", "_", str(raw_id))
+    return cleaned or "unknown"
+
+
+def _escape_lean_string(value: str) -> str:
+    """Escape a Python string for safe embedding inside a Lean 4 string literal."""
+    return (
+        str(value)
+        .replace("\\", "\\\\")
+        .replace('"', '\\"')
+        .replace("\r", "\\r")
+        .replace("\n", "\\n")
+    )
+
+
+def _sanitize_comment(value: str) -> str:
+    """Collapse newlines so comment metadata cannot inject Lean declarations."""
+    return " ".join(str(value).splitlines()).strip()
+
 
 class LeanCodeGenerator:
-    def __init__(self):
-        pass
-        
-    def generate_tier_a_eta_quotient_verification(self, conjecture_id: str, exponents: Dict[int, int], q_shift: int) -> str:
-        """
-        Generates a Tier A theorem to verify physical invariants (c_eff, modular weight, leading power)
-        using the HoloAlg Operator Formalism in Lean 4.
-        """
-        clean_id = conjecture_id.replace('-', '_')
-        
-        # Build factors list format [(d1, r1), (d2, r2), ...]
-        factors_str = ", ".join([f"({d}, {r})" for d, r in sorted(exponents.items())])
-        if not factors_str:
-            factors_str = "(1, 0)"
+    """Generates Lean 4 verification modules for candidate Dedekind eta-quotients."""
 
-        # Calculate exact values
-        c_eff_num = sum(r / d for d, r in exponents.items()) if exponents else 0.0
-        weight_num = sum(r for r in exponents.values()) / 2.0 if exponents else 0.0
-        is_bps = abs(weight_num - 0.5) < 1e-9
-        is_unitary = c_eff_num > 0
+    _fmt_rat = staticmethod(_fmt_rat)
 
-        lean_code = f"-- Discovery {conjecture_id}: HoloAlg Operator Formalism (Tier A)\n"
-        lean_code += f"namespace Discovery_{clean_id}\n\n"
-        lean_code += f"open DualScale.HoloAlg\n\n"
-        lean_code += f"/-- Topological Vacuum State |Ω_r⟩ discovered by RAMA -/\n"
-        lean_code += f"def state : RamanujanState := {{\n"
-        lean_code += f"  factors := [{factors_str}],\n"
-        lean_code += f"  q_shift_24 := {q_shift}\n"
-        lean_code += f"}}\n\n"
-        
-        # Invariant checks via Operator definitions
-        lean_code += f"/-- Supersymmetry Operator Ŵ eigenvalue extraction -/\n"
-        lean_code += f"theorem verify_weight : OpW state = state.weight := by rfl\n\n"
-        lean_code += f"/-- Central Charge Operator Ĉ eigenvalue extraction -/\n"
-        lean_code += f"theorem verify_c_eff : OpC state = state.c_eff := by rfl\n\n"
-        lean_code += f"/-- Ground Energy Operator Ê_0 eigenvalue extraction -/\n"
-        lean_code += f"theorem verify_ground_energy : OpE0 state = state.ground_energy := by rfl\n\n"
+    def generate_tier_a_eta_quotient_verification(
+        self, conjecture_id: str, exponents: Dict[int, int], q_shift: int = 0
+    ) -> str:
+        """Generate Tier A exact-rational equality theorems proved by `norm_num`."""
+        for d, r in exponents.items():
+            if isinstance(d, bool) or not isinstance(d, int) or d <= 0:
+                raise ValueError(f"Eta-quotient divisor must be a positive int, got {d!r}")
+            if isinstance(r, bool) or not isinstance(r, int):
+                raise ValueError(f"Eta-quotient exponent must be an int, got {r!r}")
 
-        lean_code += f"end Discovery_{clean_id}\n"
-        
-        return lean_code
+        clean_id = _sanitize_ident(conjecture_id)
+        sorted_items = sorted(exponents.items())
+        factors = sorted_items if sorted_items else [(1, 0)]
+        factors_str = ", ".join(f"({d}, {r})" for d, r in factors)
 
-    def generate_tier_b_structural_blueprint(self, conjecture_id: str, shadow: str, domain: str) -> str:
+        # Exact rational invariants using Fraction (aligned with EtaQuotient definitions)
+        c_eff_frac = -sum((Fraction(r, d) for d, r in factors), Fraction(0))
+        weight_frac = Fraction(sum(r for _, r in factors), 2)
+        leading_p_frac = Fraction(sum(d * r for d, r in factors), 24)
+        e0_frac = -leading_p_frac
+
+        lines = [
+            f"-- Discovery { _sanitize_comment(conjecture_id) }: η-Quotient Verification (Tier A)",
+            f"-- q_shift_24 = {int(q_shift)}",
+            f"namespace Discovery_{clean_id}",
+            "",
+            "structure EtaQuotient where",
+            "  factors : List (ℕ × ℤ)",
+            "",
+            "def EtaQuotient.c_eff (eq : EtaQuotient) : ℚ :=",
+            "  eq.factors.foldl (fun acc dr => acc - (dr.2 : ℚ) / (dr.1 : ℚ)) 0",
+            "",
+            "def EtaQuotient.weight (eq : EtaQuotient) : ℚ :=",
+            "  (eq.factors.foldl (fun acc dr => acc + (dr.2 : ℚ)) 0) / 2",
+            "",
+            "def EtaQuotient.leading_power (eq : EtaQuotient) : ℚ :=",
+            "  (eq.factors.foldl (fun acc dr => acc + (dr.1 : ℚ) * (dr.2 : ℚ)) 0) / 24",
+            "",
+            "def EtaQuotient.ground_state_shift (eq : EtaQuotient) : ℚ :=",
+            "  -(eq.factors.foldl (fun acc dr => acc + (dr.1 : ℚ) * (dr.2 : ℚ)) 0) / 24",
+            "",
+            f"def candidate : EtaQuotient := {{ factors := [{factors_str}] }}",
+            "",
+            f"theorem verify_c_eff : candidate.c_eff = {_fmt_rat(c_eff_frac)} := by",
+            "  dsimp [EtaQuotient.c_eff, candidate, List.foldl]",
+            "  norm_num",
+            "",
+            f"theorem verify_weight : candidate.weight = {_fmt_rat(weight_frac)} := by",
+            "  dsimp [EtaQuotient.weight, candidate, List.foldl]",
+            "  norm_num",
+            "",
+            f"theorem verify_leading_power : candidate.leading_power = {_fmt_rat(leading_p_frac)} := by",
+            "  dsimp [EtaQuotient.leading_power, candidate, List.foldl]",
+            "  norm_num",
+            "",
+            f"theorem verify_ground_state_shift : candidate.ground_state_shift = {_fmt_rat(e0_frac)} := by",
+            "  dsimp [EtaQuotient.ground_state_shift, candidate, List.foldl]",
+            "  norm_num",
+            "",
+            f"end Discovery_{clean_id}",
+            "",
+        ]
+        return "\n".join(lines)
+
+    def generate_tier_b_structural_blueprint(
+        self, conjecture_id: str, shadow: str, domain: str
+    ) -> str:
         """
-        Generates a Tier B structural blueprint using Lean 4 structures and Functor mappings.
+        Generate a Tier C heuristic metadata blueprint using Lean 4 structures.
+        Records shadow/domain metadata only; makes no claim of modularity proof.
         """
-        safe_domain = domain.replace('\\', '\\\\').replace('"', '\\"')
-        safe_shadow = shadow.replace('\\', '\\\\').replace('"', '\\"')
-        struct_name = f"MockThetaShadow_{conjecture_id.replace('-', '_')}"
-        
-        lean_code = f"-- Discovery {conjecture_id}: Structural Blueprint & Category Mapping (Tier B)\n"
-        lean_code += f"-- Expected Shadow: {shadow}\n"
-        lean_code += f"-- Physical Domain Mapping: {domain}\n"
-        lean_code += f"structure {struct_name} where\n"
-        lean_code += f'  domain : String := "{safe_domain}"\n'
-        lean_code += f'  shadow_obstruction : String := "{safe_shadow}"\n'
-        lean_code += f"  holoalg_functor_applied : Bool := true\n"
-        lean_code += f"  dualscale_functor_applied : Bool := true\n\n"
-        lean_code += f"def {struct_name}_default : {struct_name} := {{}}\n"
-        
-        return lean_code
+        safe_domain = _escape_lean_string(domain)
+        safe_shadow = _escape_lean_string(shadow)
+        struct_name = f"MockThetaShadow_{_sanitize_ident(conjecture_id)}"
+
+        lines = [
+            f"-- Discovery {_sanitize_comment(conjecture_id)}: Heuristic Metadata Blueprint (Tier C)",
+            f"-- Expected Shadow: {_sanitize_comment(shadow)}",
+            f"-- Physical Domain Mapping: {_sanitize_comment(domain)}",
+            f"structure {struct_name} where",
+            f'  domain : String := "{safe_domain}"',
+            f'  shadow_obstruction : String := "{safe_shadow}"',
+            "  is_heuristic_blueprint : Bool := true",
+            "",
+            f"def {struct_name}_default : {struct_name} := {{}}",
+            "",
+        ]
+        return "\n".join(lines)
 
     def generate_verification_file(self, conjecture_id: str, data: Dict[str, Any]) -> str:
-        """
-        Combines Tier A HoloAlg verification and Tier B categorical mapping.
-        """
+        """Combine Mathlib imports, Tier A exact rational proofs, and Tier C metadata."""
         exponents = data.get("exponents", {})
         if isinstance(exponents, str):
-            try:
-                exponents = json.loads(exponents)
-            except Exception:
-                exponents = {}
-        if isinstance(exponents, dict):
-            exponents = {int(k): int(v) for k, v in exponents.items()}
-                
-        shadow = data.get("shadow", "Unknown")
-        domain = data.get("domain", "Unknown")
-        q_shift = data.get("q_shift", 0)
-        
-        macros = """import Mathlib.Data.Rat.Init
-import Mathlib.Tactic.NormNum
-import DualScale.HoloAlg.Basic
-import DualScale.HoloAlg.Operators
+            exponents = json.loads(exponents) if exponents.strip() else {}
+        if not isinstance(exponents, dict):
+            raise ValueError(f"exponents must be a mapping or JSON object, got {type(exponents).__name__}")
 
-set_option maxHeartbeats 400000
+        normalized_exponents: Dict[int, int] = {}
+        for k, v in exponents.items():
+            d = int(k) if isinstance(k, str) else k
+            r = int(v) if isinstance(v, str) else v
+            normalized_exponents[d] = r
 
-"""
-        code = macros + self.generate_tier_a_eta_quotient_verification(conjecture_id, exponents, q_shift)
-        code += "\n"
-        code += self.generate_tier_b_structural_blueprint(conjecture_id, shadow, domain)
-        return code
+        raw_q_shift = data.get("q_shift", 0)
+        q_shift = 0 if raw_q_shift is None else int(raw_q_shift)
+        shadow = str(data.get("shadow", "Unknown"))
+        domain = str(data.get("domain", "Unknown"))
+
+        macros = (
+            "import Mathlib.Data.Rat.Init\n"
+            "import Mathlib.Tactic.NormNum\n\n"
+            "-- Epistemic note: Tier A covers exact rational invariants only; "
+            "modularity (Ono Thm 1.64) and positivity/unitarity remain unproved (Tier C).\n"
+            "set_option maxHeartbeats 400000\n\n"
+        )
+        tier_a = self.generate_tier_a_eta_quotient_verification(
+            conjecture_id, normalized_exponents, q_shift
+        )
+        tier_c = self.generate_tier_b_structural_blueprint(conjecture_id, shadow, domain)
+        return macros + tier_a + "\n" + tier_c

@@ -1,6 +1,6 @@
 # Dockerfile.rama-gpu
-# RAMA Deep Burn GPU Engine — GCP T4 deployment image
-# Base: CUDA 12.1 + Python 3.11 + PyTorch 2.x
+# RAMA Deep Burn GPU Engine — GCP L4/T4 deployment image
+# Base: CUDA 12.1 + Python 3.11 + PyTorch 2.3.0
 
 FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
 
@@ -15,17 +15,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy only the evolution source
-COPY src/evolution/rama_gpu_evolution.py ./src/evolution/
-COPY src/evolution/fitness.py ./src/evolution/
+# Copy framework and evolution/lean sources (PyTorch is already provided by base image)
+COPY rama_framework.py ./
 COPY src/__init__.py ./src/
+COPY src/evolution/ ./src/evolution/
+COPY src/lean/ ./src/lean/
 
-# Install Python deps
+# Install additional Python deps (without overriding pinned base torch)
 RUN pip install --no-cache-dir \
     numpy \
     scipy \
-    torch \
     google-cloud-storage
+
+# Run as non-root user
+RUN useradd --create-home --shell /bin/bash rama \
+    && chown -R rama:rama /app
+USER rama
 
 # GCS bucket for results persistence
 ENV GCS_BUCKET_NAME="rama-gpu-results"

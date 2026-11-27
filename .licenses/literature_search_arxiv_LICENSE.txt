@@ -1,0 +1,8 @@
+arXiv API Terms of Use & Paper License Notification
+Timestamp (UTC): 2026-11-27T05:51:00Z
+
+Notice to user:
+This workspace uses the literature-search-arxiv skill to query the arXiv API and download open-access preprints.
+Please review arXiv's API Terms of Use at:
+  https://info.arxiv.org/help/api/index.html
+and always verify the individual copyright/license terms of each retrieved paper (e.g., arXiv non-exclusive license or Creative Commons license on each paper's abstract page) for any reuse or redistribution restrictions.

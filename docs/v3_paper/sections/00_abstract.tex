@@ -1,7 +1,7 @@
 \begin{center}
 \fbox{\parbox{0.92\textwidth}{\small
-\textbf{Epistemic status.} This is a \emph{program proposal} updated with Live Computation results. Every claim below carries a tier label defined in
-Section 2: \tierA{} (machine-checked), \tierB{} (established literature, cited), \tierC{} (conjecture or heuristic). Version 2.1 incorporates Python-generated graphs of the RAMA Genetic Engine's energy convergence and provides actual Lean 4 structural relaxations.
+\textbf{Epistemic status.} This is a \emph{research program and verification audit} updated through Campaign~v2 and Wave~4 exact symbolic/kernel verification. Every claim below carries a tier label defined in
+Section~2: \tierA{} (machine-checked with zero custom axioms), \tierB{} (established literature, cited, or exact classical catalog match), \tierL{} (literature hypothesis passed as an explicit theorem parameter), \tierC{} (conjecture or heuristic), and \tierX{} (explicitly falsified or quarantined mock-proxy). Version~3.2 preserves the historical August~2026 audit verbatim while reporting 338 live zero-axiom Lean~4.33.1 kernel theorems across \texttt{CampaignV2Verified.lean} and \texttt{AllNAndPropositionsVerified.lean}.
 }}
 \end{center}
 
@@ -10,7 +10,7 @@ Section 2: \tierA{} (machine-checked), \tierB{} (established literature, cited),
 surrogates} --- drawn from $q$-series, mock modular forms, and the arithmetic
 of $K3$ surfaces --- for the analytic estimates that govern regularized fluid
 dynamics and related dual-scale geometries. The program couples (i) a
-heuristic search engine (\textsc{Rama}) over Eulerian $q$-series, (ii) shadow
+heuristic search and exact $\mathbb{Z}/\mathbb{Q}$ inversion engine (\textsc{Rama}) over Eulerian $q$-series, (ii) shadow
 completion in the sense of Zwegers, and (iii) formalization in the Lean~4
-proof assistant under a strict audit discipline. This version (2.1) introduces empirical certificates of the genetic algorithm and Lean 4's graceful degradation to Tier B structural blueprints.
+proof assistant under a strict audit discipline (Rules R1--R5). This version (3.2) documents the historical three-finding verification audit of the legacy codebase, its complete post-audit remediation eliminating all custom axioms, untracked \texttt{sorry} placeholders, and vacuous proofs, and the Wave~4 kernel upgrades totaling \textbf{338} live zero-custom-axiom Lean~4.33.1 theorems across \texttt{CampaignV2Verified.lean} (275 theorems over 54 unique $\eta$-quotients and 5 identities) and \texttt{AllNAndPropositionsVerified.lean} (63 theorems establishing universal $\forall n$ / $\forall\text{len}$ proofs, conditional Jacobi Triple Product lifts, level-12 weight-1 Nebentypus and Sturm-bound verification at $B(\Gamma_0(12),1)=2<15$, live RAMA Deep Burn invariants, universal \texttt{EtaQuot} algebra, $\operatorname{Sym}^2(L_2)$, exact $\mathbb{Q}^+$ T-duality, and certified refutations of M2, M3, $S_{12}$ proxy claims, and 14 OCR typos).
 \end{abstract}

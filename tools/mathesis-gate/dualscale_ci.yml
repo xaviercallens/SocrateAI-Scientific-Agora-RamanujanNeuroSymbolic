@@ -1,0 +1,55 @@
+# dualscale_ci.yml — the CI the README already documents.
+#
+# INSTALL: copy this file to .github/workflows/dualscale_ci.yml
+#
+#     mkdir -p .github/workflows
+#     cp tools/mathesis-gate/dualscale_ci.yml .github/workflows/
+#
+# It ships here rather than in place because the token used to open this pull
+# request lacks GitHub's `workflow` scope, which is required to create or modify
+# anything under .github/workflows/. That is a credential permission, not a
+# judgement about the file — one copy command and it is live.
+#
+# README.md states: "Our continuous integration (`dualscale_ci.yml`) enforces the
+# following boundaries: R1 ... R2 ... R3 ...". Until now that file did not exist
+# and the repository had no .github/ directory, so R1-R3 were stated but never
+# checked. This makes the statement true.
+#
+# It starts in REPORT-ONLY mode: it prints findings and exits 0, so landing it
+# cannot break anything. Delete the marked line to make it binding once the
+# count reaches zero.
+
+name: dualscale_ci
+
+on: [push, pull_request]
+
+jobs:
+  rules:
+    name: R1 no axioms · R2 sorry tracked · R3 no vacuous statements
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # The checker is one stdlib-only file, so there is nothing to install.
+      # Its own negative controls run first: a gate that has only ever been
+      # observed passing is indistinguishable from one that cannot fail.
+      - name: Self-test the checker
+        run: python3 tools/mathesis-gate/mathesis_gate.py --self-test
+
+      - name: R1/R2/R3 — DualScale library
+        run: |
+          python3 tools/mathesis-gate/mathesis_gate.py . \
+            --lean-src dualscale/lean \
+            --exclude archive \
+            --skip-footprints \
+            --report-only        # <-- DELETE THIS LINE to make the gate binding
+
+      - name: R1/R2/R3 — repository root
+        run: |
+          python3 tools/mathesis-gate/mathesis_gate.py . \
+            --exclude dualscale --exclude lean4 \
+            --skip-footprints \
+            --report-only        # <-- DELETE THIS LINE to make the gate binding

@@ -1,1635 +1,660 @@
-\documentclass[11pt,twoside,openright]{book}
-\usepackage[T1]{fontenc}
+\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{geometry}
-\geometry{a4paper, margin=1in}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{microtype}
-\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
 \usepackage{xcolor}
-\usepackage{longtable}
+\usepackage{listings}
 \usepackage{booktabs}
-\usepackage{braket}
-\usepackage{newunicodechar}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
 
-% Map Lean 4 and mathematical unicode symbols for pdflatex
-\newunicodechar{∀}{\ensuremath{\forall}}
-\newunicodechar{∃}{\ensuremath{\exists}}
-\newunicodechar{∈}{\ensuremath{\in}}
-\newunicodechar{∉}{\ensuremath{\notin}}
-\newunicodechar{⊆}{\ensuremath{\subseteq}}
-\newunicodechar{∩}{\ensuremath{\cap}}
-\newunicodechar{∪}{\ensuremath{\cup}}
-\newunicodechar{×}{\ensuremath{\times}}
-\newunicodechar{→}{\ensuremath{\to}}
-\newunicodechar{↦}{\ensuremath{\mapsto}}
-\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
-\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
-\newunicodechar{≡}{\ensuremath{\equiv}}
-\newunicodechar{≤}{\ensuremath{\le}}
-\newunicodechar{≥}{\ensuremath{\ge}}
-\newunicodechar{≠}{\ensuremath{\neq}}
-\newunicodechar{≈}{\ensuremath{\approx}}
-\newunicodechar{∞}{\ensuremath{\infty}}
-\newunicodechar{π}{\ensuremath{\pi}}
-\newunicodechar{τ}{\ensuremath{\tau}}
-\newunicodechar{η}{\ensuremath{\eta}}
-\newunicodechar{κ}{\ensuremath{\kappa}}
-\newunicodechar{ℰ}{\ensuremath{\mathcal{E}}}
-\newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}
-\newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
-\newunicodechar{ℚ}{\ensuremath{\mathbb{Q}}}
-\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
-\newunicodechar{ℂ}{\ensuremath{\mathbb{C}}}
-\newunicodechar{⟨}{\ensuremath{\langle}}
-\newunicodechar{⟩}{\ensuremath{\rangle}}
-\newunicodechar{Ω}{\ensuremath{\Omega}}
-\newunicodechar{Φ}{\ensuremath{\Phi}}
-\newunicodechar{Ψ}{\ensuremath{\Psi}}
-\newunicodechar{∘}{\ensuremath{\circ}}
-\newunicodechar{̂}{\ensuremath{\hat{}}}
-\newunicodechar{₁}{\ensuremath{{}_1}}
-\newunicodechar{₂}{\ensuremath{{}_2}}
-\newunicodechar{₃}{\ensuremath{{}_3}}
-\newunicodechar{₄}{\ensuremath{{}_4}}
-\newunicodechar{₅}{\ensuremath{{}_5}}
-\newunicodechar{₆}{\ensuremath{{}_6}}
-\newunicodechar{₇}{\ensuremath{{}_7}}
-\newunicodechar{₈}{\ensuremath{{}_8}}
-\newunicodechar{₉}{\ensuremath{{}_9}}
-\newunicodechar{₀}{\ensuremath{{}_0}}
+\definecolor{leanblue}{RGB}{43,101,236}
+\definecolor{leangreen}{RGB}{11,102,35}
+\definecolor{warnred}{RGB}{170,30,30}
 
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{axiom}[theorem]{Axiom}
-\newtheorem{remark}[theorem]{Remark}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue!70!black,
-    citecolor=green!60!black,
-    urlcolor=blue!80!black
+\lstdefinelanguage{lean}{
+  morekeywords={def, theorem, lemma, by, trivial, exact, intro, apply,
+    noncomputable, namespace, end, Prop, Real, Complex, open, import, sorry,
+    axiom, structure, where},
+  sensitive=true,
+  morecomment=[l]{--},
+  morecomment=[s]{/-}{-/},
+  morestring=[b]",
+}
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  columns=fullflexible,
+  keepspaces=true,
+  commentstyle=\color{leangreen},
+  keywordstyle=\color{leanblue}\bfseries,
+  language=lean,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  literate={×}{{$\times$}}1
 }
 
-\setlength{\headheight}{14pt}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
-\renewcommand{\headrulewidth}{0.4pt}
+\theoremstyle{plain}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
 
-\title{\textbf{The HoloAlg Operator Formalism \& The DualScale Theory}\\
-\large From Ramanujan's Modular Vacua to Holographic Spacetime and Navier-Stokes Regularity\\
-\small A 3-Act Mathematical Demonstration with Zero-Axiom Lean 4 Formal Verification}
-\author{\textbf{RAMA / NAMAGIRI Neuro-Symbolic Engine}\\
-\textit{SocrateAI Scientific Agora \& Ramanujan Research Consortium}}
-\date{August 28, 2026}
+\newcommand{\tierA}{\textbf{Tier A}}
+\newcommand{\tierB}{\textbf{Tier B}}
+\newcommand{\tierL}{\textbf{Tier L}}
+\newcommand{\tierC}{\textbf{Tier C}}
+\newcommand{\tierX}{\textbf{Tier X}}
+
+\title{\vspace{-1.5cm}\textbf{The Ramanujan Neuro-Symbolic Engine:\\
+Exact Algebraic Surrogates, Mock Modular Forms, and Lean 4 Verification for $K3 \times T^{2}$ Dual-Scale Geometry}\\[0.4em]
+\large Version 3.2 --- All-$n$ Lean 4.33.1 Kernel Upgrades, Literature Synthesis, and Certified Refutations}
+\author{\textbf{Xavier Callens}\\ \small SocrateAI Lab}
+\date{November 2026}
+
 \begin{document}
-\frontmatter
 \maketitle
 
-\chapter*{Executive Summary}
-This treatise presents the complete, unified algebraic and holographic framework connecting the modular $\eta$-quotients discovered by Srinivasa Ramanujan, the Hilbert space of modular vacua $\mathcal{H}_{\text{modular}}$, and the global smooth regularity of the 3D incompressible Navier-Stokes equations.
+% --- BEGIN sections/00_abstract.tex ---
+\begin{center}
+\fbox{\parbox{0.92\textwidth}{\small
+\textbf{Epistemic status.} This is a \emph{research program and verification audit} updated through Campaign~v2 and Wave~4 exact symbolic/kernel verification. Every claim below carries a tier label defined in
+Section~2: \tierA{} (machine-checked with zero custom axioms), \tierB{} (established literature, cited, or exact classical catalog match), \tierL{} (literature hypothesis passed as an explicit theorem parameter), \tierC{} (conjecture or heuristic), and \tierX{} (explicitly falsified or quarantined mock-proxy). Version~3.2 preserves the historical August~2026 audit verbatim while reporting 338 live zero-axiom Lean~4.33.1 kernel theorems across \texttt{CampaignV2Verified.lean} and \texttt{AllNAndPropositionsVerified.lean}.
+}}
+\end{center}
 
-Using the Dirac bra-ket operator formalism (\textbf{HoloAlg}), raw arithmetic discoveries are elevated into topological vacuum states $|\Omega_{\mathbf{r}}\rangle$. The complete 3-Act Theorem Series is formally proved and certified with zero unproven axioms in \textbf{Lean 4} (727 certified theorems).
+\begin{abstract}
+\noindent We outline a research program that seeks \emph{exact algebraic
+surrogates} --- drawn from $q$-series, mock modular forms, and the arithmetic
+of $K3$ surfaces --- for the analytic estimates that govern regularized fluid
+dynamics and related dual-scale geometries. The program couples (i) a
+heuristic search and exact $\mathbb{Z}/\mathbb{Q}$ inversion engine (\textsc{Rama}) over Eulerian $q$-series, (ii) shadow
+completion in the sense of Zwegers, and (iii) formalization in the Lean~4
+proof assistant under a strict audit discipline (Rules R1--R5). This version (3.2) documents the historical three-finding verification audit of the legacy codebase, its complete post-audit remediation eliminating all custom axioms, untracked \texttt{sorry} placeholders, and vacuous proofs, and the Wave~4 kernel upgrades totaling \textbf{338} live zero-custom-axiom Lean~4.33.1 theorems across \texttt{CampaignV2Verified.lean} (275 theorems over 54 unique $\eta$-quotients and 5 identities) and \texttt{AllNAndPropositionsVerified.lean} (63 theorems establishing universal $\forall n$ / $\forall\text{len}$ proofs, conditional Jacobi Triple Product lifts, level-12 weight-1 Nebentypus and Sturm-bound verification at $B(\Gamma_0(12),1)=2<15$, live RAMA Deep Burn invariants, universal \texttt{EtaQuot} algebra, $\operatorname{Sym}^2(L_2)$, exact $\mathbb{Q}^+$ T-duality, and certified refutations of M2, M3, $S_{12}$ proxy claims, and 14 OCR typos).
+\end{abstract}
+% --- END sections/00_abstract.tex ---
+% --- BEGIN sections/01_introduction.tex ---
+\section{The Proposal}\label{sec:proposal}
+For most of its history, rigorous mathematics has proceeded bottom-up:
+deriving $C$ from $A$ and $B$. Ramanujan's working style --- documented most
+starkly in the \emph{Lost Notebook} \cite{Narosa1988, AndrewsBerndt} --- was different: identities were recorded as endpoints, with the connective proofs
+supplied by later generations. We take that style as \emph{design
+inspiration}, not as evidence for any particular cognitive model, and propose a three-stage pipeline:
 
-\tableofcontents
-\mainmatter
+\begin{enumerate}
+\item \textbf{The heuristic engine (\textsc{Rama}).} Mathematical candidate
+generation is treated as local search over a symbolic space of Eulerian
+$q$-series, guided by an energy functional
+$E=\alpha C+\beta I+\gamma D$.
+\item \textbf{The shadow bridge.} Candidate mock-symmetries are completed to
+harmonic Maass forms by computing their non-holomorphic period integrals \cite{Zwegers2002}.
+\item \textbf{The formal lock.} Surviving statements are formalized in
+Lean~4 under the audit rules of Section 2.
+\end{enumerate}
 
-\part{The HoloAlg Operator Algebra and Number Theory}
-
-\chapter{The Modular Hilbert Space $\mathcal{H}_{\text{modular}}$ and Vertex Operator Algebras}
-
-\section{Vertex Operator Algebras and the Modular Hilbert Space}
-To elevate the arithmetic $\eta$-quotients discovered by the RAMA engine into a formal topological framework, we define them as the graded characters of a Ramanujan-Moonshine Vertex Operator Algebra (VOA), denoted $\mathcal{V}_{\mathbf{r}}$. 
-
-The partition function $\mathcal{Z}(\tau)$ is rigorously redefined as the trace over this Fock module, evaluated via the Virasoro Hamiltonian $L_0$ and the central charge operator $\hat{\mathcal{C}}$:
-\begin{equation}
-\mathcal{Z}(\tau) = \langle \tau | \Omega_{\mathbf{r}} \rangle = \operatorname{Tr}_{\mathcal{V}_{\mathbf{r}}} \left( q^{L_0 - \frac{\hat{\mathcal{C}}}{24}} \right) = q^{E_0} \prod_{d|N} \eta(d\tau)^{r_d} = \sum_{n=0}^\infty a(n) q^n
-\end{equation}
-This Dirac bra-ket formulation explicitly demonstrates that the algorithmic ground state shift $E_0$ computed by the engine corresponds to the exact Casimir vacuum energy of the string on a cylinder.
-
-\section{Hermitian Operator Spectrum}
-We define a canonical set of self-adjoint operators acting on $\mathcal{H}_{\text{modular}}$:
+% --- END sections/01_introduction.tex ---
+% --- BEGIN sections/02_epistemic_protocol.tex ---
+\section{Epistemic Protocol}\label{sec:protocol}
+Every assertion in this programme carries exactly one grade.
 \begin{itemize}
-    \item \textbf{Supersymmetry Operator $\hat{\mathcal{W}}$}: Measures the exact rational modular weight:
-    \begin{equation}
-    \hat{\mathcal{W}} |\Omega_{\mathbf{r}}\rangle = k(\mathbf{r}) |\Omega_{\mathbf{r}}\rangle, \quad k(\mathbf{r}) = \frac{1}{2} \sum_{d|N} r_d \in \mathbb{Q}
-    \end{equation}
-    \item \textbf{Central Charge Operator $\hat{\mathcal{C}}$}: Measures the effective conformal central charge:
-    \begin{equation}
-    \hat{\mathcal{C}} |\Omega_{\mathbf{r}}\rangle = c_{\text{eff}}(\mathbf{r}) |\Omega_{\mathbf{r}}\rangle, \quad c_{\text{eff}}(\mathbf{r}) = \sum_{d|N} \frac{r_d}{d} \in \mathbb{Q}
-    \end{equation}
-    \item \textbf{Ground Energy Operator $\hat{E}_0$}: Fixes the vacuum Casimir shift:
-    \begin{equation}
-    \hat{E}_0 |\Omega_{\mathbf{r}}\rangle = E_0(\mathbf{r}) |\Omega_{\mathbf{r}}\rangle, \quad E_0(\mathbf{r}) = \frac{1}{24} \sum_{d|N} d \cdot r_d \in \mathbb{Q}
-    \end{equation}
-    \item \textbf{Modular Inversion Operator $\hat{S}$}: Generates $S : \tau \mapsto -1/\tau$.
+    \item \textbf{Tier A}: Machine-checked (Lean~4 proof; \texttt{\#print axioms} returns
+          only the universal kernel axioms within \{\texttt{propext},
+          \texttt{Classical.choice}, \texttt{Quot.sound}\}; no \texttt{sorry},
+          no custom \texttt{axiom}, no vacuity).
+    \item \textbf{Tier B}: Established (peer-reviewed literature, cited to
+          exact page or theorem number in \texttt{dualscale.bib}; or exact
+          30-term $\mathbb{Q}[[q]]$ classical catalog match).
+    \item \textbf{Tier L}: Literature hypothesis parameter (an established
+          analytic theorem---such as Aubin--Lions compactness, Rademacher
+          circle-method asymptotics, Sturm's bound, or the Jacobi Triple
+          Product---passed explicitly as a hypothesis parameter to a Lean~4
+          theorem rather than postulated as a global \texttt{axiom}).
+    \item \textbf{Tier C}: Conjecture / heuristic (automated search candidates,
+          unverified manuscript transcriptions, or open conditional targets
+          not yet elevated by unconditional proof or peer-reviewed citation).
+    \item \textbf{Tier X}: Falsified / quarantined (conjectures explicitly
+          refuted by exact arithmetic or Lean~4 kernel counterexamples, such as
+          the M2 triad circulant spectral gap, M3 CFM elliptic-angle proxy, and
+          14 Campaign~v2 OCR typos, together with quarantined mock-proxy
+          artifacts such as the legacy $S_{12}$ moduli-map reclassification).
 \end{itemize}
 
-\begin{definition}[BPS Protection and Physical Vacua]
-A state $|\Omega_{\mathbf{r}}\rangle$ is \textbf{BPS-protected} if and only if $\hat{\mathcal{W}} |\Omega_{\mathbf{r}}\rangle = \frac{1}{2} |\Omega_{\mathbf{r}}\rangle$. It is \textbf{unitary} if $\hat{\mathcal{C}} |\Omega_{\mathbf{r}}\rangle = c_{\text{eff}} |\Omega_{\mathbf{r}}\rangle$ with $c_{\text{eff}} > 0$.
-\end{definition}
+\noindent
+\textbf{Verification qualifier.}
+Where a count, file path, or proof-state claim is marked
+\emph{(session-verified)}, it was confirmed by direct inspection in the
+session that produced this draft\,---\,not taken from a subagent report.
+The qualifier is significant because subagent reports have previously
+mis-reported axiom counts by up to a factor of~20 when they failed to
+exclude vendored library sources (see §\ref{sec:lean}).
 
-\section{Newman's Modularity Theorem on $\Gamma_0(N)$}
-To ensure analytical rigor on congruence subgroups $\Gamma_0(N)$ (where $N = \operatorname{lcm}(d_1, \dots, d_m)$), we integrate the exact modularity criteria of Morris Newman (1956, 1959):
+\noindent
+\textbf{FRONTIER NOTODO \#1 (authority boundary).}
+Stream~0 (this document) does not adjudicate the mathematical correctness
+of claims originating in other streams.
+It records what is checkable from outside: whether a stated verification
+mechanism exists and whether it produces the stated output.
+Finding~1 through Finding~3 in §\ref{sec:lean} are framed accordingly.
+
+% --- END sections/02_epistemic_protocol.tex ---
+% --- BEGIN sections/03_conjectural_dictionary.tex ---
+\section{The Conjectural Dictionary}\label{sec:dictionary}
+The program's core object is a proposed dictionary between the $\sqrt{\alpha'}$-regularized dynamics of an incompressible flow on a macroscopic manifold and arithmetic structures carried by a quantum fiber.
+
+In the heuristic motivation of the program, this mapping draws on the \textbf{Fluid/Gravity correspondence} \cite{BHMR2008, Rangamani2009}, which derives relativistic conformal hydrodynamics as a long-wavelength, slow-derivative expansion of black-brane geometries in $\mathrm{AdS}_5$. Crucially, however, this correspondence is valid only in a \emph{small-gradient hydrodynamic regime} that breaks down precisely when velocity gradients and enstrophy diverge. Moreover, Tao's construction of finite-time blowup for an averaged three-dimensional Navier--Stokes equation preserving the exact energy identity and dyadic shell estimates \cite{Tao2016} demonstrates that no generic energy or Aubin--Lions compactness argument can establish global 3D regularity without exploiting fine geometric cancellation in the true nonlinearity. Consequently, any holographic link between fluid enstrophy bounds and Ramanujan $\eta$-quotients remains strictly conditional and open (\tierC{}). Similarly, while Lubotzky--Phillips--Sarnak \cite{LPS1988} and Marcus--Spielman--Srivastava \cite{MSS2015} establish genuine $k$-regular Ramanujan graphs via Deligne's bound \cite{Deligne1974} and interlacing polynomials, our tested M2 triad circulant graphs violate the Alon--Boppana bound and are classified as \tierX{} (Falsified).
+
+\subsection{Hydrodynamic limits and Ramanujan's sums of tails}
+\paragraph{Conjecture (\tierC{}, Conditional).}
+There exists $C>0$, independent of $\alpha'$, such that the enstrophy
+density of the $\sqrt{\alpha'}$-truncated flow satisfies
+$\sup_{t}\;\alpha'\!\cdot\!\mathcal{E}_{\alpha'}(t)\le C$ \cite{BKM1984, CKN1982, CF1993, CFM1996}, and the truncation defect of the energy flux
+admits an exact sums-of-tails representation \cite{AJO2001, BowmanMcLaughlin2004}. In Lean~4, \texttt{HypothesisU.lean} and \texttt{MasterDualScale.lean} formalize only conditional implications taking Hypothesis~U (\tierC{}) and Aubin--Lions compactness (\tierL{}) as explicit hypothesis parameters, consistent with the hydrodynamic-limit boundary \cite{BHMR2008, Rangamani2009} and Tao's barrier \cite{Tao2016}.
+
+\subsection{$K3$ geometry, Mathieu moonshine, and the $\operatorname{Sym}^{2}(L_{2})$ lock}
+\paragraph{Algebraic Lock (\tierA{}) and $S_{12}$ Provenance (\tierX{}, Quarantined Mock-Proxy).}
+The macroscopic transport operator of the dual-scale system is conjugate to
+$L_{3}=\operatorname{Sym}^{2}(L_{2})$ \cite{Deligne1974}, where $L_{2}$ is the Picard--Fuchs
+operator of the fiber family \cite{Doran2000, EOT2011, Gannon2016, GPPV2020}, with Calabi--Yau differential equations and Hodge-number extractions classified systematically in \cite{AlmkvistZudilin2005, DoranHarderThompson2016}. The discrete algebraic counterpart---if $u_{n+2} + a u_{n+1} + b u_n = 0$, then $v_n = u_n^2$ satisfies an explicit third-order recurrence---is machine-checked at \tierA{} in \texttt{AllNAndPropositionsVerified.lean} (\texttt{sym2\_recurrence\_int}) and in \texttt{DualScale/K3Lock/Basic.lean}. By contrast, an adversarial provenance audit showed that the \texttt{s12\_recurrence} entry stored in \texttt{dualscale/refs/values.json} is Ap\'{e}ry's $\zeta(3)$ sequence (\texttt{OEIS A005259}, $u_5 = 819\,005$, residual $u_5 - 54\,000 = 765\,005 \neq 0$), and that the legacy reclassification artifacts (\texttt{certificates/s12\_ledger.csv}, \texttt{S12\_vs\_K3.json}, \texttt{S12\_vs\_elliptic.json}, generated by \texttt{check\_C3b\_moduli\_map.py}) are \textbf{\tierX{} quarantined mock-proxy checks} rather than an algebro-geometric identification of $S_{12}$ with an order-2 elliptic Picard--Fuchs ODE.
+
+\subsection{Vorticity Direction and Elliptic Angle}
+\paragraph{Refutation (\tierX{}, Falsified and Kernel-Proved).}
+The conjecture mapping the vorticity direction field $\xi$ to the T-dual incomplete elliptic angle $\alpha$ has been formally \textsc{refuted}. Exact algebraic scaling of the Constantin--Fefferman Lipschitz bound yields $\frac{4}{3}\pi$, which fundamentally mismatches the elliptic fiber leading-order proxy of $\frac{16}{9}\pi$ by $\frac{4}{9}\pi \neq 0$ (see \texttt{certificates/cfm\_ledger.csv} and the live Lean~4.33.1 kernel theorems \texttt{cfm\_constant\_ne\_elliptic}, \texttt{cfm\_elliptic\_gap\_exact}, and \texttt{cfm\_elliptic\_gap\_nonzero}).
+
+% --- END sections/03_conjectural_dictionary.tex ---
+% --- BEGIN sections/04_lost_notebook.tex ---
+\section{Reading the Lost Notebook: A New Mathematics as Legacy}
+\label{sec:lostnotebook}
+The 1988 Narosa facsimile and the Andrews--Berndt volumes organize a body of material with a genuine throughline into the present program. The mock theta functions of the manuscript were completed to harmonic Maass forms by Zwegers and later connected to the $K3$ elliptic genus. The absence of connective proofs in the manuscript is a historical observation about Ramanujan's working style. We propose that this style forms the blueprint for \textbf{Neuro-Symbolic Algebraic Geometry}.
+
+% --- END sections/04_lost_notebook.tex ---
+% --- BEGIN sections/04b_bps_state_counting.tex ---
+\section{Mixed-Cyclotomic Forms and BPS State Counting on $K3 \times T^2$}
+
+The relaxation of description-length penalties within the Genetic RAMA engine explored mixed-cyclotomic $\eta$-quotients beyond simple Eulerian forms. Under the strict epistemic protocol of Section~\ref{sec:protocol}, the heuristic attractors identified by the legacy Phase~2 genetic search carry \tierC{} (exploratory heuristic) status unless independently certified in exact $\mathbb{Z}/\mathbb{Q}$ arithmetic.
+
+\subsection{Thermodynamic Saddle Point Matrix and Corrected Sign Convention}
+We rely on the Rademacher circle method to evaluate the asymptotic growth of integer partition generating functions. For a Dedekind $\eta$-quotient
+\begin{equation}
+f(\tau) = \prod_{d \mid N} \eta(d\tau)^{r_d}
+\end{equation}
+of level $N = \operatorname{lcm}\{d : r_d \neq 0\}$ and modular weight $k = \frac{1}{2}\sum_d r_d$, the cusp-$0$ and general cusp-$c$ ($c \mid N$) effective central charges are given by:
+\begin{equation}
+c_{\text{eff}}(0) = -\sum_{d} \frac{r_d}{d}, \qquad
+c_{\text{eff}}(c) = -\frac{1}{c^2} \sum_{d} \frac{\gcd(d, c)^2}{d} r_d, \qquad
+E_0 = -\frac{1}{24} \sum_{d} d\, r_d.
+\end{equation}
+With this physically consistent sign convention, the bosonic integer partition generating function $1/\eta(\tau)$ ($r_1 = -1$) carries positive central charge $c_{\text{eff}}(0) = +1$, whereas Euler's pentagonal product $\eta(\tau)$ ($r_1 = +1$) and Ramanujan's cusp form $\Delta(\tau) = \eta(\tau)^{24}$ ($r_1 = 24$) carry negative cusp-$0$ values ($c_{\text{eff}}(0) = -1$ and $-24$, respectively) and alternating-sign Fourier coefficients.
+
+\subsection{Legacy Phase 2 Genetic Attractors (\tierC{} Erratum)}
+
+Earlier Phase~2 drafts of this section reported three heuristic Notebook~2 attractors evaluated under an inverted sign formula ($+\sum r_d/d$) \cite{EOT2011}:
 \begin{enumerate}
-  \item \textbf{Modular weight}: $k = \frac{1}{2} \sum_{d \mid N} r_d$.
-  \item \textbf{Newman Modulo 24 Congruences}:
-  \begin{equation}
-    \sum_{d \mid N} d\, r_d \equiv 0 \pmod{24}, \qquad \sum_{d \mid N} \frac{N}{d}\, r_d \equiv 0 \pmod{24}.
-  \end{equation}
-  \item \textbf{Cusp vanishing orders}: At every parabolic cusp $c/d \in \mathbb{Q} \cup \{i\infty\}$, the vanishing order is strictly non-negative:
-  \begin{equation}
-    \operatorname{ord}_{c/d}(f) = \frac{N}{24 \gcd(c, N/c)} \sum_{d \mid N} \frac{\gcd(c, d)^2\, r_d}{d} \ge 0.
-  \end{equation}
+    \item $f_1(\tau) = \eta(6\tau)^6\,\eta(9\tau)^{-2}\,\eta(11\tau)^{-4}$ ($k = 0$): under the corrected sign convention, $c_{\text{eff}}(0) = -\frac{41}{99} \approx -0.414 < 0$ (rather than $+0.414$).
+    \item $f_2(\tau) = \eta(6\tau)^3\,\eta(12\tau)^2$ ($k = 5/2$): because all exponents are positive, $c_{\text{eff}}(0) = -\frac{2}{3} \approx -0.667 < 0$ and its Fourier series is an alternating-sign index rather than a positive-definite state count \cite{Zwegers2002}.
+    \item $f_3(\tau) = \eta(\tau)^1\,\eta(5\tau)^2\,\eta(10\tau)^3$ ($k = 3$): similarly, $c_{\text{eff}}(0) = -\frac{17}{10} = -1.700 < 0$ (oscillating cusp-like coefficients rather than a positive-definite thermal CFT spectrum).
 \end{enumerate}
-This analytical engine is formalized in \texttt{DualScale/HoloAlg/NewmanModular.lean}.
 
-\chapter{Symplectic Hydrodynamics, Arnold Isomorphism, and Kerr Falsification}
+\noindent\textbf{Post-Audit Supersession.} All three legacy genetic candidates above remain classified as \tierC{} heuristic artifacts and are superseded by the exact $\mathbb{Z}/\mathbb{Q}$ M\"{o}bius-inverted Campaign~v2 catalog documented in Section~\ref{sec:lean}, which computes exact rational $c_{\text{eff}}(c)$ across all divisors $c \mid N$, separates non-negative partition spectra from alternating-sign indices, and verifies Ono's Theorem~1.64 $\Gamma_0(N)$ modularity conditions inside the Lean~4 kernel \cite{GPPV2020}.
 
-\section{Symplectic Hydrodynamics and the Arnold Isomorphism}
-To bridge the bulk conformal symmetry with the boundary fluid dynamics, we employ Vladimir Arnold's formulation of symplectic hydrodynamics. Arnold established that the macroscopic dynamics of an incompressible fluid map exactly to geodesic flow on the infinite-dimensional Lie group of volume-preserving diffeomorphisms, $\operatorname{SDiff}(M)$.
+% --- END sections/04b_bps_state_counting.tex ---
+% --- BEGIN sections/05_computational_experiments.tex ---
+\section{Computational Experiments \& Rigorous Verification}
+\label{sec:experiments}
 
-Crucially, the Lie algebra of boundary diffeomorphisms is isomorphic to the bulk Virasoro algebra. Under the DualScale projection, the topological central charge $c_{\text{eff}}$ strictly dictates the Casimir invariants of the fluid boundary. Therefore, the fluid's macroscopic enstrophy $\mathcal{E}$ is topologically bounded:
-\begin{equation}
-\mathcal{E} = \frac{\pi}{12} c_{\text{eff}}
-\end{equation}
-For the Deep Burn state ($c_{\text{eff}} \approx 0.3563$), this yields a strictly finite Casimir enstrophy bound of $\mathcal{E} \approx 0.093273$. This invariant guarantees the halting of the Kolmogorov UV cascade, ensuring the global regularity of the Navier-Stokes equations via the Aubin-Lions compactness lemma.
+The deployment of the Phase 2 orchestrator initially processed 669 pages of Ramanujan's Notebooks~1--3; Campaign~v2 subsequently expanded the multimodal extraction corpus to all 839 manuscript pages in the repository (133 Narosa 1988 Lost Notebook facsimile sheets \cite{Narosa1988}, 8 Ramanujan letters from Ono, and 698 pages of Notebooks~1--3) and replaced floating-point heuristics with exact $\mathbb{Z}/\mathbb{Q}$ M\"{o}bius inversion and standalone Lean~4 kernel proofs (see Section~\ref{sec:lean}). Below we retain the legacy Phase~2 genetic convergence plots for archival comparison alongside the CI spectral-gap falsification certificates.
 
-The Lean 4 kernel formally verifies the exact rational Casimir enstrophy in \texttt{DualScale/HoloAlg/ArnoldHydrodynamics.lean}:
-\begin{equation}
-  \mathcal{E}_{\text{ratio}} = \frac{c_{\text{eff}}}{12} = \frac{823}{27720} \approx 0.029690 \implies \mathcal{E} = \pi \cdot \mathcal{E}_{\text{ratio}} \approx 0.093273 > 0.
-\end{equation}
+\subsection{Genetic RAMA Evolutionary Convergence}
+By running a 25-agent population across 5 evolutionary generations, the heuristic engine systematically optimizes the energy functional $E = \alpha C + \beta I + \gamma D$. Figure~\ref{fig:genetic_conv} tracks the mean convergence of the fittest candidates.
 
-\section{Test F1: Wald-Sen Entropy and the Kerr Falsification}
-To ascertain the physical validity of the non-BPS symmetry breaking, we confronted the optimal RAMA candidate state $|\Omega_{k=-91.5}\rangle$ ($c_{\text{eff}} \approx 0.3563$) against the macroscopic thermodynamics of a quasi-extremal 4D Kerr black hole ($c_{\text{Kerr}} = 3.0$).
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/genetic_convergence.pdf}
+    \caption{Mean best energy of the symbolic population across generations. The rapid descent illustrates the algorithm's capability to isolate valid $\eta$-quotient structures from chaotic initial seeds.}
+    \label{fig:genetic_conv}
+\end{figure}
 
-Using the Wald-Sen entropy formula with the one-loop quantum correction ($\gamma_{\text{Sen}} = -3/2$), the Kerr entropy scales as:
-\begin{equation}
-S_{\text{Wald}}^{\text{Kerr}}(n) = 2\pi\sqrt{\frac{3.0 \cdot n}{6}} - \frac{3}{2} \ln(n) + \mathcal{O}(1)
-\end{equation}
-In contrast, the asymptotic entropy of the RAMA Deep Burn candidate is governed strictly by the Rademacher expansion:
-\begin{equation}
-S_{\text{RAMA}}^{\text{DB}}(n) = 2\pi\sqrt{\frac{0.3563 \cdot n}{6}}
-\end{equation}
+\subsection{The RAMA Energy Landscape}
+Figure~\ref{fig:rama_landscape} showcases the total energy landscape mapped against complexity (C) and fit error (I). The lower left quadrant isolates the "truth attractors"---the exact mathematical identities that balance aesthetic simplicity and predictive accuracy.
 
-\begin{table}[h]
-\centering
-\begin{tabular}{ccccc}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/rama_landscape.pdf}
+    \caption{The Phase 2 Energy Landscape mapping the discoveries on a (Complexity, Fit Error) axis.}
+    \label{fig:rama_landscape}
+\end{figure}
+
+\subsection{Spectral Gap Certificates}
+The CI pipeline automatically enforces the Alon-Boppana spectral bound on candidate triad-interaction graphs, testing their viability as Ramanujan graphs \cite{LPS1988, MSS2015}. Falsified candidates are systematically stripped of Tier A classification and quarantined as \tierX{}, ensuring topological invariants mathematically correspond to physically constrained limits.
+
+\subsection{Literature-Grounded Neuro-Symbolic Proving Architecture (v3.2)}
+To prevent unsupported conjectures or truncated numerical coincidences from entering the verified corpus, the Wave~4 validation workflow (\texttt{lean\_proposition\_validator\_workflow.py}) integrates retrieval-augmented grounding over a 24-paper arXiv ChromaDB index (1,163 extracted PDF pages, 2,829 text chunks; see \texttt{docs/literature/REVUE\_LITTERATURE\_DETAILLEE.md}) with a tiered Planner--Worker--Verifier Lean~4 loop inspired by LeanDojo \cite{Yang2023LeanDojo}, Lean Copilot \cite{Song2024LeanCopilot}, DeepSeek-Prover \cite{Xin2024DeepSeekProver}, and OpenProver \cite{Kripner2026OpenProver}. Across the $q$-series and BPS pillars, this synthesis anchors our exact $\eta$-quotient catalog in Ono's modularity criteria \cite{Ono2004}, Rouse--Webb's $\eta$-quotient generation theorems \cite{RouseWebb2015}, Acres--Broadhurst's Rademacher cusp expansions \cite{AcresBroadhurst2018}, Ryan--Scherr--Sirolli's Sturm-bound congruence algorithms \cite{RyanScherrSirolli2019}, Bhattacharya's cuspidal vanishing theorems \cite{Bhattacharya2026}, mock-theta combinatorics and resurgent uniqueness \cite{MalmendierOno2012, BallantineBursonFolsom2022, CostinDunneSaraeb2026}, and $K3\times T^2$ wall-crossing and umbral moonshine \cite{DMZ2012, CDH2014}.
+
+% --- END sections/05_computational_experiments.tex ---
+% --- BEGIN sections/06_formalization_status.tex ---
+%% §6  Formalization Status and Cross-Stream Verification Audit
+%%
+%% Structural note (2026-08-14, v2): This section is evidence for the paper's
+%% cross-stream thesis (§2): across four of seven streams the most frequent
+%% failure mode is a status string that no check produces.  RAMA-LS is the
+%% best-evidenced instance.  All counts were verified directly by this session
+%% rather than taken from a subagent report; the importance of that qualifier
+%% is explained below (LL-15 correction).
+%%
+%% Tone constraint (FRONTIER NOTODO #1): Stream 0 does not adjudicate another
+%% stream's mathematical correctness.  It records whether a stated verification
+%% mechanism exists and whether it produces the stated output.  Everything below
+%% is framed accordingly.
+
+\section{Formalization Status: A Three-Finding Audit}
+\label{sec:lean}
+
+\subsection*{Repository handle and disclosure}
+
+The canonical remote name is
+\texttt{SocrateAI-Scientific-Agora-Ra\-ma\-nu\-jan\-Neuro\-Symbolic};
+the local checkout path used throughout this programme is
+\texttt{SocrateAI-Scientific-RajMathRecovery}.
+We refer to the live Lean~4 subtree as \textbf{RAMA-LS}
+(\texttt{dualscale/lean/}, excluding vendored Mathlib under \texttt{.lake/}).
+
+\noindent
+\textbf{Disclosure.}
+RAMA-LS is also one of Stream~0's two Mathlib-environment candidates
+(MX-C-0005); it is missing the modules
+\texttt{Analysis.SpecialFunctions.Log.Deriv} and
+\texttt{Analysis.Calculus.Deriv.*}.
+Stream~0's own reproducibility partly rests on this tree.
+This audit is therefore not disinterested, and the paper says so.
+
+\subsection*{Three findings and why they are distinct}
+
+The following findings differ in both severity and remedy.
+Conflating them either overstates the first or understates the second.
+
+\paragraph{Finding~1 (claim hazard, not build contaminant):
+\texttt{NAMAGIRI\_legacy\_v1.lean}.}
+
+The archived file
+\texttt{dualscale/lean/archive/NAMAGIRI\_legacy\_v1.lean}
+contains\,---\,and its header explicitly warns\,---\,the following vacuous
+structures:
+
+\begin{itemize}
+  \item \verb|def Real := Float| and \verb|def Complex := (Float × Float)|,
+    replacing the standard Mathlib types with floating-point stand-ins.
+  \item Semantic predicates reduced to the tautology:
+    \begin{itemize}
+      \item \verb|def uniformBoundedness (D : EnstrophyFunctional) : Prop := True|
+      \item \verb|def topologicalFracture (state : Complex) : Prop := True|
+    \end{itemize}
+  \item Theorems whose entire proof body is \verb|trivial|:
+    \begin{itemize}
+      \item \verb|theorem hypothesis_U_bound| (claims Hypothesis~U)
+      \item \verb|theorem prevents_singularity| (claims discrete singular set)
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{Severity.}
+This file is a \emph{claim hazard}, not a \emph{build contaminant}.
+It is imported by no production module and appears in no \texttt{lakefile}.
+The kernel never sees it during compilation.
+The hazard is documentary: a reader who cites the archive as evidence for
+Hypothesis~U is citing a theorem proved by the axiom $\top$.
+
+\noindent
+\textbf{``Imported by nothing'' cuts both ways.}
+The isolation that makes this file harmless to the build also makes it
+invisible to any automated check.
+A file that nothing imports cannot be caught by a lakefile build,
+a \texttt{sorry} grep, or a CI gate.
+This is why it survived, and why the \texttt{mathesis\_gate} vacuity
+scanner (see \emph{Reproduction} below) was needed.
+
+\paragraph{Finding~2 (open proof obligations in the live tree):
+\texttt{dualscale/lean/} sorry, axiom, and pinned-constant counts.}
+
+A direct session grep of RAMA-LS\,---\,excluding \texttt{.lake/} vendor
+sources\,---\,yields the following production counts (session-verified):
+
+\begin{center}
+\begin{tabular}{lrr}
 \toprule
-Level $n$ & $S_{\text{RAMA}}(n)$ & $S_{\text{Wald}}^{\text{Kerr}}(n)$ & Log-Sen Term & Ratio $S_{\text{DB}}/S_{\text{Kerr}}^{\text{lead}}$ \\
+\textbf{Construct} & \textbf{Count} & \textbf{Interpretation} \\
 \midrule
-$10^1$ & 4.8417 & 10.5958 & -3.4539 & 0.344614 \\
-$10^2$ & 15.3108 & 37.5211 & -6.9078 & 0.344614 \\
-$10^3$ & 48.4170 & 130.1347 & -10.3616 & 0.344614 \\
-$10^4$ & 153.1081 & 430.4728 & -13.8155 & 0.344614 \\
-$10^5$ & 484.1703 & 1387.6936 & -17.2694 & 0.344614 \\
-$10^6$ & 1531.0810 & 4422.1597 & -20.7233 & 0.344614 \\
+\texttt{sorry}  & 2  & Open proof obligations (Tier~A targets) \\
+\texttt{axiom}  & 34 & Assumed propositions (see breakdown below) \\
 \bottomrule
 \end{tabular}
-\caption{F1 Falsification Test results demonstrating the exact asymptotic entropy ratio.}
-\label{tab:f1_wald_en}
-\end{table}
+\end{center}
 
-The asymptotic limit yields an exact entropy ratio of $34.46\%$, derived directly from $\sqrt{c_{\text{eff}} / c_{\text{Kerr}}}$. This result mathematically falsifies the hypothesis that the state describes an isolated Kerr black hole in a flat vacuum. Instead, the strictly positive unitarity ($c_{\text{eff}} > 0$) confirms that the state isolates a highly constrained, ``frozen'' sub-CFT ($\mathcal{W}_{\text{eff}} \subset \mathcal{V}_{\text{Kerr}}$), where $88.12\%$ of the gravitational degrees of freedom are topologically frozen by the non-supersymmetric flux compactification.
+\noindent
+\textbf{Axiom breakdown by role.}
+The 34 \texttt{axiom} declarations fall into four categories:
 
-The Lean 4 kernel in \texttt{DualScale/HoloAlg/F1Falsification.lean} formally certifies this exact rational value:
-\begin{equation}
-  \left(\frac{S_{\text{DB}}}{S_{\text{Kerr}}^{\text{lead}}}\right)^2 = \frac{c_{\text{eff}}^{\text{DB}}}{c_{\text{eff}}^{\text{Kerr}}} = \frac{823 / 2310}{3} = \frac{823}{6930} \approx 0.118759 \implies \frac{S_{\text{DB}}}{S_{\text{Kerr}}^{\text{lead}}} = \sqrt{\frac{823}{6930}} \approx 0.344614.
-\end{equation}
+\begin{center}
+\begin{tabular}{lrl}
+\toprule
+\textbf{Category} & \textbf{Count} & \textbf{Examples} \\
+\midrule
+Type-level stubs (opaque types not in Mathlib) & 13 &
+  \texttt{VelocityField}, \texttt{FluidHamiltonian}, \texttt{T\_H} \\
+Property axioms (propositions asserted without proof) & 11 &
+  \texttt{aubin\_lions\_compactness}, \texttt{hagedorn\_divergence} \\
+Function axioms (computational functions asserted) & 4 &
+  \texttt{kinetic\_energy}, \texttt{enstrophy\_of} \\
+Signature axioms (major literature theorems postulated) & 6 &
+  \texttt{rademacher\_first\_order}, \texttt{modular\_s\_transform} \\
+\midrule
+\textbf{Total} & \textbf{34} & \\
+\bottomrule
+\end{tabular}
+\end{center}
 
-\part{The 3-Act Theorem Series}
+\noindent
+A per-axiom classification into ``correct practice'' versus ``should be a
+hypothesis parameter'' was not performed by this session, because that
+classification requires research-level judgement about what each axiom is
+meant to model.
+This is an honest limit, not a silent gap.
+The paper's own tier calculus (§\ref{sec:protocol}) notes that a Tier~A
+theorem \emph{should} take a literature result as an explicit hypothesis
+parameter; some of these 34 may therefore be correct practice.
+What is not correct practice is leaving the question unresolved while the
+README claims ``Zero-Sorry.''
 
-\chapter{Act I: T-Dual Asymptotics (The Algebraic Foundation)}
-
-\begin{theorem}[Rademacher Modular Inversion Asymptotics]
-Let $|\Omega_{\mathbf{r}}\rangle \in \mathcal{N}$ be a unitary BPS state. Under the modular inversion operator $\hat{S} : \tau \mapsto -1/\tau$, the Fourier coefficients $a(n)$ satisfy:
-\begin{equation}
-\ln a(n) = 2\pi \sqrt{\frac{c_{\text{eff}} \cdot n}{6}} + \mathcal{O}(\ln n) \quad \text{as } n \to \infty
-\end{equation}
-Under $\boldsymbol{\Phi}$, this asymptotic density of microstates maps identically to the Bekenstein-Hawking BPS black hole entropy $S_{\text{BPS}}$.
-\end{theorem}
-
-\chapter{Act II: The DualScale Holographic Dictionary}
-
-\begin{theorem}[Gevrey Ultraviolet Cutoff]
-Let $\mathbf{v}(\mathbf{x},t)$ be the boundary velocity field dual to $|\Omega_{\mathbf{r}}\rangle$. The kinetic information capacity of spatial Fourier modes $n \propto |\mathbf{k}|^2$ is bounded by the reciprocal microstate degeneracy $a(n)$:
-\begin{equation}
-|\hat{\mathbf{v}}(\mathbf{k}, t)|^2 \le \frac{\kappa}{a(n)} \le \kappa \exp\left(-2\pi \sqrt{\frac{c_{\text{eff}}}{6}} \sqrt{n}\right)
-\end{equation}
-Because $c_{\text{eff}} > 0$, high-frequency modes decay exponentially, establishing Gevrey class regularity.
-\end{theorem}
-
-\chapter{Act III: The Navier-Stokes Resolution (The Master Regularity Theorem)}
-
-\begin{theorem}[Macroscopic Enstrophy Bound and Global Regularity]
-Under the categorical composition $(\boldsymbol{\Psi} \circ \boldsymbol{\Phi})$, the macroscopic enstrophy $\mathcal{E}(t)$ satisfies:
-\begin{equation}
-\mathcal{E}(t) = \int_{\mathbb{R}^3} |\nabla \times \mathbf{v}|^2 \, dV \le \kappa \cdot S_{\text{BPS}} < \infty, \quad \forall t \ge 0
-\end{equation}
-By the \textbf{Aubin-Lions Compactness Lemma}, this uniform bound guarantees that Galerkin approximations converge strongly to a global smooth solution in $C^\infty([0, T] \times \mathbb{R}^3)$, strictly precluding finite-time blowup.
-\end{theorem}
-
-\part{Discovery Catalogue and Equivalence Classes}
-
-\chapter{Topology of BPS-Protected Vacua ($k = 1/2$)}
-\section*{Class: $|\Omega_{(r_{1}=2, r_{5}=3, r_{6}=-4)}\rangle$ (Multiplicity $M=1$)}
+\noindent
+\textbf{Tier assignment under the epistemic protocol of~§\ref{sec:protocol}.}
 \begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=2, r_{5}=3, r_{6}=-4)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{29}{15}$, $\hat{E}_0 = \frac{-7}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $$
-  \item \textbf{Corpus Origin:} Ramanujan Lost Notebook Corpus
+  \item Any theorem in RAMA-LS that transitively depends on at least one
+    \texttt{axiom} is currently Tier~B (established by assumption from
+    the literature), not Tier~A (machine-checked without external axioms).
+  \item The two \texttt{sorry}-bearing theorems are in
+    \texttt{HolographicDemonstration.lean} (lines 86 and~99):
+    one is the summability of $n/\exp(\beta\sqrt{n})$;
+    the other is the trivial $n=0$ base case.
 \end{itemize}
 
-\section*{Class: $|\Omega_{(r_{1}=2, r_{9}=-1, r_{10}=2, r_{12}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=2, r_{9}=-1, r_{10}=2, r_{12}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{173}{90}$, $\hat{E}_0 = \frac{-11}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-28/24} \eta(9\tau)^{-1} \eta(10\tau)^{2} \eta(12\tau)^{-2} \eta(1\tau)^{2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{3}=1, r_{8}=2, r_{9}=-3, r_{10}=4, r_{11}=-4)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{3}=1, r_{8}=2, r_{9}=-3, r_{10}=4, r_{11}=-4)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{283}{220}$, $\hat{E}_0 = \frac{-11}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{5/24} \eta(1\tau) \eta(8\tau)^{2} \eta(9\tau)^{-3} \eta(10\tau)^{4} \eta(11\tau)^{-4} \eta(3\tau)$
-  \item \textbf{Corpus Origin:} Ramanujan Lost Notebook Corpus
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{6}=1, r_{7}=-1, r_{8}=2, r_{9}=-3, r_{10}=5, r_{11}=-3, r_{12}=-1)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{6}=1, r_{7}=-1, r_{8}=2, r_{9}=-3, r_{10}=5, r_{11}=-3, r_{12}=-1)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{167}{154}$, $\hat{E}_0 = \frac{-1}{4}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{1/2} \eta(1\tau) \eta(6\tau) \eta(7\tau)^{-1} \eta(8\tau)^{2} \eta(9\tau)^{-3} \eta(10\tau)^{5} \eta(11\tau)^{-3} \eta(12\tau)^{-1}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{10}=4, r_{11}=-3, r_{12}=-1)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{10}=4, r_{11}=-3, r_{12}=-1)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{689}{660}$, $\hat{E}_0 = \frac{-1}{6}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-21/24} \eta(1\tau) \eta(10\tau)^{4} \eta(11\tau)^{-3} \eta(12\tau)^{-1}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{10}=4, r_{11}=-4)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{10}=4, r_{11}=-4)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{57}{55}$, $\hat{E}_0 = \frac{-1}{8}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{1/2} \eta(1\tau) \eta(10\tau)^{4} \eta(11\tau)^{-4}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{10}=2, r_{11}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{10}=2, r_{11}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{56}{55}$, $\hat{E}_0 = \frac{-1}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{1/2} \eta(1\tau) \eta(11\tau)^{-2} \eta(10\tau)^{2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1)}\rangle$ (Multiplicity $M=4$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = 1$, $\hat{E}_0 = \frac{1}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $\eta(1\tau)$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=3, r_{4}=1, r_{11}=-3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=3, r_{4}=1, r_{11}=-3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{43}{44}$, $\hat{E}_0 = \frac{-5}{6}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-4/24} \eta(11\tau)^{-3} \eta(3\tau)^{3} \eta(4\tau)$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{6}=-1, r_{9}=-2, r_{10}=3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{6}=-1, r_{9}=-2, r_{10}=3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{41}{45}$, $\hat{E}_0 = \frac{7}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-10/24} \eta(1\tau) \eta(6\tau)^{-1} \eta(9\tau)^{-2} \eta(10\tau)^{3}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=4, r_{5}=-1, r_{7}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=4, r_{5}=-1, r_{7}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{89}{105}$, $\hat{E}_0 = \frac{-7}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-24/24} \eta(5\tau)^{-1} \eta(7\tau)^{-2} \eta(3\tau)^{4}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=3, r_{6}=1, r_{7}=-3, r_{8}=2, r_{9}=3, r_{10}=-3, r_{11}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=3, r_{6}=1, r_{7}=-3, r_{8}=2, r_{9}=3, r_{10}=-3, r_{11}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{1293}{1540}$, $\hat{E}_0 = \frac{-5}{8}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-49/24} \eta(3\tau)^{3} \eta(6\tau) \eta(7\tau)^{-3} \eta(8\tau)^{2} \eta(9\tau)^{3} \eta(10\tau)^{-3} \eta(11\tau)^{-2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{4}=1, r_{5}=1, r_{7}=-2, r_{8}=2, r_{10}=2, r_{11}=-4, r_{12}=-1)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{4}=1, r_{5}=1, r_{7}=-2, r_{8}=2, r_{10}=2, r_{11}=-4, r_{12}=-1)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{3853}{4620}$, $\hat{E}_0 = \frac{-19}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{21/24} \eta(3\tau)^{2} \eta(4\tau) \eta(5\tau) \eta(7\tau)^{-2} \eta(8\tau)^{2} \eta(10\tau)^{2} \eta(11\tau)^{-4} \eta(12\tau)^{-1}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=3, r_{11}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=3, r_{11}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{9}{11}$, $\hat{E}_0 = \frac{-13}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-25/24} \eta(3\tau)^{3} \eta(11\tau)^{-2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{5}=-1, r_{6}=2, r_{7}=-1, r_{8}=2, r_{9}=2, r_{10}=4, r_{11}=-6, r_{12}=-3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{5}=-1, r_{6}=2, r_{7}=-1, r_{8}=2, r_{9}=2, r_{10}=4, r_{11}=-6, r_{12}=-3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{2543}{3465}$, $\hat{E}_0 = \frac{-11}{12}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-24/24} \eta(3\tau)^{2} \eta(6\tau)^{2} \eta(7\tau)^{-1} \eta(8\tau)^{2} \eta(9\tau)^{2} \eta(10\tau)^{4} \eta(11\tau)^{-6} \eta(12\tau)^{-3} \eta(5\tau)^{-1}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=3, r_{7}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=3, r_{7}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{5}{7}$, $\hat{E}_0 = \frac{-5}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-1/2} \eta(3\tau)^{3} \eta(7\tau)^{-2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=1, r_{4}=2, r_{8}=2, r_{9}=-4, r_{10}=5, r_{11}=-5)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=1, r_{4}=2, r_{8}=2, r_{9}=-4, r_{10}=5, r_{11}=-5)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{271}{396}$, $\hat{E}_0 = \frac{-7}{12}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-24/24} \eta(3\tau) \eta(4\tau)^{2} \eta(8\tau)^{2} \eta(9\tau)^{-4} \eta(10\tau)^{5} \eta(11\tau)^{-5}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{7}=-1, r_{8}=4, r_{10}=-1, r_{12}=-3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{7}=-1, r_{8}=4, r_{10}=-1, r_{12}=-3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{283}{420}$, $\hat{E}_0 = \frac{-5}{8}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{24/24} \eta(3\tau)^{2} \eta(7\tau)^{-1} \eta(8\tau)^{4} \eta(10\tau)^{-1} \eta(12\tau)^{-3}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{6}=1, r_{7}=-2, r_{8}=3, r_{9}=-1, r_{10}=1, r_{11}=-1, r_{12}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{6}=1, r_{7}=-2, r_{8}=3, r_{9}=-1, r_{10}=1, r_{11}=-1, r_{12}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{18127}{27720}$, $\hat{E}_0 = \frac{-1}{2}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{41/24} \eta(3\tau)^{2} \eta(6\tau) \eta(7\tau)^{-2} \eta(8\tau)^{3} \eta(9\tau)^{-1} \eta(10\tau) \eta(11\tau)^{-1} \eta(12\tau)^{-2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{2}=1, r_{8}=3, r_{9}=-3, r_{10}=12, r_{11}=-12)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{2}=1, r_{8}=3, r_{9}=-3, r_{10}=12, r_{11}=-12)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{1}{2}$, $\hat{\mathcal{C}} = \frac{859}{1320}$, $\hat{E}_0 = \frac{-13}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-23/24} \eta(8\tau)^{3} \eta(9\tau)^{-3} \eta(10\tau)^{12} \eta(11\tau)^{-12} \eta(2\tau)$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-
-\chapter{Invariant Modular Vacua ($k = 0$)}
-\section*{Class: $|\Omega_{(r_{1}=2, r_{9}=-3, r_{10}=4, r_{11}=-3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=2, r_{9}=-3, r_{10}=4, r_{11}=-3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{296}{165}$, $\hat{E}_0 = \frac{-3}{4}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-4/24} \eta(1\tau)^{2} \eta(11\tau)^{-3} \eta(9\tau)^{-3} \eta(10\tau)^{4}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=2, r_{6}=-2, r_{9}=-2, r_{10}=2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=2, r_{6}=-2, r_{9}=-2, r_{10}=2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{74}{45}$, $\hat{E}_0 = \frac{-1}{3}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-4/24} \eta(1\tau)^{2} \eta(9\tau)^{-2} \eta(10\tau)^{2} \eta(6\tau)^{-2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=2, r_{3}=-1, r_{8}=-1)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=2, r_{3}=-1, r_{8}=-1)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{37}{24}$, $\hat{E}_0 = \frac{-3}{8}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-1/2} \eta(8\tau)^{-1} \eta(1\tau)^{2} \eta(3\tau)^{-1}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{3}=1, r_{6}=1, r_{8}=3, r_{9}=-2, r_{10}=4, r_{11}=-4, r_{12}=-4)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{3}=1, r_{6}=1, r_{8}=3, r_{9}=-2, r_{10}=4, r_{11}=-4, r_{12}=-4)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{5369}{3960}$, $\hat{E}_0 = \frac{-3}{2}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{48/24} \eta(1\tau) \eta(3\tau) \eta(6\tau) \eta(8\tau)^{3} \eta(9\tau)^{-2} \eta(10\tau)^{4} \eta(11\tau)^{-4} \eta(12\tau)^{-4}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{3}=1, r_{7}=-1, r_{8}=3, r_{9}=-3, r_{10}=2, r_{11}=-3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{3}=1, r_{7}=-1, r_{8}=3, r_{9}=-3, r_{10}=2, r_{11}=-3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{3571}{3080}$, $\hat{E}_0 = \frac{-19}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-26/24} \eta(1\tau) \eta(3\tau) \eta(7\tau)^{-1} \eta(8\tau)^{3} \eta(9\tau)^{-3} \eta(10\tau)^{2} \eta(11\tau)^{-3}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{2}=-1, r_{4}=3, r_{9}=-3, r_{10}=3, r_{11}=-3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{2}=-1, r_{4}=3, r_{9}=-3, r_{10}=3, r_{11}=-3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{623}{660}$, $\hat{E}_0 = \frac{-19}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{36/24} \eta(1\tau) \eta(2\tau)^{-1} \eta(4\tau)^{3} \eta(9\tau)^{-3} \eta(10\tau)^{3} \eta(11\tau)^{-3}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{10}=2, r_{11}=-3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{10}=2, r_{11}=-3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{51}{55}$, $\hat{E}_0 = \frac{-1}{2}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $\eta(11\tau)^{-3} \eta(1\tau) \eta(10\tau)^{2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{9}=-1, r_{10}=3, r_{11}=-3)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{9}=-1, r_{10}=3, r_{11}=-3)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{907}{990}$, $\hat{E}_0 = \frac{-11}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{23/24} \eta(1\tau) \eta(9\tau)^{-1} \eta(10\tau)^{3} \eta(11\tau)^{-3}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=3, r_{4}=1, r_{11}=-4)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=3, r_{4}=1, r_{11}=-4)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{39}{44}$, $\hat{E}_0 = \frac{-31}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{4/24} \eta(11\tau)^{-4} \eta(3\tau)^{3} \eta(4\tau)$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{7}=-1, r_{8}=2, r_{9}=-3, r_{10}=4, r_{11}=-5, r_{12}=2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{7}=-1, r_{8}=2, r_{9}=-3, r_{10}=4, r_{11}=-5, r_{12}=2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{4093}{4620}$, $\hat{E}_0 = \frac{-1}{3}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-44/24} \eta(1\tau) \eta(7\tau)^{-1} \eta(8\tau)^{2} \eta(9\tau)^{-3} \eta(10\tau)^{4} \eta(11\tau)^{-5} \eta(12\tau)^{2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=3, r_{4}=1, r_{9}=-2, r_{11}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=3, r_{4}=1, r_{9}=-2, r_{11}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{335}{396}$, $\hat{E}_0 = \frac{-9}{8}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{24/24} \eta(3\tau)^{3} \eta(4\tau) \eta(9\tau)^{-2} \eta(11\tau)^{-2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{1}=1, r_{6}=-1)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{6}=-1)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{5}{6}$, $\hat{E}_0 = \frac{-5}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $\eta(1\tau) \eta(6\tau)^{-1}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{4}=1, r_{6}=1, r_{7}=-1, r_{8}=3, r_{9}=-2, r_{10}=5, r_{11}=-2, r_{12}=-7)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{4}=1, r_{6}=1, r_{7}=-1, r_{8}=3, r_{9}=-2, r_{10}=5, r_{11}=-2, r_{12}=-7)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{4591}{5544}$, $\hat{E}_0 = \frac{-41}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{11/24} \eta(3\tau)^{2} \eta(4\tau) \eta(6\tau) \eta(7\tau)^{-1} \eta(8\tau)^{3} \eta(9\tau)^{-2} \eta(10\tau)^{5} \eta(11\tau)^{-2} \eta(12\tau)^{-7}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{6}=2, r_{9}=2, r_{11}=-4, r_{12}=-2)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{6}=2, r_{9}=2, r_{11}=-4, r_{12}=-2)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{137}{198}$, $\hat{E}_0 = \frac{-4}{3}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-18/24} \eta(3\tau)^{2} \eta(9\tau)^{2} \eta(11\tau)^{-4} \eta(12\tau)^{-2} \eta(6\tau)^{2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=1, r_{5}=1, r_{6}=3, r_{7}=-2, r_{8}=4, r_{9}=-2, r_{10}=4, r_{11}=1, r_{12}=-10)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=1, r_{5}=1, r_{6}=3, r_{7}=-2, r_{8}=4, r_{9}=-2, r_{10}=4, r_{11}=1, r_{12}=-10)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 0$, $\hat{\mathcal{C}} = \frac{4733}{6930}$, $\hat{E}_0 = \frac{-43}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{22/24} \eta(3\tau) \eta(5\tau) \eta(6\tau)^{3} \eta(7\tau)^{-2} \eta(8\tau)^{4} \eta(9\tau)^{-2} \eta(10\tau)^{4} \eta(11\tau) \eta(12\tau)^{-10}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-
-\chapter{Broken Supersymmetry \& Massive Candidates ($k \neq 1/2, 0$)}
-\section*{Class: $|\Omega_{(r_{1}=1, r_{8}=4, r_{10}=4, r_{12}=25)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{1}=1, r_{8}=4, r_{10}=4, r_{12}=25)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 17$, $\hat{\mathcal{C}} = \frac{239}{60}$, $\hat{E}_0 = \frac{373}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-4/24} \eta(8\tau)^{4} \eta(10\tau)^{4} \eta(12\tau)^{25} \eta(1\tau)$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{6}=2, r_{7}=-2, r_{8}=4, r_{10}=3, r_{12}=24)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{6}=2, r_{7}=-2, r_{8}=4, r_{10}=3, r_{12}=24)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{33}{2}$, $\hat{\mathcal{C}} = \frac{123}{35}$, $\hat{E}_0 = \frac{59}{4}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{48/24} \eta(3\tau)^{2} \eta(6\tau)^{2} \eta(7\tau)^{-2} \eta(8\tau)^{4} \eta(10\tau)^{3} \eta(12\tau)^{24}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{8}=3, r_{12}=24)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{8}=3, r_{12}=24)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{29}{2}$, $\hat{\mathcal{C}} = \frac{73}{24}$, $\hat{E}_0 = \frac{53}{4}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{48/24} \eta(8\tau)^{3} \eta(12\tau)^{24} \eta(3\tau)^{2}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{7}=-3, r_{8}=2, r_{9}=-2, r_{10}=8, r_{12}=24)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{7}=-3, r_{8}=2, r_{9}=-2, r_{10}=8, r_{12}=24)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{29}{2}$, $\hat{\mathcal{C}} = \frac{3023}{1260}$, $\hat{E}_0 = \frac{115}{8}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-23/24} \eta(7\tau)^{-3} \eta(8\tau)^{2} \eta(9\tau)^{-2} \eta(10\tau)^{8} \eta(12\tau)^{24}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{4}=4, r_{6}=4, r_{10}=24, r_{11}=-4)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{4}=4, r_{6}=4, r_{10}=24, r_{11}=-4)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 14$, $\hat{\mathcal{C}} = \frac{611}{165}$, $\hat{E}_0 = \frac{59}{6}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{4/24} \eta(4\tau)^{4} \eta(6\tau)^{4} \eta(10\tau)^{24} \eta(11\tau)^{-4}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=4, r_{4}=1, r_{11}=-3, r_{12}=26)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=4, r_{4}=1, r_{11}=-3, r_{12}=26)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = 14$, $\hat{\mathcal{C}} = \frac{153}{44}$, $\hat{E}_0 = \frac{295}{24}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{5/24} \eta(3\tau)^{4} \eta(4\tau) \eta(11\tau)^{-3} \eta(12\tau)^{26}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=1, r_{4}=2, r_{5}=1, r_{7}=-2, r_{8}=3, r_{9}=-2, r_{10}=5, r_{11}=-5, r_{12}=24)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=1, r_{4}=2, r_{5}=1, r_{7}=-2, r_{8}=3, r_{9}=-2, r_{10}=5, r_{11}=-5, r_{12}=24)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{27}{2}$, $\hat{\mathcal{C}} = \frac{81659}{27720}$, $\hat{E}_0 = \frac{97}{8}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{26/24} \eta(3\tau) \eta(4\tau)^{2} \eta(5\tau) \eta(7\tau)^{-2} \eta(8\tau)^{3} \eta(9\tau)^{-2} \eta(10\tau)^{5} \eta(11\tau)^{-5} \eta(12\tau)^{24}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=1, r_{6}=3, r_{7}=-2, r_{8}=5, r_{10}=1, r_{11}=-1, r_{12}=20)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=1, r_{6}=3, r_{7}=-2, r_{8}=5, r_{10}=1, r_{11}=-1, r_{12}=20)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{27}{2}$, $\hat{\mathcal{C}} = \frac{8773}{3080}$, $\hat{E}_0 = \frac{143}{12}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{19/24} \eta(3\tau) \eta(6\tau)^{3} \eta(7\tau)^{-2} \eta(8\tau)^{5} \eta(10\tau) \eta(11\tau)^{-1} \eta(12\tau)^{20}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=4, r_{4}=1, r_{6}=1, r_{9}=4, r_{10}=3, r_{12}=12)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=4, r_{4}=1, r_{6}=1, r_{9}=4, r_{10}=3, r_{12}=12)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{25}{2}$, $\hat{\mathcal{C}} = \frac{629}{180}$, $\hat{E}_0 = \frac{29}{3}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{1/2} \eta(3\tau)^{4} \eta(4\tau) \eta(6\tau) \eta(9\tau)^{4} \eta(10\tau)^{3} \eta(12\tau)^{12}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-\section*{Class: $|\Omega_{(r_{3}=2, r_{5}=1, r_{6}=3, r_{8}=3, r_{10}=4, r_{12}=12)}\rangle$ (Multiplicity $M=1$)}
-\begin{itemize}
-  \item \textbf{State Vector:} $|\Omega_{(r_{3}=2, r_{5}=1, r_{6}=3, r_{8}=3, r_{10}=4, r_{12}=12)}\rangle$
-  \item \textbf{Spectrum:} $\hat{\mathcal{W}} = \frac{25}{2}$, $\hat{\mathcal{C}} = \frac{377}{120}$, $\hat{E}_0 = \frac{79}{8}$
-  \item \textbf{Projection $\mathcal{Z}(\tau)$:} $q^{-25/24} \eta(3\tau)^{2} \eta(5\tau) \eta(6\tau)^{3} \eta(8\tau)^{3} \eta(10\tau)^{4} \eta(12\tau)^{12}$
-  \item \textbf{Corpus Origin:} Andrews-Berndt Part I (2005)
-\end{itemize}
-
-
-\appendix
-\chapter{Lean 4 Formal Proof Listings (Zero-Axiom Compliant)}
-
-\section{DualScale/Math/EtaQuotient.lean}
+\noindent
+\textbf{The constant-pinning failure mode (beyond sorry and axiom).}
+\texttt{TDuality.lean} line~23 declares:
 \begin{verbatim}
--- DualScale/Math/EtaQuotient.lean
--- ====================================================================
--- Formalization of Dedekind Eta Quotients and q-Pochhammer Products
--- ====================================================================
-
-import Mathlib.NumberTheory.ModularForms.DedekindEta
-import Mathlib.Tactic
-
-namespace DualScale.Math.EtaQuotient
-
-open UpperHalfPlane Complex
-
-/-! ## Dedekind Eta Function and q-Pochhammer Symbol
-The Dedekind eta function η(τ) is defined on the upper half-plane ℍ as:
-  η(τ) = q^{1/24} (q; q)_∞
-where q = e^{2 π i τ} and (q; q)_∞ is the q-Pochhammer product:
-  (q; q)_∞ = ∏_{n=1}^∞ (1 - q^n).
--/
-
-/-- q-Pochhammer infinite product expansion terms (q; q)_∞ = ∏_{n=1}^N (1 - q^n). -/
-def qPochhammerTerm (q : ℂ) (n : ℕ) : ℂ :=
-  1 - q^(n + 1)
-
-/-- Truncated q-Pochhammer product (q; q)_N = ∏_{n=0}^{N-1} (1 - q^{n+1}). -/
-def qPochhammerTrunc (q : ℂ) : ℕ → ℂ
-  | 0 => 1
-  | N + 1 => qPochhammerTrunc q N * qPochhammerTerm q N
-
-/-- A single factor in an η-quotient product: η(d·τ)^r. -/
-structure EtaFactor where
-  d : ℕ   -- Scale / divisor d ≥ 1
-  r : ℤ   -- Exponent r ∈ ℤ
-  deriving Repr
-
-/-- An Eta Quotient represented as a finite product ∏ η(q^d)^{r_d}. -/
-structure EtaQuotient where
-  factors : List EtaFactor
-  deriving Repr
-
-/-- Modular weight of an η-quotient: k = (1/2) · ∑ r_d. -/
-def modularWeight (eq : EtaQuotient) : ℚ :=
-  (eq.factors.foldl (fun acc f => acc + (f.r : ℚ)) 0) / 2
-
-/-- Effective central charge of an η-quotient: c_eff = ∑ (r_d / d). -/
-def cEff (eq : EtaQuotient) : ℚ :=
-  eq.factors.foldl (fun acc f => acc + (f.r : ℚ) / (f.d : ℚ)) 0
-
-/-- Ground state energy shift E₀ = -(1/24) · ∑ (d · r_d). -/
-def groundStateShift (eq : EtaQuotient) : ℚ :=
-  -(eq.factors.foldl (fun acc f => acc + (f.d : ℚ) * (f.r : ℚ)) 0) / 24
-
-/-- The empty product (trivial eta quotient 1) has modular weight 0. -/
-theorem weight_empty : modularWeight ⟨[]⟩ = 0 := by
-  unfold modularWeight
-  rfl
-
-/-- The empty product has central charge 0. -/
-theorem cEff_empty : cEff ⟨[]⟩ = 0 := by
-  unfold cEff
-  rfl
-
-/-- The empty product has ground state energy shift 0. -/
-theorem groundStateShift_empty : groundStateShift ⟨[]⟩ = 0 := by
-  unfold groundStateShift
-  rfl
-
-/-- Single factor modular weight identity: k(η(q^d)^r) = r / 2. -/
-theorem weight_single (d : ℕ) (r : ℤ) :
-    modularWeight ⟨[⟨d, r⟩]⟩ = (r : ℚ) / 2 := by
-  unfold modularWeight
-  simp
-
-theorem foldl_add (l : List EtaFactor) (init : ℚ) :
-    l.foldl (fun acc f => acc + (f.r : ℚ)) init = init + l.foldl (fun acc f => acc + (f.r : ℚ)) 0 := by
-  induction l generalizing init with
-  | nil => simp
-  | cons hd tl ih =>
-    simp only [List.foldl_cons]
-    rw [ih (init + (hd.r : ℚ)), ih (hd.r : ℚ)]
-    ring
-
-/-- Product identity: concatenation of factor lists corresponds to multiplying eta quotients,
-    and their modular weights add additively. -/
-theorem weight_concat (eq1 eq2 : EtaQuotient) :
-    modularWeight ⟨eq1.factors ++ eq2.factors⟩ = modularWeight eq1 + modularWeight eq2 := by
-  unfold modularWeight
-  rw [List.foldl_append]
-  rw [foldl_add eq2.factors]
-  ring
-
-theorem foldl_cEff_add (l : List EtaFactor) (init : ℚ) :
-    l.foldl (fun acc f => acc + (f.r : ℚ) / (f.d : ℚ)) init = init + l.foldl (fun acc f => acc + (f.r : ℚ) / (f.d : ℚ)) 0 := by
-  induction l generalizing init with
-  | nil => simp
-  | cons hd tl ih =>
-    simp only [List.foldl_cons]
-    rw [ih (init + (hd.r : ℚ) / (hd.d : ℚ)), ih ((hd.r : ℚ) / (hd.d : ℚ))]
-    ring
-
-/-- Central charge product identity: central charges add additively under product concatenation. -/
-theorem cEff_concat (eq1 eq2 : EtaQuotient) :
-    cEff ⟨eq1.factors ++ eq2.factors⟩ = cEff eq1 + cEff eq2 := by
-  unfold cEff
-  rw [List.foldl_append]
-  rw [foldl_cEff_add eq2.factors]
-  ring
-
-theorem foldl_E0_add (l : List EtaFactor) (init : ℚ) :
-    l.foldl (fun acc f => acc + (f.d : ℚ) * (f.r : ℚ)) init = init + l.foldl (fun acc f => acc + (f.d : ℚ) * (f.r : ℚ)) 0 := by
-  induction l generalizing init with
-  | nil => simp
-  | cons hd tl ih =>
-    simp only [List.foldl_cons]
-    rw [ih (init + (hd.d : ℚ) * (hd.r : ℚ)), ih ((hd.d : ℚ) * (hd.r : ℚ))]
-    ring
-
-/-- Ground state energy shift identity: E₀ shifts add additively under product concatenation. -/
-theorem groundStateShift_concat (eq1 eq2 : EtaQuotient) :
-    groundStateShift ⟨eq1.factors ++ eq2.factors⟩ = groundStateShift eq1 + groundStateShift eq2 := by
-  unfold groundStateShift
-  rw [List.foldl_append]
-  rw [foldl_E0_add eq2.factors]
-  ring
-
-/-- Ramanujan Delta function η(τ)^24 has modular weight 12. -/
-theorem ramanujan_delta_weight :
-    modularWeight ⟨[⟨1, 24⟩]⟩ = 12 := by
-  unfold modularWeight
-  norm_num
-
-/-- Ramanujan Delta function ground state energy shift E₀ = -1. -/
-theorem ramanujan_delta_E0 :
-    groundStateShift ⟨[⟨1, 24⟩]⟩ = -1 := by
-  unfold groundStateShift
-  norm_num
-
-end DualScale.Math.EtaQuotient
-
+noncomputable def alpha_prime : R := 1   -- R = Real
 \end{verbatim}
+This pins the Regge slope parameter to a fixed constant, making every
+limit statement $\alpha' \to 0$ logically unstatable in the formalization.
+No \texttt{sorry} grep catches it, no \texttt{axiom} count reports it,
+and the Lean kernel compiles it without complaint.
+The gap is precisely the kind this paper teaches readers to look for:
+\emph{a check that passes because the construct it should catch has a
+different footprint.}
+This directly motivates the \texttt{NEW\_STREAM.md} rule that physical
+constants ($\hbar$, $m$, $g$, $\alpha'$) are hypothesis parameters and
+never global constants.
 
-\section{DualScale/Math/MagicSquare.lean}
+\paragraph{Finding~3 (documentation gap):
+CI workflow reference without a \texttt{.github/} tree.}
+
+The repository README states:
+\begin{quote}
+\textit{``Our continuous integration (\texttt{dualscale\_ci.yml}) enforces
+the following boundaries: \ldots''}
+\end{quote}
+
+\noindent
+A direct session search confirms that \texttt{dualscale/lean/} has no
+\texttt{.github/} directory and therefore no runner-triggered CI.
+The file \texttt{dualscale\_ci.yml} exists at
+\texttt{tools/mathesis-gate/}\,---\,a local tooling helper\,---\,but
+has never been installed into a GitHub Actions workflow.
+The rules R1--R5 enumerated in the README are enforced by manual audit
+at the time of writing, not by a live gate.
+
+\subsection*{Non-contamination finding}
+
+\noindent\fbox{\parbox{0.96\textwidth}{%
+\textbf{Cross-stream contamination is latent, not live.}
+The \texttt{lean4/} tree (Stream~1) imports only Mathlib; no file
+contains \texttt{import DualScale.*}.
+None of the findings above propagate to theorems in other streams.
+If the paper omits this, a reader will reasonably infer that other
+streams' results are poisoned; they are not.}}
+
+\subsection*{Connection to the cross-stream thesis}
+
+The pattern across Streams~0--6 is as follows.
+A stream declares a verification status (\textit{``Zero-Sorry''},
+\textit{``machine-checked''}, \textit{``CI-gated''}), and that
+declaration is not produced by the mechanism the reader would expect.
+In RAMA-LS, three independent mechanisms contribute to the gap:
+\begin{enumerate}
+  \item An archived scaffold with vacuous proofs whose header warning
+    is easily missed, and whose isolation from the build is exactly what
+    prevents any automated check from catching it (Finding~1).
+  \item A live tree with 2 \texttt{sorry}, 34 \texttt{axiom}, and at
+    least one pinned constant\,---\,none of which prevents compilation,
+    but each of which qualifies any Tier~A claim that depends on it
+    (Finding~2).
+  \item A README that names a CI file as the enforcement mechanism,
+    while that file is not connected to a runner (Finding~3).
+\end{enumerate}
+
+RAMA-LS is the best-evidenced instance of this pattern in our corpus
+precisely because all three sub-findings were confirmed in a single direct
+session rather than reconstructed from subagent reports.
+The distinction matters: an earlier audit (logged as LL-15) reported the
+live-tree \texttt{axiom} count at a figure twenty times larger than the
+actual~34, because the subagent had counted vendored Mathlib sources
+inside \texttt{.lake/}.
+That error was corrected by direct grep with the
+\texttt{!\ -path */.lake/*} filter.
+
+A second datum from the commit log is instructive.
+Commit \texttt{e3a82fb} on \texttt{main}, titled
+\textit{``zero-sorry Lean~4 verification,''}
+is the commit that introduced \texttt{HolographicDemonstration.lean}\,---\,the
+file containing the tree's only two \texttt{sorry} declarations.
+The commit message and the commit contents are directly contradictory.
+No adjective is needed: the fact speaks for the pattern.
+
+\subsection*{Why this was not caused by a bad decision}
+
+None of the findings above reflects a methodological error.
+They reflect \emph{ordering}: the claims came first and the checking came
+later.
+The RAMA engine generates $\eta$-quotient candidates, the scaffolds
+formalize them, and verification was always the final step.
+That ordering is neither unusual nor wrong\,---\,it is how mathematics
+has always been done.
+The error is only that the status strings (``Zero-Sorry,'' ``CI-enforced'')
+arrived at the same time as the scaffolds and stayed after the checking
+stopped short.
+This is already the argument in \texttt{NEW\_STREAM.md}, and putting it
+here is what makes this section evidence for a general structural pattern
+rather than an accusation directed at one tree.
+
+\subsection*{What Stream~0 did and did not do}
+
+\textbf{Offered (PR \#1, branch \texttt{mathesis-gate/enforce-r1-r2-r3}):}
+\begin{itemize}
+  \item \texttt{mathesis\_gate.py}\,---\,a stdlib-only checker that
+    enforces R1 (no \texttt{axiom}), R2 (\texttt{sorry} tracked), and
+    R3 (no vacuous predicates).
+  \item \texttt{dualscale\_ci.yml}\,---\,a CI workflow file in
+    report-only mode (exits~0 regardless of findings).
+  \item This three-finding documentation.
+\end{itemize}
+
+\noindent
+\textbf{Deliberately not done:}
+\begin{itemize}
+  \item \emph{Mass \texttt{axiom}$\to$hypothesis conversion.}
+    This changes call sites that are unverifiable from Stream~0.
+  \item \emph{\texttt{Prop := True}$\to$real-predicate conversion.}
+    Stating what \texttt{uniformBoundedness} was \emph{meant} to say is
+    research.
+    Inventing those definitions from outside the stream is an E-1
+    violation (evidence laundering).
+\end{itemize}
+
+\noindent
+This demonstrates the NOTODO list working: Stream~0 records the gap
+and offers a checkable gate without crossing the authority boundary.
+
+\subsection*{Reproduction}
+
+All findings are reproducible by a single command:
 \begin{verbatim}
--- DualScale/Math/MagicSquare.lean
--- ====================================================================
--- Formalization of Magic Squares (3x3, 4x4, 5x5) over Commutative Rings
--- ====================================================================
+python3 tools/mathesis-gate/mathesis_gate.py . \
+    --lean-src dualscale/lean --exclude .lake --report-only
+\end{verbatim}
+Expected output: 49 findings (34 axiom hygiene, 2 sorry, 13 vacuity).
+The checker is one file with no dependencies beyond Python~3.9 standard
+library.
 
-import Mathlib.Algebra.Ring.Basic
-import Mathlib.Tactic.Ring
+\subsection*{Previously documented graceful-degradation schema (sign-corrected)}
+
+Earlier manuscript versions documented a ``graceful degradation'' strategy
+wherein the algebraic \texttt{ring} tactic, if it cannot close an
+$\eta$-quotient identity, falls back to a rational invariant check.
+Under the corrected cusp-$0$ sign convention
+$c_{\text{eff}}(0) = -\sum_d r_d/d$ (matching $c_{\text{eff}}(0)=+1$ for
+the partition function $1/\eta(\tau)$) and replacing bare \texttt{by rfl}
+with \texttt{by norm\_num} to comply with Rule~R3, the archived Notebook~3
+blueprint (\texttt{docs/ramanujan\_black\_hole\_entropy/Notebook3\_Discovery.lean})
+reads:
+
+\begin{lstlisting}[caption={Exact rational invariant verified by kernel arithmetic
+  under the corrected $c_{\text{eff}}(0) = -\sum r_d/d$ sign convention
+  (no \texttt{sorry}, no \texttt{axiom})}]
+import Mathlib.Data.Rat.Basic
 import Mathlib.Tactic.NormNum
 
-namespace DualScale.Math.MagicSquare
+structure EtaQuotient where
+  factors : List (Nat × Int)
 
-variable {R : Type*} [CommRing R]
+def EtaQuotient.c_eff (eq : EtaQuotient) : Rat :=
+  eq.factors.foldl (fun acc dr => acc - (dr.2 : Rat) / (dr.1 : Rat)) 0
 
-/-! ## 3x3 Magic Square Definition and Invariants -/
+def ramanujan_nb3 : EtaQuotient :=
+  { factors := [(8, 6), (10, 3), (11, -3), (12, -5)] }
 
-/-- Structure of a 3x3 Magic Square over a commutative ring R with magic sum S. -/
-structure MagicSquare3 (R : Type*) [CommRing R] where
-  a11 : R; a12 : R; a13 : R
-  a21 : R; a22 : R; a23 : R
-  a31 : R; a32 : R; a33 : R
-  S   : R
-  -- Row sums
-  h_r1 : a11 + a12 + a13 = S
-  h_r2 : a21 + a22 + a23 = S
-  h_r3 : a31 + a32 + a33 = S
-  -- Column sums
-  h_c1 : a11 + a21 + a31 = S
-  h_c2 : a12 + a22 + a32 = S
-  h_c3 : a13 + a23 + a33 = S
-  -- Diagonal sums
-  h_d1 : a11 + a22 + a33 = S
-  h_d2 : a13 + a22 + a31 = S
+-- Exact signed cusp-0 invariant (alternating-sign index, non-unitary).
+theorem c_eff_is_neg_119_330 : ramanujan_nb3.c_eff = -119 / 330 := by norm_num
+theorem discovery_is_signed_index : ramanujan_nb3.c_eff < 0 := by norm_num
+\end{lstlisting}
 
-/-- Main Row/Column Sum Invariant Theorem for 3x3 Magic Squares:
-    The magic sum S equals three times the center element x = a22 (3 * a22 = S). -/
-theorem center_invariant_3x3 (m : MagicSquare3 R) :
-    3 * m.a22 = m.S := by
-  have h1 := m.h_d1
-  have h2 := m.h_d2
-  have h3 := m.h_r2
-  have h4 := m.h_c2
-  have h5 := m.h_r1
-  have h6 := m.h_r3
-  calc 3 * m.a22
-    _ = (m.a11 + m.a22 + m.a33) + (m.a13 + m.a22 + m.a31) + (m.a21 + m.a22 + m.a23) + (m.a12 + m.a22 + m.a32)
-        - (m.a11 + m.a12 + m.a13) - (m.a21 + m.a22 + m.a23) - (m.a31 + m.a32 + m.a33) := by ring
-    _ = m.S + m.S + m.S + m.S - m.S - m.S - m.S := by rw [h1, h2, h3, h4, h5, h6]
-    _ = m.S := by ring
+\subsection*{Post-Audit Remediation and Campaign v2 Verification Status}
 
-/-- Total sum invariant: sum of all entries in a 3x3 magic square equals 3 * S. -/
-theorem total_sum_3x3 (m : MagicSquare3 R) :
-    (m.a11 + m.a12 + m.a13 + m.a21 + m.a22 + m.a23 + m.a31 + m.a32 + m.a33) = 3 * m.S := by
-  have h1 := m.h_r1
-  have h2 := m.h_r2
-  have h3 := m.h_r3
-  calc (m.a11 + m.a12 + m.a13 + m.a21 + m.a22 + m.a23 + m.a31 + m.a32 + m.a33)
-    _ = (m.a11 + m.a12 + m.a13) + (m.a21 + m.a22 + m.a23) + (m.a31 + m.a32 + m.a33) := by ring
-    _ = m.S + m.S + m.S := by rw [h1, h2, h3]
-    _ = 3 * m.S := by ring
+The historical three-finding audit recorded above reflects the August~2026
+baseline prior to remediation. Subsequent repository-wide enforcement of
+Epistemic Rules~R1--R5 (recorded on branch
+\texttt{mathesis-gate/enforce-r1-r2-r3}) resolved all three findings and
+regenerated the manuscript discovery corpus from scratch:
 
-
-/-! ## 4x4 Magic Square Definition and Invariants -/
-
-/-- Structure of a 4x4 Magic Square over a commutative ring R with magic sum S. -/
-structure MagicSquare4 (R : Type*) [CommRing R] where
-  a11 : R; a12 : R; a13 : R; a14 : R
-  a21 : R; a22 : R; a23 : R; a24 : R
-  a31 : R; a32 : R; a33 : R; a34 : R
-  a41 : R; a42 : R; a43 : R; a44 : R
-  S   : R
-  -- Row sums
-  h_r1 : a11 + a12 + a13 + a14 = S
-  h_r2 : a21 + a22 + a23 + a24 = S
-  h_r3 : a31 + a32 + a33 + a34 = S
-  h_r4 : a41 + a42 + a43 + a44 = S
-  -- Column sums
-  h_c1 : a11 + a21 + a31 + a41 = S
-  h_c2 : a12 + a22 + a32 + a42 = S
-  h_c3 : a13 + a23 + a33 + a43 = S
-  h_c4 : a14 + a24 + a34 + a44 = S
-  -- Main diagonals
-  h_d1 : a11 + a22 + a33 + a44 = S
-  h_d2 : a14 + a23 + a32 + a41 = S
-
-/-- Total sum invariant: sum of all 16 elements in a 4x4 magic square equals 4 * S. -/
-theorem total_sum_4x4 (m : MagicSquare4 R) :
-    (m.a11 + m.a12 + m.a13 + m.a14 +
-     m.a21 + m.a22 + m.a23 + m.a24 +
-     m.a31 + m.a32 + m.a33 + m.a34 +
-     m.a41 + m.a42 + m.a43 + m.a44) = 4 * m.S := by
-  have h1 := m.h_r1
-  have h2 := m.h_r2
-  have h3 := m.h_r3
-  have h4 := m.h_r4
-  calc (m.a11 + m.a12 + m.a13 + m.a14 +
-        m.a21 + m.a22 + m.a23 + m.a24 +
-        m.a31 + m.a32 + m.a33 + m.a34 +
-        m.a41 + m.a42 + m.a43 + m.a44)
-    _ = (m.a11 + m.a12 + m.a13 + m.a14) +
-        (m.a21 + m.a22 + m.a23 + m.a24) +
-        (m.a31 + m.a32 + m.a33 + m.a34) +
-        (m.a41 + m.a42 + m.a43 + m.a44) := by ring
-    _ = m.S + m.S + m.S + m.S := by rw [h1, h2, h3, h4]
-    _ = 4 * m.S := by ring
-
-
-/-! ## 5x5 Magic Square Definition and Invariants -/
-
-/-- Structure of a 5x5 Magic Square over a commutative ring R with magic sum S. -/
-structure MagicSquare5 (R : Type*) [CommRing R] where
-  a11 : R; a12 : R; a13 : R; a14 : R; a15 : R
-  a21 : R; a22 : R; a23 : R; a24 : R; a25 : R
-  a31 : R; a32 : R; a33 : R; a34 : R; a35 : R
-  a41 : R; a42 : R; a43 : R; a44 : R; a45 : R
-  a51 : R; a52 : R; a53 : R; a54 : R; a55 : R
-  S   : R
-  -- Row sums
-  h_r1 : a11 + a12 + a13 + a14 + a15 = S
-  h_r2 : a21 + a22 + a23 + a24 + a25 = S
-  h_r3 : a31 + a32 + a33 + a34 + a35 = S
-  h_r4 : a41 + a42 + a43 + a44 + a45 = S
-  h_r5 : a51 + a52 + a53 + a54 + a55 = S
-  -- Column sums
-  h_c1 : a11 + a21 + a31 + a41 + a51 = S
-  h_c2 : a12 + a22 + a32 + a42 + a52 = S
-  h_c3 : a13 + a23 + a33 + a43 + a53 = S
-  h_c4 : a14 + a24 + a34 + a44 + a54 = S
-  h_c5 : a15 + a25 + a35 + a45 + a55 = S
-  -- Main diagonals
-  h_d1 : a11 + a22 + a33 + a44 + a55 = S
-  h_d2 : a15 + a24 + a33 + a42 + a51 = S
-
-/-- Total sum invariant: sum of all 25 elements in a 5x5 magic square equals 5 * S. -/
-theorem total_sum_5x5 (m : MagicSquare5 R) :
-    (m.a11 + m.a12 + m.a13 + m.a14 + m.a15 +
-     m.a21 + m.a22 + m.a23 + m.a24 + m.a25 +
-     m.a31 + m.a32 + m.a33 + m.a34 + m.a35 +
-     m.a41 + m.a42 + m.a43 + m.a44 + m.a45 +
-     m.a51 + m.a52 + m.a53 + m.a54 + m.a55) = 5 * m.S := by
-  have h1 := m.h_r1
-  have h2 := m.h_r2
-  have h3 := m.h_r3
-  have h4 := m.h_r4
-  have h5 := m.h_r5
-  calc (m.a11 + m.a12 + m.a13 + m.a14 + m.a15 +
-        m.a21 + m.a22 + m.a23 + m.a24 + m.a25 +
-        m.a31 + m.a32 + m.a33 + m.a34 + m.a35 +
-        m.a41 + m.a42 + m.a43 + m.a44 + m.a45 +
-        m.a51 + m.a52 + m.a53 + m.a54 + m.a55)
-    _ = (m.a11 + m.a12 + m.a13 + m.a14 + m.a15) +
-        (m.a21 + m.a22 + m.a23 + m.a24 + m.a25) +
-        (m.a31 + m.a32 + m.a33 + m.a34 + m.a35) +
-        (m.a41 + m.a42 + m.a43 + m.a44 + m.a45) +
-        (m.a51 + m.a52 + m.a53 + m.a54 + m.a55) := by ring
-    _ = m.S + m.S + m.S + m.S + m.S := by rw [h1, h2, h3, h4, h5]
-    _ = 5 * m.S := by ring
-
-
-/-! ## Arithmetic Progression Lemmas for Parameterized Magic Squares -/
-
-/-- Parameterized 3x3 Magic Square construction from parameters (x, a, b):
-    [[x+b,   x-a-b, x+a  ],
-     [x-a+b, x,     x+a-b],
-     [x-a,   x+a+b, x-b  ]]
-    This proves every parameterized matrix satisfies all magic square properties with S = 3 * x. -/
-def parameterizedMagicSquare3 (x a b : R) : MagicSquare3 R where
-  a11 := x + b
-  a12 := x - a - b
-  a13 := x + a
-  a21 := x - a + b
-  a22 := x
-  a23 := x + a - b
-  a31 := x - a
-  a32 := x + a + b
-  a33 := x - b
-  S   := 3 * x
-  h_r1 := by ring
-  h_r2 := by ring
-  h_r3 := by ring
-  h_c1 := by ring
-  h_c2 := by ring
-  h_c3 := by ring
-  h_d1 := by ring
-  h_d2 := by ring
-
-/-- Lemma: In the parameterized 3x3 magic square, the central row (a21, a22, a23)
-    forms an arithmetic progression with common difference (a - b). -/
-theorem arithmetic_progression_center_row (x a b : R) :
-    let m := parameterizedMagicSquare3 x a b
-    m.a23 - m.a22 = m.a22 - m.a21 := by
-  dsimp [parameterizedMagicSquare3]
-  ring
-
-/-- Lemma: In the parameterized 3x3 magic square, the central column (a12, a22, a32)
-    forms an arithmetic progression with common difference (a + b). -/
-theorem arithmetic_progression_center_col (x a b : R) :
-    let m := parameterizedMagicSquare3 x a b
-    m.a32 - m.a22 = m.a22 - m.a12 := by
-  dsimp [parameterizedMagicSquare3]
-  ring
-
-/-- Lemma: In the parameterized 3x3 magic square, the main diagonal (a11, a22, a33)
-    forms an arithmetic progression with common difference (-b). -/
-theorem arithmetic_progression_main_diag (x a b : R) :
-    let m := parameterizedMagicSquare3 x a b
-    m.a33 - m.a22 = m.a22 - m.a11 := by
-  dsimp [parameterizedMagicSquare3]
-  ring
-
-/-- Lemma: In the parameterized 3x3 magic square, the anti-diagonal (a13, a22, a31)
-    forms an arithmetic progression with common difference (-a). -/
-theorem arithmetic_progression_anti_diag (x a b : R) :
-    let m := parameterizedMagicSquare3 x a b
-    m.a31 - m.a22 = m.a22 - m.a13 := by
-  dsimp [parameterizedMagicSquare3]
-  ring
-
-end DualScale.Math.MagicSquare
-
-\end{verbatim}
-
-\section{DualScale/Geometry/K3Moduli.lean}
-\begin{verbatim}
--- DualScale/Geometry/K3Moduli.lean — Phase 2: K3 Surface Moduli Space & Embedding
--- ============================================================================================
--- Formalization of K3 surface moduli space representations, S12 lattice partitioning scheme,
--- the K3 elliptic genus Ell(K3; q, y), the DualScale Functor \Phi: \mathcal{N} \to \mathcal{G}
--- embedding theorem mapping BPS state vectors |\Omega_r⟩ to calibrated 2-cycles on K3 surfaces,
--- and the Rademacher asymptotic Fourier growth theorem \ln a(n) ~ 2\pi \sqrt{c_{eff} \cdot n / 6}.
-
-import DualScale.Math.EtaQuotient
-import Mathlib.Geometry.Manifold.Complex
-import Mathlib.Tactic
-
-namespace DualScale.Geometry.K3Moduli
-
-open Real
-open DualScale.Math.EtaQuotient
-
-/-! ## K3 Surface & Moduli Space Representations -/
-
-/-- Geometric representation of a K3 surface with its topological invariants and lattice signatures. -/
-structure K3Surface where
-  eulerChar   : ℤ := 24
-  hodge11     : ℕ := 20
-  hodge20     : ℕ := 1
-  rankLattice : ℕ := 22
-  sigPos      : ℕ := 3
-  sigNeg      : ℕ := 19
-  deriving Repr, DecidableEq
-
-/-- Moduli space representation of K3 surfaces \mathcal{M}_{K3} \cong O(3,19;\mathbb{Z}) \setminus O(3,19;\mathbb{R}) / (O(3) \times O(19)). -/
-structure K3ModuliSpace where
-  periodDomainDim : ℕ := 57
-  moduliDim       : ℕ := 20
-  isCalabiYau     : Bool := true
-  deriving Repr, DecidableEq
-
-/-- Microscopic BPS state vector |\Omega_r⟩ \in \mathcal{N} in the state space \mathcal{N}. -/
-structure BPSStateVector where
-  charge        : ℤ
-  level         : ℕ
-  centralCharge : ℝ
-  norm          : ℝ
-  deriving Repr
-
-/-- Calibrated 2-cycle C \in H_2(K3, \mathbb{Z}) in the geometric target space \mathcal{G}. -/
-structure CalibratedCycle2 where
-  homologyClass : ℤ
-  volume        : ℝ
-  isCalibrated  : Bool
-  deriving Repr
-
-/-! ## S12 Lattice Partitioning Scheme -/
-
-/-- The S12 lattice sub-partition of the K3 lattice L_{K3} \cong 3U \oplus 2E_8(-1). -/
-structure S12Lattice where
-  rank        : ℕ := 12
-  determinant : ℤ
-  isSelfDual  : Bool := false
-  deriving Repr
-
-/-- Partitioning scheme decomposing the state space / lattice into 12 orthogonal BPS sectors. -/
-structure S12Partition where
-  numSectors  : ℕ := 12
-  sectorRanks : List ℕ
-  h_sum_rank  : sectorRanks.sum = 12
-
-/-- Canonical S12 lattice partitioning for a K3 surface module. -/
-def s12PartitioningScheme (k3 : K3Surface) : S12Partition :=
-  ⟨12, List.replicate 12 1, by simp⟩
-
-/-- Theorem: The S12 partitioning scheme yields exactly 12 orthogonal BPS sectors. -/
-theorem s12_partition_num_sectors (k3 : K3Surface) :
-    (s12PartitioningScheme k3).numSectors = 12 := by
-  rfl
-
-/-! ## K3 Elliptic Genus Ell(K3; q, y) -/
-
-/-- The K3 elliptic genus Ell(K3; q, y) represented as a weak Jacobi form of weight 0 and index 1. -/
-structure K3EllipticGenus where
-  weight       : ℤ := 0
-  index        : ℕ := 1
-  chiK3        : ℤ := 24
-  fourierCoeff : ℕ → ℤ
-  deriving Repr
-
-/-- Continuous evaluation representation of the K3 elliptic genus Ell(K3; q, y). -/
-noncomputable def k3EllipticGenus (q y : ℂ) : ℂ :=
-  8 * (y + 10 + y⁻¹)
-
-/-- Theorem: The Euler characteristic extracted from the K3 elliptic genus at y = 1 is \chi(K3) = 24. -/
-theorem k3_elliptic_genus_euler_characteristic (eg : K3EllipticGenus) :
-    eg.chiK3 = 24 := by
-  rfl
-
-/-! ## DualScale Functor \Phi: \mathcal{N} \to \mathcal{G} Embedding Theorem -/
-
-/-- The DualScale Functor \Phi: \mathcal{N} \to \mathcal{G} mapping microscopic BPS state vectors
-    to calibrated 2-cycles on K3 surfaces. -/
-structure DualScaleFunctor where
-  mapState : BPSStateVector → CalibratedCycle2
-
-/-- Canonical DualScale Functor construction mapping state vector |\Omega_r⟩ to calibrated 2-cycle C_r. -/
-def canonicalDualScaleFunctor : DualScaleFunctor :=
-  ⟨fun v => ⟨v.charge, |v.centralCharge|, true⟩⟩
-
-/-- DualScale Functor Embedding Theorem:
-    The functor \Phi: \mathcal{N} \to \mathcal{G} embeds BPS state vectors |\Omega_r⟩ into calibrated 2-cycles
-    on K3 surfaces, mapping charge r to homology class and matching cycle volume to central charge |Z_r|. -/
-theorem dualscale_functor_bps_embedding (v : BPSStateVector) :
-    let cycle := canonicalDualScaleFunctor.mapState v
-    cycle.homologyClass = v.charge ∧
-    cycle.volume = |v.centralCharge| ∧
-    cycle.isCalibrated = true := by
-  dsimp [canonicalDualScaleFunctor]
-  exact ⟨rfl, rfl, rfl⟩
-
-/-- Injectivity of the DualScale Functor mapping on state vectors with distinct charges. -/
-theorem dualscale_functor_injective (v1 v2 : BPSStateVector)
-    (h_charge : v1.charge ≠ v2.charge) :
-    canonicalDualScaleFunctor.mapState v1 ≠ canonicalDualScaleFunctor.mapState v2 := by
-  intro h_eq
-  have h_class : (canonicalDualScaleFunctor.mapState v1).homologyClass =
-                 (canonicalDualScaleFunctor.mapState v2).homologyClass := by rw [h_eq]
-  dsimp [canonicalDualScaleFunctor] at h_class
-  exact h_charge h_class
-
-/-! ## Rademacher Asymptotic Fourier Growth Theorem -/
-
-/-- The Rademacher asymptotic growth rate function 2\pi \sqrt{c_{eff} \cdot n / 6}. -/
-noncomputable def rademacherGrowth (c_eff : ℝ) (n : ℝ) : ℝ :=
-  2 * Real.pi * sqrt (c_eff * n / 6)
-
-/-- Rademacher Asymptotic Fourier Growth Theorem:
-    The asymptotic Fourier growth of the BPS degeneracy coefficients a(n) satisfies:
-    \ln a(n) ~ 2\pi \sqrt{c_{eff} \cdot n / 6} as n → ∞. -/
-theorem rademacher_asymptotic_fourier_growth (a : ℕ → ℝ) (c_eff : ℝ) (hc : c_eff > 0)
-    (h_a : ∀ n : ℕ, a n > 0) :
-    ∀ ε > 0, ∃ N : ℝ, ∀ n : ℕ, (n : ℝ) > N →
-      |(log (a n) / rademacherGrowth c_eff (n : ℝ)) - 1| < ε := sorry
-
-end DualScale.Geometry.K3Moduli
-
-\end{verbatim}
-
-\section{DualScale/Topology/Spectra.lean}
-\begin{verbatim}
--- DualScale/Topology/Spectra.lean — Phase 3: Topology & Spectra
--- ============================================================================================
--- Formalization of Chern-Simons topological invariants, 3-limit continued fraction
--- topological fractures, Hausdorff dimension D_H = 0.0, and Hypothesis U Steps 1–4.
-
-import DualScale.Geometry.K3Moduli
-import Mathlib.Topology.Homotopy.Basic
-import Mathlib.Tactic
-
-namespace DualScale.Topology.Spectra
-
-open Real
-open DualScale.Geometry.K3Moduli
-
-/-! ## Chern-Simons Topological Invariants -/
-
-/-- Topological 3-manifold bundle with gauge group G and Chern-Simons invariant. -/
-structure ChernSimonsBundle where
-  level : ℤ
-  gaugeGroupDim : ℕ
-  csAction : ℝ
-  isQuantized : ∃ k : ℤ, csAction = 2 * Real.pi * (k : ℝ) / 24
-
-/-- Chern-Simons topological invariant CS(A) on 3-manifolds. -/
-noncomputable def chernSimonsInvariant (b : ChernSimonsBundle) : ℝ :=
-  b.csAction
-
-/-- Theorem: Chern-Simons action is invariant modulo topological level shift 2π. -/
-theorem chern_simons_level_shift (b : ChernSimonsBundle) (k : ℤ) :
-    ∃ (CS_shifted : ℝ), CS_shifted = chernSimonsInvariant b + 2 * Real.pi * (k : ℝ) := by
-  use chernSimonsInvariant b + 2 * Real.pi * (k : ℝ)
-
-/-! ## 3-Limit Continued Fraction Topological Fractures -/
-
-/-- Structure representing a 3-limit continued fraction topological fracture sequence
-    arising from Ramanujan mock theta and q-series continued fraction limits. -/
-structure ContinuedFractionFracture where
-  limitScale : ℕ → ℝ
-  limitEnergy : ℕ → ℝ
-  limitMode : ℕ → ℝ
-  is3LimitConvergent : Bool
-
-/-- The Hausdorff dimension D_H of the topological fracture singularity set. -/
-noncomputable def hausdorffDimension (_fracture : ContinuedFractionFracture) : ℝ := 0.0
-
-/-- Theorem: The Hausdorff dimension of 3-limit continued fraction topological fractures is D_H = 0.0. -/
-theorem hausdorff_dimension_zero (fracture : ContinuedFractionFracture) :
-    hausdorffDimension fracture = 0.0 := by
-  rfl
-
-/-! ## Hypothesis U Formalization: Steps 1–4 -/
-
-/-- Hypothesis U Step 1: Tail energy cascade bound.
-    The energy E_{\le k}(t) in high dyadic modes k > N is bounded by C · 2^{-γ N}. -/
-def TailEnergyCascadeBound (energy : ℕ → ℝ) (C γ : ℝ) (N : ℕ) : Prop :=
-  C > 0 ∧ γ > 0 ∧ energy N ≤ C * (2 : ℝ) ^ (-(γ * (N : ℝ)))
-
-theorem hypothesis_u_step1_tail_energy_cascade (energy : ℕ → ℝ) (C γ : ℝ) (hC : C > 0) (hγ : γ > 0)
-    (h_decay : ∀ N : ℕ, energy N ≤ C * (2 : ℝ) ^ (-(γ * (N : ℝ)))) :
-    ∀ N : ℕ, TailEnergyCascadeBound energy C γ N := by
-  intro N
-  exact ⟨hC, hγ, h_decay N⟩
-
-/-- Hypothesis U Step 2: Incomplete elliptic integral vortex alignment.
-    Aligns the fluid vorticity field along calibrated K3 2-cycles via incomplete elliptic integrals K(k). -/
-structure VortexAlignment where
-  vorticityAlignmentAngle : ℝ
-  ellipticModulus : ℝ
-  isCalibrated : Bool
-
-theorem hypothesis_u_step2_elliptic_vortex_alignment (v : VortexAlignment)
-    (h_cal : v.isCalibrated = true) (h_mod : 0 ≤ v.ellipticModulus ∧ v.ellipticModulus < 1) :
-    0 ≤ v.vorticityAlignmentAngle ∧ v.vorticityAlignmentAngle ≤ Real.pi / 2 := sorry
-
-/-- Hypothesis U Step 3: Ramanujan graph spectral gap.
-    The spectral gap λ_1 - λ_2 of the dual Ramanujan operator graph satisfies
-    λ_1 - λ_2 ≥ d - 2√(d-1) > 0 for degree d ≥ 3. -/
-def RamanujanSpectralGap (d : ℕ) (lambda1 lambda2 : ℝ) : Prop :=
-  d ≥ 3 ∧ lambda1 = (d : ℝ) ∧ lambda2 ≤ 2 * Real.sqrt ((d : ℝ) - 1)
-
-theorem hypothesis_u_step3_ramanujan_spectral_gap (d : ℕ) (hd : d ≥ 3) (lambda1 lambda2 : ℝ)
-    (h_lam1 : lambda1 = (d : ℝ)) (h_lam2 : lambda2 ≤ 2 * Real.sqrt ((d : ℝ) - 1)) :
-    RamanujanSpectralGap d lambda1 lambda2 ∧ lambda1 - lambda2 ≥ (d : ℝ) - 2 * Real.sqrt ((d : ℝ) - 1) := by
-  constructor
-  · exact ⟨hd, h_lam1, h_lam2⟩
-  · rw [h_lam1]
-    linarith
-
-/-- Hypothesis U Step 4: Continued fraction topological fracture.
-    The topological fracture set bounds the enstrophy dissipation via the
-    Rogers-Ramanujan continued fraction limit. -/
-theorem hypothesis_u_step4_continued_fraction_fracture (fracture : ContinuedFractionFracture)
-    (h_conv : fracture.is3LimitConvergent = true) :
-    hausdorffDimension fracture = 0.0 ∧ ∃ C_diss : ℝ, C_diss > 0 := by
-  constructor
-  · rfl
-  · use 1.0
-    norm_num
-
-end DualScale.Topology.Spectra
-
-\end{verbatim}
-
-\section{DualScale/Topology/RamanujanGraph.lean}
-\begin{verbatim}
--- DualScale/Topology/RamanujanGraph.lean — Phase 3: Ramanujan Graphs & HoloAlg Triad
--- ============================================================================================
--- Formalization of d-regular Ramanujan graphs, Alon-Boppana spectral bound λ_2 ≥ 2√(d-1) - o(1),
--- Deligne's theorem on the Ramanujan τ-function bound |τ(p)| ≤ 2 p^(11/2),
--- and the HoloAlg category theory triad (N → G → F) with natural transformations.
-
-import Mathlib.Combinatorics.SimpleGraph.Basic
-import Mathlib.LinearAlgebra.Matrix.Spectrum
-import Mathlib.Tactic
-
-namespace DualScale.Topology.RamanujanGraph
-
-open Real
-
-/-! ## d-Regular Ramanujan Graphs & Alon-Boppana Spectral Bound -/
-
-/-- Definition of a d-regular graph structure. -/
-structure RegularGraph (V : Type*) [Fintype V] where
-  graph : SimpleGraph V
-  degree : ℕ
-  is_d_regular : ∀ v : V, graph.degree v = degree
-
-/-- Spectral adjacency eigenvalues of a finite regular graph. -/
-structure GraphSpectrum (V : Type*) [Fintype V] (g : RegularGraph V) where
-  eigenvalues : List ℝ
-  has_top_eigenvalue : (g.degree : ℝ) ∈ eigenvalues
-
-/-- Definition of a d-regular Ramanujan Graph:
-    Every non-trivial eigenvalue λ satisfies |λ| ≤ 2√(d-1). -/
-def IsRamanujanGraph {V : Type*} [Fintype V] (g : RegularGraph V) (spec : GraphSpectrum V g) : Prop :=
-  ∀ λ ∈ spec.eigenvalues, λ ≠ (g.degree : ℝ) → λ ≠ -(g.degree : ℝ) →
-    |λ| ≤ 2 * Real.sqrt ((g.degree : ℝ) - 1)
-
-/-- Alon-Boppana Spectral Bound Theorem:
-    For any sequence of d-regular graphs with vertex count n → ∞,
-    the second largest eigenvalue satisfies λ_2 ≥ 2√(d-1) - o(1). -/
-theorem alon_boppana_spectral_bound (d : ℕ) (hd : d ≥ 2) (n : ℕ) (hn : n > 0) (eps : ℝ) (heps : eps > 0) :
-    ∃ (lambda2_lower_bound : ℝ),
-      lambda2_lower_bound = 2 * Real.sqrt ((d : ℝ) - 1) - eps ∧
-      (2 * Real.sqrt ((d : ℝ) - 1) - eps < 2 * Real.sqrt ((d : ℝ) - 1)) := by
-  use 2 * Real.sqrt ((d : ℝ) - 1) - eps
-  constructor
-  · rfl
-  · linarith
-
-/-! ## Deligne's Theorem on Ramanujan τ-Function Bound -/
-
-/-- Ramanujan's tau function τ(n) definition structure. -/
-noncomputable def ramanujanTau (_n : ℕ) : ℤ := 0
-
-/-- Deligne's Theorem (1974 - Proof of the Ramanujan Conjecture):
-    For any prime p, the Ramanujan tau function satisfies |τ(p)| ≤ 2 · p^(11/2). -/
-theorem deligne_ramanujan_tau_bound (p : ℕ) (hp : Nat.Prime p) :
-    |(ramanujanTau p : ℝ)| ≤ 2 * (p : ℝ) ^ ((11 : ℝ) / 2) := sorry
-
-/-! ## HoloAlg Category Theory Triad (N → G → F) & Natural Transformations -/
-
-/-- Category N (Number Theory Domain): Ramanujan state space. -/
-structure CategoryN where
-  stateId : ℕ
-  weight : ℝ
-  centralCharge : ℝ
-
-/-- Category G (Quantum Gravity Domain): AdS_3 / K3 geometry space. -/
-structure CategoryG where
-  geometryId : ℕ
-  bpsEntropy : ℝ
-  dimension : ℕ := 10
-
-/-- Category F (Fluid Dynamics Domain): Boundary enstrophy flow space. -/
-structure CategoryF where
-  flowId : ℕ
-  enstrophy : ℝ
-  viscosity : ℝ
-
-/-- Functor Φ : N → G mapping Number Theory states to Quantum Gravity geometries. -/
-structure FunctorNG where
-  mapObj : CategoryN → CategoryG
-  mapWeightToEntropy : ∀ n : CategoryN, (mapObj n).bpsEntropy = 2 * Real.pi * Real.sqrt (n.centralCharge / 6)
-
-/-- Functor Ψ : G → F mapping Quantum Gravity geometries to Boundary Fluid flows. -/
-structure FunctorGF where
-  mapObj : CategoryG → CategoryF
-  mapEntropyToEnstrophy : ∀ g : CategoryG, (mapObj g).enstrophy = g.bpsEntropy * 4141 / 10000
-
-/-- The HoloAlg Category Theory Triad N → G → F composed functor Θ = Ψ ∘ Φ. -/
-def HoloAlgTriad (fNG : FunctorNG) (fGF : FunctorGF) : CategoryN → CategoryF :=
-  fun n => fGF.mapObj (fNG.mapObj n)
-
-/-- Natural Transformation η : Φ₁ ⟹ Φ₂ between two parallel functors Φ₁, Φ₂ : N → G. -/
-structure NaturalTransformationNG (f1 f2 : FunctorNG) where
-  component : CategoryN → (CategoryG → CategoryG)
-  naturality : ∀ n : CategoryN, component n (f1.mapObj n) = f2.mapObj n
-
-/-- Theorem: Natural transformation identity between isomorphic HoloAlg functors. -/
-theorem holoalg_triad_natural_transformation (fNG : FunctorNG) :
-    ∃ (eta : NaturalTransformationNG fNG fNG),
-      ∀ n : CategoryN, eta.component n (fNG.mapObj n) = fNG.mapObj n := by
-  use ⟨fun _ g => g, by intro n; rfl⟩
-  intro n
-  rfl
-
-end DualScale.Topology.RamanujanGraph
-
-\end{verbatim}
-
-\section{DualScale/Physics/BlackHole.lean}
-\begin{verbatim}
--- DualScale/Physics/BlackHole.lean — Phase 4: Quantum Black Hole Entropy & Kerr Falsification
--- =========================================================================================
--- Formalization of Sen's quantum entropy function, Kerr/CFT central charge c_Kerr = 3J/ℏ,
--- Cardy microstate entropy, Kerr Black Hole Falsification Theorem (S_RAMA / S_Wald = 0.344614,
--- 88.12% frozen degrees of freedom), and existence of Holographic Sub-CFT (c_eff = 823/2310).
-
-import DualScale.Topology.RamanujanGraph
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Tactic
-
-namespace DualScale.Physics.BlackHole
-
-open Real
-
-/-! ## 1. Sen's Quantum Entropy & Kerr/CFT Formalization -/
-
-/-- Sen's Quantum Entropy Function S_Sen(q, p) for 4D extremal black holes with AdS_2 × S^2
-    near-horizon geometry, incorporating 1-loop logarithmic correction γ_Sen * ln(n). -/
-noncomputable def senQuantumEntropy (c n : ℝ) (gamma_Sen : ℝ) : ℝ :=
-  2 * Real.pi * Real.sqrt (c * n / 6) + gamma_Sen * Real.log n
-
-/-- Kerr/CFT boundary central charge c_Kerr = 3 * J / ℏ (Guica et al. 2008 / Sen 2012).
-    In dimensionless natural units (J / ℏ = 1), c_Kerr = 3. -/
-noncomputable def c_Kerr (J hbar : ℝ) (_h_hbar : hbar > 0) : ℝ :=
-  3 * (J / hbar)
-
-/-- Dimensionless Kerr central charge c_Kerr = 3. -/
-def c_Kerr_dimless : ℝ := 3
-
-/-- Rational exact Kerr central charge c_Kerr = 3. -/
-def c_Kerr_rat : ℚ := 3
-
-/-- Cardy microstate entropy formula: S_Cardy(c, n) = 2π √(c · n / 6). -/
-noncomputable def cardyEntropy (c n : ℝ) : ℝ :=
-  2 * Real.pi * Real.sqrt (c * n / 6)
-
-/-- RAMA Deep Burn microstate entropy S_RAMA(n) with c_eff = 823 / 2310. -/
-noncomputable def s_RAMA (n : ℝ) : ℝ :=
-  cardyEntropy (823 / 2310) n
-
-/-- Wald-Sen Kerr black hole quantum entropy S_Wald(n) with c_Kerr = 3 and γ_Sen = -3/2. -/
-noncomputable def s_Wald (n : ℝ) : ℝ :=
-  senQuantumEntropy 3 n (-3 / 2)
-
-/-! ## 2. Holographic Sub-CFT -/
-
-/-- Structure representing the Holographic Sub-CFT state space with effective central charge c_eff. -/
-structure HolographicSubCFT where
-  c_eff_rat : ℚ
-  c_eff_pos : c_eff_rat > 0
-  is_deep_burn : c_eff_rat = 823 / 2310
-
-/-- Theorem: Existence of the Holographic Sub-CFT with exact effective central charge c_eff = 823 / 2310. -/
-theorem holographic_subcft_exists :
-    ∃ (subcft : HolographicSubCFT), subcft.c_eff_rat = 823 / 2310 := by
-  use ⟨823 / 2310, by norm_num, rfl⟩
-  rfl
-
-/-! ## 3. Kerr Black Hole Falsification Theorem -/
-
-/-- Squared asymptotic entropy ratio: (S_RAMA / S_Wald)² = c_eff / c_Kerr = (823/2310) / 3 = 823 / 6930. -/
-def ratio_squared_rat : ℚ := (823 / 2310) / c_Kerr_rat
-
-/-- Theorem: Exact rational value of the squared entropy ratio is 823 / 6930 ≈ 0.118759. -/
-theorem ratio_squared_exact : ratio_squared_rat = 823 / 6930 := by
-  dsimp [ratio_squared_rat, c_Kerr_rat]
-  norm_num
-
-/-- Frozen non-BPS degrees of freedom fraction: 1 - (S_RAMA / S_Wald)² = 1 - 823 / 6930 = 6107 / 6930. -/
-def frozen_degrees_rat : ℚ := 1 - ratio_squared_rat
-
-/-- Theorem: Exact rational frozen degrees of freedom fraction is 6107 / 6930 ≈ 0.881241 (88.12%). -/
-theorem frozen_degrees_exact : frozen_degrees_rat = 6107 / 6930 := by
-  dsimp [frozen_degrees_rat, ratio_squared_rat, c_Kerr_rat]
-  norm_num
-
-/-- Asymptotic entropy suppression ratio S_RAMA / S_Wald = √(823 / 6930) ≈ 0.344614. -/
-noncomputable def asymptotic_entropy_ratio : ℝ := Real.sqrt (823 / 6930)
-
-/-- Kerr Black Hole Falsification Theorem:
-    1. The squared asymptotic entropy ratio S_RAMA^2 / S_Wald^2 equals 823 / 6930.
-    2. Exactly 6107 / 6930 (88.12%) of non-BPS degrees of freedom are frozen.
-    3. The asymptotic entropy ratio S_RAMA(n) / S_Wald_leading(n) converges to √(823 / 6930) ≈ 0.344614,
-       proving that the RAMA state space falsifies direct identity with 4D extremal Kerr. -/
-theorem kerr_black_hole_falsification :
-    (ratio_squared_rat = 823 / 6930) ∧
-    (frozen_degrees_rat = 6107 / 6930) ∧
-    (∀ (n : ℝ), n > 0 → cardyEntropy (823 / 2310) n / cardyEntropy 3 n = Real.sqrt (823 / 6930)) := by
-  refine ⟨ratio_squared_exact, frozen_degrees_exact, ?_⟩
-  intro n _hn
-  dsimp [cardyEntropy]
-  sorry
-
-end DualScale.Physics.BlackHole
-
-\end{verbatim}
-
-\section{DualScale/Physics/NavierStokes.lean}
-\begin{verbatim}
--- DualScale/Physics/NavierStokes.lean — Phase 4: DualScale Functor & 3D Navier-Stokes Smoothness
--- ===========================================================================================
--- Formalization of DualScale Functor Ψ : G → F mapping AdS_3 boundary metrics to 3D fluid velocity fields v(x,t),
--- Sobolev spaces H^s(𝕋^3) for fluid velocity fields, the Aubin-Lions Compactness Lemma,
--- and the Macroscopic Enstrophy Bound Theorem E(t) = ∫|∇ × v|^2 dV ≤ κ · S_BPS = 2.5651 < ∞,
--- establishing global smoothness for 3D incompressible fluid flows.
-
-import Mathlib.Analysis.NormedSpace.InnerProduct
-import Mathlib.Analysis.Sobolev
-import Mathlib.Tactic
-
-namespace DualScale.Physics.NavierStokes
-
-open Real
-
-/-! ## 1. Geometry & Fluid Domain Types -/
-
-/-- Category G: AdS_3 boundary metrics & K3 target geometries. -/
-structure AdS3BoundaryMetric where
-  metricId : ℕ
-  curvature : ℝ
-  bpsEntropy : ℝ
-  c_eff : ℝ := 823 / 2310
-
-/-- Periodic 3-torus 𝕋^3 = (ℝ / 2πℤ)^3 domain representation. -/
-def Torus3D : Type := ℝ × ℝ × ℝ
-
-/-- Sobolev space H^s(𝕋^3) velocity field structure for 3D incompressible fluids. -/
-structure SobolevVelocityField (s : ℝ) where
-  val : Torus3D × ℝ → ℝ × ℝ × ℝ  -- v(x, t)
-  divergence_free : true           -- ∇ · v = 0
-  regularity : s ≥ 1              -- H^s regularity s ≥ 1
-
-/-- Category F: 3D fluid dynamics flow space on 𝕋^3 with Sobolev velocity fields v(x,t). -/
-structure FluidFlowSpace where
-  flowId : ℕ
-  velocity : SobolevVelocityField 1
-  viscosity : ℝ
-  enstrophy : ℝ
-
-/-! ## 2. DualScale Functor Ψ : G → F -/
-
-/-- DualScale Functor Ψ : G → F mapping AdS_3 boundary metrics to 3D fluid velocity fields v(x,t). -/
-structure DualScaleFunctorGF where
-  mapObj : AdS3BoundaryMetric → FluidFlowSpace
-  mapEntropyToEnstrophy : ∀ g : AdS3BoundaryMetric,
-    (mapObj g).enstrophy ≤ (4141 : ℝ) / 10000 * g.bpsEntropy
-
-/-! ## 3. Sobolev Spaces H^s(𝕋^3) & Aubin-Lions Compactness Lemma -/
-
-/-- Definition of Sobolev H^s norm squared for 3D fluid velocity field at time t. -/
-noncomputable def sobolevHSNormSq (s : ℝ) (v : SobolevVelocityField s) (t : ℝ) : ℝ :=
-  sorry
-
-/-- Spatial enstrophy integral E(t) = ∫ |∇ × v(x,t)|^2 dV on 𝕋^3. -/
-noncomputable def enstrophyIntegral (v : SobolevVelocityField 1) (t : ℝ) : ℝ :=
-  sorry
-
-/-- Aubin-Lions Compactness Lemma for Sobolev spaces H^s(𝕋^3):
-    A sequence of velocity fields with uniform enstrophy (H^1) and kinetic energy (L^2) bounds
-    admits a strongly convergent subsequence in L^2(0,T; L^2(𝕋^3)), guaranteeing weak solution limits. -/
-theorem aubin_lions_sobolev_compactness (S : Set (SobolevVelocityField 1))
-    (h_enstrophy_bound : ∃ E_max : ℝ, ∀ v ∈ S, ∀ t : ℝ, enstrophyIntegral v t ≤ E_max)
-    (h_energy_bound : ∃ K_max : ℝ, ∀ v ∈ S, ∀ t : ℝ, sobolevHSNormSq 0 (by sorry) t ≤ K_max) :
-    Prop := sorry
-
-/-! ## 4. Macroscopic Enstrophy Bound & Global 3D Fluid Smoothness -/
-
-/-- Coupling constant κ = 4141 / 10000 = 0.4141 for DualScale dictionary map. -/
-def kappa_coupling : ℝ := 0.4141
-
-/-- BPS Black Hole Macroscopic Entropy S_BPS = 2π √6 ≈ 6.1914878 or 2.5651 bound target. -/
-noncomputable def S_BPS_target : ℝ := 2 * Real.pi * Real.sqrt (823 / 2310 * 6 / 6)
-
-/-- Macroscopic Enstrophy Bound constant target = 2.5651 < ∞. -/
-def enstrophy_bound_target : ℝ := 2.5651
-
-/-- Macroscopic Enstrophy Bound Theorem:
-    For any 3D fluid flow v(x,t) in the image of the DualScale Functor Ψ from a BPS AdS_3 boundary geometry,
-    the enstrophy E(t) = ∫ |∇ × v|^2 dV is uniformly bounded by κ · S_BPS = 2.5651 < ∞,
-    proving global smoothness and preventing finite-time blowup for 3D incompressible fluid flows. -/
-theorem macroscopic_enstrophy_bound (g : AdS3BoundaryMetric) (f : FluidFlowSpace)
-    (psi : DualScaleFunctorGF) (h_map : f = psi.mapObj g)
-    (h_bps_entropy : g.bpsEntropy ≤ 6.1944)
-    (_t : ℝ) :
-    f.enstrophy ≤ 2.5651 ∧ f.enstrophy < ∞ := by
-  have h_bound := psi.mapEntropyToEnstrophy g
-  rw [← h_map] at h_bound
-  constructor
-  · calc
-      f.enstrophy ≤ (4141 : ℝ) / 10000 * g.bpsEntropy := h_bound
-      _ ≤ (4141 : ℝ) / 10000 * 6.1944 := by nlinarith
-      _ ≤ 2.5651 := by norm_num
-  · exact Real.ne_of_lt (by norm_num)
-
-/-- Global 3D Fluid Smoothness Theorem:
-    Uniform macroscopic enstrophy bound E(t) ≤ 2.5651 < ∞ implies global regularity (no gradient blowup)
-    for 3D incompressible Navier-Stokes velocity fields v(x,t) on 𝕋^3. -/
-theorem global_3d_fluid_smoothness (v : SobolevVelocityField 1)
-    (h_enstrophy : ∀ t : ℝ, enstrophyIntegral v t ≤ 2.5651) :
-    ∀ t : ℝ, enstrophyIntegral v t < ∞ := by
-  intro t
-  have _h_b := h_enstrophy t
-  linarith
-
-end DualScale.Physics.NavierStokes
-
-\end{verbatim}
-
-\chapter{Formal Certificates and Equivalence Table}
-\begin{longtable}{p{4.5cm}llll}
+\begin{center}
+\begin{tabular}{lrrl}
 \toprule
-\textbf{Bra-Ket State $|\Omega_{\mathbf{r}}\rangle$} & \textbf{Weight $\hat{\mathcal{W}}$} & \textbf{Central Charge $\hat{\mathcal{C}}$} & \textbf{Energy $\hat{E}_0$} & \textbf{Multiplicity $M$} \\
+\textbf{Metric / Audit Gate} & \textbf{Aug 2026} & \textbf{Post-Remediation} & \textbf{Verification Mechanism} \\
 \midrule
-\endhead
-$|\Omega_{(r_{1}=2, r_{5}=3, r_{6}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{29}{15}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{1}=2, r_{9}=-1, r_{10}=2, r_{12}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{173}{90}$ & $\frac{-11}{24}$ & $M=1$ \\
-$|\Omega_{(r_{1}=1, r_{3}=1, r_{8}=2, r_{9}=-3, r_{10}=4, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{283}{220}$ & $\frac{-11}{24}$ & $M=1$ \\
-$|\Omega_{(r_{1}=1, r_{6}=1, r_{7}=-1, r_{8}=2, r_{9}=-3, r_{10}=5, r_{11}=-3, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{167}{154}$ & $\frac{-1}{4}$ & $M=1$ \\
-$|\Omega_{(r_{1}=1, r_{10}=4, r_{11}=-3, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{689}{660}$ & $\frac{-1}{6}$ & $M=1$ \\
-$|\Omega_{(r_{1}=1, r_{10}=4, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{57}{55}$ & $\frac{-1}{8}$ & $M=1$ \\
-$|\Omega_{(r_{1}=1, r_{10}=2, r_{11}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{56}{55}$ & $\frac{-1}{24}$ & $M=1$ \\
-$|\Omega_{(r_{1}=1)}\rangle$ & $\frac{1}{2}$ & $1$ & $\frac{1}{24}$ & $M=4$ \\
-$|\Omega_{(r_{3}=3, r_{4}=1, r_{11}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{43}{44}$ & $\frac{-5}{6}$ & $M=1$ \\
-$|\Omega_{(r_{1}=1, r_{6}=-1, r_{9}=-2, r_{10}=3)}\rangle$ & $\frac{1}{2}$ & $\frac{41}{45}$ & $\frac{7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=4, r_{5}=-1, r_{7}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{89}{105}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=3, r_{6}=1, r_{7}=-3, r_{8}=2, r_{9}=3, r_{10}=-3, r_{11}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{1293}{1540}$ & $\frac{-5}{8}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{4}=1, r_{5}=1, r_{7}=-2, r_{8}=2, r_{10}=2, r_{11}=-4, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{3853}{4620}$ & $\frac{-19}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=3, r_{11}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{9}{11}$ & $\frac{-13}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{5}=-1, r_{6}=2, r_{7}=-1, r_{8}=2, r_{9}=2, r_{10}=4, r_{11}=-6, r_{12}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{2543}{3465}$ & $\frac{-11}{12}$ & $M=1$ \\
-$|\Omega_{(r_{3}=3, r_{7}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{5}{7}$ & $\frac{-5}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{4}=2, r_{8}=2, r_{9}=-4, r_{10}=5, r_{11}=-5)}\rangle$ & $\frac{1}{2}$ & $\frac{271}{396}$ & $\frac{-7}{12}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{7}=-1, r_{8}=4, r_{10}=-1, r_{12}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{283}{420}$ & $\frac{-5}{8}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{6}=1, r_{7}=-2, r_{8}=3, r_{9}=-1, r_{10}=1, r_{11}=-1, r_{12}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{18127}{27720}$ & $\frac{-1}{2}$ & $M=1$ \\
-$|\Omega_{(r_{2}=1, r_{8}=3, r_{9}=-3, r_{10}=12, r_{11}=-12)}\rangle$ & $\frac{1}{2}$ & $\frac{859}{1320}$ & $\frac{-13}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{5}=1, r_{6}=2, r_{7}=-4, r_{10}=1, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{271}{420}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{6}=2, r_{7}=-3, r_{8}=2, r_{11}=-4, r_{12}=2)}\rangle$ & $\frac{1}{2}$ & $\frac{577}{924}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{8}=2, r_{9}=-1, r_{11}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{247}{396}$ & $\frac{-3}{8}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=3, r_{7}=-2, r_{8}=4, r_{9}=-1, r_{10}=3, r_{11}=-4, r_{12}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{8633}{13860}$ & $\frac{-5}{6}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=2, r_{7}=-1, r_{8}=4, r_{9}=-1, r_{10}=4, r_{11}=-4, r_{12}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{4267}{6930}$ & $\frac{-7}{8}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=4, r_{7}=-4, r_{8}=4, r_{10}=2, r_{11}=-2, r_{12}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{1417}{2310}$ & $\frac{-19}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{5}=-1, r_{6}=2, r_{7}=-3, r_{8}=4, r_{11}=-2, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{2801}{4620}$ & $\frac{-5}{12}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{7}=-2, r_{8}=3, r_{10}=1, r_{11}=-1, r_{12}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{1843}{3080}$ & $\frac{-3}{8}$ & $M=1$ \\
-$|\Omega_{(r_{4}=-1, r_{6}=3, r_{8}=12, r_{11}=-10, r_{12}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{13}{22}$ & $\frac{-3}{2}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=2, r_{7}=-2, r_{8}=5, r_{9}=-2, r_{10}=5, r_{11}=-4, r_{12}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{3253}{5544}$ & $\frac{-19}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{7}=-1, r_{8}=1, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{95}{168}$ & $\frac{-5}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{6}=1, r_{7}=-3, r_{8}=3, r_{9}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{281}{504}$ & $\frac{-1}{8}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=5, r_{7}=-2, r_{8}=3, r_{9}=-4, r_{10}=3, r_{11}=-2, r_{12}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{3029}{5544}$ & $\frac{-19}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=2, r_{7}=-1, r_{8}=4, r_{9}=-3, r_{10}=3, r_{11}=-4, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{837}{1540}$ & $\frac{-13}{24}$ & $M=1$ \\
-$|\Omega_{(r_{2}=1, r_{10}=4, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{59}{110}$ & $\frac{-1}{12}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=4, r_{7}=-4, r_{8}=2, r_{10}=2, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{793}{1540}$ & $\frac{-3}{8}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=1, r_{8}=4, r_{9}=-4, r_{10}=4, r_{11}=-4, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{1007}{1980}$ & $\frac{-11}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=2, r_{7}=-2, r_{8}=1)}\rangle$ & $\frac{1}{2}$ & $\frac{85}{168}$ & $0$ & $M=1$ \\
-$|\Omega_{(r_{2}=1)}\rangle$ & $\frac{1}{2}$ & $\frac{1}{2}$ & $\frac{1}{12}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=3, r_{7}=-3, r_{8}=3, r_{9}=-2, r_{10}=3, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{13691}{27720}$ & $\frac{-1}{3}$ & $M=1$ \\
-$|\Omega_{(r_{5}=2, r_{6}=1, r_{8}=4, r_{9}=-1, r_{11}=-6, r_{12}=1)}\rangle$ & $\frac{1}{2}$ & $\frac{977}{1980}$ & $\frac{-5}{8}$ & $M=1$ \\
-$|\Omega_{(r_{5}=2, r_{6}=2, r_{12}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{29}{60}$ & $\frac{-7}{12}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=4, r_{8}=1, r_{9}=-4, r_{10}=1, r_{11}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{1843}{3960}$ & $\frac{-11}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=2, r_{7}=-2, r_{8}=2, r_{9}=-2, r_{10}=6, r_{11}=-6)}\rangle$ & $\frac{1}{2}$ & $\frac{6421}{13860}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{6}=4, r_{8}=2, r_{11}=-5)}\rangle$ & $\frac{1}{2}$ & $\frac{61}{132}$ & $\frac{-5}{8}$ & $M=1$ \\
-$|\Omega_{(r_{4}=2, r_{7}=1, r_{9}=-2, r_{10}=4, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{3167}{6930}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{5}=2, r_{6}=2, r_{7}=-1, r_{10}=3, r_{11}=-4, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{683}{1540}$ & $\frac{-11}{24}$ & $M=1$ \\
-$|\Omega_{(r_{4}=1, r_{5}=2, r_{8}=1, r_{9}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{53}{120}$ & $\frac{-5}{24}$ & $M=1$ \\
-$|\Omega_{(r_{4}=2, r_{10}=3, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{24}{55}$ & $\frac{-1}{4}$ & $M=2$ \\
-$|\Omega_{(r_{3}=1, r_{6}=1, r_{8}=3, r_{9}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{31}{72}$ & $\frac{-1}{8}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=4, r_{7}=-3, r_{8}=4, r_{9}=-4, r_{10}=2, r_{11}=-2, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{5939}{13860}$ & $\frac{-5}{12}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=1, r_{7}=-2, r_{8}=4, r_{9}=-4, r_{10}=5, r_{11}=-2, r_{12}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{292}{693}$ & $\frac{-5}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{8}=4, r_{9}=-3, r_{10}=1, r_{11}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{23}{55}$ & $\frac{-1}{6}$ & $M=1$ \\
-$|\Omega_{(r_{4}=2, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{5}{12}$ & $\frac{-1}{6}$ & $M=1$ \\
-$|\Omega_{(r_{4}=1, r_{6}=1, r_{8}=3, r_{9}=-4, r_{10}=6, r_{11}=-6)}\rangle$ & $\frac{1}{2}$ & $\frac{1591}{3960}$ & $\frac{-1}{3}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=4, r_{7}=-2, r_{11}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{461}{1155}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=3, r_{7}=-1, r_{8}=2, r_{9}=-4, r_{10}=4, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{5531}{13860}$ & $\frac{-1}{3}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{6}=2, r_{7}=-4, r_{8}=5, r_{9}=-3, r_{10}=1, r_{11}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{3659}{9240}$ & $\frac{-1}{24}$ & $M=1$ \\
-$|\Omega_{(r_{4}=2, r_{5}=1, r_{6}=-2, r_{10}=3, r_{11}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{13}{33}$ & $\frac{-1}{12}$ & $M=1$ \\
-$|\Omega_{(r_{5}=2, r_{6}=2, r_{7}=-3, r_{8}=2, r_{9}=-4, r_{10}=8, r_{11}=-4, r_{12}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{5267}{13860}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{6}=4, r_{9}=-3, r_{10}=4, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{61}{165}$ & $\frac{-7}{24}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=2, r_{10}=1, r_{11}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{119}{330}$ & $\frac{-1}{4}$ & $M=1$ \\
-$|\Omega_{(r_{8}=6, r_{10}=3, r_{11}=-3, r_{12}=-5)}\rangle$ & $\frac{1}{2}$ & $\frac{119}{330}$ & $\frac{-5}{8}$ & $M=1$ \\
-$|\Omega_{(r_{4}=2, r_{9}=-4, r_{10}=4, r_{11}=-2, r_{12}=1)}\rangle$ & $\frac{1}{2}$ & $\frac{707}{1980}$ & $\frac{1}{12}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=3, r_{7}=-2, r_{8}=2, r_{9}=-4, r_{10}=5, r_{11}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{4937}{13860}$ & $\frac{-5}{24}$ & $M=1$ \\
-$|\Omega_{(r_{6}=2, r_{8}=4, r_{9}=-3, r_{10}=4, r_{11}=-6)}\rangle$ & $\frac{1}{2}$ & $\frac{39}{110}$ & $\frac{-3}{8}$ & $M=1$ \\
-$|\Omega_{(r_{4}=1, r_{8}=3, r_{11}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{31}{88}$ & $\frac{-5}{24}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{8}=1, r_{9}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{25}{72}$ & $\frac{1}{12}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1)}\rangle$ & $\frac{1}{2}$ & $\frac{1}{3}$ & $\frac{1}{8}$ & $M=4$ \\
-$|\Omega_{(r_{3}=1, r_{6}=2, r_{7}=-4, r_{8}=4, r_{9}=-3, r_{10}=1, r_{11}=-4, r_{12}=4)}\rangle$ & $\frac{1}{2}$ & $\frac{383}{1155}$ & $\frac{1}{4}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=2, r_{9}=-1, r_{11}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{164}{495}$ & $\frac{-1}{8}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{7}=-2, r_{8}=4, r_{9}=-4, r_{10}=3, r_{11}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{1082}{3465}$ & $\frac{1}{6}$ & $M=1$ \\
-$|\Omega_{(r_{6}=2, r_{7}=-1, r_{8}=4, r_{9}=-4, r_{10}=6, r_{11}=-5, r_{12}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{4271}{13860}$ & $\frac{-1}{4}$ & $M=1$ \\
-$|\Omega_{(r_{3}=1, r_{9}=-3, r_{10}=3)}\rangle$ & $\frac{1}{2}$ & $\frac{3}{10}$ & $\frac{1}{4}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=4, r_{7}=-4)}\rangle$ & $\frac{1}{2}$ & $\frac{31}{105}$ & $\frac{1}{24}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=2, r_{7}=-3, r_{8}=2, r_{9}=-2, r_{10}=6, r_{11}=-3, r_{12}=-2)}\rangle$ & $\frac{1}{2}$ & $\frac{4063}{13860}$ & $\frac{-1}{8}$ & $M=1$ \\
-$|\Omega_{(r_{4}=1, r_{10}=3, r_{11}=-3)}\rangle$ & $\frac{1}{2}$ & $\frac{61}{220}$ & $\frac{1}{24}$ & $M=1$ \\
-$|\Omega_{(r_{5}=1, r_{6}=1, r_{11}=-1)}\rangle$ & $\frac{1}{2}$ & $\frac{91}{330}$ & $0$ & $M=1$ \\
-$|\Omega_{(r_{6}=3, r_{9}=-4, r_{10}=2)}\rangle$ & $\frac{1}{2}$ & $\frac{23}{90}$ & $\frac{1}{12}$ & $M=1$ \\
-$|\Omega_{(r_{4}=1)}\rangle$ & $\frac{1}{2}$ & $\frac{1}{4}$ & $\frac{1}{6}$ & $M=7$ \\
+Live-tree \texttt{axiom} declarations (R1) & 34 & 0 & \texttt{audit\_lean.py} / \texttt{mathesis\_gate.py} \\
+Live-tree \texttt{sorry} placeholders (R2) & 2 & 0 & \texttt{audit\_lean.py} / \texttt{mathesis\_gate.py} \\
+Vacuous proofs / \texttt{Prop := True} (R3) & 13 & 0 & \texttt{mathesis\_gate.py} (incl.\ \texttt{NAMAGIRI.lean}) \\
+Pinned constant \texttt{alpha\_prime := 1} & 1 & 0 & Parameterized $(\alpha' : \mathbb{R}) (h_{\alpha'} : \alpha' > 0)$ \\
+Root GitHub Actions CI (\texttt{.github/}) & Absent & Installed & \texttt{.github/workflows/dualscale\_ci.yml} \\
+M2 certificate / ledger agreement (R5) & Contradictory & Consistent & \texttt{run\_certificates.py} (\texttt{FAIL} at $k=3,4,6$) \\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Campaign v2 complete-corpus regeneration and Lean~4 kernel certificates.}
+To eliminate legacy floating-point artifacts and unverified v1 rows,
+Campaign~v2 processed all \textbf{839/839} manuscript pages in the repository
+(\textbf{0} extraction errors: 133 handwritten sheets rendered from the 1988
+Narosa facsimile of the \emph{Lost Notebook} \cite{Narosa1988}, 8 Ramanujan
+letters from Ono, and 698 pages of Notebooks~1--3 \cite{AndrewsBerndt}).
+Every extracted expression was evaluated in exact $\mathbb{Z}/\mathbb{Q}$
+arithmetic via deterministic M\"{o}bius inversion with an anti-overfitting
+overdetermination guard and a symbolic \LaTeX{} parser:
+\begin{itemize}
+  \item \textbf{Total structured extractions (\texttt{namagiri.db}):}
+    2,458 identities (70 Tier~A occurrences, 10 Tier~B exact classical catalog
+    matches for 3rd-, 5th-, and 6th-order mock theta functions and
+    Rogers--Ramanujan $G(q)$, and 2,378 Tier~C symbolic transcriptions,
+    including 14 OCR-corrupted equations automatically refuted by exact
+    30-term $\mathbb{Q}[[q]]$ arithmetic).
+  \item \textbf{Standalone zero-custom-axiom Lean~4 kernel module:}
+    \texttt{dualscale/lean/DualScale/Discovery/CampaignV2Verified.lean}
+    proves \textbf{275 theorems} covering \textbf{54} unique Dedekind
+    $\eta$-quotients (25 satisfying Ono's Theorem~1.64 congruences on
+    $\Gamma_0(N)$, 37 with non-negative Fourier coefficients and 17 signed
+    indices) plus \textbf{5} Ramanujan \texttt{LHS = RHS} identities.
+    The module compiles directly under \texttt{lean} v4.33.1 with zero custom
+    axioms and passes \texttt{mathesis\_gate.py} with live
+    \texttt{\#print axioms} footprint verification at \textbf{275/275}
+    ($\subseteq \{\texttt{propext}\}$).
+\end{itemize}
+
+\noindent\textbf{Explicit epistemic boundaries.}
+Two formal boundaries are stated explicitly to prevent claim inflation:
+\begin{enumerate}
+  \item \emph{Finite-order truncation scope in \texttt{CampaignV2Verified.lean}:} Each of the 5 Lean~4
+    \texttt{LHS = RHS} theorems in \texttt{CampaignV2Verified.lean} proves
+    exact equality of truncated formal $q$-series through order $q^{15}$ by
+    kernel reduction (\texttt{by decide}), corroborated through $q^{29}$ in
+    exact Python integer arithmetic. In Wave~4 (\texttt{AllNAndPropositionsVerified.lean}, described below),
+    four of these five identities are upgraded to universal $\forall n$ or $\forall \text{len}$
+    formal-power-series theorems and the fifth (\texttt{eq\_0722eebfe8}) is upgraded
+    conditionally via Sturm's bound on $\Gamma_0(12)$, while unconditional analytic
+    modular equalities inside Mathlib remain an open formalization target.
+  \item \emph{Offline Mathlib build boundary:} Because the vendored
+    \texttt{dualscale/lean/.lake/} Mathlib cache is absent in the offline
+    verification environment, Mathlib-importing modules under
+    \texttt{dualscale/lean/DualScale/} are verified statically by
+    \texttt{audit\_lean.py} and \texttt{mathesis\_gate.py}, whereas the
+    standalone \texttt{Init}-only kernel modules
+    (\texttt{CampaignV2Verified.lean}, \texttt{AllNAndPropositionsVerified.lean},
+    and \texttt{NAMAGIRI.lean}) are
+    compiled directly by \texttt{lean} v4.33.1 with real kernel
+    \texttt{\#print axioms} footprint auditing.
+\end{enumerate}
+
+\subsection*{v3.2 All-$n$ Formalization \& Literature Synthesis Addendum}
+
+Wave~4 closed the finite-truncation and proposition-level gaps documented above by introducing a second standalone zero-custom-axiom Lean~4.33.1 kernel module, \texttt{dualscale/lean/DualScale/Discovery/AllNAndPropositionsVerified.lean}, and updating \texttt{CampaignV2Verified.lean} (unmerged Dedekind factor-list definitions for \texttt{eq\_460927b577} and \texttt{eq\_2847c49f95} and corrected \texttt{polyPowNat} fuel \texttt{(e + 1)}). Together, the two live kernel modules deliver \textbf{338} theorems audited by \texttt{lean} v4.33.1 and \texttt{mathesis\_gate.py} with \textbf{338/338} \texttt{\#print axioms} footprints strictly $\subseteq \{\texttt{propext}\}$ (275 in \texttt{CampaignV2Verified.lean} and 63 in \texttt{AllNAndPropositionsVerified.lean}):
+
+\begin{enumerate}
+  \item \textbf{Universal $\forall n$ and $\forall \text{len}$ Ramanujan identities and JTP lifts:}
+    Using constructive formal power series (\texttt{FPS := Nat -> Int}) and quadratic-residue parity proofs, \texttt{eq\_d6899de389\_all\_n} ($\varphi(q)+\varphi(-q)=2\varphi(q^4)$) and \texttt{eq\_c23aa45585\_all\_n} ($\varphi(q)-\varphi(-q)=4q\psi(q^8)$) hold for all $n \in \mathbb{N}$. To close the sum-vs-product gap, \texttt{AllNAndPropositionsVerified.lean} further proves \texttt{dilateFPS\_congr} and \texttt{etaFPS\_dilate}, checks 16-term \texttt{by decide} bridges (\texttt{etaQuot\_phi\_matches\_phiCoeff\_16}, \texttt{etaQuot\_phi\_neg\_matches\_seriesNeg\_phiCoeff\_16}, \texttt{etaQuot\_psi\_matches\_psiCoeff\_16}), and derives conditional Jacobi Triple Product all-$n$ lifts (\texttt{eq\_d6899de389\_eta\_all\_n\_of\_jtp}, \texttt{eq\_c23aa45585\_eta\_all\_n\_of\_jtp}). In addition, \texttt{eq\_460927b577\_all\_len} and \texttt{eq\_2847c49f95\_all\_len} prove equality at all truncation lengths $\forall \text{len} \in \mathbb{N}$ directly on unmerged Dedekind factorizations via \texttt{FPS} ring algebra.
+  \item \textbf{Sturm-bound conditional all-$n$ upgrade with level-12 Nebentypus compatibility:}
+    Following Ono \cite{Ono2004} and Ryan--Scherr--Sirolli \cite{RyanScherrSirolli2019}, \texttt{AllNAndPropositionsVerified.lean} computes $\psi(12) = 24$ (\texttt{dedekindPsi\_12}), the Sturm bound $B(\Gamma_0(12), 1) = 2 < 15$ (\texttt{sturmBound\_12\_k1}, \texttt{sturmBound\_12\_k1\_lt\_15}), weight-1 level-12 Ono mod-24 congruences and 6-cusp holomorphicity (\texttt{eq\_0722eebfe8\_modular\_level12\_weight1}), and common Nebentypus character $\chi(d) = (-3/d)$ compatibility via computable prime valuations and squarefree kernels (\texttt{etaNebentypusSqfree12}, \texttt{eq\_0722eebfe8\_common\_nebentypus\_neg3}). Combined with the 16-term kernel check \texttt{eq\_0722eebfe8\_prefix\_16}, \texttt{eq\_0722eebfe8\_all\_n\_conditional} proves universal $\forall n$ equality conditional on the explicit \tierL{} parameter \texttt{SturmBoundHolomorphicModularEq12}.
+  \item \textbf{Universal \texttt{EtaQuot} algebra and live Deep Burn invariants:}
+    Eight universal \texttt{EtaQuot} theorems (\texttt{weight2\_append}, \texttt{weight2\_invert}, \texttt{onoSumDR\_append}, \texttt{onoSumDR\_invert}, \texttt{onoSumNOverDR\_append}, \texttt{onoSumNOverDR\_invert}, \texttt{onoMod24\_closed\_append}, \texttt{onoMod24\_closed\_invert}) verify closure of Ono's Theorem~1.64 conditions \cite{Ono2004} under multiplication and inversion, aligning with $\eta$-quotient generation and cuspidal structure theory \cite{RouseWebb2015, AcresBroadhurst2018, Bhattacharya2026}. Six live kernel theorems (\texttt{deepBurn\_ceff\_cusp0}, \texttt{deepBurn\_weight}, \texttt{deepBurn\_E0}, \texttt{deepBurn\_ono\_false}, \texttt{deepBurn\_prefix\_10}, \texttt{deepBurn\_has\_negative\_coeff}) upgrade the RAMA Deep Burn invariants ($c_{\text{eff}}(0) = -823/2310 < 0$, $k = -183/2$, $E_0 = 425/6$, non-modular, negative $q^1$ coefficient $-24$) to \tierA{}, situating mock-theta and BPS asymptotics within \cite{MalmendierOno2012, BallantineBursonFolsom2022, CostinDunneSaraeb2026, DMZ2012, CDH2014}.
+  \item \textbf{Algebraic $\operatorname{Sym}^2(L_2)$, exact $\mathbb{Q}^+$ T-duality, and certified \tierX{} refutations:}
+    The kernel module proves \texttt{sym2\_recurrence\_int} universally over $\mathbb{Z}$ (complementing the variable-coefficient $\mathbb{R}$ proof in \texttt{K3Lock/Basic.lean} and Picard--Fuchs studies \cite{AlmkvistZudilin2005, DoranHarderThompson2016}), proves exact $\mathbb{Q}^+$ T-duality involution, symmetric-radius invariance, and self-dual fixed-point characterization (\texttt{tDual\_involutive\_exact}, \texttt{tDual\_symmetric\_invariant\_exact}, \texttt{tDual\_fixed\_point\_iff}), and certifies all refutations and quarantines: the CFM gap $(16/9 - 4/3)\pi = (4/9)\pi \neq 0$, the M2 Alon--Boppana violations at nominal $k \in \{3,4,6\}$ and actual regularity $2k \in \{6,8,12\}$ (contrasted with genuine Ramanujan constructions \cite{MSS2015}), the Ap\'{e}ry $\zeta(3)$ computation \texttt{s12\_coeff\_5\_exact} ($u_5 = 819\,005$, residual $765\,005 \neq 0$, and $2 \neq 3$) with explicit \tierX{} provenance warnings on mock-proxy checks, and all 14 Campaign~v2 OCR-typo refutations (\texttt{typo01\_refuted\_q2}--\texttt{typo14\_refuted\_q0}). Across the four Mathlib-importing modules (\texttt{TDuality.lean}, \texttt{CFM/Basic.lean}, \texttt{K3Lock/Basic.lean}, \texttt{SpectralGap/Basic.lean}), static \texttt{audit\_lean.py} and \texttt{mathesis\_gate.py} gates confirm zero R1--R3 defects, matching the neuro-symbolic workflow patterns of \cite{Yang2023LeanDojo, Song2024LeanCopilot, Xin2024DeepSeekProver, Kripner2026OpenProver} and recorded in \texttt{dualscale/certificates/llm\_lean\_validation\_report.json}.
+\end{enumerate}
+
+% --- END sections/06_formalization_status.tex ---
+% --- BEGIN sections/07_conclusion.tex ---
+\section{Conclusion}
+Coupling exact $\mathbb{Z}/\mathbb{Q}$ $q$-series arithmetic with zero-custom-axiom Lean~4 kernel certificates and automated epistemic gates (\texttt{mathesis-gate}, CI certificate checks, and exact OCR-typo refutation) transforms this program from an unchecked heuristic proposal into an auditable neuro-symbolic verification pipeline.
+
+Finally, we note two explicit scientific and formal boundaries:
+\begin{enumerate}
+  \item \textbf{Physical boundary.} Any microscopic state-counting interpretation of non-negative $\eta$-quotients applies at best to extremal, supersymmetric (BPS) geometries where topological indices are protected; alternating-sign forms are signed indices rather than unitary degeneracies, and astrophysical black holes such as Sgr~A$^*$ are non-extremal Kerr spacetimes outside this scope.
+  \item \textbf{Formal boundary.} Across \texttt{CampaignV2Verified.lean} (275 theorems) and \texttt{AllNAndPropositionsVerified.lean} (63 theorems), \textbf{338} live zero-custom-axiom Lean~4.33.1 kernel theorems rigorously establish exact rational $\eta$-quotient invariants, Ono's Theorem~1.64 congruences and closure, live RAMA Deep Burn invariants, universal $\forall n$ / $\forall\text{len}$ formal-power-series proofs for four Ramanujan identities, a Sturm-bound conditional all-$n$ proof for \texttt{eq\_0722eebfe8} ($B(\Gamma_0(12),1)=2<15$ with common Nebentypus $\chi(d)=(-3/d)$), universal \texttt{sym2\_recurrence\_int}, exact $\mathbb{Q}^+$ T-duality, and certified refutations of M2, M3, $S_{12}$ proxy residuals, and 14 OCR typos. Unconditional analytic proofs of Sturm's bound and the Jacobi Triple Product inside Mathlib, together with a full offline Mathlib \texttt{lake build} of the higher-level physics modules, remain open milestones.
+\end{enumerate}
+
+% --- END sections/07_conclusion.tex ---
+
+\begingroup
+\catcode`\^=\active
+\def^#1{\textsuperscript{#1}}
+\bibliographystyle{plain}
+\bibliography{dualscale}
+\endgroup
 
 \end{document}

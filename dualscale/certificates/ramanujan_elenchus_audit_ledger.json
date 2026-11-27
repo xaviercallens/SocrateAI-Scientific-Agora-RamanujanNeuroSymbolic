@@ -1,0 +1,316 @@
+{
+  "workflow": "ramanujan_elenchus_formalization_workflow",
+  "methodology": "Socratic Elenchus (Prover -> Independent Skeptic -> Negative Controls -> Lean 4.33.1 Kernel & Mathesis-Gate -> Blind Auditor)",
+  "approved": true,
+  "overall_verdict": "APPROVED",
+  "chromadb_corpus": {
+    "collections": {
+      "ramanujan_literature_v1": {
+        "count": 3870,
+        "metadata": {
+          "hnsw:space": "cosine",
+          "description": "arXiv mathematical/physical literature for RAMA/DualScale"
+        }
+      },
+      "rama_repo_artifacts": {
+        "count": 104,
+        "metadata": {
+          "description": "Repository certificates, papers, and BibTeX",
+          "hnsw:space": "cosine"
+        }
+      },
+      "ramanujan_primary_works_v1": {
+        "count": 2732,
+        "metadata": {
+          "hnsw:space": "cosine",
+          "description": "Ramanujan primary works: Andrews-Berndt Lost Notebook Parts I-IV + Campaign v2 839-page DB"
+        }
+      }
+    },
+    "arxiv_papers_total": 44,
+    "andrews_berndt_lost_notebook_volumes": 4,
+    "campaign_v2_manuscript_pages": 839
+  },
+  "live_lean_kernel_summary": {
+    "modules": {
+      "AllNAndPropositionsVerified.lean": {
+        "verified": 63,
+        "declared": 63
+      },
+      "CampaignV2Verified.lean": {
+        "verified": 275,
+        "declared": 275
+      },
+      "RamanujanElenchusCanon.lean": {
+        "verified": 253,
+        "declared": 253
+      }
+    },
+    "total_live_kernel_theorems": 591,
+    "axioms_subset": [
+      "propext"
+    ],
+    "canon_negative_controls_count": 20
+  },
+  "roadmap_artifact": "docs/RAMANUJAN_LEAN4_ELENCHUS_ROADMAP.md",
+  "canon_lean_artifact": "dualscale/lean/DualScale/Discovery/RamanujanElenchusCanon.lean",
+  "elenchus_audit_scores": {
+    "elenchus_prover_skeptic_compliance": true,
+    "r1_zero_custom_axioms": true,
+    "r2_zero_sorry": true,
+    "r3_anti_vacuity_and_non_tautology": true,
+    "r4_grounded_citations_no_hallucinations": true,
+    "r5_exact_arithmetic_and_negative_controls": true
+  },
+  "audited_theorem_domains": [
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Canon D1 / Roadmap D1: Euler Partition Theorem (Odd=Distinct) & Pentagonal Recurrence",
+      "epistemic_tier": "A",
+      "negative_controls": [
+        "neg_ctrl_even_parts_ne_distinct",
+        "neg_ctrl_omit_part1_distinct_fails"
+      ],
+      "notes": "Verified in Lean 4.33.1 kernel (footprints <= {propext}). Universal FPS stabilization (prodDistinct_stabilizes_all, oddParts_stabilizes_all, prodAllMinus_stabilizes_all), universal Odd=Distinct (euler_odd_eq_distinct_all_n, euler_odd_eq_distinct_all_len), pentagonal recurrence on fpsInv baseEtaFPS (partition_pentagonal_recurrence_all_n), bounded product check (n<20), partList bridge (n<65), and combinatorial check (n<=20) are sound and accurately documented in Roadmap line 264.",
+      "positive_theorems": [
+        "prodDistinct_stabilizes_all",
+        "oddParts_stabilizes_all",
+        "prodAllMinus_stabilizes_all",
+        "euler_odd_eq_distinct_all_n",
+        "euler_odd_eq_distinct_all_len",
+        "pentagonal_product_matches_baseEta_20",
+        "partition_pentagonal_recurrence_all_n",
+        "partList_matches_fpsInv_65",
+        "partList_eq_fpsInv_lt_65",
+        "euler_combinatorial_odd_eq_distinct_20",
+        "euler_combinatorial_eq_oddPartsFPS_le_20"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Canon D2 / Roadmap D1: Ramanujan Partition Congruences (mod 5, 7, 11) & Conditional Lifts",
+      "epistemic_tier": "L",
+      "negative_controls": [
+        "neg_ctrl_mod5_other_residues_fail",
+        "neg_ctrl_mod13_no_linear_congruence",
+        "neg_ctrl_mod3_no_linear_congruence"
+      ],
+      "notes": "Round 0 index error in Roadmap fixed: line 264 now accurately states verification from partList 65 covers p(k) for k<=64 (n<=12 mod 5, n<=8 mod 7, n<=5 mod 11) plus generating identities for n<12 and n<9. Universal lifts ramanujan_mod5_all_n_conditional and ramanujan_mod7_all_n_conditional take explicit Tier L hypotheses (RamanujanMod5GenId, RamanujanMod7GenId) without global axioms. Negative controls isolate residue 4 mod 5 and refute linear congruences mod 3 and mod 13.",
+      "positive_theorems": [
+        "ramanujan_mod5_prefix_13",
+        "ramanujan_mod7_prefix_9",
+        "ramanujan_mod11_prefix_6",
+        "ramanujan_mod5_gen_identity_12",
+        "ramanujan_mod5_gen_fps_lt_12",
+        "ramanujan_mod7_gen_identity_9",
+        "ramanujan_mod7_gen_fps_lt_9",
+        "ramanujan_mod5_all_n_conditional",
+        "ramanujan_mod7_all_n_conditional"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Canon D3 / Roadmap D7: Ramanujan Tau Function (Delta(q)/q = eta(tau)^24)",
+      "epistemic_tier": "A",
+      "negative_controls": [
+        "neg_ctrl_tau_noncoprime_fails",
+        "neg_ctrl_tau_mod691_perturbed_fails"
+      ],
+      "notes": "Canon bridges tau16 to tauFPS (tau16_eq_tauFPS_le_16), proves universal sigmaK_prime_all_p using quantifier-based IsPrime, and verifies tau(1)..tau(16), coprime multiplicativity, Hecke recurrences, mod 691 congruences (n=1..16), Deligne squares (p<=13), and bounded non-vanishing/forbidden-value checks (n<=16) while keeping Lehmer's conjecture strictly Tier C. Roadmap lines 475-478 now match Canon signatures and n=1..16 range verbatim.",
+      "positive_theorems": [
+        "tau_exact_1_to_16",
+        "tau16_eq_tauFPS_le_16",
+        "tau_ono_level1_weight12",
+        "sigmaK_prime_all_p",
+        "tau_coprime_multiplicative_witnesses",
+        "tau_hecke_prime_power_witnesses",
+        "tau_mod_691_witnesses_16",
+        "tau_deligne_squared_bounds",
+        "tau_nonzero_and_avoids_forbidden_16"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Canon D4 / Roadmap D8: Ramanujan Sums c_q(n) & Orthogonality",
+      "epistemic_tier": "A",
+      "negative_controls": [
+        "neg_ctrl_ramanujanSum_composite_4_fails_prime_rule",
+        "neg_ctrl_ramanujanSum_q1_nonzero_sum"
+      ],
+      "notes": "Universal proofs of ramanujanSum_zero_all_n, ramanujanSum_one_all_n, mobius_prime_eq_neg_one, and ramanujanSum_prime_all_n with non-circular IsPrime and sound mobiusGo branch ordering, plus zero-sum (2<=q<=12) and divisor-12 supercharacter orthogonality. Roadmap lines 504-507 match Canon signatures verbatim.",
+      "positive_theorems": [
+        "ramanujanSum_zero_all_n",
+        "ramanujanSum_one_all_n",
+        "mobius_prime_eq_neg_one",
+        "ramanujanSum_prime_all_n",
+        "ramanujanSum_orthogonality_zero_sum",
+        "ramanujanSum_orthogonality_zero_sum_prop",
+        "ramanujanSum_superchar_orthogonality_12"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Canon D5 / Roadmap D2 & D3: Continued Fractions, Euler-Wallis, & Rogers-Ramanujan R(q)",
+      "epistemic_tier": "A",
+      "negative_controls": [
+        "neg_ctrl_rr_unshifted_eta_ratio_fails",
+        "neg_ctrl_euler_wallis_missing_sign_fails",
+        "neg_ctrl_rr_G_ne_H"
+      ],
+      "notes": "Universal Euler-Wallis determinant proofs over Int (euler_wallis_det_int_all_k) and FPS (euler_wallis_det_fps_all_k) plus universal q-adic vanishing of Rogers-Ramanujan convergent differences (rr_cf_convergent_diff_vanishes_all_k), alongside exact q^15 sum=product G(q), H(q) and 6th convergent H/G match. Roadmap lines 311-351 now match Canon identifiers (cfP, cfQ, altSign, prodRange1, rrA, rrB, fpsSub) and campaign_v2_report.json counts cleanly, with planned Horizon 2 control explicitly tagged.",
+      "positive_theorems": [
+        "euler_wallis_det_int_all_k",
+        "euler_wallis_det_fps_all_k",
+        "rrA_succ",
+        "prodRange1FPS_rrA",
+        "rr_cf_convergent_diff_vanishes_all_k",
+        "rr_G_exact_16",
+        "rr_H_exact_16",
+        "rr_cf_6_matches_H_over_G_16"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Canon D6 / Roadmap D4: 3rd-Order Mock Theta Functions (Last Letter 1920)",
+      "epistemic_tier": "A",
+      "negative_controls": [
+        "neg_ctrl_mock3_psi_legacy_stub_q0_false",
+        "neg_ctrl_mock3_f_not_eta_shadow",
+        "neg_ctrl_mock3_f_plus_2psi_neg_fails"
+      ],
+      "notes": "Exact integer qPochList + polyInv definitions for f(q) (A000025), phi(q) (A053250), psi(q) (A053251) to q^15, three exact Watson/Ramanujan mock cancellation identities, universal mock3_psi_const_zero_all_M and stabilization theorems, and three genuine negative controls refuting MockTheta.lean legacy stubs and wrong shadow factor 2. Roadmap line 360 now accurately cites the 10 Tier B CATALOG_MATCHED discoveries (9 mock-theta OEIS matches) and 19 mock-theta generators in exact_qseries.py.",
+      "positive_theorems": [
+        "mock3_f_exact_16",
+        "mock3_phi_exact_16",
+        "mock3_psi_exact_16",
+        "mock3_f_plus_4psi_neg_eq_eta_16",
+        "mock3_2phi_neg_minus_f_eq_eta_16",
+        "mock3_phi_minus_f_neg_eq_2psi_16",
+        "mock3_psi_const_zero_all_M",
+        "mock3_f_stabilizes_all_n",
+        "mock3_psi_stabilizes_all_n"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Canon D7 / Roadmap D8: Highly Composite Numbers (1915) & Minimal Taxicab 1729",
+      "epistemic_tier": "A",
+      "negative_controls": [
+        "neg_ctrl_taxicab_1728_no_pos_cube_sum",
+        "neg_ctrl_hcn_18_not_hcn",
+        "neg_ctrl_hcn_100_not_hcn"
+      ],
+      "notes": "Universal minimality proof taxicab_1729_minimal_all (covering 1<=a<=b, 1<=c<=d, a!=c for all Nat), universal isHCN_sound, first 10 HCNs verified, and universal positive-cube refutation of 1728 plus non-HCN refutations of 18 and 100. Roadmap lines 502-521 match Canon identifiers verbatim.",
+      "positive_theorems": [
+        "taxicab_1729_witness",
+        "taxicab_ordered_below_13",
+        "taxicab_ordered_all",
+        "taxicab_1729_minimal_all",
+        "isHCN_sound",
+        "hcn_first_10_verified",
+        "hcn_first_10_all_IsHighlyComposite"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Canon D8 / Roadmap D6: Ramanujan's 1914 Series for 1/pi & Convergence Rate",
+      "epistemic_tier": "A",
+      "negative_controls": [
+        "neg_ctrl_pi_S0_fails_14_digits",
+        "neg_ctrl_pi_perturbed_1103_to_1102_fails"
+      ],
+      "notes": "Round 0 mathematical errors in Roadmap fixed: line 436 now reports S_0 = 1103/9801 and S_1 = 1130173253125/10042454926944, correctly distinguishes S_0 (7-digit bracket pass, 14-digit fail via neg_ctrl_pi_S0_fails_14_digits) from S_1 (14-digit pass) and S_2 (Machin-15 pass), and matches ramanujan_pi_term_ratio_all_k and ramanujan_pi_term_ratio_1e7_all_k verbatim. Additionally, Canon neg_ctrl_pi_perturbed_1103_to_1102_fails was hardened to prove both the strict inequality and ¬ piSqBracket (ramanujanS1Pert 1102) (3141, 1000) (3142, 1000) within <= {propext}.",
+      "positive_theorems": [
+        "ramanujan_S0_exact",
+        "ramanujan_S1_exact",
+        "machin_pi_bracket_14",
+        "ramanujan_S0_bracket_7_digits",
+        "ramanujan_S1_bracket_14_digits",
+        "ramanujan_S2_inside_machin15",
+        "ramanujan_S1_strictly_below_machinHi",
+        "ramanujan_pi_term_ratio_core",
+        "ramanujan_pi_term_ratio_all_k",
+        "ramanujan_pi_term_ratio_1e7_all_k"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Roadmap D5: Dedekind Eta-Quotients, Modular Equations, & Sturm Bounds (Baseline v3.2)",
+      "epistemic_tier": "L",
+      "negative_controls": [
+        "deepBurn_ono_false",
+        "deepBurn_has_negative_coeff",
+        "typo01_refuted_q2",
+        "typo14_refuted_q0"
+      ],
+      "notes": "Verified v3.2 baseline across CampaignV2Verified.lean (275/275) and AllNAndPropositionsVerified.lean (63/63 exported / 195 total), properly separating Tier A algebra and Ono closure laws from Tier L SturmBoundHolomorphicModularEq12 and Tier X refutations. Roadmap lines 390, 401, and 413-416 now cite exact campaign_v2_report.json counts and clearly separate existing v3.2 proofs from planned Horizon 2 wrappers.",
+      "positive_theorems": [
+        "eq_d6899de389_all_n",
+        "eq_c23aa45585_all_n",
+        "eq_460927b577_all_len",
+        "eq_2847c49f95_all_len",
+        "onoMod24_closed_append",
+        "onoMod24_closed_invert",
+        "eq_0722eebfe8_modular_level12_weight1",
+        "eq_0722eebfe8_common_nebentypus_neg3",
+        "eq_0722eebfe8_all_n_conditional"
+      ]
+    },
+    {
+      "audit_verdict": "APPROVED",
+      "domain": "Roadmap D9 & D10: Classical Analysis, K3 Sym^2, Moonshine, & Conditional PDE Boundaries",
+      "epistemic_tier": "C",
+      "negative_controls": [
+        "cfm_constant_ne_elliptic",
+        "cfm_elliptic_gap_nonzero",
+        "m2_alon_boppana_fail_p2_k3",
+        "m2_alon_boppana_fail_p3_k4",
+        "m2_alon_boppana_fail_p5_k6",
+        "s12_k3_residual_nonzero",
+        "elliptic_pf_order_ne_k3"
+      ],
+      "notes": "Epistemic tiers are honest and strictly enforced: HypothesisUOn, FractureConjecture, classifyTopology, SaddlePointLogAsymptotic, and MasterDualScale remain Tier C conditional boundaries while M2 Alon-Boppana, CFM elliptic angle, S12 Apery mock proxy, and Kerr comparison remain quarantined as Tier X. Roadmap lines 553-556 and 593-596 now clearly distinguish existing v3.2 proofs from planned Horizon 2-3 controls.",
+      "positive_theorems": [
+        "sym2_recurrence_int",
+        "tDual_involutive_exact",
+        "tDual_symmetric_invariant_exact",
+        "tDual_fixed_point_iff",
+        "inverse_eta_s_transform_of_eta",
+        "saddlePointEntropy_pos",
+        "macroscopicEntropy_sq"
+      ]
+    }
+  ],
+  "deterministic_checks": {
+    "mathesis_gate_discovery_live": {
+      "ok": true,
+      "rc": 0
+    },
+    "lean_canon_direct": {
+      "ok": true,
+      "rc": 0
+    },
+    "audit_lean": {
+      "ok": true,
+      "rc": 0
+    },
+    "mathesis_gate_strict": {
+      "ok": true,
+      "rc": 0
+    },
+    "run_certificates": {
+      "ok": true,
+      "rc": 0
+    },
+    "verify_qseries": {
+      "ok": true,
+      "rc": 0
+    },
+    "pytest": {
+      "ok": true,
+      "rc": 0
+    }
+  },
+  "defects_found": [],
+  "executive_audit_summary": "APPROVED (Round 1 post-repair): All Round 0 defects in docs/RAMANUJAN_LEAN4_ELENCHUS_ROADMAP.md, tests/test_ramanujan_elenchus_canon.py, and dualscale/lean/DualScale/Discovery/RamanujanElenchusCanon.lean have been verified fixed. Direct Lean 4.33.1 kernel compilation succeeds with 253/253 #print axioms footprints strictly <= {propext} (48 axiom-free, 205 propext-only; 0 Classical.choice, 0 Quot.sound, 0 sorryAx, 0 custom axioms; 20 genuine neg_ctrl_* falsifications across all 8 Canon domains), and live mathesis_gate.py verifies 591/591 theorems across all 3 Discovery modules. All deterministic CI gates pass (preflight_audit.py --summary, mathesis_gate.py, audit_lean.py, run_certificates.py, verify_qseries.py, audit_citations.py, validate_refs.py, and pytest 39/39 including updated 10-ID Rule R4 manifest regex check). All 44 Roadmap arXiv IDs and 10 Canon arXiv IDs match docs/literature/corpus_manifest.json verbatim (with pending dualscale.bib sync for 24 manifest / 9 Canon IDs transparently tracked at Roadmap line 816 and Canon lines 15-21), and all epistemic tiers A/B/L/C/X are strictly respected."
+}

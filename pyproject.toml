@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "socrateai-scientific-rajmath-recovery"
+version = "3.2.0"
+description = "Ramanujan Neuro-Symbolic Mathematics & Dual-Scale K3 x T2 Geometry"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "mpmath",
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "google-genai"
+]
+
+[project.optional-dependencies]
+literature = [
+    "chromadb>=0.5.0",
+    "pypdf>=4.0.0"
+]
+dev = [
+    "pytest>=7.0.0",
+    "sympy>=1.12"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

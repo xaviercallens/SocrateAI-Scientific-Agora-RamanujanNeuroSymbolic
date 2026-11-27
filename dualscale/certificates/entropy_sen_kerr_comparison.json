@@ -1,8 +1,13 @@
 {
   "description": "Entropy comparison: RAMA Deep Burn vs Sen Kerr corrections",
+  "epistemic_tier": "X",
+  "status": "QUARANTINED_LEGACY_SIGN_INVERTED",
+  "warning": "QUARANTINED: Exact cusp-0 c_eff is negative (-823/2310 = -0.3562770562770563) and the q-expansion has alternating-sign coefficients, which invalidates the unitary Cardy formula and Sgr A* Kerr mapping derived from the legacy sign-inverted +0.3563 value.",
   "parameters": {
     "c_eff_BPS": 6.0,
-    "c_eff_DeepBurn": 0.3563,
+    "c_eff_DeepBurn": -0.3562770562770563,
+    "c_eff_DeepBurn_cusp0_exact": "-823/2310",
+    "c_eff_DeepBurn_legacy_sign_inverted": 0.3563,
     "c_eff_Kerr_Sen2012": 3.0,
     "log_correction_coefficient": -1.5,
     "reference": "A. Sen, Gen. Rel. Grav. 44 (2012) 1207-1266"

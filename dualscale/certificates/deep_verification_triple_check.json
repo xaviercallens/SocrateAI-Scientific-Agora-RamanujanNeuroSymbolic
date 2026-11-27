@@ -78,5 +78,12 @@
   ],
   "modular_weight_k": -91.5,
   "ground_state_E0": 70.83333333333333,
-  "c_eff": -1698.0
+  "c_eff": -0.3562770562770563,
+  "c_eff_exact": "-823/2310",
+  "c_eff_formula": "-sum(e_d/d for d=1..12)",
+  "max_cusp_c_eff": 11.812265512265512,
+  "max_cusp_c_eff_exact": "81859/6930",
+  "dominant_cusp_order": 3,
+  "ono_thm_1_64_modular_gamma0_N": false,
+  "is_unitary_bps_state_count": false
 }

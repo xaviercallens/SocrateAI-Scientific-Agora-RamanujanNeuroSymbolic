@@ -1,128 +1,114 @@
 {
   "test": "F3 OEIS/LMFDB Cross-Check",
-  "candidate": {
-    "exponents": [
-      24,
-      23,
-      -14,
-      -24,
-      -24,
-      -24,
-      -24,
-      -24,
-      -24,
-      -24,
-      -24,
-      -24
-    ],
-    "divisors": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12
-    ],
-    "modular_weight_k": -91.5,
-    "c_eff": 0.3563,
-    "ground_state_E0": -70.83333333333333
-  },
-  "q_expansion": {
-    "order": 40,
-    "coefficients": [
-      1,
-      -24,
-      229,
-      -906,
-      -1048,
-      24942,
-      -78970,
-      -114240,
-      1361233,
-      -2208268,
-      -8524384,
-      37346678,
-      -2671554,
-      -263571056,
-      436714016,
-      917075568,
-      -3604419682,
-      38104660,
-      16228779032,
-      -17974353124,
-      -43147871616,
-      103674758760,
-      44801139574,
-      -337606797484,
-      141726119444,
-      699874434060,
-      -754885757230,
-      -848424874706,
-      1620164711780,
-      339734356058,
-      -1412338152378,
-      -11224374784,
-      -1798245050750,
-      3520115713296,
-      7127646466209,
-      -14856696686102,
-      -7235101979096,
-      28232950231094,
-      -6486947930430,
-      -16944930927392,
-      22636044361200
-    ],
-    "first_20_nonzero_offset_terms": [
-      1,
-      -24,
-      229,
-      -906,
-      -1048,
-      24942,
-      -78970,
-      -114240,
-      1361233,
-      -2208268,
-      -8524384,
-      37346678,
-      -2671554,
-      -263571056,
-      436714016,
-      917075568,
-      -3604419682,
-      38104660,
-      16228779032,
-      -17974353124
-    ],
-    "nonzero_start_index": 0
-  },
-  "oeis_results": {
-    "raw": {
-      "status": "error",
-      "detail": "No response or invalid JSON"
+  "epistemic_tier": "B_EXACT_NUMERICS_NON_UNITARY",
+  "exponent_vector": [
+    24,
+    23,
+    -14,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24,
+    -24
+  ],
+  "modular_weight_k": -91.5,
+  "c_eff": -0.3562770562770563,
+  "c_eff_exact": "-823/2310",
+  "max_cusp_c_eff_exact": "81859/6930",
+  "is_unitary_bps_state_count": false,
+  "q_expansion_order": 40,
+  "coefficient_sequence_first_20": [
+    1,
+    -24,
+    229,
+    -906,
+    -1048,
+    24942,
+    -78956,
+    -114576,
+    1364463,
+    -2221528,
+    -8533536,
+    37673546,
+    -3796647,
+    -264596984,
+    453883953,
+    883878466,
+    -3693053486,
+    508442090,
+    16007950004,
+    -20829043916
+  ],
+  "coefficient_sequence_full_40": [
+    1,
+    -24,
+    229,
+    -906,
+    -1048,
+    24942,
+    -78956,
+    -114576,
+    1364463,
+    -2221528,
+    -8533536,
+    37673546,
+    -3796647,
+    -264596984,
+    453883953,
+    883878466,
+    -3693053486,
+    508442090,
+    16007950004,
+    -20829043916,
+    -37136672827,
+    110742938824,
+    3972488182,
+    -316883157382,
+    290247385567,
+    445300721460,
+    -998321126191,
+    230318424884,
+    1231626250998,
+    -2120570554392,
+    1904205923554,
+    1926421178180,
+    -10001182091221,
+    9482301259196,
+    12573059119721,
+    -34773396695224,
+    17064713401756,
+    39093351802126,
+    -83753479559104,
+    53101666814326,
+    90695319702040
+  ],
+  "oeis": {
+    "attempt_raw": {
+      "status": "no_match",
+      "count": 0
     },
-    "absolute": {
-      "status": "error",
-      "detail": "No response or invalid JSON"
+    "attempt_absolute": {
+      "status": "no_match",
+      "count": 0
     },
-    "nonzero": {
-      "status": "error",
-      "detail": "No response or invalid JSON"
-    }
+    "attempt_positive": {
+      "status": "no_match",
+      "count": 0
+    },
+    "attempt_negated": {
+      "status": "no_match",
+      "count": 0
+    },
+    "any_match": false
   },
-  "lmfdb_results": {
-    "error": "HTTP Error 404: Not Found",
-    "weight": 92
+  "lmfdb": {
+    "status": "error",
+    "detail": "HTTP Error 404: Not Found"
   },
-  "conclusion": {
-    "oeis_match": false,
-    "lmfdb_match": false,
-    "verdict": "NEW_OBJECT"
-  }
+  "verdict": "NEW_OBJECT",
+  "interpretation": "The Deep Burn candidate is not catalogued in OEIS or LMFDB. Exact triple-checked numerics confirm signed cusp-0 c_eff = -823/2310 (-0.3562770562770563), dominant cusp c=3 c_eff = 81859/6930, and an alternating-sign q-expansion (not a unitary BPS state count)."
 }

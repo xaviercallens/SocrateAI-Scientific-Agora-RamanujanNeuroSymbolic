@@ -2,11 +2,17 @@
   "milestone": "M4",
   "target": "S12_vs_K3",
   "verdict": "FAIL",
-  "timestamp": "2026-08-09T20:41:34.989530+00:00",
-  "git_commit": "6b9034d",
+  "epistemic_tier": "X",
+  "is_mock_proxy": true,
+  "timestamp": "2026-11-27T18:50:56.323603+00:00",
+  "git_commit": "4772fdf",
   "details": {
     "match": false,
+    "u_5": "819005",
     "residual": "765005",
-    "details": "S12 exact recurrence residual refutes K3 moduli map embedding."
+    "oeis": "A005259",
+    "epistemic_tier": "X",
+    "is_mock_proxy": true,
+    "details": "Quarantined Tier X mock-proxy check: values.json s12_recurrence is Apery's order-3 zeta(3) sequence (OEIS A005259, u_5 = 819005, u_5 - 54000 = 765005), and the former J = 1728 check was a hardcoded mock proxy, NOT a Picard-Fuchs moduli map."
   }
 }

@@ -1,8 +1,10 @@
 import sqlite3
 import random
 import time
+from pathlib import Path
 
-DB_PATH = "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/namagiri.db"
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = str(ROOT_DIR / "namagiri.db")
 
 def compute_mock_shadow(q_series_expr: str) -> bool:
     """

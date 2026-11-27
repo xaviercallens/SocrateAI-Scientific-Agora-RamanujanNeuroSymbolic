@@ -22,9 +22,7 @@ REFERENCES:
 import os
 import sys
 import json
-import base64
 import argparse
-import sqlite3
 import re
 import time
 from pathlib import Path
@@ -86,6 +84,7 @@ class LiveVisionExtractor:
         mime_type = mime_map.get(suffix, "image/jpeg")
         
         for attempt in range(MAX_RETRIES):
+            text = ""
             try:
                 response = self.client.models.generate_content(
                     model=self.model,
@@ -94,17 +93,21 @@ class LiveVisionExtractor:
                         EXTRACTION_PROMPT,
                     ],
                 )
-                
-                text = response.text.strip()
-                
+
+                raw_text = getattr(response, "text", None)
+                if not raw_text:
+                    raise ValueError("Empty response text from Gemini API")
+                text = raw_text.strip()
+
                 # Clean up any markdown wrapping
                 text = re.sub(r'^```(?:json)?\s*', '', text)
                 text = re.sub(r'\s*```$', '', text)
                 text = text.strip()
-                
-                prompt_tokens = getattr(response.usage_metadata, 'prompt_token_count', 0) if hasattr(response, 'usage_metadata') else 0
-                candidate_tokens = getattr(response.usage_metadata, 'candidates_token_count', 0) if hasattr(response, 'usage_metadata') else 0
-                
+
+                usage = getattr(response, "usage_metadata", None)
+                prompt_tokens = (getattr(usage, "prompt_token_count", 0) or 0) if usage else 0
+                candidate_tokens = (getattr(usage, "candidates_token_count", 0) or 0) if usage else 0
+
                 result = json.loads(text)
                 result["source_image"] = str(image_path)
                 result["model"] = self.model
@@ -142,13 +145,12 @@ def main():
     parser.add_argument("--pages", type=int, default=10, help="Number of pages to process (default: 10)")
     parser.add_argument("--output", type=str, default="docs/live_vision_results", help="Output directory")
     parser.add_argument("--image-dir", type=str, default="input/NoteBook1", help="Input image directory")
-    parser.add_argument("--api-key", type=str, default="", help="Gemini API key (or set GEMINI_API_KEY env var)")
     args = parser.parse_args()
-    
-    api_key = args.api_key or get_api_key()
+
+    api_key = get_api_key()
     if not api_key:
         print("ERROR: No Gemini API key found.")
-        print("Set GEMINI_API_KEY environment variable or use --api-key flag.")
+        print("Set GEMINI_API_KEY (or GOOGLE_API_KEY / GOOGLE_GENAI_API_KEY) environment variable.")
         print("Get a key at: https://aistudio.google.com/app/apikey")
         sys.exit(1)
     

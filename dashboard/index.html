@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="NAMAGIRI: Autonomous Mathematical Discovery Engine Dashboard">
+    <meta name="api-base" content="http://127.0.0.1:8081/api">
     <title>NAMAGIRI Observatory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +32,10 @@
                 <div class="stat-box success">
                     <span class="stat-label">Lean Verified</span>
                     <span class="stat-value" id="stat-verified">--</span>
+                </div>
+                <div class="stat-box danger">
+                    <span class="stat-label">Failed</span>
+                    <span class="stat-value" id="stat-failed" style="color: var(--danger);">--</span>
                 </div>
                 <div class="stat-box warning">
                     <span class="stat-label">Unresolved</span>

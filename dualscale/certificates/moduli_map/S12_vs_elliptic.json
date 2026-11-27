@@ -1,12 +1,18 @@
 {
   "milestone": "M4",
   "target": "S12_vs_elliptic",
-  "verdict": "PASS",
-  "timestamp": "2026-08-09T20:41:34.989910+00:00",
-  "git_commit": "6b9034d",
+  "verdict": "FAIL",
+  "epistemic_tier": "X",
+  "is_mock_proxy": true,
+  "timestamp": "2026-11-27T18:50:56.323807+00:00",
+  "git_commit": "4772fdf",
   "details": {
-    "match": true,
-    "residual": "0",
-    "details": "S12 perfectly matches the elliptic-curve J-invariant structural proxy."
+    "match": false,
+    "u_5": "819005",
+    "residual": "N/A_MOCK_PROXY_QUARANTINED",
+    "oeis": "A005259",
+    "epistemic_tier": "X",
+    "is_mock_proxy": true,
+    "details": "Quarantined Tier X mock-proxy check: values.json s12_recurrence is Apery's order-3 zeta(3) sequence (OEIS A005259, u_5 = 819005, u_5 - 54000 = 765005), and the former J = 1728 check was a hardcoded mock proxy, NOT a Picard-Fuchs moduli map."
   }
 }

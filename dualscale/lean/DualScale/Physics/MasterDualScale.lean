@@ -10,29 +10,24 @@ namespace DualScale.Physics
 open DualScale.QSeries.EtaQuotient
 open DualScale.Asymptotics
 
-/-- Conditional Master Dual-Scale Theorem (Holographic Regularity):
-    IF the Holographic Ansatz holds (i.e. boundary fluid enstrophy is bounded 
-    by the BPS central charge entropy scaling of the dual string vacuum state),
-    THEN Aubin-Lions compactness guarantees global regularity of the velocity field.
-    
-    This is an explicit conditional implication (A → B) decoupling pure analysis 
-    from holographic physical ansätze. -/
-theorem master_dual_scale_conditional {S : Set VelocityField} (eq : EtaQuot)
-    (h_bps : isBPS eq) (n : ℝ) (κ : ℝ) (h_kappa : κ > 0)
-    (h_c_eff : (cEff eq : ℝ) = 1)
-    (h_S : macroscopicEntropy 1 n = 2 * Real.pi)
-    -- Explicit conditional premise (The Holographic Ansatz):
-    (h_holo_ansatz : ∀ v ∈ S, enstrophy_of v ≤ κ * (cEff eq : ℝ) * macroscopicEntropy 1 n)
-    (h_ke_bound : ∃ E, ∀ v ∈ S, kinetic_energy v ≤ E) :
-    aubin_lions_compactness S := by
-  have h_holo_bound : ∀ v ∈ S, enstrophy_of v ≤ κ * macroscopicEntropy 1 n := by
-    intro v hv
-    have hb := h_holo_ansatz v hv
-    rw [h_c_eff] at hb
-    have h_one : κ * 1 * macroscopicEntropy 1 n = κ * macroscopicEntropy 1 n := by ring
-    rw [h_one] at hb
-    exact hb
-  exact aubin_lions_enstrophy_compactness 1 n κ h_kappa h_holo_bound h_ke_bound
+/-- Conditional Master Dual-Scale Theorem (Tier C):
+    IF an explicit `AubinLionsPrinciple` holds for `sys`, the eta-quotient `eq`
+    is BPS (`isBPS eq`) with non-negative `cEff eq`, and the fluid ensemble `S`
+    satisfies the holographic enstrophy bound `κ * macroscopicEntropy (cEff eq) n`
+    plus a uniform kinetic energy bound, THEN `IsL2Precompact S ∧ isBPS eq`.
+
+    All hypotheses are actively used; decouples pure analysis from Tier C
+    holographic ansätze without artificial `cEff eq = 1` assumptions. -/
+theorem master_dual_scale_conditional {V : Type*}
+    (sys : FluidSystem V) (IsL2Precompact : Set V → Prop)
+    (h_al : AubinLionsPrinciple sys IsL2Precompact)
+    {S : Set V} (eq : EtaQuot) (h_bps : isBPS eq) (n κ : ℝ)
+    (h_kappa : 0 < κ) (hc_nonneg : 0 ≤ (cEff eq : ℝ)) (hn_nonneg : 0 ≤ n)
+    (h_holo_ansatz : ∀ v ∈ S, sys.enstrophy_of v ≤ κ * macroscopicEntropy (cEff eq : ℝ) n)
+    (h_ke_bound : ∃ E, ∀ v ∈ S, sys.kinetic_energy v ≤ E) :
+    IsL2Precompact S ∧ isBPS eq := by
+  have h_comp := aubin_lions_enstrophy_compactness sys IsL2Precompact h_al
+    (cEff eq : ℝ) n κ h_kappa hc_nonneg hn_nonneg h_holo_ansatz h_ke_bound
+  exact ⟨h_comp.1, h_bps⟩
 
 end DualScale.Physics
-

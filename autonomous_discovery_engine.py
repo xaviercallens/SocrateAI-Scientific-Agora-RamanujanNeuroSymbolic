@@ -95,6 +95,7 @@ class AutonomousDiscoveryEngine:
         if state:
             data = {
                 "exponents": state.exponents,
+                "q_shift": state.q_shift_24,
                 "shadow": bridge["shadow"],
                 "domain": bridge["domain_target"]
             }
@@ -169,7 +170,7 @@ class AutonomousDiscoveryEngine:
             "page": 0,
             "archetype": retrieval_data.get("archetype_hint", ""),
             "conjecture": intuition.get("conjecture", ""),
-            "eta_exponents": json.dumps(state.exponents) if state else "{}",
+            "eta_exponents": json.dumps({str(k): v for k, v in state.exponents.items()}, sort_keys=True) if state else "{}",
             "q_shift": state.q_shift_24 if state else 0,
             "rama_energy": intuition.get("energy", 0.0),
             "rama_C": intuition.get("metrics", {}).get("c", 0.0),
@@ -189,11 +190,12 @@ class AutonomousDiscoveryEngine:
 
 if __name__ == "__main__":
     engine = AutonomousDiscoveryEngine(use_mock_vision=False)
-    
+    repo_root = os.path.dirname(os.path.abspath(__file__))
+
     target_dirs = [
-        "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/input/NoteBook1/**/*.jpg",
-        "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/input/NoteBook2/**/*.jpg",
-        "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/input/NoteBook3/**/*.jpg"
+        os.path.join(repo_root, "input", "NoteBook1", "**", "*.jpg"),
+        os.path.join(repo_root, "input", "NoteBook2", "**", "*.jpg"),
+        os.path.join(repo_root, "input", "NoteBook3", "**", "*.jpg"),
     ]
     
     target_images = []

@@ -97,6 +97,14 @@ TYPE_SHADOW = re.compile(
     r"^[ \t]*(?:noncomputable[ \t]+)*(?:def|abbrev)[ \t]+"
     r"(Real|Complex|Rat|Int|Nat)[ \t]*:=", re.MULTILINE,
 )
+
+#: Reflexive tautology `x = x := by rfl` that establishes no substantive claim.
+RFL_TAUTOLOGY = re.compile(
+    r"^[ \t]*(?:private[ \t]+|protected[ \t]+|noncomputable[ \t]+)*"
+    r"(?:theorem|lemma)[ \t]+([\w'!?]+)(?:(?!^[ \t]*(?:theorem|lemma)\b)[\s\S]){0,240}?"
+    r":\s*([^\n:=]+?)\s*=\s*\2\s*:=\s*by\s+rfl\b",
+    re.MULTILINE,
+)
 DIRECTIVE = re.compile(r"MATHESIS-GATE:\s*(\w+)(?:\(([^)]*)\))?\s*=\s*(.*)")
 PRINT_AXIOMS = re.compile(r"^\s*#print\s+axioms\s+\S+", re.MULTILINE)
 
@@ -145,6 +153,17 @@ def strip_comments(text: str) -> str:
 
 
 def lean_files(root: Path, excludes: list[str]) -> list[Path]:
+    if root.is_file():
+        if root.suffix != ".lean":
+            return []
+        parts = set(root.parts)
+        if ".lake" in parts or "lake-packages" in parts:
+            return []
+        if any(e in str(root) for e in excludes):
+            return []
+        return [root]
+    if not root.is_dir():
+        return []
     out = []
     for path in sorted(root.rglob("*.lean")):
         parts = set(path.parts)
@@ -179,6 +198,12 @@ def check_vacuity(files: list[Path], root: Path) -> list[str]:
             problems.append(
                 f"{rel}:{line}: `def {m.group(1)} :=` shadows a core numeric type — "
                 "every later statement silently changes meaning.")
+        for m in RFL_TAUTOLOGY.finditer(text):
+            line = text.count("\n", 0, m.start()) + 1
+            lhs = m.group(2).strip()
+            problems.append(
+                f"{rel}:{line}: theorem `{m.group(1)}` proves reflexive tautology "
+                f"`{lhs} = {lhs} := by rfl` — it establishes nothing.")
         # Theorems whose conclusion is one of this file's vacuous predicates.
         for name in vacuous:
             for m in re.finditer(
@@ -411,6 +436,16 @@ def self_test() -> list[str]:
          "finds a shadowed core type")
     want([m.group(1) for m in TYPE_SHADOW.finditer("def RealBound := 3\n")] == [],
          "does NOT flag a name merely starting with a core type")
+
+    rfl = lambda src: [m.group(1) for m in RFL_TAUTOLOGY.finditer(strip_comments(src))]
+    want(rfl("theorem t : candidate.c_eff = candidate.c_eff := by rfl\n") == ["t"],
+         "finds reflexive `x = x := by rfl` tautology")
+    want(rfl("lemma l (x : Nat) : x = x := by\n  rfl\n") == ["l"],
+         "finds binder/multiline reflexive `x = x := by rfl` tautology")
+    want(rfl("theorem ok : 2 + 2 = 4 := by rfl\n") == [],
+         "does NOT flag non-reflexive equality")
+    want(rfl("theorem ok2 : candidate.c_eff = (1 : ℚ) := by norm_num\n") == [],
+         "does NOT flag norm_num exact-rational theorem")
     return bad
 
 
@@ -446,12 +481,17 @@ def main() -> int:
             print(f"  - {f}")
         return 1
     if args.self_test:
-        print(f"PASS  mathesis-gate self-test ({VERSION}) — 13 controls")
+        print(f"PASS  mathesis-gate self-test ({VERSION}) — 17 controls")
         return 0
 
-    root = Path(args.path).resolve()
-    scan_root = root / args.lean_src if args.lean_src else root
-    files = lean_files(scan_root, args.exclude) if scan_root.is_dir() else []
+    target = Path(args.path).resolve()
+    if target.is_file():
+        root = target.parent
+        scan_root = target
+    else:
+        root = target
+        scan_root = root / args.lean_src if args.lean_src else root
+    files = lean_files(scan_root, args.exclude)
 
     print(f"mathesis-gate {VERSION} — {root}")
     print(f"  {len(files)} Lean file(s) scanned"

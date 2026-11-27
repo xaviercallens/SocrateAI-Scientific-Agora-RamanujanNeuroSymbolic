@@ -2,9 +2,11 @@ import sqlite3
 import time
 import os
 import datetime
+from pathlib import Path
 
-DB_PATH = "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/namagiri.db"
-ARTIFACT_PATH = "/home/xavkal/.gemini/antigravity/brain/fb77f7e6-e844-486c-8662-a7e985c3b75c/analysis_results.md"
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = str(ROOT_DIR / "namagiri.db")
+ARTIFACT_PATH = str(ROOT_DIR / "docs" / "analysis_results.md")
 
 def generate_report():
     try:

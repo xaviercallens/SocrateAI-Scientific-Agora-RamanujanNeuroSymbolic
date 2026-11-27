@@ -3,8 +3,10 @@ import random
 import time
 import math
 from dataclasses import dataclass
+from pathlib import Path
 
-DB_PATH = "/home/xavkal/xdev/SocrateAI-Scientific-RajMathRecovery/namagiri.db"
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = str(ROOT_DIR / "namagiri.db")
 
 # Rama Engine Hyperparameters (Tier C Design Choices)
 ALPHA = 1.0  # Weight for Complexity (C)

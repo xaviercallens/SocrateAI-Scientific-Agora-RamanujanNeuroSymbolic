@@ -14,9 +14,9 @@ namespace DualScale.Discovery.Notebook1
 structure EtaQuotient where
   factors : List (ℕ × ℤ)
 
-/-- Computes the Effective Central Charge directly from the discrete factors. -/
+/-- Computes the Cusp-0 Effective Central Charge `c_eff(0) = -∑ r_d / d` directly from the discrete factors. -/
 def EtaQuotient.c_eff (eq : EtaQuotient) : ℚ :=
-  eq.factors.foldl (fun acc dr => acc + (dr.2 : ℚ) / (dr.1 : ℚ)) 0
+  eq.factors.foldl (fun acc dr => acc - (dr.2 : ℚ) / (dr.1 : ℚ)) 0
 
 /-- Computes the Modular Weight: k = 1/2 ∑ r_d -/
 def EtaQuotient.weight (eq : EtaQuotient) : ℚ :=
@@ -34,12 +34,12 @@ def ramanujan_nb1_ch2 : EtaQuotient :=
 macro "eta_reduce" : tactic =>
   `(tactic| first | rfl | decide)
 
-/-- k3_identify theorem template: verifies topological alignment with K3 target -/
+/-- k3_identify theorem template: verifies exact rational invariants for `ramanujan_nb1_ch2` -/
 theorem k3_identify :
-    ramanujan_nb1_ch2.c_eff = 25 / 72 ∧
+    ramanujan_nb1_ch2.c_eff = -25 / 72 ∧
     ramanujan_nb1_ch2.weight = 1 / 2 ∧
     ramanujan_nb1_ch2.leading_power = 1 / 12 ∧
-    ramanujan_nb1_ch2.c_eff > 0 := by
+    ramanujan_nb1_ch2.c_eff < 0 := by
   refine ⟨?_, ?_, ?_, ?_⟩
   · unfold EtaQuotient.c_eff ramanujan_nb1_ch2
     norm_num
@@ -50,8 +50,8 @@ theorem k3_identify :
   · unfold EtaQuotient.c_eff ramanujan_nb1_ch2
     norm_num
 
-/-- TIER A: Central charge is exactly 25/72. -/
-theorem c_eff_is_25_72 : ramanujan_nb1_ch2.c_eff = 25 / 72 := by
+/-- TIER A: Cusp-0 effective central charge is exactly -25/72. -/
+theorem c_eff_is_neg_25_72 : ramanujan_nb1_ch2.c_eff = -25 / 72 := by
   unfold EtaQuotient.c_eff ramanujan_nb1_ch2
   norm_num
 
@@ -65,8 +65,10 @@ theorem leading_q_power : ramanujan_nb1_ch2.leading_power = 1 / 12 := by
   unfold EtaQuotient.leading_power ramanujan_nb1_ch2
   norm_num
 
-/-- TIER A: Central charge is strictly positive (unitarity guaranteed). -/
-theorem discovery_is_unitary : ramanujan_nb1_ch2.c_eff > 0 := by
+/-- TIER A: Cusp-0 effective central charge is strictly negative (`c_eff(0) < 0`),
+    confirming this eta-quotient is a non-unitary signed index rather than a
+    positive BPS state count. -/
+theorem discovery_cusp0_ceff_negative : ramanujan_nb1_ch2.c_eff < 0 := by
   unfold EtaQuotient.c_eff ramanujan_nb1_ch2
   norm_num
 

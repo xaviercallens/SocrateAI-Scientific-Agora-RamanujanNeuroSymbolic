@@ -2,10 +2,10 @@
 Project NAMAGIRI — Fitness Gate & Energy Evaluator (WS-7)
 Calculates raw RAMA energy and applies Lean 4 verification as an absolute fitness gate.
 """
-import sys
-import os
-import uuid
 import logging
+import os
+import sys
+import uuid
 from typing import Tuple
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
@@ -19,7 +19,7 @@ class FitnessEvaluator:
         self.track_a = TrackAInverseEngineering(target_coeffs, d_max=12)
         # Shifted weights: low alpha to tolerate complexity, high beta to punish fit errors
         self.weights = weights or EnergyWeights(alpha=0.05, beta=10.0, gamma=0.1)
-        
+
         self.lean_gen = LeanCodeGenerator()
         self.lean_ver = LeanVerifier()
 
@@ -31,29 +31,35 @@ class FitnessEvaluator:
 
     def lean_fitness_gate(self, state: EtaQuotientState) -> bool:
         """
-        The absolute Lean 4 fitness gate. 
+        The absolute Lean 4 fitness gate.
         If the state's arithmetic coefficients can't be structurally verified, it dies.
         """
         # We only pass low-energy candidates to the Lean compiler to save time
-        energy, _, I, _ = self.evaluate_energy(state)
-        
+        _, _, I, _ = self.evaluate_energy(state)
+
         # If the fit is terrible, don't even bother waking up Lean
         if I > 0.5:
             return False
-            
-        conjecture_id = f"gen_cand_{str(uuid.uuid4())[:8]}"
-        lean_code = self.lean_gen.generate_tier_a_eta_quotient_verification(
-            conjecture_id, 
-            state.exponents, 
-            state.q_shift_24
+
+        conjecture_id = f"gen_cand_{uuid.uuid4().hex[:8]}"
+        lean_code = self.lean_gen.generate_verification_file(
+            conjecture_id,
+            {
+                "exponents": state.exponents,
+                "q_shift": state.q_shift_24,
+                "shadow": "Evolutionary Candidate",
+                "domain": "RAMA Track A",
+            },
         )
-        
+
         # We don't retry here - evolutionary pressure requires strict survival
-        success, _, _ = self.lean_ver.verify(lean_code, filename="evo_gate.lean", retries=1)
-        
+        success, _, _ = self.lean_ver.verify(
+            lean_code, filename=f"evo_gate_{conjecture_id}.lean", retries=1, cleanup=True
+        )
+
         if success:
-            logging.info(f"    [FITNESS GATE PASSED] Candidate {conjecture_id} verified mathematically.")
+            logging.info("    [FITNESS GATE PASSED] Candidate %s verified mathematically.", conjecture_id)
         else:
-            logging.debug(f"    [FITNESS GATE FAILED] Candidate {conjecture_id} killed.")
-            
+            logging.debug("    [FITNESS GATE FAILED] Candidate %s killed.", conjecture_id)
+
         return success

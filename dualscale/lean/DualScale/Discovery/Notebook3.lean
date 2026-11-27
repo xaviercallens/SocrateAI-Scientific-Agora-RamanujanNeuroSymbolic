@@ -5,7 +5,7 @@
 --
 -- Discovery: Genetic RAMA engine, Notebook 3
 -- Exponents: [(8, 6), (10, 3), (11, -3), (12, -5)]
--- c_eff = 119/330 ≈ 0.3606 (BPS-stable, k = 1/2)
+-- c_eff(0) = -119/330 (cusp-3 c_eff = 109/330; alternating-sign non-unitary index, k = 1/2)
 
 import Mathlib.Data.Rat.Init
 import Mathlib.Tactic.NormNum
@@ -17,9 +17,9 @@ namespace DualScale.Discovery.Notebook3
 structure EtaQuotient where
   factors : List (ℕ × ℤ)
 
-/-- Computes the Effective Central Charge directly from the discrete blueprint. -/
+/-- Computes the Cusp-0 Effective Central Charge `c_eff(0) = -∑ r_d / d` directly from the discrete blueprint. -/
 def EtaQuotient.c_eff (eq : EtaQuotient) : ℚ :=
-  eq.factors.foldl (fun acc dr => acc + (dr.2 : ℚ) / (dr.1 : ℚ)) 0
+  eq.factors.foldl (fun acc dr => acc - (dr.2 : ℚ) / (dr.1 : ℚ)) 0
 
 /-- Computes the Modular Weight: k = 1/2 ∑ r_d -/
 def EtaQuotient.weight (eq : EtaQuotient) : ℚ :=
@@ -45,13 +45,15 @@ macro "eta_reduce" : tactic =>
 -- Instantaneous Proofs (Zero Timeouts)
 -- ==========================================
 
-/-- TIER A: Central charge is exactly 119/330. -/
-theorem c_eff_is_119_330 : ramanujan_nb3.c_eff = 119 / 330 := by
+/-- TIER A: Cusp-0 effective central charge is exactly -119/330. -/
+theorem c_eff_is_neg_119_330 : ramanujan_nb3.c_eff = -119 / 330 := by
   unfold EtaQuotient.c_eff ramanujan_nb3
   norm_num
 
-/-- TIER A: Central charge is strictly positive (unitary, no ghosts). -/
-theorem discovery_is_stable : ramanujan_nb3.c_eff > 0 := by
+/-- TIER A: Cusp-0 effective central charge is strictly negative (`c_eff(0) < 0`),
+    confirming non-unitarity as a signed index (while cusp-3 has `c_eff = 109/330`,
+    matching `DualScale.QSeries.EtaQuotient.nb3_vacuum_cusp3_ceff`). -/
+theorem discovery_cusp0_ceff_negative : ramanujan_nb3.c_eff < 0 := by
   unfold EtaQuotient.c_eff ramanujan_nb3
   norm_num
 

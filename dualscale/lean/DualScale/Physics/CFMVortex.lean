@@ -1,8 +1,8 @@
 -- DualScale/Physics/CFMVortex.lean — Task 3.4: CFM Vortex Complete
 -- ============================================================================
--- The Conformal Fluid Mechanics (CFM) framework connects the continuous
--- classical vortex lines of fluid mechanics to the discrete hypergraph
--- edges defining the holographic boundary of the string bulk.
+-- Speculative Tier C formalization of the Conformal Fluid Mechanics (CFM)
+-- vortex-entropy bound as an explicit structure / hypothesis predicate rather
+-- than global axioms.
 --
 -- References:
 --   Bhattacharyya et al. (2008), "Nonlinear Fluid Dynamics from Gravity"
@@ -14,25 +14,23 @@ namespace DualScale.Physics
 
 open DualScale.Asymptotics
 
-/-! ## Conformal Fluid Vortices -/
+/-! ## Conformal Fluid Vortices (Tier C Model) -/
 
-/-- An abstract topology representing the fluid boundary. -/
-axiom FluidBoundary : Type
+/-- State record for a speculative conformal fluid configuration satisfying
+    the hypergraph entropy circulation bound. -/
+structure ConformalFluidState where
+  total_vorticity : ℝ
+  hypergraph_entropy : ℝ
+  conservation_bound : |total_vorticity| ≤ hypergraph_entropy
 
-/-- The total vorticity (circulation) of a conformal fluid state. -/
-axiom total_vorticity : FluidBoundary → ℝ
+/-- Explicit Tier C hypothesis predicate encoding the CFM vortex-entropy bound
+    over an arbitrary boundary state type `B`. -/
+def CFMVortexConservationHypothesis {B : Type*} (vort ent : B → ℝ) : Prop :=
+  ∀ fb : B, |vort fb| ≤ ent fb
 
-/-- The macroscopic entropy of the underlying hypergraph simulation. -/
-axiom hypergraph_entropy : FluidBoundary → ℝ
-
-/-! ## Vortex Conservation Axiom -/
-
-/-- The CFM Vortex Conservation principle states that the topological 
-    circulation of the fluid is strictly conserved and governed by the 
-    hypergraph entropy. If the hypergraph is bounded by BPS states,
-    the fluid circulation cannot experience infinite blowup (Navier-Stokes
-    regularity). -/
-axiom cfm_vortex_conservation (fb : FluidBoundary) :
-  |total_vorticity fb| ≤ hypergraph_entropy fb
+/-- Tier A corollary: any `ConformalFluidState` has non-negative hypergraph entropy. -/
+theorem cfm_entropy_nonneg (s : ConformalFluidState) :
+    0 ≤ s.hypergraph_entropy :=
+  le_trans (abs_nonneg _) s.conservation_bound
 
 end DualScale.Physics

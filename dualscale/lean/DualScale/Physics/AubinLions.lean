@@ -1,58 +1,74 @@
 -- DualScale/Physics/AubinLions.lean — Task 3.2: Aubin-Lions Strengthen
 -- ============================================================================
--- The Aubin-Lions compactness lemma is the standard technique for proving
--- the existence of weak solutions to the Navier-Stokes equations. By linking
--- it to the holographic enstrophy bound, we guarantee that sequences of
--- velocity fields have strongly convergent subsequences in L^2.
+-- Parameterized formalization of Aubin-Lions compactness for fluid ensembles,
+-- replacing global axioms and uninhabited types with `FluidSystem V` and an
+-- explicit `AubinLionsPrinciple` hypothesis parameter.
 --
 -- References:
 --   Aubin (1963), "Un théorème de compacité"
 --   Lions (1969), "Quelques méthodes de résolution des problèmes aux limites non linéaires"
 
 import Mathlib.Data.Real.Basic
+import Mathlib.Tactic.NormNum
 import DualScale.Physics.Enstrophy
 
 namespace DualScale.Physics
 
-/-! ## Aubin-Lions Compactness -/
+/-! ## Parameterized Fluid System & Aubin-Lions Principle -/
 
-/-- An abstract type representing a velocity field configuration. -/
-axiom VelocityField : Type
+/-- Parameterized fluid configuration space with non-negative kinetic energy
+    and enstrophy functionals. -/
+structure FluidSystem (V : Type*) where
+  kinetic_energy : V → ℝ
+  enstrophy_of : V → ℝ
+  kinetic_nonneg : ∀ v, 0 ≤ kinetic_energy v
+  enstrophy_nonneg : ∀ v, Enstrophy (enstrophy_of v)
 
-/-- The L2 norm squared of the velocity field (Kinetic Energy). -/
-axiom kinetic_energy : VelocityField → ℝ
+/-- Concrete inhabited witness demonstrating consistency of `FluidSystem`. -/
+noncomputable def trivialRealFluidSystem : FluidSystem ℝ where
+  kinetic_energy := fun x => x ^ 2
+  enstrophy_of := fun _ => 0
+  kinetic_nonneg := fun x => sq_nonneg x
+  enstrophy_nonneg := fun _ => le_refl 0
 
-/-- The enstrophy (Ω) of the velocity field. -/
-axiom enstrophy_of : VelocityField → ℝ
+/-- An ensemble `S : Set V` is bounded in both enstrophy and kinetic energy. -/
+def EnergyEnstrophyBounded {V : Type*} (sys : FluidSystem V) (S : Set V) : Prop :=
+  (∃ M, 0 ≤ M ∧ ∀ v ∈ S, sys.enstrophy_of v ≤ M) ∧
+  (∃ E, ∀ v ∈ S, sys.kinetic_energy v ≤ E)
 
-/-- Axiom of positivity for enstrophy of a physical velocity field. -/
-axiom enstrophy_pos (v : VelocityField) : Enstrophy (enstrophy_of v)
+/-- Tier L hypothesis parameter: Aubin-Lions compactness embedding relative to
+    a precompactness predicate `IsL2Precompact : Set V → Prop`. -/
+def AubinLionsPrinciple {V : Type*} (sys : FluidSystem V)
+    (IsL2Precompact : Set V → Prop) : Prop :=
+  ∀ S, EnergyEnstrophyBounded sys S → IsL2Precompact S
 
-/-- The Aubin-Lions compactness lemma guarantees that a sequence of fields
-    bounded in both kinetic energy (L2) and enstrophy (H1) will have a
-    strongly convergent subsequence. We abstract this as a property of a
-    bounded set of fields. -/
-axiom aubin_lions_compactness (S : Set VelocityField) : Prop
+/-! ## Holographic Compactness (Conditional) -/
 
-axiom aubin_lions_apply {S : Set VelocityField}
-  (h_ens_bound : ∃ M, ∀ v ∈ S, enstrophy_of v ≤ M)
-  (h_ke_bound : ∃ E, ∀ v ∈ S, kinetic_energy v ≤ E) :
-  aubin_lions_compactness S
-
-/-! ## Holographic Compactness -/
-
-/-- Theorem: Due to the holographic bound (S_BPS), any physically realized
-    ensemble of BPS bounded velocity fields satisfies the enstrophy condition
-    for Aubin-Lions compactness automatically. -/
-theorem aubin_lions_enstrophy_compactness {S : Set VelocityField}
-  (c_eff n : ℝ) (κ : ℝ) (h_kappa : κ > 0)
-  (h_holo : ∀ v ∈ S, enstrophy_of v ≤ κ * DualScale.Asymptotics.macroscopicEntropy c_eff n)
-  (h_ke_bound : ∃ E, ∀ v ∈ S, kinetic_energy v ≤ E) :
-  aubin_lions_compactness S := by
-  -- We extract the bound M = κ * S_BPS from the hypothesis
-  have h_ens_bound : ∃ M, ∀ v ∈ S, enstrophy_of v ≤ M :=
-    ⟨κ * DualScale.Asymptotics.macroscopicEntropy c_eff n, h_holo⟩
-  -- We apply Aubin-Lions
-  exact aubin_lions_apply h_ens_bound h_ke_bound
+/-- Conditional compactness theorem: under an explicit `AubinLionsPrinciple`,
+    a holographic enstrophy bound (`κ * macroscopicEntropy c_eff n`), and a
+    uniform kinetic energy bound, `S` satisfies `IsL2Precompact S` and the
+    enstrophy ceiling is non-negative. -/
+theorem aubin_lions_enstrophy_compactness {V : Type*}
+    (sys : FluidSystem V) (IsL2Precompact : Set V → Prop)
+    (h_al : AubinLionsPrinciple sys IsL2Precompact) {S : Set V}
+    (c_eff n κ : ℝ) (h_kappa : 0 < κ) (hc : 0 ≤ c_eff) (hn : 0 ≤ n)
+    (h_holo : ∀ v ∈ S, sys.enstrophy_of v ≤ κ * DualScale.Asymptotics.macroscopicEntropy c_eff n)
+    (h_ke_bound : ∃ E, ∀ v ∈ S, sys.kinetic_energy v ≤ E) :
+    IsL2Precompact S ∧ 0 ≤ κ * DualScale.Asymptotics.macroscopicEntropy c_eff n := by
+  have h_sq := DualScale.Asymptotics.macroscopicEntropy_sq c_eff n hc hn
+  have h_S_nonneg : 0 ≤ DualScale.Asymptotics.macroscopicEntropy c_eff n := by
+    unfold DualScale.Asymptotics.macroscopicEntropy
+    exact mul_nonneg (mul_nonneg (by norm_num) Real.pi_pos.le) (Real.sqrt_nonneg _)
+  have h_bound_nonneg : 0 ≤ κ * DualScale.Asymptotics.macroscopicEntropy c_eff n :=
+    mul_nonneg h_kappa.le h_S_nonneg
+  have h_ens_bound : ∃ M, 0 ≤ M ∧ ∀ v ∈ S, sys.enstrophy_of v ≤ M :=
+    ⟨κ * DualScale.Asymptotics.macroscopicEntropy c_eff n, h_bound_nonneg, h_holo⟩
+  have h_nonneg_check : 0 ≤ (DualScale.Asymptotics.macroscopicEntropy c_eff n) ^ 2 := by
+    rw [h_sq]
+    exact mul_nonneg (mul_nonneg (div_nonneg (mul_nonneg (by norm_num) (sq_nonneg _)) (by norm_num)) hc) hn
+  exact ⟨h_al S ⟨h_ens_bound, h_ke_bound⟩,
+    le_of_le_of_eq h_bound_nonneg (by
+      have _ := h_nonneg_check
+      rfl)⟩
 
 end DualScale.Physics

@@ -1,125 +1,145 @@
-/- 
-  NAMAGIRI.lean 
-  Project NAMAGIRI: Autonomous Mathematical Discovery Engine
-  Formalization of Ramanujan's Intuition mapped to K3 x T2 Physical Research Vectors
+/-
+  NAMAGIRI.lean — NON-GATED HISTORICAL DESIGN SKETCH (Tier C / Tier X)
+  ====================================================================
+  NOTE: This root-level file is a historical architectural sketch only and is
+  NOT imported by `DualScale` (`dualscale/lean/DualScale.lean`). It uses IEEE-754
+  floating-point approximations (`ApproxFloat`, `ApproxComplex`) purely as a
+  type-level schema without shadowing Lean/Mathlib `Real` or `Complex`.
 -/
-
-set_option linter.unusedVariables false
-
--- Basic Types
-def Complex := (Float × Float)
-def Real := Float
 
 namespace Namagiri
 
+-- Non-shadowing numeric sketch aliases (never shadow core `Real` or `Complex`)
+abbrev ApproxComplex := Float × Float
+abbrev ApproxFloat := Float
+
 /-!
-  ## 1. Bounding the Hydrodynamic Limit (α' → 0) via "Sums of Tails"
-  Using Ramanujan's Sums of Tails of Euler's Partition Products to algebraically prove Hypothesis U.
+  ## 1. Hydrodynamic Limit Sketch (α' → 0)
+  Schema for uniform enstrophy boundedness across truncation scales.
 -/
 namespace HydrodynamicLimit
 
-/-- T-dual boundary scale α' -/
-def alpha_prime : Real := (0.01 : Float)
+/-- T-dual boundary scale α'. -/
+def alpha_prime : ApproxFloat := 0.01
 
-/-- Relative enstrophy functional D(u^(α')) -/
-def EnstrophyFunctional := Real → Real
+/-- Relative enstrophy functional D(u^(α')). -/
+abbrev EnstrophyFunctional := ApproxFloat → ApproxFloat
 
-/-- The exact algebraic difference (residual error) evaluated via Ramanujan's Eulerian q-series. -/
-def ramanujanSumOfTails (n_cutoff : Nat) : Real := (0.0 : Float)
+/-- Non-vacuous uniform boundedness schema: enstrophy is bounded by `M`
+    across all positive truncation scales `a`. -/
+def uniformBoundedness (enstrophy : EnstrophyFunctional) (M : ApproxFloat) : Prop :=
+  ∀ a : ApproxFloat, enstrophy a ≤ M
 
-/-- Predicate ensuring uniform boundedness of the enstrophy flux (Hypothesis U). -/
-def uniformBoundedness (D : EnstrophyFunctional) : Prop := True
-
-/-- Lemma: Ramanujan's sum of tails algebraically bounds the ultra-high-frequency modes, proving Hypothesis U. -/
-theorem hypothesis_U_bound (D : EnstrophyFunctional) : uniformBoundedness D := by
-  trivial
+/-- Conditional projection: uniform boundedness yields the bound at any scale `a`. -/
+theorem hypothesis_U_bound (enstrophy : EnstrophyFunctional) (M : ApproxFloat)
+    (h_bound : uniformBoundedness enstrophy M) (a : ApproxFloat) :
+    enstrophy a ≤ M :=
+  h_bound a
 
 end HydrodynamicLimit
 
 
 /-!
-  ## 2. Securing the Spectral Gap via Ramanujan Graphs & the τ-Function
-  Using Sarnak's spectral gaps and Bourgain-Demeter decoupling governed by the Ramanujan τ-function.
+  ## 2. Spectral Gap Sketch (Ramanujan Graphs & τ-Function)
+  Schema for Deligne's bound and the Ramanujan graph eigenvalue condition.
 -/
 namespace SpectralGap
 
-/-- The Ramanujan tau-function coefficient. -/
-def tau (p : Nat) : Int := 1
+/-- Deligne-Ramanujan bound schema for weight-12 cusp form coefficients:
+    |τ(p)| ≤ 2 p^(11/2), expressed exactly in ℤ as τ(p)^2 ≤ 4 p^11. -/
+def deligneBound (tau : Nat → Int) (p : Nat) : Prop :=
+  (tau p) ^ 2 ≤ 4 * ((p : Int) ^ 11)
 
-/-- Deligne's proven bound on the tau function. -/
-def deligneBound (p : Nat) : Prop := True
+/-- Ramanujan graph spectral gap schema: all nontrivial eigenvalues lie within
+    the Alon-Boppana bound `spectralBound` (2√(k-1) for k-regular graphs). -/
+def isRamanujanGraph (nontrivialEigenvalues : List ApproxFloat)
+    (spectralBound : ApproxFloat) : Prop :=
+  ∀ lam ∈ nontrivialEigenvalues, Float.abs lam ≤ spectralBound
 
-/-- Property of being an optimal Ramanujan Graph for the sub-cutoff quantum fiber. -/
-def isRamanujanGraph (G : Nat) : Prop := True
-
-/-- Lemma: The modular discriminants generate a strict Ramanujan graph, maximizing the spectral gap. -/
-theorem maximal_spectral_gap (G : Nat) (h : deligneBound 2) : isRamanujanGraph G := by
-  trivial
+/-- Conditional pairing of explicit Deligne and Ramanujan-graph hypotheses. -/
+theorem maximal_spectral_gap (tau : Nat → Int)
+    (eigs : List ApproxFloat) (spectralBound : ApproxFloat)
+    (h_deligne : deligneBound tau 2)
+    (h_spec : isRamanujanGraph eigs spectralBound) :
+    deligneBound tau 2 ∧ isRamanujanGraph eigs spectralBound :=
+  ⟨h_deligne, h_spec⟩
 
 end SpectralGap
 
 
 /-!
-  ## 3. Enforcing CFM Constraints via Incomplete Elliptic Integrals
-  Parameterizing the curvature of vortex lines (Lipschitz continuity) using Ramanujan's integrals.
+  ## 3. CFM Vortex Direction Constraint Sketch
+  Schema for Lipschitz continuity bounded by an elliptic-integral modulus.
 -/
 namespace CFMConstraints
 
-/-- The vortex direction ξ. -/
-def vortexDirection := Complex
+/-- Vortex direction sketch type. -/
+abbrev VortexDirection := ApproxComplex
 
-/-- The Lipschitz bound ||∇ξ||_{L^∞}. -/
-def lipschitzBound (xi : vortexDirection) : Real := (1.0 : Float)
+/-- Non-vacuous CFM bound schema: `lipschitzBound xi ≤ incompleteEllipticIntegral alpha`. -/
+def CFMCertified (lipschitzBound : VortexDirection → ApproxFloat)
+    (incompleteEllipticIntegral : ApproxFloat → ApproxFloat)
+    (xi : VortexDirection) (alpha : ApproxFloat) : Prop :=
+  lipschitzBound xi ≤ incompleteEllipticIntegral alpha
 
-/-- Ramanujan's Incomplete Elliptic Integral of the first kind evaluated at truncation angle α. -/
-def incompleteEllipticIntegral (alpha : Real) : Real := (1.0 : Float)
-
-/-- Lemma: The geometric truncation angle α < π/2 equals the T-dual cutoff, certifying the CFM criteria. -/
-theorem cfm_certified (xi : vortexDirection) : 
-  lipschitzBound xi = incompleteEllipticIntegral (1.0 : Float) := by
-  trivial
+/-- Conditional CFM projection. -/
+theorem cfm_certified (lipschitzBound : VortexDirection → ApproxFloat)
+    (incompleteEllipticIntegral : ApproxFloat → ApproxFloat)
+    (xi : VortexDirection) (alpha : ApproxFloat)
+    (h_cfm : CFMCertified lipschitzBound incompleteEllipticIntegral xi alpha) :
+    lipschitzBound xi ≤ incompleteEllipticIntegral alpha :=
+  h_cfm
 
 end CFMConstraints
 
 
 /-!
-  ## 4. Duminil-Copin Phase Transitions via 3-Limit Continued Fractions
-  Bifurcation of local flow dynamics into distinct finite limit points to prevent singularity blow-up.
+  ## 4. Phase Transitions Sketch (3-Limit Continued Fractions)
+  Schema for discrete 3-branch limit structure.
 -/
 namespace PhaseTransitions
 
-/-- Ramanujan's generalized continued fractions with distinct residue limit points. -/
-def fractionLimit (residue : Nat) : Complex := (0.0, 0.0)
+/-- Non-vacuous discrete branch-count schema for 3-limit continued fractions. -/
+def topologicalFracture (branches : List ApproxComplex) : Prop :=
+  branches.length = 3
 
-/-- Property that the system is topologically fractured (Hausdorff dimension zero). -/
-def topologicalFracture (state : Complex) : Prop := True
-
-/-- Lemma: At α' → 0, the continued fraction forces the singular set into discrete non-communicating states. -/
-theorem prevents_singularity (res : Nat) : topologicalFracture (fractionLimit res) := by
-  trivial
+/-- Conditional corollary: 3-branch limit structure implies strictly positive branch count. -/
+theorem prevents_singularity (branches : List ApproxComplex)
+    (h_frac : topologicalFracture branches) :
+    0 < branches.length := by
+  rw [h_frac]
+  decide
 
 end PhaseTransitions
 
 
 /-!
-  ## 5. Locking the Sym^2(L_2) Fiber via Mock Theta "Shadows"
-  Stabilizing the T-dual transition layer by coupling the macroscopic fluid to the microscopic fiber.
+  ## 5. Mock Theta Shadow Completion Sketch
+  Schema for harmonic Maass completion of a mock-theta function and its shadow.
 -/
 namespace FiberLock
 
-/-- The macroscopic fluid dynamics defined as a mock theta function. -/
-def macroscopicFluid := Complex
+/-- Non-vacuous harmonic Maass completion schema requiring modularity and
+    vanishing hyperbolic Laplacian for the sum `mock + shadow`. -/
+def HarmonicMaassForm
+    (ModularityCond : (ApproxComplex → ApproxComplex) → Prop)
+    (LaplacianVanishes : (ApproxComplex → ApproxComplex) → Prop)
+    (mock shadow : ApproxComplex → ApproxComplex) : Prop :=
+  let completed := fun tau =>
+    ((mock tau).1 + (shadow tau).1, (mock tau).2 + (shadow tau).2)
+  ModularityCond completed ∧ LaplacianVanishes completed
 
-/-- The locked microscopic Sym^2(L_2) arithmetic fiber defined as the shadow. -/
-def microscopicFiber := Complex
-
-/-- The full invariant Harmonic Maass Form. -/
-def HarmonicMaassForm (mock : Complex) (shadow : Complex) : Prop := True
-
-/-- Lemma: Adding the non-holomorphic shadow restores modular symmetry, locking the Sym^2(L_2) fiber. -/
-theorem t_dual_layer_stabilized (fluid : Complex) (fiber : Complex) :
-  HarmonicMaassForm fluid fiber := by
-  trivial
+/-- Conditional pairing of modularity and harmonicity for `mock + shadow`. -/
+theorem t_dual_layer_stabilized
+    (ModularityCond : (ApproxComplex → ApproxComplex) → Prop)
+    (LaplacianVanishes : (ApproxComplex → ApproxComplex) → Prop)
+    (mock shadow : ApproxComplex → ApproxComplex)
+    (h_mod : ModularityCond
+      (fun tau => ((mock tau).1 + (shadow tau).1, (mock tau).2 + (shadow tau).2)))
+    (h_lap : LaplacianVanishes
+      (fun tau => ((mock tau).1 + (shadow tau).1, (mock tau).2 + (shadow tau).2))) :
+    HarmonicMaassForm ModularityCond LaplacianVanishes mock shadow :=
+  ⟨h_mod, h_lap⟩
 
 end FiberLock
 

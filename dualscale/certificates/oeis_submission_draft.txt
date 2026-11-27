@@ -4,7 +4,7 @@
 %U -3693053486,508442090,16007950004,-20829043916,-37136672827,110742938824,3972488182,-316883157382,290247385567
 %N Coefficients in the q-expansion of the eta-quotient prod_{d=1}^{12} eta(q^d)^{e_d} where e = (24,23,-14,-24,-24,-24,-24,-24,-24,-24,-24,-24).
 %C The exponent vector e = (24,23,-14,-24,-24,-24,-24,-24,-24,-24,-24,-24) was discovered by the RAMA Deep Burn evolutionary engine (population 100000, 100 epochs, fitness 9.1957). The modular weight is k = (sum of exponents)/2 = -183/2 = -91.5.
-%C The effective central charge is c_eff = sum_{d=1}^{12} e_d/d = 823/2310 = 0.356277..., which is strictly positive, ensuring a unitary conformal spectrum with no ghost states.
+%C The exact signed cusp-0 effective central charge is c_eff(0) = -sum_{d=1}^{12} e_d/d = -823/2310 = -0.356277... (dominant cusp c=3 has c_eff = 81859/6930; alternating-sign index, NOT a unitary BPS state count).
 %C The ground-state energy shift is E0 = -(1/24)*sum_{d=1}^{12} d*e_d = 425/6 = +70.8333..., representing spontaneous supersymmetry breaking above the zero-energy BPS floor.
 %C This eta-quotient is a candidate for describing non-BPS (supersymmetry-breaking) states in the K3 x T^2 string compactification landscape.
 %C The sequence was independently verified using three algorithms: (A) direct factor-by-factor convolution, (B) reversed-order convolution, (C) logarithmic derivative with Newton recurrence. All three produce identical results to 41 terms.

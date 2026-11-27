@@ -25,7 +25,7 @@ computable rational arithmetic linked directly to the candidate exponent list.
 ## Discovery Data
 - **Exponents**: [24, 23, -14, -24, -24, -24, -24, -24, -24, -24, -24, -24]
 - **Divisors**:  [1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12]
-- **c_eff**: 823 / 2310 ≈ 0.356277
+- **c_eff (cusp-0)**: -823 / 2310 ≈ -0.356277 (alternating-sign non-unitary index; dominant cusp c=3 has 81859 / 6930 ≈ 11.8123)
 - **k (modular weight)**: -183 / 2 = -91.5
 - **E0 (ground state shift)**: +425 / 6 ≈ 70.8333
 - **Fitness**: 9.1957
@@ -48,9 +48,10 @@ def computeModularWeight (exps : List ℚ) : ℚ :=
 def computeGroundStateShift (exps : List ℚ) (divs : List ℚ) : ℚ :=
   - ((exps.zipWith (· * ·) divs).foldl (· + ·) 0) / 24
 
-/-- Computable effective central charge c_eff = sum(e_i / d_i) -/
+/-- Computable cusp-0 effective central charge `c_eff(0) = -sum(e_i / d_i)`.
+    Matches `DualScale.QSeries.EtaQuotient.cEff`. -/
 def computeCentralCharge (exps : List ℚ) (divs : List ℚ) : ℚ :=
-  (exps.zipWith (· / ·) divs).foldl (· + ·) 0
+  -(exps.zipWith (· / ·) divs).foldl (· + ·) 0
 
 /--
   TIER A PROOF: Modular Weight Computation.
@@ -71,11 +72,12 @@ theorem ground_state_shift_value :
   norm_num
 
 /--
-  TIER A PROOF: Central Charge Computation.
-  Calculated dynamically from exponent and divisor lists: c_eff = 823/2310.
+  TIER A PROOF: Cusp-0 Central Charge Computation.
+  Calculated dynamically from exponent and divisor lists: c_eff(0) = -823/2310.
+  (Alternating-sign non-unitary index; dominant cusp `c = 3` has `81859/6930`.)
 -/
 theorem central_charge_value :
-    computeCentralCharge susyBreakingExponents divisorLevels = 823 / 2310 := by
+    computeCentralCharge susyBreakingExponents divisorLevels = -823 / 2310 := by
   unfold computeCentralCharge susyBreakingExponents divisorLevels
   norm_num
 
@@ -101,11 +103,12 @@ theorem modular_weight_negative :
   norm_num
 
 /--
-  TIER A PROOF: The effective central charge is strictly positive (c_eff > 0),
-  confirming a unitary CFT spectrum (no ghost states).
+  TIER A PROOF: The cusp-0 effective central charge is strictly negative (`c_eff(0) < 0`),
+  confirming alternating-sign non-unitarity at cusp 0 (while dominant cusp `c = 3` has
+  `81859/6930 > 0`, matching `DualScale.QSeries.EtaQuotient.deep_burn_cusp3_ceff`).
 -/
-theorem c_eff_positive :
-    0 < computeCentralCharge susyBreakingExponents divisorLevels := by
+theorem c_eff_cusp0_negative :
+    computeCentralCharge susyBreakingExponents divisorLevels < 0 := by
   unfold computeCentralCharge susyBreakingExponents divisorLevels
   norm_num
 
@@ -120,17 +123,18 @@ theorem ground_state_positive :
 
 /--
   TIER A PROOF: Comprehensive Phase Spectrum Classification.
-  The candidate satisfies all four conditions for non-BPS astrophysical regime:
+  The candidate satisfies all four conditions for the non-BPS alternating-sign sector:
   (1) Broken SUSY (k ≠ 1/2)
   (2) Negative modular weight (k < 0)
-  (3) Unitary central charge (c_eff > 0)
+  (3) Negative cusp-0 effective central charge (`c_eff(0) < 0`, alternating-sign non-unitarity;
+      dominant cusp `c = 3` has `81859/6930`)
   (4) Positive ground state energy shift (E0 > 0)
 -/
 theorem phase_spectrum_classification :
     isSusyBroken (computeModularWeight susyBreakingExponents) ∧
     computeModularWeight susyBreakingExponents < 0 ∧
-    0 < computeCentralCharge susyBreakingExponents divisorLevels ∧
+    computeCentralCharge susyBreakingExponents divisorLevels < 0 ∧
     0 < computeGroundStateShift susyBreakingExponents divisorLevels := by
-  exact ⟨susy_is_broken, modular_weight_negative, c_eff_positive, ground_state_positive⟩
+  exact ⟨susy_is_broken, modular_weight_negative, c_eff_cusp0_negative, ground_state_positive⟩
 
 end DualScale.SusyBreaking

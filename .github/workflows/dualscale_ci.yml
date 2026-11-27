@@ -1,0 +1,92 @@
+name: DualScale CI
+
+on:
+  push:
+    branches: [ main, master, 'mathesis-gate/**' ]
+  pull_request:
+    branches: [ main, master, 'mathesis-gate/**' ]
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Mathesis Gate Self-Test
+        run: python3 tools/mathesis-gate/mathesis_gate.py --self-test
+
+      - name: Run Mathesis Gate on DualScale Lean Library
+        run: >-
+          python3 tools/mathesis-gate/mathesis_gate.py .
+          --lean-src dualscale/lean
+          --exclude archive
+          --exclude verify_
+          --skip-footprints
+
+      - name: Run Mathesis Gate on Root Lean Sketches
+        run: >-
+          python3 tools/mathesis-gate/mathesis_gate.py .
+          --exclude dualscale
+          --exclude lean4
+          --skip-footprints
+
+      - name: Run DualScale Lean Audit (R1-R3)
+        run: python3 dualscale/ci/audit_lean.py --root dualscale/lean/DualScale
+
+      - name: Audit Citations (R4 — v2.1 & v3)
+        run: |
+          python3 dualscale/ci/audit_citations.py --paper-dir docs/v2.1_paper --bib dualscale/refs/bib/dualscale.bib
+          python3 dualscale/ci/audit_citations.py --paper-dir docs/v3_paper --bib dualscale/refs/bib/dualscale.bib
+
+      - name: Validate References
+        run: python3 dualscale/ci/validate_refs.py
+
+      - name: Validate Certificates (R5)
+        run: python3 dualscale/ci/run_certificates.py
+
+      - name: Verify Exact q-Series Coefficients
+        run: python3 dualscale/ci/verify_qseries.py
+
+      - name: Run Unit Test Suite
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+        run: pytest -v
+
+  lean-kernel-live:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Elan and Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Compile NAMAGIRI.lean
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean NAMAGIRI.lean
+
+      - name: Run Live Footprint Verification on Discovery Modules
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          python3 tools/mathesis-gate/mathesis_gate.py dualscale/lean/DualScale/Discovery --exclude verify_ --exclude NormNumVerified --exclude Notebook

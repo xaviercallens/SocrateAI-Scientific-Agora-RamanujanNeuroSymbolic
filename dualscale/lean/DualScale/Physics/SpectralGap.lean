@@ -1,9 +1,8 @@
 -- DualScale/Physics/SpectralGap.lean — Task 3.3: Spectral Gap Strengthening
 -- ============================================================================
--- The holographic principle ties the Hamiltonian of the fluid system to the 
--- states in the string bulk. Specifically, if a string state is BPS,
--- the fluid state exhibits a strict spectral gap (energy gap separating
--- the vacuum from the first excited state), corresponding to zero modes.
+-- Parameterizes Hamiltonian spectral gaps via `SpectralSystem` and an explicit
+-- Tier C hypothesis `BPSSpectralGapHypothesis`, removing all global axioms and
+-- the classical tautology `¬P ∨ P`.
 
 import Mathlib.Data.Real.Basic
 import DualScale.QSeries.EtaQuotient
@@ -14,31 +13,26 @@ open DualScale.QSeries.EtaQuotient
 
 /-! ## Hamiltonian Spectral Gap -/
 
-/-- A physical system state corresponding to an eta-quotient. -/
-axiom FluidHamiltonian (eq : EtaQuot) : Type
+/-- Parameterized Hamiltonian spectrum indexed by eta-quotients. -/
+structure SpectralSystem where
+  E_0 : EtaQuot → ℝ
+  E_1 : EtaQuot → ℝ
 
-/-- The ground state energy E_0 of the Hamiltonian. -/
-axiom E_0 (eq : EtaQuot) : ℝ
+/-- A system has a strict spectral gap at `eq` when `E_1 eq > E_0 eq`. -/
+def HasSpectralGap (sys : SpectralSystem) (eq : EtaQuot) : Prop :=
+  sys.E_1 eq > sys.E_0 eq
 
-/-- The first excited state energy E_1 of the Hamiltonian. -/
-axiom E_1 (eq : EtaQuot) : ℝ
+/-- Tier C holographic hypothesis: every BPS eta-quotient (`isBPS eq`)
+    exhibits a strict spectral gap in `sys`. -/
+def BPSSpectralGapHypothesis (sys : SpectralSystem) : Prop :=
+  ∀ eq : EtaQuot, isBPS eq → HasSpectralGap sys eq
 
-/-- A system has a spectral gap if E_1 > E_0. -/
-def HasSpectralGap (eq : EtaQuot) : Prop :=
-  E_1 eq > E_0 eq
-
-/-! ## BPS Gap Axiomatization -/
-
-/-- Axiomatization: For BPS states (modular weight 1/2), the energy
-    spectrum is bounded below by the ground state shift, and topological
-    protection implies the existence of a strict spectral gap preventing
-    continuous soft modes. -/
-axiom bps_implies_spectral_gap (eq : EtaQuot) (h_bps : isBPS eq) :
-  HasSpectralGap eq
-
-/-- Furthermore, SUSY breaking allows gapless modes (Goldstone bosons),
-    meaning the spectral gap may vanish. -/
-axiom susy_broken_no_gap (eq : EtaQuot) (h_susy : isSUSYBroken eq) :
-  ¬(HasSpectralGap eq) ∨ (HasSpectralGap eq) -- We don't guarantee gapless, but it is possible.
+/-- Conditional Tier A deduction: under `BPSSpectralGapHypothesis sys`, any BPS
+    eta-quotient has strictly positive gap `E_1 eq - E_0 eq > 0`. -/
+theorem gap_pos_of_bps
+    (sys : SpectralSystem) (h_hyp : BPSSpectralGapHypothesis sys)
+    (eq : EtaQuot) (h_bps : isBPS eq) :
+    0 < sys.E_1 eq - sys.E_0 eq :=
+  sub_pos.mpr (h_hyp eq h_bps)
 
 end DualScale.Physics
